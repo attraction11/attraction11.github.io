@@ -8,7 +8,13 @@ NavItemList.push(NotesNavItems);
 
 export default defineConfig({
     base: '/',
-    title: 'Growth Record',
+    head: [
+        [
+            'link', // 设置 favicon.ico，注意图片放在 public 文件夹下
+            { rel: 'icon', href: 'docs-logo.png' },
+        ],
+    ],
+    title: 'Attraction11',
     description: '个人博客',
     markdown: {
         theme: {
@@ -18,7 +24,7 @@ export default defineConfig({
     },
     themeConfig: {
         // 文档标题
-        siteTitle: 'Growth Record',
+        siteTitle: 'Attraction11',
         // 文档LOGO
         logo: '/docs-logo.png',
         // 顶部栏导航栏
