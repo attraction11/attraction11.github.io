@@ -4,7 +4,7 @@ title: VitePress
 titleTemplate: Vite & Vue Powered Static Site Generator
 
 hero:
-    name: Growth Record
+    name: Hello World
     text: Static Site of Blog
     tagline: Suffering is The Most Powerful Teacher of Life
 
