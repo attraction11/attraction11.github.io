@@ -93,12 +93,8 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true,
             items: [
                 {
-                    text: "基础语法",
+                    text: "ES 新特性",
                     link: "/JavaScript/ESFeatures/",
-                },
-                {
-                    text: "工具类型",
-                    link: "/JavaScript/ESFeatures/ToolType",
                 },
             ],
         },
