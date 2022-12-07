@@ -63,12 +63,28 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true,
             items: [
                 {
-                    text: "基础语法",
+                    text: "同步与异步模式",
                     link: "/JavaScript/Asynchronous/",
                 },
                 {
-                    text: "工具类型",
-                    link: "/JavaScript/Asynchronous/ToolType",
+                    text: "Promise介绍",
+                    link: "/JavaScript/Asynchronous/promise",
+                },
+                {
+                    text: "手写Promise",
+                    link: "/JavaScript/Asynchronous/promiseCode",
+                },
+                {
+                    text: "JS中的this",
+                    link: "/JavaScript/Asynchronous/this",
+                },
+                {
+                    text: "面向对象",
+                    link: "/JavaScript/Asynchronous/objectOriented",
+                },
+                {
+                    text: "理解堆栈执行",
+                    link: "/JavaScript/Asynchronous/heap&stack",
                 },
             ],
         },
@@ -188,6 +204,16 @@ export const SideBarList: DefaultTheme.Sidebar = {
                 },
             ],
         },
+        {
+            text: "Nuxt",
+            collapsible: true,
+            items: [
+                {
+                    text: "第一篇：框架设计与实现",
+                    link: "/Framework/Nuxt/Nuxt",
+                },
+            ],
+        },
     ],
     "/FullStack": [
         {
@@ -200,6 +226,16 @@ export const SideBarList: DefaultTheme.Sidebar = {
                 },
             ],
         },
+        {
+            text: "Nest",
+            collapsible: true,
+            items: [
+                {
+                    text: "第一篇：框架设计与实现",
+                    link: "/Framework/Nest/WebCli",
+                },
+            ],
+        },
     ],
     "/PanClient": [
         {
@@ -208,7 +244,17 @@ export const SideBarList: DefaultTheme.Sidebar = {
             items: [
                 {
                     text: "第一篇：框架设计与实现",
-                    link: "/Framework/RN/WebCli",
+                    link: "/PanClient/RN/WebCli",
+                },
+            ],
+        },
+        {
+            text: "Flutter",
+            collapsible: true,
+            items: [
+                {
+                    text: "第一篇：框架设计与实现",
+                    link: "/PanClient/Flutter/WebCli",
                 },
             ],
         },

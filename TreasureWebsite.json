@@ -50,7 +50,7 @@
   {
     "title": "TingPNG",
     "href": "https://tinypng.com/",
-    "logo": "https://tinypng.com/images/favicon.ico",
+    "logo": "https://tinypng.com/images/pro/panda-pro.png",
     "description": "图片压缩"
   },
   {
@@ -62,7 +62,7 @@
   {
     "title": "Color Tool",
     "href": "https://material.io/resources/color/#!/?view.left=1&view.right=0&primary.color=D81B60",
-    "logo": "https://material.io/resources/color/assets/images/ic_colortool_72px.png",
+    "logo": "https://m2.material.io/resources/color/assets/images/color_light.svg",
     "description": "颜色工具"
   },
   {
