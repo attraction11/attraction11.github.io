@@ -21,33 +21,20 @@ export const NavItemList: DefaultTheme.NavItem[] = [
                 link: "/JavaScript/ESFeatures/",
             },
             {
-                text: "TypeScript语言",
-                link: "/JavaScript/TypeScript/React",
+                text: "TS语言",
+                link: "/JavaScript/TypeScript/",
             },
             {
-                text: "JavaScript性能优化",
+                text: "JS性能优化",
                 link: "/JavaScript/Performance/",
             },
-        ],
-    },
-    {
-        text: "前端工程化",
-        items: [
             {
-                text: "脚手架工具",
-                link: "/Engineering/CodeStandard",
+                text: "项目工程化",
+                link: "/JavaScript/Engineering/",
             },
             {
-                text: "自动化构建",
-                link: "/Engineering/Changesets",
-            },
-            {
-                text: "模块化开发",
-                link: "/Engineering/WebCli",
-            },
-            {
-                text: "规范化标准",
-                link: "/Engineering/CodeFormat",
+                text: "模块检测",
+                link: "/JavaScript/Detection/",
             },
         ],
     },

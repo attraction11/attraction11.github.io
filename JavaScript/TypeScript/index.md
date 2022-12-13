@@ -1,9 +1,9 @@
 ---
 title: TypeScript
 tags:
-  - TypeScript
+    - TypeScript
 categories:
-  - 记录学习-成长
+    - 记录学习-成长
 ---
 
 # TypeScript
@@ -16,10 +16,10 @@ categories:
 
 JavaScript 是一门弱类型语言，它弱化了对一切变量的类型，是一门非常灵活的编程语言
 
-- 它没有类型约束，一个变量可能初始化时是字符串，过一会儿又被赋值为数字。
-- 由于隐式类型转换的存在，有的变量的类型很难在运行前就确定。
-- 基于原型的面向对象编程，使得原型上的属性或方法可以在运行时被修改。
-- 函数是 JavaScript 中的一等公民，可以赋值给变量，也可以当作参数或返回值。
+-   它没有类型约束，一个变量可能初始化时是字符串，过一会儿又被赋值为数字。
+-   由于隐式类型转换的存在，有的变量的类型很难在运行前就确定。
+-   基于原型的面向对象编程，使得原型上的属性或方法可以在运行时被修改。
+-   函数是 JavaScript 中的一等公民，可以赋值给变量，也可以当作参数或返回值。
 
 而 TypeScript 的类型系统，在很大程度上弥补了 JavaScript 的缺点
 
@@ -165,9 +165,9 @@ const favoriteNumber: string | number = 7;
 
 ```typescript
 function getLength(something: string | number): string {
-  // TS会提示你 类型“string | number”上不存在属性“length”。类型“number”上不存在属性“length”
-  return something.length;
-  // 此时我们只能访问到 .toLocaleString()  .toString()  .valueOf() 方法，因为这在string 和 number都存在
+    // TS会提示你 类型“string | number”上不存在属性“length”。类型“number”上不存在属性“length”
+    return something.length;
+    // 此时我们只能访问到 .toLocaleString()  .toString()  .valueOf() 方法，因为这在string 和 number都存在
 }
 ```
 
@@ -203,13 +203,13 @@ console.log(favoriteNumber.length);
  * 人
  */
 interface IPerson {
-  name: string;
-  age: number;
+    name: string;
+    age: number;
 }
 // 这时我们 有一个对象 需要去实现 IPerson 这个接口
 const tom: IPerson = {
-  name: "Tom",
-  age: 21,
+    name: "Tom",
+    age: 21,
 };
 ```
 
@@ -219,14 +219,14 @@ IPerson 中有个 sex 属性，属于可选属性。在实现接口时可定义�
 
 ```typescript
 interface IPerson {
-  name: string;
-  age: number;
-  sex?: number; // 可选属性
+    name: string;
+    age: number;
+    sex?: number; // 可选属性
 }
 // 这时我们 有一个 对象 需要去实现 IPerson 这个接口
 const tom: IPerson = {
-  name: "Tom",
-  age: 21,
+    name: "Tom",
+    age: 21,
 };
 ```
 
@@ -238,16 +238,16 @@ prop 被定义为 string 类型，可以返回 any 类型，此时在实现该�
 
 ```typescript
 interface IPerson {
-  name: string;
-  age: number;
-  sex?: number; // 可选属性
-  [prop: string]: any; // 任意属性
+    name: string;
+    age: number;
+    sex?: number; // 可选属性
+    [prop: string]: any; // 任意属性
 }
 // 这时我们 有一个 对象 需要去实现 IPerson 这个接口
 const tom: IPerson = {
-  name: "Tom",
-  age: 21,
-  gender: "male",
+    name: "Tom",
+    age: 21,
+    gender: "male",
 };
 ```
 
@@ -255,16 +255,16 @@ const tom: IPerson = {
 
 ```typescript
 interface IPerson {
-  name: string;
-  age: number;
-  sex?: number; // 可选属性
-  [prop: string]: string; // 任意属性
+    name: string;
+    age: number;
+    sex?: number; // 可选属性
+    [prop: string]: string; // 任意属性
 }
 // 这时我们 有一个 对象 需要去实现 IPerson 这个接口
 const tom: IPerson = {
-  name: "Tom",
-  age: 21,
-  gender: "male",
+    name: "Tom",
+    age: 21,
+    gender: "male",
 };
 ```
 
@@ -278,18 +278,18 @@ const tom: IPerson = {
 
 ```typescript
 interface IPerson {
-  readonly id: number; // 只读属性
-  name: string;
-  age: number;
-  sex?: number; // 可选属性
-  [prop: string]: any; // 任意属性
+    readonly id: number; // 只读属性
+    name: string;
+    age: number;
+    sex?: number; // 可选属性
+    [prop: string]: any; // 任意属性
 }
 // 这时我们 有一个 对象 需要去实现 IPerson 这个接口
 const tom: IPerson = {
-  id: 20211027,
-  name: "Tom",
-  age: 21,
-  gender: "male",
+    id: 20211027,
+    name: "Tom",
+    age: 21,
+    gender: "male",
 };
 ```
 
@@ -322,7 +322,7 @@ const numberArray2: Array<number> = [1, 3, 5, 7];
 ```typescript
 // 用接口表示数组
 interface INumberArray {
-  [index: number]: number;
+    [index: number]: number;
 }
 const numberArray3: INumberArray = [1, 3, 5, 7, 9, 11];
 ```
@@ -338,13 +338,13 @@ const numberArray3: INumberArray = [1, 3, 5, 7, 9, 11];
  * Fuction Delaration
  */
 function sum(x, y) {
-  return x + y;
+    return x + y;
 }
 /**
  * Function Expression
  */
 let sumFunction = function (x, y) {
-  return x + y;
+    return x + y;
 };
 ```
 
@@ -357,7 +357,7 @@ let sumFunction = function (x, y) {
  * Fuction Delaration
  */
 function sum(x: number, y: number): number {
-  return x + y;
+    return x + y;
 }
 ```
 
@@ -368,7 +368,7 @@ function sum(x: number, y: number): number {
  * Function Expression
  */
 let sumFunction = function (x: number, y: number): number {
-  return x + y;
+    return x + y;
 };
 ```
 
@@ -379,10 +379,10 @@ let sumFunction = function (x: number, y: number): number {
  * Function Expression
  */
 let sumFunction: (x: number, y: number) => number = function (
-  x: number,
-  y: number
+    x: number,
+    y: number
 ): number {
-  return x + y;
+    return x + y;
 };
 ```
 
@@ -393,14 +393,14 @@ let sumFunction: (x: number, y: number) => number = function (
  * 用接口来定义函数
  */
 interface ISearchFunc {
-  (source: string, subString: string): boolean;
+    (source: string, subString: string): boolean;
 }
 
 const mySearch: ISearchFunc = function (
-  source: string,
-  subString: string
+    source: string,
+    subString: string
 ): boolean {
-  return source.search(subString) !== -1;
+    return source.search(subString) !== -1;
 };
 
 // boolean
@@ -418,10 +418,10 @@ console.log(typeof mySearch("test", "te"));
  * 可选参数
  */
 function buildName(firstName: string, lastName?: string): string {
-  if (lastName) {
-    return firstName + " " + lastName;
-  }
-  return firstName;
+    if (lastName) {
+        return firstName + " " + lastName;
+    }
+    return firstName;
 }
 ```
 
@@ -434,10 +434,10 @@ function buildName(firstName: string, lastName?: string): string {
  * 参数默认值
  */
 function buildName(firstName: string, lastName: string = "Cat"): string {
-  if (lastName) {
-    return firstName + " " + lastName;
-  }
-  return firstName;
+    if (lastName) {
+        return firstName + " " + lastName;
+    }
+    return firstName;
 }
 // This is Cat
 console.log(buildName("This is"));
@@ -452,20 +452,63 @@ console.log(buildName("This is"));
  * 剩余参数
  */
 function restName(
-  firstName: string,
-  secondName: string,
-  ...restOfName: string[]
+    firstName: string,
+    secondName: string,
+    ...restOfName: string[]
 ) {
-  // [ 'Lucas', 'MacKinzie' ]
-  console.log("restOfName", restOfName);
-  return firstName + " " + " " + secondName + restOfName.join(" ");
+    // [ 'Lucas', 'MacKinzie' ]
+    console.log("restOfName", restOfName);
+    return firstName + " " + " " + secondName + restOfName.join(" ");
 }
 let employeeName = restName("Joseph", "Samuel", "Lucas", "MacKinzie");
 ```
 
 ### 重载
 
-重载允许一个函数接受不同数量或类型的参数时，作出不同的处理。类似 Java 当中的方法重载
+重载允许一个函数接受不同数量或类型的参数时，作出不同的处理。类似 Java 当中的方法重载。
+
+-   函数重载
+
+场景是老师要查询学生的用户信息，如果是输入数字就通过排名（id）去匹配，输入的是字符串就通过分数(grades)去匹配。如果查询相同分数太多，老师输入 string 想添加一个变量 count 用于控制查询数量。
+
+```js
+function getUserInfo(value:number):User|undefined
+function getUserInfo(value:string,count:number):User[]
+function getUserInfo(value:number|string,count:number=1):User|User[]|undefined{
+    if(typeof value==='number'){
+        return userList.find(item=>item.id===value)
+    }else{
+        return userList.filter(item=>item.grades===value).slice(0,count)
+    }
+}
+getUserInfo('98',3)
+```
+
+-   方法重载
+
+应用例子：简单封装一个数组，使数组更加好用,通过 index 删除返回 index,通过 object 删除返回 object。
+
+```js
+class ArrayEN {
+  constructor(public arr: object[]) {}
+
+  get(Index: number) {
+    return this.arr[Index];
+  }
+  delete(value: number): number;
+  delete(value: object): object;
+  delete(value: number | object): number | object {
+    this.arr = this.arr.filter((item, index) => {
+      if (typeof value === "number") {
+        return value !== index;
+      } else {
+        return value !== item;
+      }
+    });
+    return value;
+  }
+}
+```
 
 ## 类型断言
 
@@ -514,9 +557,9 @@ declare function globalTest(sekector2: number): number;
 
 ```typescript
 declare class Animal {
-  name: string;
-  constructor(name: string);
-  sayHi(): string;
+    name: string;
+    constructor(name: string);
+    sayHi(): string;
 }
 ```
 
@@ -531,11 +574,11 @@ type Name = string;
 type NameResolver = () => string;
 type NameOrResolver = Name | NameResolver;
 function getName(n: NameOrResolver): Name {
-  if (typeof n === "string") {
-    return n;
-  } else {
-    return n();
-  }
+    if (typeof n === "string") {
+        return n;
+    } else {
+        return n();
+    }
 }
 ```
 
@@ -546,7 +589,7 @@ function getName(n: NameOrResolver): Name {
 ```typescript
 type EventNames = "Click" | "Scroll" | "MouseMove";
 function handleEvent(event: EventNames) {
-  console.log(event);
+    console.log(event);
 }
 // 取值只能为 "Click" | "Scroll" | "MouseMove" 其中一个
 handleEvent("Scroll");
@@ -568,13 +611,13 @@ let tom: [string, number] = ["Tom", 25];
 
 ```typescript
 enum Days {
-  Sun,
-  Mon,
-  Tue,
-  Wed,
-  Thu,
-  Fri,
-  Sat,
+    Sun,
+    Mon,
+    Tue,
+    Wed,
+    Thu,
+    Fri,
+    Sat,
 }
 
 console.log(Days["Sun"] === 0); // true
@@ -594,13 +637,13 @@ console.log(Days[6] === "Sat"); // true
 
 ```typescript
 enum Days {
-  Sun = 7,
-  Mon = 1,
-  Tue,
-  Wed,
-  Thu,
-  Fri,
-  Sat,
+    Sun = 7,
+    Mon = 1,
+    Tue,
+    Wed,
+    Thu,
+    Fri,
+    Sat,
 }
 
 console.log(Days["Sun"] === 7); // true
@@ -613,10 +656,10 @@ console.log(Days["Sat"] === 6); // true
 
 ```typescript
 enum Person {
-  name = "NAME",
-  age = "AGE",
-  love = "LOVE",
-  hobby = "HOBBY",
+    name = "NAME",
+    age = "AGE",
+    love = "LOVE",
+    hobby = "HOBBY",
 }
 console.log(Person.name); // NAME
 console.log(Person.hobby); // HOBBY
@@ -626,10 +669,10 @@ console.log(Person.hobby); // HOBBY
 
 ```typescript
 enum Person {
-  name = 1,
-  age = 2,
-  love = "LOVE",
-  hobby = "HOBBY",
+    name = 1,
+    age = 2,
+    love = "LOVE",
+    hobby = "HOBBY",
 }
 console.log(Person.name); // 1
 console.log(Person.hobby); // HOBBY
@@ -641,8 +684,8 @@ console.log(Person.hobby); // HOBBY
 
 ```typescript
 const enum Size {
-  WIDTH = 10,
-  HEIGHT = 20,
+    WIDTH = 10,
+    HEIGHT = 20,
 }
 const area = Size.WIDTH * Size.HEIGHT;
 
@@ -655,15 +698,15 @@ const area = Size.WIDTH * Size.HEIGHT;
 
 ```typescript
 class Greeter {
-  greeting: string; // 属性
-  constructor(message: string) {
-    // 构造函数
-    this.greeting = message;
-  }
-  greet() {
-    // 方法
-    return "Hello," + this.greeting;
-  }
+    greeting: string; // 属性
+    constructor(message: string) {
+        // 构造函数
+        this.greeting = message;
+    }
+    greet() {
+        // 方法
+        return "Hello," + this.greeting;
+    }
 }
 let greeter = new Greeter("world");
 console.log(greeter); // Greeter { greeting: 'world' }
@@ -675,21 +718,21 @@ console.log(greeter.greet()); // Hello,world
 
 注意点：
 
-- 子类的构造函数 必须调用 `super()` 它会去执行 父类的构造函数。
-- 并且在构造函数里一定是先执行 `super()` 在可以访问 `this` 属性
+-   子类的构造函数 必须调用 `super()` 它会去执行 父类的构造函数。
+-   并且在构造函数里一定是先执行 `super()` 在可以访问 `this` 属性
 
 ```typescript
 class Animal {
-  // 父类
-  move(distanceInMeters: number = 0) {
-    console.log(`Animal moved ${distanceInMeters}m.`);
-  }
+    // 父类
+    move(distanceInMeters: number = 0) {
+        console.log(`Animal moved ${distanceInMeters}m.`);
+    }
 }
 class Dog extends Animal {
-  // 子类
-  bark() {
-    console.log("Woof! Woof!");
-  }
+    // 子类
+    bark() {
+        console.log("Woof! Woof!");
+    }
 }
 const dog = new Dog();
 dog.bark(); // Woof! Woof!
@@ -698,34 +741,34 @@ dog.move(10); // Animal moved 10m.
 
 ```typescript
 class Animal {
-  // Animal类
-  name: string;
-  constructor(theName: string) {
-    this.name = theName;
-  }
-  move(distanceInMeters: number = 0) {
-    console.log(`${this.name} moved ${distanceInMeters}m.`);
-  }
+    // Animal类
+    name: string;
+    constructor(theName: string) {
+        this.name = theName;
+    }
+    move(distanceInMeters: number = 0) {
+        console.log(`${this.name} moved ${distanceInMeters}m.`);
+    }
 }
 class Snake extends Animal {
-  // Snake 类
-  constructor(name: string) {
-    super(name);
-  }
-  move(distanceInMeters = 5) {
-    console.log("Slithering...");
-    super.move(distanceInMeters); // 调用 Animal类 中的 move方法
-  }
+    // Snake 类
+    constructor(name: string) {
+        super(name);
+    }
+    move(distanceInMeters = 5) {
+        console.log("Slithering...");
+        super.move(distanceInMeters); // 调用 Animal类 中的 move方法
+    }
 }
 class Horse extends Animal {
-  // Horse 类
-  constructor(name: string) {
-    super(name);
-  }
-  move(distanceInMeters = 45) {
-    console.log("Galloping...");
-    super.move(distanceInMeters); // 调用 Animal类 中的 move方法
-  }
+    // Horse 类
+    constructor(name: string) {
+        super(name);
+    }
+    move(distanceInMeters = 45) {
+        console.log("Galloping...");
+        super.move(distanceInMeters); // 调用 Animal类 中的 move方法
+    }
 }
 
 let sam = new Snake("Sammy the Python");
@@ -755,10 +798,10 @@ tom.move(34);
 
 ```typescript
 class Animal {
-  private name: string;
-  constructor(theName: string) {
-    this.name = theName;
-  }
+    private name: string;
+    constructor(theName: string) {
+        this.name = theName;
+    }
 }
 new Animal("Cat").name; // 编辑器提示：属性“name”为私有属性，只能在类“Animal”中访问
 ```
@@ -769,21 +812,21 @@ new Animal("Cat").name; // 编辑器提示：属性“name”为私有属性，�
 
 ```typescript
 class Person {
-  protected name: string;
-  constructor(name: string) {
-    this.name = name;
-  }
+    protected name: string;
+    constructor(name: string) {
+        this.name = name;
+    }
 }
 
 class Employee extends Person {
-  private department: string;
-  constructor(name: string, department: string) {
-    super(name);
-    this.department = department;
-  }
-  public getElevatorPitch() {
-    return `Hello, my name is ${this.name} and I work in ${this.department}.`;
-  }
+    private department: string;
+    constructor(name: string, department: string) {
+        super(name);
+        this.department = department;
+    }
+    public getElevatorPitch() {
+        return `Hello, my name is ${this.name} and I work in ${this.department}.`;
+    }
 }
 let howard = new Employee("Howard", "Sales");
 console.log(howard.getElevatorPitch()); // Hello, my name is Howard and I work in Sales.
@@ -796,11 +839,11 @@ console.log(howard.name); // 编辑器提示：属性“name”受保护，只�
 
 ```typescript
 class Octopus {
-  readonly name: string;
-  readonly numberOfLegs: number = 8;
-  constructor(theNmae: string) {
-    this.name = theName;
-  }
+    readonly name: string;
+    readonly numberOfLegs: number = 8;
+    constructor(theNmae: string) {
+        this.name = theName;
+    }
 }
 let dad = new Octopus("Man with the 8 strong legs");
 dad.name = "Man with the 3-piece suit"; // 错误! name 是只读的.
@@ -813,25 +856,25 @@ dad.name = "Man with the 3-piece suit"; // 错误! name 是只读的.
 ```typescript
 let passcode = "secret passcode";
 class Employee {
-  private _fullName: string;
+    private _fullName: string;
 
-  get fullName(): string {
-    return this._fullName;
-  }
-
-  set fullName(newName: string) {
-    if (passcode && passcode == "secret passcode") {
-      this._fullName = newName;
-    } else {
-      console.log("Error: Unauthorized update of employee!");
+    get fullName(): string {
+        return this._fullName;
     }
-  }
+
+    set fullName(newName: string) {
+        if (passcode && passcode == "secret passcode") {
+            this._fullName = newName;
+        } else {
+            console.log("Error: Unauthorized update of employee!");
+        }
+    }
 }
 
 let employee = new Employee();
 employee.fullName = "Bob Smith"; // 会走类的 set fullName() {} 方法
 if (employee.fullName) {
-  console.log(employee.fullName);
+    console.log(employee.fullName);
 }
 ```
 
@@ -841,16 +884,16 @@ if (employee.fullName) {
 
 ```typescript
 class Grid {
-  static origin = { x: 0, y: 0 };
-  scale: number;
-  calculateDistanceFromOrigin(point: { x: number; y: number }) {
-    let xDist = point.x - Grid.origin.x;
-    let yDist = point.y - Grid.origin.y;
-    return Math.sqrt(xDist * xDist + yDist * yDist) / this.scale;
-  }
-  constructor(scale: number) {
-    this.scale = scale;
-  }
+    static origin = { x: 0, y: 0 };
+    scale: number;
+    calculateDistanceFromOrigin(point: { x: number; y: number }) {
+        let xDist = point.x - Grid.origin.x;
+        let yDist = point.y - Grid.origin.y;
+        return Math.sqrt(xDist * xDist + yDist * yDist) / this.scale;
+    }
+    constructor(scale: number) {
+        this.scale = scale;
+    }
 }
 let grid1 = new Grid(1.0); // 1x scale
 let grid2 = new Grid(5.0); // 5x scale
@@ -867,10 +910,10 @@ console.log(grid2.calculateDistanceFromOrigin({ x: 10, y: 10 }));
 
 ```typescript
 abstract class Animal {
-  abstract makeSound(): void;
-  move(): void {
-    console.log("roaming the earch...");
-  }
+    abstract makeSound(): void;
+    move(): void {
+        console.log("roaming the earch...");
+    }
 }
 ```
 
@@ -881,24 +924,24 @@ abstract class Animal {
 
 ```typescript
 abstract class Department {
-  constructor(public name: string) {}
+    constructor(public name: string) {}
 
-  printName(): void {
-    console.log("Department name:" + this.name);
-  }
-  abstract printMeeting(): void; // 必须在派生类中实现
+    printName(): void {
+        console.log("Department name:" + this.name);
+    }
+    abstract printMeeting(): void; // 必须在派生类中实现
 }
 
 class AccountingDepartment extends Department {
-  constructor() {
-    super("Accounting and Auditing"); // 派生类必须在构造函数中调用 super()
-  }
-  printMeeting(): void {
-    console.log("The Accounting Department meets each Monday at 10am.");
-  }
-  generateReports(): void {
-    console.log("Generating accounting reports...");
-  }
+    constructor() {
+        super("Accounting and Auditing"); // 派生类必须在构造函数中调用 super()
+    }
+    printMeeting(): void {
+        console.log("The Accounting Department meets each Monday at 10am.");
+    }
+    generateReports(): void {
+        console.log("Generating accounting reports...");
+    }
 }
 ```
 
@@ -908,15 +951,15 @@ class AccountingDepartment extends Department {
 
 ```typescript
 interface ClockInterface {
-  currentTime: Date;
-  setTime(d: Date);
+    currentTime: Date;
+    setTime(d: Date);
 }
 class Clock implements ClockInterface {
-  currentTime: Date;
-  setTime(d: Date) {
-    this.currentTime = d;
-  }
-  constructor(h: number, m: number) {}
+    currentTime: Date;
+    setTime(d: Date) {
+        this.currentTime = d;
+    }
+    constructor(h: number, m: number) {}
 }
 ```
 
@@ -924,14 +967,14 @@ class Clock implements ClockInterface {
 
 ```typescript
 interface Shape {
-  color: string;
+    color: string;
 }
 interface Square extends Shape {
-  sideLength: number;
+    sideLength: number;
 }
 let square: Square = {
-  color: "red",
-  sideLength: 1,
+    color: "red",
+    sideLength: 1,
 };
 ```
 
@@ -941,11 +984,11 @@ let square: Square = {
 
 ```typescript
 function createArray(length: number, value: any): Array<any> {
-  let result = [];
-  for (let i = 0; i < length; i++) {
-    result[i] = value;
-  }
-  return result;
+    let result = [];
+    for (let i = 0; i < length; i++) {
+        result[i] = value;
+    }
+    return result;
 }
 console.log(createArray(5, "A"));
 ```
@@ -958,11 +1001,11 @@ console.log(createArray(5, "A"));
 
 ```typescript
 function createArray<T>(length: number, value: T): Array<T> {
-  let result = [];
-  for (let i = 0; i < length; i++) {
-    result[i] = value;
-  }
-  return result;
+    let result = [];
+    for (let i = 0; i < length; i++) {
+        result[i] = value;
+    }
+    return result;
 }
 console.log(createArray<string>(5, "A"));
 // 也可以不指定，通过类型推论也可以自动推算出来
@@ -975,9 +1018,9 @@ console.log(createArray(5, "A"));
 
 ```typescript
 function loggingIdentiy<T>(arg: T): T {
-  // 编辑器提示：类型“T”上不存在属性“length”
-  console.log(arg.length);
-  return arg;
+    // 编辑器提示：类型“T”上不存在属性“length”
+    console.log(arg.length);
+    return arg;
 }
 ```
 
@@ -988,17 +1031,17 @@ function loggingIdentiy<T>(arg: T): T {
 ```typescript
 // string 类型中有 length 属性
 function loggingIdentiy<T extends string>(arg: T): T {
-  console.log(arg.length);
-  return arg;
+    console.log(arg.length);
+    return arg;
 }
 
 // 或者是继承相关的接口
 interface ILength {
-  length: number;
+    length: number;
 }
 function loggingIdentiy<T extends ILength>(arg: T): T {
-  console.log(arg.length);
-  return arg;
+    console.log(arg.length);
+    return arg;
 }
 ```
 
@@ -1006,10 +1049,10 @@ function loggingIdentiy<T extends ILength>(arg: T): T {
 
 ```typescript
 interface ConfigFn {
-  <T>(value: T): T;
+    <T>(value: T): T;
 }
 var getData: ConfigFn = (value) => {
-  return value;
+    return value;
 };
 console.log(getData<string>("张三"));
 // 提示：类型“number”的参数不能赋给类型“string”的参数
@@ -1020,19 +1063,19 @@ console.log(getData<string>(1));
 
 ```typescript
 class GetMin<T> {
-  arr: T[] = [];
-  add(ele: T) {
-    this.arr.push(ele);
-  }
-  min(): T {
-    var min = this.arr[0];
-    this.arr.forEach((value) => {
-      if (value < min) {
-        min = value;
-      }
-    });
-    return min;
-  }
+    arr: T[] = [];
+    add(ele: T) {
+        this.arr.push(ele);
+    }
+    min(): T {
+        var min = this.arr[0];
+        this.arr.forEach((value) => {
+            if (value < min) {
+                min = value;
+            }
+        });
+        return min;
+    }
 }
 var gm1 = new GetMin<number>();
 gm1.add(5);
@@ -1055,10 +1098,10 @@ console.log(gm2.min()); // jack
 
 ```typescript
 function createArray<T = string>(length: number, value: T): Array<T> {
-  let result: T[] = [];
-  for (let i = 0; i < length; i++) {
-    result[i] = value;
-  }
-  return result;
+    let result: T[] = [];
+    for (let i = 0; i < length; i++) {
+        result[i] = value;
+    }
+    return result;
 }
 ```

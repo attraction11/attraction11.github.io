@@ -99,7 +99,7 @@ export const SideBarList: DefaultTheme.Sidebar = {
             ],
         },
         {
-            text: "TypeScript语言",
+            text: "TS语言",
             collapsible: true,
             items: [
                 {
@@ -113,36 +113,68 @@ export const SideBarList: DefaultTheme.Sidebar = {
             ],
         },
         {
-            text: "JavaScript性能优化",
+            text: "JS性能优化",
             collapsible: true,
             items: [
                 {
-                    text: "基础语法",
+                    text: "JS内存管理及回收",
                     link: "/JavaScript/Performance/",
                 },
                 {
-                    text: "工具类型",
-                    link: "/JavaScript/Performance/ToolType",
+                    text: "JS代码执行",
+                    link: "/JavaScript/Performance/Execute",
+                },
+                {
+                    text: "JS性能检测",
+                    link: "/JavaScript/Performance/Check",
+                },
+                {
+                    text: "JS性能优化",
+                    link: "/JavaScript/Performance/Optimize",
                 },
             ],
         },
-    ],
-    "/Engineering": [
         {
-            text: "Engineering",
+            text: "项目工程化",
             collapsible: true,
             items: [
                 {
-                    text: "基本使用",
-                    link: "/Engineering/",
+                    text: "脚手架工具",
+                    link: "/JavaScript/Engineering/",
                 },
                 {
-                    text: "环境变量配置",
-                    link: "/Engineering/Changesets",
+                    text: "自动化构建",
+                    link: "/JavaScript/Engineering/Automate",
                 },
                 {
-                    text: "服务常用配置",
-                    link: "/Engineering/CodeFormat",
+                    text: "模块化开发",
+                    link: "/JavaScript/Engineering/Modular",
+                },
+                {
+                    text: "Webpack解析",
+                    link: "/JavaScript/Engineering/Webpack",
+                },
+                {
+                    text: "规范化标准",
+                    link: "/JavaScript/Engineering/CodeStandard",
+                },
+            ],
+        },
+        {
+            text: "模块检测",
+            collapsible: true,
+            items: [
+                {
+                    text: "模块检测一",
+                    link: "/JavaScript/Module/",
+                },
+                {
+                    text: "模块检测二",
+                    link: "/JavaScript/Module/Two",
+                },
+                {
+                    text: "模块检测三",
+                    link: "/JavaScript/Module/Three",
                 },
             ],
         },
