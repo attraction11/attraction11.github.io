@@ -1,1 +1,0 @@
-import{_ as t,c as e,o as r}from"./app.e5aadc3a.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"Framework/Nuxt/Nuxt.md"}'),a={name:"Framework/Nuxt/Nuxt.md"};function o(s,c,n,p,_,m){return r(),e("div")}const u=t(a,[["render",o]]);export{i as __pageData,u as default};
