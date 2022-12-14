@@ -15,7 +15,7 @@
 
 一切以提高效率、降低成本、质量保证为目的的手段都属于工程化。一切重复的工作都应该被自动化。  
 创建项目（脚手架）-->编码（构建工具）-->预览/测试-->提交-->部署 每个环节的工程化表现图解：
-![image.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/03ec625e416f4611b449e21bbfdb3492~tplv-k3u1fbpfcp-watermark.image)
+![image.png](./images/image.png)
 
 #### 3、工程化与 Node.js
 
@@ -75,7 +75,7 @@ yo webapp
 
 基于`Yeoman`搭建自己的脚手架，本质上`Generator`就是一个`NPM`模块
 自定义`Generator`的基本结构(含`component`子生成器)：
-![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1ac594eafe1a4facb2e1c57b728e2f35~tplv-k3u1fbpfcp-watermark.image)
+![image.png](./images/image2.png)
 注意：自定义`Generator`的名称命名必须是`generator-xxx`
 
 #### 5、接收用户输入数据

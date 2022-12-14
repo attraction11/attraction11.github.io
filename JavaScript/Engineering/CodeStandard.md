@@ -2,7 +2,7 @@
 theme: vue-pro
 ---
 
-## 一、模块化开发
+## 模块化开发
 
 [模块化](https://www.liaoxuefeng.com/wiki/1022910821149312/1023027697415616)开发是当前最重要的前端开发范式。随着前端代码量的激增，可以将不同的代码按照功能或业务划分为不同模块单独去维护，提高开发效率和降低维护成本。模块化只是思想，具体实现需要依赖一些工具。  
 模块化的演进过程
@@ -105,7 +105,7 @@ define(function (require, exports, module) {
 ![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dedf04cd7604438697516f643d09ae6b~tplv-k3u1fbpfcp-watermark.image)
 ES Modules 是 ES6 中定义的一个标准，因此会存在各种的兼容问题，但随着 webpack 等打包工具的出现已经可以完全兼容使用了。
 
-## 二、ES Modules 标准
+## ES Modules 标准
 
 #### 1. 基本特性
 
@@ -245,7 +245,7 @@ _.camelCase("ES Module");
 -   可以使用`Bable`进行兼容，执行`yarn add @babel/core @babel/node @babel/preset-env --dev`
 -   需要`babel`的插件转换，`preset-env`包含了各种插件
 
-## 三、Webpack 与 Rollup 打包工具
+## Webpack 与 Rollup 打包工具
 
 #### 1、ES Modules 模块化的弊端
 
@@ -499,7 +499,7 @@ import("./logger").then(({ log }) => {
 
 零配置的前端应用打包。
 
-## 四、规范化标准
+## 规范化标准
 
 1. 为什么要有规范标准？
 

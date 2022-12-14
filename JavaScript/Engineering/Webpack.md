@@ -4,7 +4,7 @@
 
 #### 1、输出文件整体分析：
 
-![image.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/15765fdd35224fb584102de0bd43a70c~tplv-k3u1fbpfcp-watermark.image)
+![image.png](./images/image3.png)
 
 1. 打包后的文件就是一个函数自调用，当前函数调用时传入一个对象
 2. 这个对象我们为了方便称之为是模块定义，它就是一个键值对

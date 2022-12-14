@@ -34,7 +34,7 @@ export const NavItemList: DefaultTheme.NavItem[] = [
             },
             {
                 text: "模块检测",
-                link: "/JavaScript/Detection/",
+                link: "/JavaScript/Module/",
             },
         ],
     },
@@ -52,6 +52,10 @@ export const NavItemList: DefaultTheme.NavItem[] = [
             {
                 text: "Nuxt",
                 link: "/Framework/Nuxt/Nuxt",
+            },
+            {
+                text: "模块检测",
+                link: "/Framework/Module/",
             },
         ],
     },

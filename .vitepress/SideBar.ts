@@ -242,6 +242,24 @@ export const SideBarList: DefaultTheme.Sidebar = {
                 },
             ],
         },
+        {
+            text: "模块检测",
+            collapsible: true,
+            items: [
+                {
+                    text: "模块检测一",
+                    link: "/Framework/Module/",
+                },
+                {
+                    text: "模块检测二",
+                    link: "/Framework/Module/Two",
+                },
+                {
+                    text: "模块检测三",
+                    link: "/Framework/Module/Three",
+                },
+            ],
+        },
     ],
     "/FullStack": [
         {
