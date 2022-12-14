@@ -185,19 +185,19 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true,
             items: [
                 {
-                    text: "第一篇：框架设计与实现",
+                    text: "框架设计与实现",
                     link: "/Framework/Vue/Vue2",
                 },
                 {
-                    text: "第二篇：响应式系统",
+                    text: "响应式系统",
                     link: "/Framework/Vue/Vue3",
                 },
                 {
-                    text: "Vue3+TSX语法写法总结",
+                    text: "Vue3+TSX语法",
                     link: "/Framework/Vue/Vue3Tsx.md",
                 },
                 {
-                    text: "杂记",
+                    text: "Vue  Q&A",
                     link: "/Framework/Vue/RandomRecord.md",
                 },
             ],
@@ -207,11 +207,11 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true,
             items: [
                 {
-                    text: "第一篇：框架设计与实现",
+                    text: "框架设计与实现",
                     link: "/Framework/React/React",
                 },
                 {
-                    text: "第二篇：响应式系统",
+                    text: "响应式系统",
                     link: "/Framework/React/ReactHooks",
                 },
                 {
@@ -230,6 +230,10 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     text: "NextJS",
                     link: "/Framework/React/NextJS",
                 },
+                {
+                    text: "React Q&A",
+                    link: "/Framework/React/RandomRecord.md",
+                },
             ],
         },
         {
@@ -237,8 +241,8 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true,
             items: [
                 {
-                    text: "第一篇：框架设计与实现",
-                    link: "/Framework/Nuxt/Nuxt",
+                    text: "Nuxt最佳实践",
+                    link: "/Framework/Nuxt/",
                 },
             ],
         },
@@ -247,16 +251,8 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true,
             items: [
                 {
-                    text: "模块检测一",
+                    text: "基础问答",
                     link: "/Framework/Module/",
-                },
-                {
-                    text: "模块检测二",
-                    link: "/Framework/Module/Two",
-                },
-                {
-                    text: "模块检测三",
-                    link: "/Framework/Module/Three",
                 },
             ],
         },

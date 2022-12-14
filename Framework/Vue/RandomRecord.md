@@ -1,12 +1,14 @@
+# Vue Q&A
+
 ## 1. Vue3 组件之间的通信方式有哪些
 
-- `Props、Emits`：用于父子组件之间数据的传递
-- `expose、ref`：在 Vue3 中我们需要通过 `ref` 去获取组件的实例，并且 Vue 并不会将所有组件实例属性和方法暴露出来。我们需要通过 `defineExpose` 将实例的属性和方法暴露出来。在父组件我们可以通过获取组件实例来向子组件传递数据。
-- `透传 Attributes`：指的是在子组件中，没使用 prop 或 emits 定义的 attribute，可以通过 `$attrs` 来访问。[文档介绍](https://cn.vuejs.org/guide/components/attrs.html)
-- `v-model` 语法糖
-- `Slots` 插槽
-- `Provide/Inject`：适合跨组件传递
-- `Vuex、Pinia`：跨组件通信工具
+-   `Props、Emits`：用于父子组件之间数据的传递
+-   `expose、ref`：在 Vue3 中我们需要通过 `ref` 去获取组件的实例，并且 Vue 并不会将所有组件实例属性和方法暴露出来。我们需要通过 `defineExpose` 将实例的属性和方法暴露出来。在父组件我们可以通过获取组件实例来向子组件传递数据。
+-   `透传 Attributes`：指的是在子组件中，没使用 prop 或 emits 定义的 attribute，可以通过 `$attrs` 来访问。[文档介绍](https://cn.vuejs.org/guide/components/attrs.html)
+-   `v-model` 语法糖
+-   `Slots` 插槽
+-   `Provide/Inject`：适合跨组件传递
+-   `Vuex、Pinia`：跨组件通信工具
 
 ## 2. `v-if` 和 `v-for` 哪个优先级更高
 
@@ -88,28 +90,28 @@ Vue 中 `diff` 执行的时刻是组件内响应式数据变更触发实例执�
 
 Patch 过程是一个递归过程，遵循一个**同层比较，深度优先**策略
 
-- 首先判断两个节点是否为相同同类节点，不同则删除重新创建
-- 如果双方都是文本则更新文本内容
-- 如果双方都是元素节点则递归更新子元素，同时更新元素属性
-- 更新子节点又分为几种情况：
-  - 新的子节点是文本，老的子节点是数组则清空，并设置文本
-  - 新的子节点是文本，老的字节点是文本则直接更新文本
-  - 新的子节点是数组，老的子节点是文本则清空文本，并创建子节点数组中的子元素
-  - 新的节点是数组，老的子节点也是数组，那么比较两组子节点，更新细节
+-   首先判断两个节点是否为相同同类节点，不同则删除重新创建
+-   如果双方都是文本则更新文本内容
+-   如果双方都是元素节点则递归更新子元素，同时更新元素属性
+-   更新子节点又分为几种情况：
+    -   新的子节点是文本，老的子节点是数组则清空，并设置文本
+    -   新的子节点是文本，老的字节点是文本则直接更新文本
+    -   新的子节点是数组，老的子节点是文本则清空文本，并创建子节点数组中的子元素
+    -   新的节点是数组，老的子节点也是数组，那么比较两组子节点，更新细节
 
 Vue3 在 diff 算法中相比增加了 更新类型标记 来优化算法。作用就是为了在发送变化的地方添加一个 `flag` 标记，下次发送变化的时候直接找该地方进行比较。
 
 ```vue
 <!-- 对于单个有动态绑定的元素来说，我们可以在编译时推断出大量信息 -->
 <template>
-  <!-- 仅含 class 绑定 -->
-  <div :class="{ active }"></div>
+    <!-- 仅含 class 绑定 -->
+    <div :class="{ active }"></div>
 
-  <!-- 仅含 id 和 value 绑定 -->
-  <input :id="id" :value="value" />
+    <!-- 仅含 id 和 value 绑定 -->
+    <input :id="id" :value="value" />
 
-  <!-- 仅含文本子节点 -->
-  <div>{{ dynamic }}</div>
+    <!-- 仅含文本子节点 -->
+    <div>{{ dynamic }}</div>
 </template>
 ```
 
@@ -117,12 +119,12 @@ Vue3 在 diff 算法中相比增加了 更新类型标记 来优化算法。作�
 
 ```ts
 createElementVNode(
-  "div",
-  {
-    class: _normalizeClass({ active: _ctx.active }),
-  },
-  null,
-  2 /* CLASS */
+    "div",
+    {
+        class: _normalizeClass({ active: _ctx.active }),
+    },
+    null,
+    2 /* CLASS */
 );
 // 最后这个参数 2 就是一个更新类型标记 (patchFlag)
 ```
@@ -147,14 +149,14 @@ createElementVNode(
 
 Vue 实例有一个完整的生命周期。从实例创建、初始化数据、编译模板、挂载 DOM、渲染、更新、又渲染、卸载等一系列过程，就是 Vue 的声明周期
 
-- `beforeCreate`：组件实例创建之前调用，此时还无法访问到相关方法和数据
-- `created`：组件实例创建之后调用。实例完成：数据观测、属性和方法的运算、 watch/event 事件回调。但是 DOM 还未挂载
-- `beforeMount`：挂载之前调用，相关 render 函数首次被调用
-- `mounted`：组件实例被挂载到 DOM 上之后调用
-- `beforeUpdate`：响应式数据被更新前调用，发生在虚拟 DOM 重新渲染和打补丁
-- `updated`：由于数据更新导致的虚拟 DOM 重新渲染和打补丁，在这之后会调用该钩子
-- `beforeDestroy`：组件实例销毁前调用
-- `destroyed`：组件实例销毁之后调用
+-   `beforeCreate`：组件实例创建之前调用，此时还无法访问到相关方法和数据
+-   `created`：组件实例创建之后调用。实例完成：数据观测、属性和方法的运算、 watch/event 事件回调。但是 DOM 还未挂载
+-   `beforeMount`：挂载之前调用，相关 render 函数首次被调用
+-   `mounted`：组件实例被挂载到 DOM 上之后调用
+-   `beforeUpdate`：响应式数据被更新前调用，发生在虚拟 DOM 重新渲染和打补丁
+-   `updated`：由于数据更新导致的虚拟 DOM 重新渲染和打补丁，在这之后会调用该钩子
+-   `beforeDestroy`：组件实例销毁前调用
+-   `destroyed`：组件实例销毁之后调用
 
 ## 12. 说说 `nextTick` 的使用
 
@@ -186,8 +188,8 @@ watch：检测响应式数据的变化，执行回调
 
 SPA 即**单页面应用程序**。只有一个 HTML 文件并且在**用户与应用程序进行交互时**动态的更新此页面的 Web 应用程序。浏览器一开始会加载必需的 HTML 、 CSS 和 JavaScript ，而所有的页面更新操作**都由 JavaScript 来控制**。
 
-- SPA 的优点：用户体验好、页面内容的改变不需要我们去重新加载新的页面
-- SPA 的缺点：不利于搜索引擎的抓取，首页加载时间会过长、页面渲染的速度会相对较慢
+-   SPA 的优点：用户体验好、页面内容的改变不需要我们去重新加载新的页面
+-   SPA 的缺点：不利于搜索引擎的抓取，首页加载时间会过长、页面渲染的速度会相对较慢
 
 单页面应用程序时就提供了 Hash 和 History 两种模式
 
@@ -199,9 +201,9 @@ Hash 模式的前端路由的路径是用井号 # 拼接在真实 URL 后面的�
 
 特点：
 
-- 1. Hash 变化会出现页面跳转即浏览器的前进和后退。
-- 2. Hash 改变的是 # 后面的路由不会刷新页面，所有的更新操作是由 JavaScript 来实现的，并不会向服务器发送 HTTP 请求去获取对应路径页面。
-- 3. Hash 通过 `window.onhashchange` 的方式，来监听 Hash 的改变，借此实现无刷新跳转的功能
+-   1. Hash 变化会出现页面跳转即浏览器的前进和后退。
+-   2. Hash 改变的是 # 后面的路由不会刷新页面，所有的更新操作是由 JavaScript 来实现的，并不会向服务器发送 HTTP 请求去获取对应路径页面。
+-   3. Hash 通过 `window.onhashchange` 的方式，来监听 Hash 的改变，借此实现无刷新跳转的功能
 
 ### History 模式
 
@@ -215,8 +217,8 @@ Hash 模式的前端路由的路径是用井号 # 拼接在真实 URL 后面的�
 
 针对不同的应用场景我们可以选择不同模式
 
-- 如果是 `B端` 系统更加推荐 Hash 模式，相对简单容易
-- 如果是 `C端` 系统对外观有一定要求就可以考虑选择 `History` 模式但是需要 **服务端支持**
+-   如果是 `B端` 系统更加推荐 Hash 模式，相对简单容易
+-   如果是 `C端` 系统对外观有一定要求就可以考虑选择 `History` 模式但是需要 **服务端支持**
 
 ## 15. Key 的作用
 
@@ -238,20 +240,20 @@ Vue 在使用相同标签元素过渡切换时，也会使用 Key 属性，其�
 ```ts
 // 重写这块的方法主要是进行的是实例挂载前的清理工作
 app.mount = (containerOrSelector: Element | ShadowRoot | string): any => {
-  // 获取#app DOM Element
-  const container = normalizeContainer(containerOrSelector);
-  // 如果没有就不会挂载 直接 return
-  if (!container) return;
+    // 获取#app DOM Element
+    const container = normalizeContainer(containerOrSelector);
+    // 如果没有就不会挂载 直接 return
+    if (!container) return;
 
-  // 在挂载之前清理掉 DOM根节点里面的内容
-  container.innerHTML = "";
-  // 这里执行的是 App实例原有的mount方法
-  const proxy = mount(container, false, container instanceof SVGElement);
-  if (container instanceof Element) {
-    container.removeAttribute("v-cloak");
-    container.setAttribute("data-v-app", "");
-  }
-  return proxy;
+    // 在挂载之前清理掉 DOM根节点里面的内容
+    container.innerHTML = "";
+    // 这里执行的是 App实例原有的mount方法
+    const proxy = mount(container, false, container instanceof SVGElement);
+    if (container instanceof Element) {
+        container.removeAttribute("v-cloak");
+        container.setAttribute("data-v-app", "");
+    }
+    return proxy;
 };
 ```
 
@@ -328,10 +330,10 @@ server {
 
 ```ts
 const router = new VueRouter({
-  mode: "history",
-  routes: [
-    { path: "*", component: NotFoundComponent }, // 添加一条匹配404页面的路由
-  ],
+    mode: "history",
+    routes: [
+        { path: "*", component: NotFoundComponent }, // 添加一条匹配404页面的路由
+    ],
 });
 ```
 
@@ -353,17 +355,17 @@ CORS 实现起来非常方便，只需要增加一些 HTTP 头，让服务器能
 
 ```ts
 app.use(async (ctx, next) => {
-  ctx.set("Access-Control-Allow-Origin", "*");
-  ctx.set(
-    "Access-Control-Allow-Headers",
-    "Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild"
-  );
-  ctx.set("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
-  if (ctx.method == "OPTIONS") {
-    ctx.body = 200;
-  } else {
-    await next();
-  }
+    ctx.set("Access-Control-Allow-Origin", "*");
+    ctx.set(
+        "Access-Control-Allow-Headers",
+        "Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild"
+    );
+    ctx.set("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
+    if (ctx.method == "OPTIONS") {
+        ctx.body = 200;
+    } else {
+        await next();
+    }
 });
 ```
 
@@ -378,22 +380,22 @@ app.use(async (ctx, next) => {
 
 ```js
 module.exports = {
-  devServer: {
-    host: "127.0.0.1",
-    port: 8084,
-    open: true, // vue项目启动时自动打开浏览器
-    proxy: {
-      "/api": {
-        // '/api'是代理标识，用于告诉node，url前面是/api的就是使用代理的
-        target: "http://xxx.xxx.xx.xx:8080", //目标地址，一般是指后台服务器地址
-        changeOrigin: true, //是否跨域
-        pathRewrite: {
-          // pathRewrite 的作用是把实际Request Url中的'/api'用""代替
-          "^/api": "",
+    devServer: {
+        host: "127.0.0.1",
+        port: 8084,
+        open: true, // vue项目启动时自动打开浏览器
+        proxy: {
+            "/api": {
+                // '/api'是代理标识，用于告诉node，url前面是/api的就是使用代理的
+                target: "http://xxx.xxx.xx.xx:8080", //目标地址，一般是指后台服务器地址
+                changeOrigin: true, //是否跨域
+                pathRewrite: {
+                    // pathRewrite 的作用是把实际Request Url中的'/api'用""代替
+                    "^/api": "",
+                },
+            },
         },
-      },
     },
-  },
 };
 ```
 
@@ -414,27 +416,27 @@ module.exports = {
 ```ts
 // 注册一个全局自定义指令 `v-focus`
 Vue.directive("focus", {
-  // 当被绑定的元素插入到 DOM 中时……
-  inserted: function (el) {
-    // 聚焦元素
-    el.focus(); // 页面加载完成之后自动让输入框获取到焦点的小功能
-  },
+    // 当被绑定的元素插入到 DOM 中时……
+    inserted: function (el) {
+        // 聚焦元素
+        el.focus(); // 页面加载完成之后自动让输入框获取到焦点的小功能
+    },
 });
 ```
 
 存在如下钩子函数：
 
-- `bind`：只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置
-- `inserted`：被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)
-- `update`：所在组件的 VNode 更新时调用，但是可能发生在其子 VNode 更新之前。指令的值可能发生了改变，也可能没有。但是你可以通过比较更新前后的值来忽略不必要的模板更新
-- `componentUpdated`：指令所在组件的 VNode 及其子 VNode 全部更新后调用
-- `unbind`：只调用一次，指令与元素解绑时调用
+-   `bind`：只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置
+-   `inserted`：被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)
+-   `update`：所在组件的 VNode 更新时调用，但是可能发生在其子 VNode 更新之前。指令的值可能发生了改变，也可能没有。但是你可以通过比较更新前后的值来忽略不必要的模板更新
+-   `componentUpdated`：指令所在组件的 VNode 及其子 VNode 全部更新后调用
+-   `unbind`：只调用一次，指令与元素解绑时调用
 
 ### 应用场景
 
-- 一键 Copy 功能
-- 权限按钮
-- 防止表单重复提交
+-   一键 Copy 功能
+-   权限按钮
+-   防止表单重复提交
 
 ## 20. KeepAlive 缓存组件
 
@@ -444,20 +446,20 @@ KeepAlive 组件是 Vue 官方提供的一个内置组件，在开发过程中�
 
 ```vue
 <template>
-  <keep-alive>
-    <component :is="view"></component>
-  </keep-alive>
+    <keep-alive>
+        <component :is="view"></component>
+    </keep-alive>
 </template>
 ```
 
 ```vue
 <!-- 结合 VueRouter -->
 <template>
-  <router-view v-slot="{ Component }">
-    <keep-alive>
-      <component :is="Component"></component>
-    </keep-alive>
-  </router-view>
+    <router-view v-slot="{ Component }">
+        <keep-alive>
+            <component :is="Component"></component>
+        </keep-alive>
+    </router-view>
 </template>
 ```
 
@@ -465,3 +467,97 @@ KeepAlive 组件是 Vue 官方提供的一个内置组件，在开发过程中�
 
 1. 通过 `beforeRouteEnter` 函数，在每次进入路由前做具体操作
 2. 通过 `actived` 钩子函数，在 KeepAlive 缓存组件被激活的时候，都会执行 `actived` 钩子函数
+
+## 21、Vue2 和 Vue3 都有哪些区别？
+
+#### 简答
+
+##### 语法 API：
+
+-   生命周期的变化： 使用 setup 代替了之前的 beforeCreate 和 created，其他生命周期名字有些变化，功能都是没有变化。
+
+##### 性能优化：
+
+-   使用 proxy 代替 defineProperty：劫持对整个对象操作，通过 getter 去递归响应式，只有真正访问到的内部对象才会变成响应式。
+-   静态提升 hoistStatic：检测模版中的静态节点、子树甚至数据对象，并将他们提升到渲染函数之外，避免在每次渲染时重新创建。
+-   静态标记 PatchFlags：Vue2 中每次更新都是全量 diff，Vue3 则只对比带有标记的节点，大大提升了对比性能。
+-   Diff 算法优化：先做相同的前置与后置元素的预处理，后采用最长递增子序列算法对比节点变更。
+-   事件监听器缓存：默认情况下 onClick 会被视为动态绑定，但都是同一个函数没必要追踪更新，直接缓存起来复用就好了。
+-   源码体积优化：移除一些冷门的 feature（比如 filter），引入 tree-shaking 的技术，减少打包体积。
+-   优化逻辑组织与复用：使用 Composition API 解决 mixins (属性、函数)命名冲突和数据来源不清晰问题，另外对 tree-shaking 友好，代码更容易压缩。
+-   SSR 渲染性能提升：当存在大量静态内容时，会被当作纯字符串推进一个 buffer 里面。即使存在动态的绑定，会通过模版插值潜入进去，完胜虚拟 dmo 渲染。
+-   使用 Vite 创建 Vue3：Vite 的性能也要大大优于 webpack，可以利用 ES6 的 import 会发送请求去加载文件的特性，拦截这些请求，做一些预编译。
+-   更好的代码管理方式：**monorepo**
+-   有类型声明与保护：**TypeScript**
+
+### 详细介绍
+
+[掘金-Vue3 源码浅谈](https://juejin.cn/post/6885247012036902920)
+
+[掘金-一文看懂 Vue3.0 主要做了哪些优化？](https://juejin.cn/post/6850418112878575629)
+
+[掘金-Vue3 为什么要使用 Composition API](https://juejin.cn/post/6875253488017342478)
+
+[CSDN-vue3.0 性能优化点之静态标记(PatchFlag)](https://blog.csdn.net/weixin_40297452/article/details/121143356)
+
+## 22、vue 父子组件的通信方式
+
+#### 简答
+
+-   props / $emit：
+    -   使用：父组件通过 props 的方式向子组件传递数据，而通过$emit 子组件可以向父组件通信。
+    -   注意：prop 只可以父子组件间传递，并且 prop 只读，不可被修改
+-   $parent / $children
+    -   使用：子实例可以用 this.$parent 访问父实例，父实例可以通过 this.$children[i] 访问子实例。
+    -   注意：不推荐使用。推荐用 props 和 events 实现父子组件通信
+-   provide/ inject （vue2.2）
+    -   使用：父组件中通过 provide 来提供变量, 然后再子组件中通过 inject 来注入变量，不限子组件嵌套有多深。
+-   ref / $refs
+    -   使用：ref 如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例。通过 this.$refs['对 ref 的赋值']
+-   event / Bus
+    -   使用：eventBus 又称为事件总线，在 vue 中可以使用它来作为沟通桥梁的概念, 就像是所有组件共用相同的事件中心，可以向该中心注册发送事件或接收事件， 所以组件都可以通知其他组件。
+    -   注意：项目较大,就容易造成难以维护的灾难
+-   vuex / pinia
+    -   使用：Vuex 和 Pinia 是 Vue 3 中的状态管理工具，使用这两个工具可以轻松实现组件通信。
+-   localStorage / sessionStorage
+    -   通信比较简单, 缺点是数据和状态比较混乱,不太容易维护。
+    -   注意用 JSON.parse() / JSON.stringify() 做数据格式转换。localStorage / sessionStorage 可以结合 vuex, 实现数据的持久保存,同时使用 vuex 解决数据状态混乱问题。
+-   $attrs 与 $listeners (vue2.4)
+    -   使用：批量获取未被 props 定义的属性。新增了 inheritAttrs 选项。
+
+### 详细介绍
+
+[博客-Vue 组件间通信的八种方式](https://www.wpgdadatong.com/cn/blog/detail/44531)
+[segmentfault-vue 组件间通信六种方式（完整版）](https://segmentfault.com/a/1190000019208626)
+
+## 23、vue3 有了解过吗？能说说跟 vue2 的区别吗？
+
+#### 简答
+
+-   vue3 版本重写的两大原因：
+    -   新的 JavaScript 语言特性在主流浏览器中的受支持水平（利用新的语言特性(es6)）
+    -   当前代码库中随时间推移而逐渐暴露出来的一些**设计和架构问题**
+-   概览 Vue3 的新特性：速度更快、体积减少、更易维护、更好的 Typescript 支持、更接近原生、更易使用。
+    -   速度更快：重写了虚拟 Dom 实现、编译模板的优化、更高效的组件初始化。
+    -   体积减少：支持 tree-shaking
+    -   更易维护：compositon Api 实现灵活的逻辑组合与复用
+    -   更好的 Typescript 支持：VUE3 是基于 typescipt 编写的，可以享受到自动的类型定义提示
+    -   更接近原生：可以自定义渲染 API
+    -   更易使用：响应式 Api 暴露出来
+-   Vue 3 中需要关注的一些新功能：
+    -   framents：在 Vue3.x 中，组件现在支持有多个根节点
+    -   Teleport：一种能够将我们的模板移动到 DOM 中 Vue app 之外的其他位置的技术
+    ```js
+    <button @click="showToast" class="btn">打开 toast</button>
+    <!-- to 属性就是目标位置 -->
+    <teleport to="#teleport-target">
+        <div v-if="visible" class="toast-wrap">
+            <div class="toast-msg">我是一个 Toast 文案</div>
+        </div>
+    </teleport>
+    ```
+    -   createRenderer: 能够构建自定义渲染器，我们能够将 vue 的开发模型扩展到其他平台
+
+### 详细介绍
+
+[博客-vue3 有了解过吗？能说说跟 vue2 的区别吗？](https://vue3js.cn/interview/vue/vue3_vue2.html)

@@ -51,10 +51,10 @@ export const NavItemList: DefaultTheme.NavItem[] = [
             },
             {
                 text: "Nuxt",
-                link: "/Framework/Nuxt/Nuxt",
+                link: "/Framework/Nuxt/",
             },
             {
-                text: "模块检测",
+                text: "杂记",
                 link: "/Framework/Module/",
             },
         ],
