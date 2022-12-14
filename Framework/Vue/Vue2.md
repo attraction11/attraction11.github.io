@@ -1,13 +1,15 @@
+# 框架设计与实现
+
 ## Vue.js 介绍
 
 > **以下为官方原话：**
 > Vue (读音 /vjuː/，类似于 **view**) 是一套用于构建用户界面的**渐进式框架**。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库**只关注视图层**，不仅易于上手，还**便于与第三方库**或既有项目整合。另一方面，当与[现代化的工具链](https://cn.vuejs.org/v2/guide/single-file-components.html)以及各种[支持类库](https://github.com/vuejs/awesome-vue#libraries--plugins)结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。
 
-- 一款优秀的前端 JS 框架
-- 可以轻松构建 SPA 单页面应用程序
-- 通过 **指令** 扩展 HTML 通过 **表达式** 绑定数据到 HTML
-- **最大程度上解放了 Dom 操作**
-- 中文网站： **cn.vuejs.org**
+-   一款优秀的前端 JS 框架
+-   可以轻松构建 SPA 单页面应用程序
+-   通过 **指令** 扩展 HTML 通过 **表达式** 绑定数据到 HTML
+-   **最大程度上解放了 Dom 操作**
+-   中文网站： **cn.vuejs.org**
 
 ## Vue.js 特点
 
@@ -15,10 +17,10 @@
 
 Vue 是为了克服 HTML 在构建应用上的不足而设计的。 Vue 有着诸多特性，最为核心的是：
 
-- MVVM
-- 双向数据绑定
-- 组件化
-- 渐进式
+-   MVVM
+-   双向数据绑定
+-   组件化
+-   渐进式
 
 ## 01-创建 Vue 实例
 
@@ -26,7 +28,7 @@ Vue 是为了克服 HTML 在构建应用上的不足而设计的。 Vue 有着�
 
 ```javascript
 var vm = new Vue({
-  // 选项
+    // 选项
 });
 ```
 
@@ -82,9 +84,9 @@ Mustache 语法不能作用在 HTML attribute 上，遇到这种情况应该使�
 
 `v-model` 在内部为不同的输入元素使用不同的属性并抛出不同的事件：
 
-- text 和 textarea 元素使用 `value` 属性和 `input` 事件；
-- checkbox 和 radio 使用 `checked` 属性和 `change` 事件；
-- select 字段将 `value` 作为 prop 并将 `change` 作为事件。
+-   text 和 textarea 元素使用 `value` 属性和 `input` 事件；
+-   checkbox 和 radio 使用 `checked` 属性和 `change` 事件；
+-   select 字段将 `value` 作为 prop 并将 `change` 作为事件。
 
 ## 04-基本指令
 
@@ -184,14 +186,14 @@ v-cloak 指令和 CSS 规则一起用的时候，能够**解决差值表达式�
 <span v-once>This will never change: {{msg}}</span>
 <!-- 有子元素 -->
 <div v-once>
-  <h1>comment</h1>
-  <p>{{msg}}</p>
+    <h1>comment</h1>
+    <p>{{msg}}</p>
 </div>
 <!-- 组件 -->
 <my-component v-once :comment="msg"></my-component>
 <!-- `v-for` 指令-->
 <ul>
-  <li v-for="i in list" v-once>{{i}}</li>
+    <li v-for="i in list" v-once>{{i}}</li>
 </ul>
 ```
 
@@ -321,17 +323,17 @@ data: {
 
 ```javascript
 const app = new Vue({
-  el: "#app",
-  data: {
-    data_array: data_array,
-    goedit: null,
-  },
-  methods: {},
-  computed: {
-    undoneLength: function () {
-      return this.data_array.filter((item) => !item.status).length;
+    el: "#app",
+    data: {
+        data_array: data_array,
+        goedit: null,
     },
-  },
+    methods: {},
+    computed: {
+        undoneLength: function () {
+            return this.data_array.filter((item) => !item.status).length;
+        },
+    },
 });
 ```
 
@@ -361,17 +363,17 @@ computed: {
 // ...
 ```
 
-- 计算属性提供两个方法默认的只有 get 所以才会有上面的简写方法
-- **当我们在上面 代码的 {{ fullName }} 的时候 就是在默认的调用它的 get 方法**
-- **当 fullName 发生变化的时候 就会调用它的 set 方法**
-- 所以当你把 fullName 和表单的 `v-model='fullName'`进行双向绑定时 就会产生有趣的事情。 当 表单变化就会调用 set 方法
+-   计算属性提供两个方法默认的只有 get 所以才会有上面的简写方法
+-   **当我们在上面 代码的 {{ fullName }} 的时候 就是在默认的调用它的 get 方法**
+-   **当 fullName 发生变化的时候 就会调用它的 set 方法**
+-   所以当你把 fullName 和表单的 `v-model='fullName'`进行双向绑定时 就会产生有趣的事情。 当 表单变化就会调用 set 方法
 
 ```html
 <input
-  id="toggle-all"
-  class="toggle-all"
-  type="checkbox"
-  v-model="toggleAllstat"
+    id="toggle-all"
+    class="toggle-all"
+    type="checkbox"
+    v-model="toggleAllstat"
 />
 ```
 
@@ -407,52 +409,52 @@ computed: {
 
 ```javascript
 var vm = new Vue({
-  data: {
-    a: 1,
-    b: 2,
-    c: 3,
-    d: 4,
-    e: {
-      f: {
-        g: 5,
-      },
-    },
-  },
-  watch: {
-    a: function (val, oldVal) {
-      console.log("new: %s, old: %s", val, oldVal);
-    },
-    // 方法名
-    b: "someMethod",
-    // 该回调会在任何被侦听的对象的 property 改变时被调用，不论其被嵌套多深
-    c: {
-      handler: function (val, oldVal) {
-        /* ... */
-      },
-      deep: true,
-    },
-    // 该回调将会在侦听开始之后被立即调用
-    d: {
-      handler: "someMethod",
-      immediate: true,
-    },
-    e: [
-      "handle1",
-      function handle2(val, oldVal) {
-        /* ... */
-      },
-      {
-        handler: function handle3(val, oldVal) {
-          /* ... */
+    data: {
+        a: 1,
+        b: 2,
+        c: 3,
+        d: 4,
+        e: {
+            f: {
+                g: 5,
+            },
         },
-        /* ... */
-      },
-    ],
-    // watch vm.e.f's value: {g: 5}
-    "e.f": function (val, oldVal) {
-      /* ... */
     },
-  },
+    watch: {
+        a: function (val, oldVal) {
+            console.log("new: %s, old: %s", val, oldVal);
+        },
+        // 方法名
+        b: "someMethod",
+        // 该回调会在任何被侦听的对象的 property 改变时被调用，不论其被嵌套多深
+        c: {
+            handler: function (val, oldVal) {
+                /* ... */
+            },
+            deep: true,
+        },
+        // 该回调将会在侦听开始之后被立即调用
+        d: {
+            handler: "someMethod",
+            immediate: true,
+        },
+        e: [
+            "handle1",
+            function handle2(val, oldVal) {
+                /* ... */
+            },
+            {
+                handler: function handle3(val, oldVal) {
+                    /* ... */
+                },
+                /* ... */
+            },
+        ],
+        // watch vm.e.f's value: {g: 5}
+        "e.f": function (val, oldVal) {
+            /* ... */
+        },
+    },
 });
 vm.a = 2; // => new: 2, old: 1
 ```
@@ -470,12 +472,12 @@ vm.a = 2; // => new: 2, old: 1
 ```javascript
 // 注册一个全局自定义指令 `v-focus`
 Vue.directive("focus", {
-  // 当被绑定的元素插入到 DOM 中时……
-  // el 参数就是你作用该指令的 DOM 元素
-  inserted: function (el) {
-    // 聚焦元素
-    el.focus();
-  },
+    // 当被绑定的元素插入到 DOM 中时……
+    // el 参数就是你作用该指令的 DOM 元素
+    inserted: function (el) {
+        // 聚焦元素
+        el.focus();
+    },
 });
 // 在 input 标签内 添加 v-focus 就即可
 ```
@@ -484,52 +486,52 @@ Vue.directive("focus", {
 
 #### 注册
 
-- **全局注册**
+-   **全局注册**
 
-  - 在任何组件中都可以使用
+    -   在任何组件中都可以使用
 
-  - ```javascript
-    // 注册一个全局自定义指令 `v-focus`
-    Vue.directive("focus", {
-      // 当被绑定的元素插入到 DOM 中时……
-      // el 参数就是你作用该指令的 DOM 元素
-      inserted: function (el) {
-        // 聚焦元素
-        el.focus();
-      },
-    });
-    ```
+    -   ```javascript
+        // 注册一个全局自定义指令 `v-focus`
+        Vue.directive("focus", {
+            // 当被绑定的元素插入到 DOM 中时……
+            // el 参数就是你作用该指令的 DOM 元素
+            inserted: function (el) {
+                // 聚焦元素
+                el.focus();
+            },
+        });
+        ```
 
-  - 第一个参数： 自定义指令的名字 ，使用必须在前面加 `v-`xxx
+    -   第一个参数： 自定义指令的名字 ，使用必须在前面加 `v-`xxx
 
-  - 第二个参数：就是我们可以配置的 `生命钩子函数`
+    -   第二个参数：就是我们可以配置的 `生命钩子函数`
 
-    - bind ：只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置
-      - 注： bind 阶段 不能操作 el 的父元素
-    - inserted ：被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)
-      - bind 和 inserted 相同之处在于 一上来都执行一次后，以后再也不会执行
-      - 异同之处在于：bind 拿不到 父元素、inserted 可以拿到
-    - update
-    - componentUpdated
-      - update 和 componentUpdated 都是当作用该指令的模板发生改变的时候会触发调用（就是指令所处的被 Vue 管理的模板）
-      - 区别是： update 获取的是更新之前的 componentUpdated 获取的是更新更新之后的
-    - unbind ： 只调用一次，指令与元素解绑时调用
+        -   bind ：只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置
+            -   注： bind 阶段 不能操作 el 的父元素
+        -   inserted ：被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)
+            -   bind 和 inserted 相同之处在于 一上来都执行一次后，以后再也不会执行
+            -   异同之处在于：bind 拿不到 父元素、inserted 可以拿到
+        -   update
+        -   componentUpdated
+            -   update 和 componentUpdated 都是当作用该指令的模板发生改变的时候会触发调用（就是指令所处的被 Vue 管理的模板）
+            -   区别是： update 获取的是更新之前的 componentUpdated 获取的是更新更新之后的
+        -   unbind ： 只调用一次，指令与元素解绑时调用
 
-  - 生命钩子函数的参数
+    -   生命钩子函数的参数
 
-    - el ： 指令所绑定的 DOM 元素
-    - binding：一个对象，可以获取指令的值等信息
+        -   el ： 指令所绑定的 DOM 元素
+        -   binding：一个对象，可以获取指令的值等信息
 
-- **局部注册**
+-   **局部注册**
 
-  - 只能在当前组件中使用
+    -   只能在当前组件中使用
 
-- **注意事项：**
+-   **注意事项：**
 
-  - 在模板中使用自定义指令必须加上 `v-` 前缀
-  - 对于驼峰命名法的自定义指令，在使用的时候使用 `-` 连接
-  - 全局注册的自定义指令可以在任何组件中使用
-  - 组件内注册的自定义指令只能在被该组件管理的模拟中使用
+    -   在模板中使用自定义指令必须加上 `v-` 前缀
+    -   对于驼峰命名法的自定义指令，在使用的时候使用 `-` 连接
+    -   全局注册的自定义指令可以在任何组件中使用
+    -   组件内注册的自定义指令只能在被该组件管理的模拟中使用
 
 #### 使用
 
@@ -539,7 +541,7 @@ Vue.directive("focus", {
 
 ```javascript
 Vue.directive("color-swatch", function (el, binding) {
-  el.style.backgroundColor = binding.value;
+    el.style.backgroundColor = binding.value;
 });
 ```
 
@@ -557,15 +559,15 @@ Vue.directive("color-swatch", function (el, binding) {
 
 ## --模块化和组件化的区别
 
-- 模块化：是从代码逻辑的角度进行划分的；方便代码分层开发，保证每个功能模块的职能单一
-- 组件化：是从 UI 界面的角度进行划分的；前端的组件化，方便 UI 组件的重用
+-   模块化：是从代码逻辑的角度进行划分的；方便代码分层开发，保证每个功能模块的职能单一
+-   组件化：是从 UI 界面的角度进行划分的；前端的组件化，方便 UI 组件的重用
 
 ---
 
 ## --通过 **组件库**（Element 等） 来体验组件的威力
 
-- Element 是基于 Vue 开发的一个知名的第三方组件库，能够帮炸更加快速构建应用
-- [官方网址](element.eleme.cn)：
+-   Element 是基于 Vue 开发的一个知名的第三方组件库，能够帮炸更加快速构建应用
+-   [官方网址](element.eleme.cn)：
 
 ---
 
@@ -656,36 +658,36 @@ Vue.component(组件的名称,{
 
 **组件注册的注意事项**
 
-- **一个组件的 `data` 选项必须是一个函数**，因此每个实例可以维护一份被返回对象的独立的拷贝：
+-   **一个组件的 `data` 选项必须是一个函数**，因此每个实例可以维护一份被返回对象的独立的拷贝：
 
-  ```javascript
-  data: function () {
-    return {
-      count: 0
+    ```javascript
+    data: function () {
+      return {
+        count: 0
+      }
     }
-  }
-  ```
-
-- **组件模板的内容必须是单个跟元素**：意思就是说最好用个 <div></div>等类似标签包裹起来。 和 el 选项绑定 元素 是一个道理
-
-- **组件模板内容可以是模板字符串**（模板字符串需要浏览器提供支持 es6 语法） `
-
-  - ```javascript
-    //  2、组件模板必须是单个根元素
-    //  3、组件模板的内容可以是模板字符串
-    template: `
-        <div>
-            <button @click="handle">点击了{{count}}次</button>
-            <button>测试123</button>
-            #  6 在字符串模板中可以使用驼峰的方式使用组件
-            <HelloWorld></HelloWorld>
-        </div>
-    ` ,
     ```
 
-- **组件名称的命名方式**
+-   **组件模板的内容必须是单个跟元素**：意思就是说最好用个 <div></div>等类似标签包裹起来。 和 el 选项绑定 元素 是一个道理
 
-  - 如果使用驼峰式命名组件，那么在使用组件时候不能用大写字母 必须全部小写并且用 `-`连接
+-   **组件模板内容可以是模板字符串**（模板字符串需要浏览器提供支持 es6 语法） `
+
+    -   ```javascript
+        //  2、组件模板必须是单个根元素
+        //  3、组件模板的内容可以是模板字符串
+        template: `
+            <div>
+                <button @click="handle">点击了{{count}}次</button>
+                <button>测试123</button>
+                #  6 在字符串模板中可以使用驼峰的方式使用组件
+                <HelloWorld></HelloWorld>
+            </div>
+        ` ,
+        ```
+
+-   **组件名称的命名方式**
+
+    -   如果使用驼峰式命名组件，那么在使用组件时候不能用大写字母 必须全部小写并且用 `-`连接
 
 ### 局部组件的注册和使用
 
@@ -721,9 +723,9 @@ Vue.component(组件的名称,{
 
 ### 父组件向子组件传递数据 Props-Dowm
 
-- 1.父组件发送的形式是以属性的形式绑定值到子组件身上 `v-bind`。
-- 2.然后子组件用属性 props 接收
-- 3.在 props 中使用驼峰形式，模板中需要使用短横线的形式字符串形式的模板中没有这个限制
+-   1.父组件发送的形式是以属性的形式绑定值到子组件身上 `v-bind`。
+-   2.然后子组件用属性 props 接收
+-   3.在 props 中使用驼峰形式，模板中需要使用短横线的形式字符串形式的模板中没有这个限制
 
 ```javascript
 <body>
@@ -777,16 +779,16 @@ Vue.component(组件的名称,{
 
 **子组件中，data 中的数据和 props 中的数据的区别**：
 
-- 子组件中的 data 数据，并不是通过 父组件传递过来的，而是子组件自身私有的，比如： 子组件通过 Ajax ，请求回来的数据，都可以放到 data 身上。props 中的数据，都是通过 父组件 传递给子组件的。
+-   子组件中的 data 数据，并不是通过 父组件传递过来的，而是子组件自身私有的，比如： 子组件通过 Ajax ，请求回来的数据，都可以放到 data 身上。props 中的数据，都是通过 父组件 传递给子组件的。
 
-* data 中的数据是可读可写的；**props 中的属性只是可读的**，无法重新赋值，重新赋值会报错（也就是说，**子组件不要直接去修改父组件中的数据**）。
+*   data 中的数据是可读可写的；**props 中的属性只是可读的**，无法重新赋值，重新赋值会报错（也就是说，**子组件不要直接去修改父组件中的数据**）。
 
 ### 父组件将方法传递给子组件 Events-Up
 
 > **父组件通过事件绑定机制，将父组件的方法传递给子组件**
 
-- 1.在父组件中定义方法
-- 2.在子组件内部调用父组件的方法
+-   1.在父组件中定义方法
+-   2.在子组件内部调用父组件的方法
 
 ```javascript
 <body>
@@ -846,9 +848,9 @@ Vue.component(组件的名称,{
 
 如果要实现**子组件向父组件传值**，代码是类似的，我们只需要在子组件通过`emit`触发父组件的方法时，把子组件的参数带出去就可以了。代码如下。
 
-- 子组件用`$emit()`触发事件
-- `$emit()` 第一个参数为 自定义的事件名称 第二个参数为需要传递的数据
-- 父组件用 v-on 监听子组件的事件
+-   子组件用`$emit()`触发事件
+-   `$emit()` 第一个参数为 自定义的事件名称 第二个参数为需要传递的数据
+-   父组件用 v-on 监听子组件的事件
 
 ```javascript
 <body>
@@ -902,128 +904,128 @@ Vue.component(组件的名称,{
 
 ### 非父子组件的传值
 
-- 兄弟之间传递数据需要借助于事件中心，通过事件中心传递数据
-  - 提供事件中心 var hub = new Vue()
-- 传递数据方，通过一个事件触发 hub.\$emit(方法名，传递的数据)
-- 接收数据方，通过 mounted(){} 钩子中 触发 hub.\$on()方法名
-- 销毁事件 通过 hub.\$off()方法名销毁之后无法进行传递数据
+-   兄弟之间传递数据需要借助于事件中心，通过事件中心传递数据
+    -   提供事件中心 var hub = new Vue()
+-   传递数据方，通过一个事件触发 hub.\$emit(方法名，传递的数据)
+-   接收数据方，通过 mounted(){} 钩子中 触发 hub.\$on()方法名
+-   销毁事件 通过 hub.\$off()方法名销毁之后无法进行传递数据
 
 ---
 
-- 1.单独的事件中心管理组件间的通信
+-   1.单独的事件中心管理组件间的通信
 
-  - ```javascript
-    var eventHub = new Vue();
+    -   ```javascript
+        var eventHub = new Vue();
+        ```
+
+-   2.监听事件与销毁事件
+
+-   ```javascript
+    eventHub.$on("add-todo", addTodo);
+
+    eventHub.$off("add-todo");
     ```
 
-- 2.监听事件与销毁事件
+-   3.触发事件
 
-- ```javascript
-  eventHub.$on("add-todo", addTodo);
+    -   ```javascript
+        eventHub.$emit("add-todo", id);
+        ```
 
-  eventHub.$off("add-todo");
-  ```
+-   例子：
 
-- 3.触发事件
-
-  - ```javascript
-    eventHub.$emit("add-todo", id);
-    ```
-
-- 例子：
-
-  - ```javascript
-    <div id="app">
-       <div>父组件</div>
-       <div>
-         <button @click='handle'>销毁事件</button>
-       </div>
-       <test-tom></test-tom>
-       <test-jerry></test-jerry>
-     </div>
-     <script type="text/javascript" src="js/vue.js"></script>
-     <script type="text/javascript">
-       /*
-         兄弟组件之间数据传递
-       */
-       //1、 提供事件中心
-       var hub = new Vue();
-
-       Vue.component('test-tom', {
-         data: function(){
-           return {
-             num: 0
-           }
-         },
-         template: `
+    -   ```javascript
+        <div id="app">
+           <div>父组件</div>
            <div>
-             <div>TOM:{{num}}</div>
-             <div>
-               <button @click='handle'>点击</button>
-             </div>
+             <button @click='handle'>销毁事件</button>
            </div>
-         `,
-         methods: {
-           handle: function(){
-             //2、传递数据方，通过一个事件触发hub.$emit(方法名，传递的数据)   触发兄弟组件的事件
-             hub.$emit('jerry-event', 2);
-           }
-         },
-         mounted: function() {
-          // 3、接收数据方，通过mounted(){} 钩子中  触发hub.$on(方法名
-           hub.$on('tom-event', (val) => {
-             this.num += val;
-           });
-         }
-       });
-       Vue.component('test-jerry', {
-         data: function(){
-           return {
-             num: 0
-           }
-         },
-         template: `
-           <div>
-             <div>JERRY:{{num}}</div>
-             <div>
-               <button @click='handle'>点击</button>
-             </div>
-           </div>
-         `,
-         methods: {
-           handle: function(){
-             //2、传递数据方，通过一个事件触发hub.$emit(方法名，传递的数据)   触发兄弟组件的事件
-             hub.$emit('tom-event', 1);
-           }
-         },
-         mounted: function() {
-           // 3、接收数据方，通过mounted(){} 钩子中  触发hub.$on()方法名
-           hub.$on('jerry-event', (val) => {
-             this.num += val;
-           });
-         }
-       });
-       var vm = new Vue({
-         el: '#app',
-         data: {
+           <test-tom></test-tom>
+           <test-jerry></test-jerry>
+         </div>
+         <script type="text/javascript" src="js/vue.js"></script>
+         <script type="text/javascript">
+           /*
+             兄弟组件之间数据传递
+           */
+           //1、 提供事件中心
+           var hub = new Vue();
 
-         },
-         methods: {
-           handle: function(){
-             //4、销毁事件 通过hub.$off()方法名销毁之后无法进行传递数据
-             hub.$off('tom-event');
-             hub.$off('jerry-event');
-           }
-         }
-       });
-     </script>
-    ```
+           Vue.component('test-tom', {
+             data: function(){
+               return {
+                 num: 0
+               }
+             },
+             template: `
+               <div>
+                 <div>TOM:{{num}}</div>
+                 <div>
+                   <button @click='handle'>点击</button>
+                 </div>
+               </div>
+             `,
+             methods: {
+               handle: function(){
+                 //2、传递数据方，通过一个事件触发hub.$emit(方法名，传递的数据)   触发兄弟组件的事件
+                 hub.$emit('jerry-event', 2);
+               }
+             },
+             mounted: function() {
+              // 3、接收数据方，通过mounted(){} 钩子中  触发hub.$on(方法名
+               hub.$on('tom-event', (val) => {
+                 this.num += val;
+               });
+             }
+           });
+           Vue.component('test-jerry', {
+             data: function(){
+               return {
+                 num: 0
+               }
+             },
+             template: `
+               <div>
+                 <div>JERRY:{{num}}</div>
+                 <div>
+                   <button @click='handle'>点击</button>
+                 </div>
+               </div>
+             `,
+             methods: {
+               handle: function(){
+                 //2、传递数据方，通过一个事件触发hub.$emit(方法名，传递的数据)   触发兄弟组件的事件
+                 hub.$emit('tom-event', 1);
+               }
+             },
+             mounted: function() {
+               // 3、接收数据方，通过mounted(){} 钩子中  触发hub.$on()方法名
+               hub.$on('jerry-event', (val) => {
+                 this.num += val;
+               });
+             }
+           });
+           var vm = new Vue({
+             el: '#app',
+             data: {
+
+             },
+             methods: {
+               handle: function(){
+                 //4、销毁事件 通过hub.$off()方法名销毁之后无法进行传递数据
+                 hub.$off('tom-event');
+                 hub.$off('jerry-event');
+               }
+             }
+           });
+         </script>
+        ```
 
 ---
 
 ## --组件插槽
 
-- 父组件向子组件传递 `模板`中标签的内容
+-   父组件向子组件传递 `模板`中标签的内容
 
 组件插槽基本用法
 
@@ -1033,7 +1035,7 @@ Vue.component(组件的名称,{
 
 ```javascript
 Vue.component("alert-box", {
-  template: `
+    template: `
     <div class="demo-alert-box">
     <strong>Error!</strong>
     <slot></slot>
@@ -1056,15 +1058,15 @@ Vue.component("alert-box", {
 
 ```javascript
 <div class="container">
-  <header>
-    <slot name="header"></slot>
-  </header>
-  <main>
-    <slot></slot>
-  </main>
-  <footer>
-    <slot name="footer"></slot>
-  </footer>
+    <header>
+        <slot name="header"></slot>
+    </header>
+    <main>
+        <slot></slot>
+    </main>
+    <footer>
+        <slot name="footer"></slot>
+    </footer>
 </div>
 ```
 
@@ -1072,10 +1074,10 @@ Vue.component("alert-box", {
 
 ```javascript
 <base-layout>
-  <h1 slot="header">标题内容</h1>
-  <p>主要内容1</p>
-  <p>主要内容2</p>
-  <p slot="footer">底部内容</p>
+    <h1 slot="header">标题内容</h1>
+    <p>主要内容1</p>
+    <p>主要内容2</p>
+    <p slot="footer">底部内容</p>
 </base-layout>
 ```
 
@@ -1091,30 +1093,30 @@ Vue.component("alert-box", {
 
 ### 局部组件的过滤器
 
-- 在 组件内部的过滤器只能在本组件内部使用
+-   在 组件内部的过滤器只能在本组件内部使用
 
 ```vue
 <template>
-  <!-- 局部过滤器 -->
-  <p>{{ message | capitalize }}</p>
+    <!-- 局部过滤器 -->
+    <p>{{ message | capitalize }}</p>
 </template>
 
 <script>
 export default {
-  name: "HelloWorld",
-  data() {
-    return {
-      message: "ABcdEfG",
-    };
-  },
-  filters: {
-    capitalize: function (value) {
-      if (!value) return "";
-      value = value.toString();
-      return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
-      // charAt(0) 获取首字母 toUpperCase()并且大写 + 其他的字符 并且小写
+    name: "HelloWorld",
+    data() {
+        return {
+            message: "ABcdEfG",
+        };
     },
-  },
+    filters: {
+        capitalize: function (value) {
+            if (!value) return "";
+            value = value.toString();
+            return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+            // charAt(0) 获取首字母 toUpperCase()并且大写 + 其他的字符 并且小写
+        },
+    },
 };
 // 这里data 中的 message 会 经过 filters 的 capitalize 函数 处理后 再渲染
 </script>
@@ -1122,7 +1124,7 @@ export default {
 
 ### 全局过滤器
 
-- 在创建 Vue 实例之前全局定义过滤器
+-   在创建 Vue 实例之前全局定义过滤器
 
 ```js
 // 全局过滤器

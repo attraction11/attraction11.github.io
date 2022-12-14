@@ -43,7 +43,7 @@ export const NavItemList: DefaultTheme.NavItem[] = [
         items: [
             {
                 text: "Vue",
-                link: "/Framework/Vue/Vue3",
+                link: "/Framework/Vue/Vue2",
             },
             {
                 text: "React",
@@ -51,7 +51,11 @@ export const NavItemList: DefaultTheme.NavItem[] = [
             },
             {
                 text: "Nuxt",
-                link: "/Framework/Nuxt/",
+                link: "/Framework/Nuxt/serveRender",
+            },
+            {
+                text: "Next",
+                link: "/Framework/Next/NextJS",
             },
             {
                 text: "杂记",
@@ -67,8 +71,16 @@ export const NavItemList: DefaultTheme.NavItem[] = [
                 link: "/FullStack/Node/WebCli",
             },
             {
-                text: "Nest",
-                link: "/FullStack/Nest/WebCli",
+                text: "NoSQL数据库",
+                link: "/FullStack/DataBase/Mongodb",
+            },
+            {
+                text: "Web开发框架",
+                link: "/FullStack/WebDev/Express",
+            },
+            {
+                text: "GraphQL API 开发",
+                link: "/FullStack/GraphQL/",
             },
         ],
     },

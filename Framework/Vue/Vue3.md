@@ -1,3 +1,5 @@
+# 响应式系统
+
 ## 常用响应式 API 介绍
 
 ### ref
@@ -35,8 +37,8 @@ console.log(count.value)
 import { ref, reactive, toRef } from "vue";
 
 const state = reactive({
-  foo: 1,
-  text: "我是reactive",
+    foo: 1,
+    text: "我是reactive",
 });
 
 const toRefText = toRef(state, "text");
@@ -53,8 +55,8 @@ console.log("New-Text", toRefText.value); // 我是reactive-ToRef
 import { reactive, toRefs } from "vue";
 
 const state = reactive({
-  foo: 1,
-  text: "我是reactive",
+    foo: 1,
+    text: "我是reactive",
 });
 
 const { foo, text } = toRefs(state);
@@ -70,13 +72,13 @@ const { foo, text } = toRefs(state);
 import { reactive } from "vue";
 
 interface IState {
-  foo: number;
-  text: string;
+    foo: number;
+    text: string;
 }
 
 const state = reactive<IState>({
-  foo: 1,
-  text: "我是reactive",
+    foo: 1,
+    text: "我是reactive",
 });
 ```
 
@@ -88,13 +90,13 @@ const state = reactive<IState>({
 import { reactive, readonly } from "vue";
 
 interface IState {
-  foo: number;
-  text: string;
+    foo: number;
+    text: string;
 }
 
 let state = reactive<IState>({
-  foo: 1,
-  text: "我是reactive",
+    foo: 1,
+    text: "我是reactive",
 });
 
 const copy = readonly(state);
@@ -113,7 +115,7 @@ import { ref, computed } from "vue";
 const count = ref<number>(5);
 
 const computedCount1 = computed(() => {
-  return count.value * 10;
+    return count.value * 10;
 });
 ```
 
@@ -125,13 +127,13 @@ import { ref, computed } from "vue";
 const count = ref<number>(5);
 
 const computedCount2 = computed<number>({
-  get() {
-    return count.value + 1;
-  },
-  set(val) {
-    console.log("value", val);
-    count.value = val + 5;
-  },
+    get() {
+        return count.value + 1;
+    },
+    set(val) {
+        console.log("value", val);
+        count.value = val + 5;
+    },
 });
 // 我们给计算属性computedCount2赋值时会执行set函数，访问使用computedCount2时会执行get函数
 computedCount2.value = 5;
@@ -145,7 +147,7 @@ computedCount2.value = 5;
 
 ```ts
 const stopEffect = watchEffect(() => {
-  // 相关代码
+    // 相关代码
 });
 
 // 停止监听
@@ -163,14 +165,14 @@ watch 是惰性的-即回调只在监听源发生变化才会执行。说明监�
 ```ts
 const count = ref<number>(5);
 const changeCountValue = () => {
-  count.value = count.value + 5;
+    count.value = count.value + 5;
 };
 watch(
-  () => count.value,
-  (newVal, oldVal) => {
-    console.log("newVal", newVal);
-    console.log("oldVal:", oldVal);
-  }
+    () => count.value,
+    (newVal, oldVal) => {
+        console.log("newVal", newVal);
+        console.log("oldVal:", oldVal);
+    }
 );
 ```
 
@@ -180,7 +182,7 @@ watch(
 
 ```ts
 watch([foo, bar], ([newFoo, newBar], [oldFoo, oldBar]) => {
-  /* ... */
+    /* ... */
 });
 ```
 
@@ -283,66 +285,66 @@ onMounted(() => {
 ```ts
 // 注册
 app.directive("my-directive", {
-  // 指令具有一组生命周期钩子：
-  // 在绑定元素的 attribute 或事件监听器被应用之前调用
-  created() {},
-  // 在绑定元素的父组件挂载之前调用
-  beforeMount() {},
-  // 在绑定元素的父组件挂载之后调用
-  mounted() {},
-  // 在包含组件的 VNode 更新之前调用
-  beforeUpdate() {},
-  // 在包含组件的 VNode 及其子组件的 VNode 更新之后调用
-  updated() {},
-  // 在绑定元素的父组件卸载之前调用
-  beforeUnmount() {},
-  // 在绑定元素的父组件卸载之后调用
-  unmounted() {},
+    // 指令具有一组生命周期钩子：
+    // 在绑定元素的 attribute 或事件监听器被应用之前调用
+    created() {},
+    // 在绑定元素的父组件挂载之前调用
+    beforeMount() {},
+    // 在绑定元素的父组件挂载之后调用
+    mounted() {},
+    // 在包含组件的 VNode 更新之前调用
+    beforeUpdate() {},
+    // 在包含组件的 VNode 及其子组件的 VNode 更新之后调用
+    updated() {},
+    // 在绑定元素的父组件卸载之前调用
+    beforeUnmount() {},
+    // 在绑定元素的父组件卸载之后调用
+    unmounted() {},
 });
 ```
 
 下面有个 copy 文本到剪贴板的例子：
 
-- 代码来源：[# Vue3 自定义指令-10 个常见的实用指令，带详细讲解，快拿去收藏！！！](https://juejin.cn/post/6968996649515515917#heading-1)
+-   代码来源：[# Vue3 自定义指令-10 个常见的实用指令，带详细讲解，快拿去收藏！！！](https://juejin.cn/post/6968996649515515917#heading-1)
 
-- 关于参数：**el、binding** 参考官方文档的解释，挺多的
+-   关于参数：**el、binding** 参考官方文档的解释，挺多的
 
 ```ts
 app.directive("copy", {
-  beforeMount(el: HTMLButtonElement, binding) {
-    el.textContent = binding.value;
-    const copySuccess: any = binding.arg;
+    beforeMount(el: HTMLButtonElement, binding) {
+        el.textContent = binding.value;
+        const copySuccess: any = binding.arg;
 
-    el.addEventListener("click", () => {
-      if (!el.textContent) return console.log("没有需要复制的内容");
+        el.addEventListener("click", () => {
+            if (!el.textContent) return console.log("没有需要复制的内容");
 
-      // 创建textarea标签
-      const textarea = document.createElement("textarea");
-      // 设置标签的相关属性
-      //   textarea.style.position = "fixed";
-      textarea.style.top = "-999999px";
-      // 将目标内容复制个textarea标签
-      textarea.value = el.textContent;
-      // 插入到页面中
-      document.body.appendChild(textarea);
-      // 调用onselect方法a
-      textarea.select();
-      // 把目标内容复制进剪贴板, 该API会返回一个Boolean
-      const res = document.execCommand("Copy");
-      res && copySuccess
-        ? copySuccess(el.textContent)
-        : console.log("复制成功，剪贴板内容：" + el.textContent);
-      // 移除textarea标签
-      document.body.removeChild(textarea);
-    });
-  },
-  updated(el, binding) {
-    // 实时更新最新的目标内容
-    el.textContent = binding.value;
-  },
-  unmounted(el) {
-    el.removeEventListener("click", () => {});
-  },
+            // 创建textarea标签
+            const textarea = document.createElement("textarea");
+            // 设置标签的相关属性
+            //   textarea.style.position = "fixed";
+            textarea.style.top = "-999999px";
+            // 将目标内容复制个textarea标签
+            textarea.value = el.textContent;
+            // 插入到页面中
+            document.body.appendChild(textarea);
+            // 调用onselect方法a
+            textarea.select();
+            // 把目标内容复制进剪贴板, 该API会返回一个Boolean
+            const res = document.execCommand("Copy");
+            res && copySuccess
+                ? copySuccess(el.textContent)
+                : console.log("复制成功，剪贴板内容：" + el.textContent);
+            // 移除textarea标签
+            document.body.removeChild(textarea);
+        });
+    },
+    updated(el, binding) {
+        // 实时更新最新的目标内容
+        el.textContent = binding.value;
+    },
+    unmounted(el) {
+        el.removeEventListener("click", () => {});
+    },
 });
 ```
 
@@ -368,9 +370,9 @@ const copySuccess = (value: string) => {
 
 ```ts
 <template>
-  <div>
-    <slot>默认内容</slot>
-  </div>
+    <div>
+        <slot>默认内容</slot>
+    </div>
 </template>
 ```
 
@@ -378,29 +380,29 @@ const copySuccess = (value: string) => {
 
 ```ts
 <template>
-  <SlotUse>匿名插槽</SlotUse>
+    <SlotUse>匿名插槽</SlotUse>
 </template>
 ```
 
 ### 匿名插槽
 
-- 写法：`v-slot:name`， 简写：`#name`
+-   写法：`v-slot:name`， 简写：`#name`
 
 子组件：
 
 ```ts
 <template>
-  <div>
-    <header>
-      <slot name="header">默认头部</slot>
-    </header>
-    <main>
-      <slot>默认内容</slot>
-    </main>
-    <footer>
-      <slot name="footer">默认底部</slot>
-    </footer>
-  </div>
+    <div>
+        <header>
+            <slot name="header">默认头部</slot>
+        </header>
+        <main>
+            <slot>默认内容</slot>
+        </main>
+        <footer>
+            <slot name="footer">默认底部</slot>
+        </footer>
+    </div>
 </template>
 ```
 
@@ -509,3 +511,7 @@ console.log("number->>>>", number.value);
 copySuccess(78787)
 </script>
 ```
+
+## 响应式原理图解
+
+![image](./images/image.png)
