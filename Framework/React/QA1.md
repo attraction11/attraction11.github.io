@@ -73,7 +73,7 @@
 #### 简答：
 
 -   React 可以在提交之前多次调用渲染阶段生命周期的方法，所以不要在它们内部编写副作用相关的代码。[参见](https://zh-hans.reactjs.org/docs/strict-mode.html#detecting-unexpected-side-effects)介绍。
-    ![渲染阶段生命周期的方法](../../images/render-live-fn.jpeg)
+    ![渲染阶段生命周期的方法](./images/render-live-fn.jpeg)
 -   setState 传相同的引用类型或原始类型值，不会触发组件更新
 -   setArray([...array]) ArrayItem 元素对应的内容虽然没有变，但还是会触发重新渲染
 -   使用 useEffect 时一定要注意，如果有多个副效应，应该调用多个 useEffect 而不应该合并写在一起。

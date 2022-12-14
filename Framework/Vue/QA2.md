@@ -275,6 +275,4 @@ function init () {
 
 ## 5、参考 Snabbdom 提供的电影列表的示例，利用 Snabbdom 实现类似的效果，如图：
 
-<img src="images/Ciqc1F7zUZ-AWP5NAAN0Z_t_hDY449.png" alt="Ciqc1F7zUZ-AWP5NAAN0Z_t_hDY449" style="zoom:50%;" />
-
 项目代码路径：`part3\fed-e-task-03-01\code\03-snabbdom-demo`
