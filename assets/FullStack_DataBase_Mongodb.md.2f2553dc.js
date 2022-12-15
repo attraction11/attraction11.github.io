@@ -1,0 +1,1 @@
+import{_ as t,c as a,o as e}from"./app.024eb55d.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"FullStack/DataBase/Mongodb.md"}'),o={name:"FullStack/DataBase/Mongodb.md"};function n(r,s,c,d,p,_){return e(),a("div")}const m=t(o,[["render",n]]);export{i as __pageData,m as default};
