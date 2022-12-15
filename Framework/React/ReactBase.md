@@ -3,7 +3,7 @@
 ## 一、React 介绍
 
 `React`是一个用于构建用户界面的`Javascript`库，它只负责应用的视图层，帮助开发者构建快速且交互式的`web`应用程序.
-![1.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/60bcaf34886f4de2a83773b3006a2abe~tplv-k3u1fbpfcp-watermark.image?)
+![1.png](./images/image.png)
 
 ## 二、JSX 语法
 
@@ -13,11 +13,11 @@
 
 ```js
 const user = {
-    firstName: "Harper",
-    lastName: "Perez",
+    firstName: 'Harper',
+    lastName: 'Perez',
 };
 function formatName(user) {
-    return user.firstName + " " + user.lastName;
+    return user.firstName + ' ' + user.lastName;
 }
 const element = <h1>Hello, {formatName(user)}!</h1>;
 ```
@@ -37,7 +37,7 @@ function getGreeting(user) {
 如果属性值为字符串类型，需要加引号，属性名称推荐采用驼峰式命名法。
 
 ```js
-const element = <div greeting="hello"></div>;
+const element = <div greeting='hello'></div>;
 ```
 
 如果属性值为 JavaScript 表达式，属性值外面加大括号。
@@ -52,14 +52,14 @@ const element = <img src={user.avatarUrl} />;
 
 ```js
 const element = <img src={user.avatarUrl} />;
-const element = <input type="text" />;
+const element = <input type='text' />;
 ```
 
 5、className  
 为 JSX 标记添加类名需要使用 className，而不是 class。
 
 ```js
-const element = <img src={user.avatarUrl} className="rounded" />;
+const element = <img src={user.avatarUrl} className='rounded' />;
 ```
 
 6、JSX 自动展开数组
@@ -94,17 +94,17 @@ const element = <div>{ary}</div>;
 const persons = [
     {
         id: 1,
-        name: "张三",
+        name: '张三',
         age: 20,
     },
     {
         id: 2,
-        name: "李四",
+        name: '李四',
         age: 15,
     },
     {
         id: 3,
-        name: "王五",
+        name: '王五',
         age: 22,
     },
 ];
@@ -114,8 +114,8 @@ const persons = [
 <ul>
     {persons.map((person) => (
         <li key={person.id}>
-            {" "}
-            {person.name} {person.age}{" "}
+            {' '}
+            {person.name} {person.age}{' '}
         </li>
     ))}
 </ul>
@@ -131,11 +131,11 @@ const persons = [
 {
     /* 需要传递事件对象 */
 }
-<button onClick={(e) => this.eventHandler("arg", e)}>按钮</button>;
+<button onClick={(e) => this.eventHandler('arg', e)}>按钮</button>;
 {
     /* 最后一个参数即是事件对象 不需传递 */
 }
-<button onClick={this.eventHandler.bind(null, "arg")}>按钮</button>;
+<button onClick={this.eventHandler.bind(null, 'arg')}>按钮</button>;
 ```
 
 ```js
@@ -151,7 +151,7 @@ eventHandler () {}
 ```js
 class App extends Component {
     render() {
-        const style = { width: 200, height: 200, backgroundColor: "red" };
+        const style = { width: 200, height: 200, backgroundColor: 'red' };
         return <div style={style}></div>;
     }
 }
@@ -161,7 +161,7 @@ class App extends Component {
 
 ```js
 // Button.js
-import styles from "./Button.module.css";
+import styles from './Button.module.css';
 class Button extends Component {
     render() {
         return <button className={styles.error}>Error Button</button>;
@@ -172,7 +172,7 @@ class Button extends Component {
 12、全局样式
 
 ```js
-import "./styles.css";
+import './styles.css';
 ```
 
 13、`ref`属性  
@@ -187,10 +187,10 @@ class Input extends Component {
     render() {
         return (
             <div>
-                <input type="text" ref={this.inputRef} />
+                <input type='text' ref={this.inputRef} />
                 <button onClick={() => console.log(this.inputRef.current)}>
-                    {" "}
-                    button{" "}
+                    {' '}
+                    button{' '}
                 </button>
             </div>
         );
@@ -205,7 +205,7 @@ class Input extends Component {
     render() {
         return (
             <div>
-                <input type="text" ref={(input) => (this.input = input)} />
+                <input type='text' ref={(input) => (this.input = input)} />
                 <button onClick={() => console.log(this.input)}>button</button>
             </div>
         );
@@ -222,7 +222,7 @@ class Input extends Component {
     render() {
         return (
             <div>
-                <input type="text" ref="username" />
+                <input type='text' ref='username' />
                 <button onClick={() => console.log(this.refs.username)}>
                     button
                 </button>
@@ -250,7 +250,7 @@ class Input extends Component {
     render() {
         return (
             <div>
-                <input type="text" ref={this.inputRef} />
+                <input type='text' ref={this.inputRef} />
             </div>
         );
     }
@@ -282,7 +282,7 @@ React 是基于组件的方式进行用户界面开发的. 组件可以理解为
 2.1 创建类组件
 
 ```js
-import React, { Component } from "react";
+import React, { Component } from 'react';
 class App extends Component {
     render() {
         return <div>Hello, 我是类组件</div>;
@@ -293,7 +293,7 @@ class App extends Component {
 2.1 创建类组件
 
 ```js
-import React, { Component } from "react";
+import React, { Component } from 'react';
 class App extends Component {
     render() {
         return <div>Hello, 我是类组件</div>;
@@ -355,8 +355,8 @@ class App extends Component {
 ```js
 function ThemedButton(props) {}
 ThemedButton.defaultProps = {
-    theme: "secondary",
-    label: "Button Text",
+    theme: 'secondary',
+    label: 'Button Text',
 };
 ```
 
@@ -371,8 +371,8 @@ class App extends Component {
 ```js
 function ThemedButton(props) {}
 ThemedButton.defaultProps = {
-    theme: "secondary",
-    label: "Button Text",
+    theme: 'secondary',
+    label: 'Button Text',
 };
 ```
 
@@ -396,7 +396,7 @@ const Person = (props) => {
 3.  子组件通过调用父组件传递过来的方法更改数据.
 4.  当数据发生更改时, React 会重新渲染组件树.
 5.  单向数据流使组件之间的数据流动变得可预测. 使得定位程序错误变得简单.
-    ![3.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e6aa5d59a98d400790479d9b675e9ebb~tplv-k3u1fbpfcp-watermark.image?)
+    ![3.png](./images/image2.png)
     4 类组件状态 state  
     4.1 定义组件状态  
     类组件除了能够从外部 (props) 接收状态数据以外还可以拥有自己的状态 (state)，此状态在组件内部可以被更新，状态更新 DOM 更新。  
@@ -407,7 +407,7 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            person: { name: "张三", age: 20 },
+            person: { name: '张三', age: 20 },
         };
     }
     render() {
@@ -428,14 +428,14 @@ state 状态对象中的数据不可直接更改，如果直接更改 DOM 不会
 class App extends Component {
     constructor() {
         this.state = {
-            person: { name: "张三", age: 20 },
+            person: { name: '张三', age: 20 },
         };
         this.changePerson = this.changePerson.bind(this);
     }
     changePerson() {
         this.setState({
             person: {
-                name: "李四",
+                name: '李四',
                 age: 15,
             },
         });
@@ -462,7 +462,7 @@ class App extends Component {
 class App extends Component {
     constructor() {
         this.state = {
-            name: "张三",
+            name: '张三',
         };
         this.nameChanged = this.nameChanged.bind(this);
     }
@@ -482,12 +482,12 @@ class App extends Component {
 
 ```js
 const Person = (props) => {
-    return <input type="text" value={props.name} onChange={props.changed} />;
+    return <input type='text' value={props.name} onChange={props.changed} />;
 };
 ```
 
 5 类组件生命周期函数
-![4.jpg](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e1c91b66c26f409b9ff3bb020a6f0457~tplv-k3u1fbpfcp-watermark.image?)
+![4.jpg](./images/image3.png)
 在组件完成更新之前需要做某种逻辑或者计算，就需要用到快照
 
 ```js
@@ -506,13 +506,13 @@ getSnapshotBeforeUpdate(prevProps, prevState) {
 
 通过 Context 可以跨层级传递数据
 
-![6.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/49f4fd8a227b4f42a7d3cfc4f9dfbf6a~tplv-k3u1fbpfcp-watermark.image?)
+![6.png](./images/image4.png)
 
 ```js
 // userContext.js(推荐)
-import React from "react";
+import React from 'react';
 
-const userContext = React.createContext("default value");
+const userContext = React.createContext('default value');
 const UserProvider = userContext.Provider;
 const UserConsumer = userContext.Consumer;
 
@@ -521,11 +521,11 @@ export { UserProvider, UserConsumer };
 
 ```js
 // App.js
-import { UserProvider } from "./userContext";
+import { UserProvider } from './userContext';
 class App extends Component {
     render() {
         return (
-            <UserProvider value="Hello React Context">
+            <UserProvider value='Hello React Context'>
                 <A />
             </UserProvider>
         );
@@ -535,7 +535,7 @@ class App extends Component {
 
 ```js
 // C.js
-import { UserConsumer } from "./userContext";
+import { UserConsumer } from './userContext';
 
 export class C extends Component {
     render() {
@@ -561,7 +561,7 @@ export default userContext;
 
 ```js
 // C.js
-import userContext from "./userContext";
+import userContext from './userContext';
 
 export class C extends Component {
     static contextType = userContext;
@@ -579,7 +579,7 @@ export class C extends Component {
 ```js
 class App extends Component {
     constructor() {
-        this.state = { username: "" };
+        this.state = { username: '' };
         this.nameChanged = this.nameChanged.bind(this);
     }
 
@@ -591,7 +591,7 @@ class App extends Component {
             <form>
                 <p>{this.state.username}</p>
                 <input
-                    type="text"
+                    type='text'
                     value={this.state.username}
                     onChange={this.nameChanged}
                 />
@@ -627,12 +627,12 @@ class App extends Component {
    路由重定向:
 
 ```js
-import { Redirect } from "react-router-dom";
+import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
     render() {
         if (this.state.isLogin) {
-            return <Redirect to="/" />;
+            return <Redirect to='/' />;
         }
     }
 }

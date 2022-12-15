@@ -42,9 +42,9 @@
 
 ```javascript
 // server.js
-import express from "express";
+import express from 'express';
 const app = express();
-app.use(express.static("dist"));
+app.use(express.static('dist'));
 const template = `
   <html>
     <head>
@@ -56,26 +56,26 @@ const template = `
     </body>
   </html>
 `;
-app.get("*", (req, res) => {
+app.get('*', (req, res) => {
     res.send(template);
 });
-app.listen(3000, () => console.log("server is running"));
+app.listen(3000, () => console.log('server is running'));
 ```
 
 ##### 1.3.2 服务端 webpack 配置
 
 ```javascript
 // webpack.config.server.js
-const path = require("path");
-const nodeExternals = require("webpack-node-externals");
+const path = require('path');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-    target: "node",
-    mode: "development",
-    entry: "./server.js",
+    target: 'node',
+    mode: 'development',
+    entry: './server.js',
     output: {
-        filename: "server.js",
-        path: path.resolve(__dirname, "build"),
+        filename: 'server.js',
+        path: path.resolve(__dirname, 'build'),
     },
     module: {
         rules: [
@@ -83,7 +83,7 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: "babel-loader",
+                    loader: 'babel-loader',
                 },
             },
         ],
@@ -103,24 +103,24 @@ module.exports = {
 ##### 1.3.4 客户端 webpack 配置
 
 ```javascript
-const path = require("path");
+const path = require('path');
 
 module.exports = {
-    target: "web",
-    mode: "development",
-    entry: "./src/index.js",
+    target: 'web',
+    mode: 'development',
+    entry: './src/index.js',
     output: {
-        filename: "bundle.js",
-        path: path.resolve(__dirname, "dist"),
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist'),
     },
-    devtool: "source-map",
+    devtool: 'source-map',
     module: {
         rules: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: "babel-loader",
+                    loader: 'babel-loader',
                 },
             },
         ],
@@ -182,9 +182,9 @@ requestIdleCallback(function (deadline) {
 ```
 
 ```javascript
-var play = document.getElementById("play");
-var workBtn = document.getElementById("work");
-var interactionBtn = document.getElementById("interaction");
+var play = document.getElementById('play');
+var workBtn = document.getElementById('work');
+var interactionBtn = document.getElementById('interaction');
 var iterationCount = 100000000;
 var value = 0;
 
@@ -197,12 +197,12 @@ var expensiveCalculation = function (IdleDeadline) {
     requestIdleCallback(expensiveCalculation);
 };
 
-workBtn.addEventListener("click", function () {
+workBtn.addEventListener('click', function () {
     requestIdleCallback(expensiveCalculation);
 });
 
-interactionBtn.addEventListener("click", function () {
-    play.style.background = "palegreen";
+interactionBtn.addEventListener('click', function () {
+    play.style.background = 'palegreen';
 });
 ```
 

@@ -1,3 +1,7 @@
+---
+outline: deep
+---
+
 # MobX6 基础
 
 ## 一、MobX6 基础知识
@@ -22,7 +26,7 @@ MobX 可以运行在任何支持 ES5 的环境中，包含浏览器和 Node。
 
 3. 工作流程
 
-![1.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6f71afab834e4f7a89b73d20b6155f1f~tplv-k3u1fbpfcp-watermark.image?)
+![1.png](./images/image21.png)
 
 4. makeAutoObservable
 
@@ -38,7 +42,7 @@ makeAutoObservable(this, {reset: false}, {autoBind: true})
 
 ```js
 // Counter Store -> 管理 Counter 组件的 Store
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable } from 'mobx';
 
 class CounterStore {
     // 数值状态
@@ -105,7 +109,7 @@ export default CounterStore;
     2. 通过 action 标识修改状态的方法，状态只有通过 action 方法修改后才会通知视图更新
 
     ```js
-    import { action, makeObservable, observable } from "mobx";
+    import { action, makeObservable, observable } from 'mobx';
 
     export default class CounterStore {
         constructor() {
@@ -129,8 +133,8 @@ export default CounterStore;
 
     ```js
     // App.js
-    import Counter from "./Counter";
-    import CounterStore from "../store/Counter";
+    import Counter from './Counter';
+    import CounterStore from '../store/Counter';
 
     const counterStore = new CounterStore();
 
@@ -164,7 +168,7 @@ export default CounterStore;
 -   6.6. 当组件中使用到的 MobX 管理的状态发生变化后，使视图更新。通过 observer 方法包裹组件实现目的
 
     ```js
-    import { observer } from "mobx-react-lite";
+    import { observer } from 'mobx-react-lite';
 
     function Counter() {}
 
@@ -178,11 +182,11 @@ export default CounterStore;
         const { count, increment, decrement } = counterStore;
         return (
             <Container>
-                <Button border="left" onClick={increment}>
+                <Button border='left' onClick={increment}>
                     INCREMENT
                 </Button>
                 <Button>{count}</Button>
-                <Button border="right" onClick={decrement}>
+                <Button border='right' onClick={decrement}>
                     DECREMENT
                 </Button>
             </Container>
@@ -193,7 +197,7 @@ export default CounterStore;
 -   6.8. 当代码简化后，修改状态的方法中的 this 指向出现了问题，通过 **action.bound** 强制绑定 this，使 this 指向 Store 实例对象
 
     ```js
-    import { action, makeObservable, observable } from "mobx";
+    import { action, makeObservable, observable } from 'mobx';
 
     export default class CounterStore {
         constructor() {
@@ -229,8 +233,8 @@ export default CounterStore;
 
     ```js
     // store/index.js
-    import { createContext, useContext } from "react";
-    import CounterStore from "./Counter";
+    import { createContext, useContext } from 'react';
+    import CounterStore from './Counter';
 
     class RootStore {
         constructor() {
@@ -255,8 +259,8 @@ export default CounterStore;
 
     ```js
     // App.js
-    import { RootStoreProvider } from "../store";
-    import Counter from "./Counter";
+    import { RootStoreProvider } from '../store';
+    import Counter from './Counter';
 
     function App() {
         return (
@@ -270,8 +274,8 @@ export default CounterStore;
     ```
 
     ```js
-    import { observer } from "mobx-react-lite";
-    import { useRootStore } from "../store";
+    import { observer } from 'mobx-react-lite';
+    import { useRootStore } from '../store';
 
     function Counter() {
         const { counterStore } = useRootStore();
@@ -295,8 +299,8 @@ export default CounterStore;
 1. 监控数据变化执行副作用，接收一个函数作为参数，参数函数用来执行副作用，当参数函数内部使用的 observable state, computed 发生变化时函数会运行，初始运行 autorun 方法时参数函数也会运行一次。
 
     ```js
-    import { autorun } from "mobx";
-    import { useEffect } from "react";
+    import { autorun } from 'mobx';
+    import { useEffect } from 'react';
 
     function Counter() {
         const { counterStore } = useRootStore();
@@ -326,7 +330,7 @@ export default CounterStore;
     ```js
     // CounterStore.js
     class CounterStore {
-        person = { name: "张三" };
+        person = { name: '张三' };
     }
     ```
 
@@ -345,7 +349,7 @@ export default CounterStore;
                 <p>{counterStore.person.name}</p>
                 <button
                     onClick={() =>
-                        runInAction(() => (counterStore.person.name = "李四"))
+                        runInAction(() => (counterStore.person.name = '李四'))
                     }
                 >
                     李四
@@ -353,7 +357,7 @@ export default CounterStore;
                 <button
                     onClick={() =>
                         runInAction(
-                            () => (counterStore.person = { name: "王五" })
+                            () => (counterStore.person = { name: '王五' })
                         )
                     }
                 >
@@ -372,9 +376,9 @@ export default CounterStore;
 
     ```js
     module.exports = {
-        plugins: ["react-hooks"],
+        plugins: ['react-hooks'],
         rules: {
-            "react-hooks/exhaustive-deps": 0,
+            'react-hooks/exhaustive-deps': 0,
         },
     };
     ```
@@ -390,7 +394,7 @@ export default CounterStore;
 和 autorun 不同，reaction 初始时不会执行副作用。
 
 ```js
-import { reaction } from "mobx";
+import { reaction } from 'mobx';
 
 function Counter() {
     useEffect(() => {
@@ -412,7 +416,7 @@ function Counter() {
 1. 创建用于管理 Todo 任务的 Store
 
     ```js
-    import { makeObservable, observable } from "mobx";
+    import { makeObservable, observable } from 'mobx';
 
     export default class Todo {
         constructor(todo) {
@@ -432,7 +436,7 @@ function Counter() {
 2. 创建用于管理 Todo 任务列表的 Store
 
     ```js
-    import { makeObservable, observable } from "mobx";
+    import { makeObservable, observable } from 'mobx';
 
     export default class TodoStore {
         constructor() {
@@ -449,8 +453,8 @@ function Counter() {
 1. 创建向 todo 任务列表中添加 todo 任务的方法
 
     ```js
-    import { action, makeObservable, observable } from "mobx";
-    import Todo from "./Todo";
+    import { action, makeObservable, observable } from 'mobx';
+    import Todo from './Todo';
 
     export default class TodoStore {
         constructor() {
@@ -478,22 +482,22 @@ function Counter() {
 2. 在组件中实现添加任务的逻辑
 
     ```js
-    import { useState } from "react";
-    import { useRootStore } from "../../store";
+    import { useState } from 'react';
+    import { useRootStore } from '../../store';
 
     function Header() {
-        const [title, setTitle] = useState("");
+        const [title, setTitle] = useState('');
         const { todoStore } = useRootStore();
         const { addTodo } = todoStore;
         return (
-            <header className="header">
+            <header className='header'>
                 <input
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     onKeyUp={(e) => {
-                        if (e.key !== "Enter") return;
+                        if (e.key !== 'Enter') return;
                         addTodo(title);
-                        setTitle("");
+                        setTitle('');
                     }}
                 />
             </header>
@@ -506,16 +510,16 @@ function Counter() {
 #### 2.3 显示任务列表
 
 ```js
-import { observer } from "mobx-react-lite";
-import { useRootStore } from "../../store";
-import Todo from "./Todo";
+import { observer } from 'mobx-react-lite';
+import { useRootStore } from '../../store';
+import Todo from './Todo';
 
 function Main() {
     const { todoStore } = useRootStore();
     const { todos } = todoStore;
     return (
-        <section className="main">
-            <ul className="todo-list">
+        <section className='main'>
+            <ul className='todo-list'>
                 {todos.map((todo) => (
                     <Todo key={todo.id} todo={todo} />
                 ))}
@@ -531,12 +535,12 @@ export default observer(Main);
 function Todo({ todo }) {
     return (
         <li>
-            <div className="view">
-                <input className="toggle" type="checkbox" />
+            <div className='view'>
+                <input className='toggle' type='checkbox' />
                 <label>{todo.title}</label>
-                <button className="destroy" />
+                <button className='destroy' />
             </div>
-            <input className="edit" />
+            <input className='edit' />
         </li>
     );
 }
@@ -585,9 +589,9 @@ export default Todo;
 5. 在 todoStore 中添加加载任务列表的方法
 
 ```js
-import axios from "axios";
-import { flow, makeObservable, observable } from "mobx";
-import Todo from "./Todo";
+import axios from 'axios';
+import { flow, makeObservable, observable } from 'mobx';
+import Todo from './Todo';
 
 export default class TodoStore {
     constructor() {
@@ -599,7 +603,7 @@ export default class TodoStore {
         this.loadTodos();
     }
     *loadTodos() {
-        let response = yield axios.get("http://localhost:3001/todos");
+        let response = yield axios.get('http://localhost:3001/todos');
         response.data.forEach((todo) => this.todos.push(new Todo(todo)));
     }
 }
@@ -625,14 +629,14 @@ export default class TodoStore {
 2. 创建 `TodoCompleted` 组件实现逻辑
 
     ```js
-    import { observer } from "mobx-react-lite";
+    import { observer } from 'mobx-react-lite';
 
     function TodoCompleted({ todo }) {
         const { isCompleted, modifyTodoIsCompleted } = todo;
         return (
             <input
-                className="toggle"
-                type="checkbox"
+                className='toggle'
+                type='checkbox'
                 checked={isCompleted}
                 onChange={modifyTodoIsCompleted}
             />
@@ -645,13 +649,13 @@ export default class TodoStore {
 3. 在 `Todo` 组件中引用`TodoCompleted` 组件并根据条件决定是否为 `li` 添加 `completed` 类名
 
     ```js
-    import { observer } from "mobx-react-lite";
-    import TodoCompleted from "./TodoCompleted";
+    import { observer } from 'mobx-react-lite';
+    import TodoCompleted from './TodoCompleted';
 
     function Todo({ todo }) {
         return (
-            <li className={todo.isCompleted ? "completed" : ""}>
-                <div className="view">
+            <li className={todo.isCompleted ? 'completed' : ''}>
+                <div className='view'>
                     <TodoCompleted todo={todo} />
                 </div>
             </li>
@@ -666,8 +670,8 @@ export default class TodoStore {
 1. 在 `todoStore` 中添加实现删除任务的方法
 
     ```js
-    import axios from "axios";
-    import { action, makeObservable } from "mobx";
+    import axios from 'axios';
+    import { action, makeObservable } from 'mobx';
 
     export default class TodoStore {
         constructor() {
@@ -684,13 +688,13 @@ export default class TodoStore {
 2. 创建 `TodoDelete` 组件实现删除 todo 任务逻辑
 
     ```js
-    import { useRootStore } from "../../store";
+    import { useRootStore } from '../../store';
 
     function TodoDelete({ id }) {
         const { todoStore } = useRootStore();
         const { removeTodo } = todoStore;
         return (
-            <button className="destroy" onClick={removeTodo.bind(null, id)} />
+            <button className='destroy' onClick={removeTodo.bind(null, id)} />
         );
     }
 
@@ -700,13 +704,13 @@ export default class TodoStore {
 3. 在 `Todo` 组件调用 `TodoDelete` 组件并传入 todo ID
 
     ```js
-    import { observer } from "mobx-react-lite";
-    import TodoDelete from "./TodoDelete";
+    import { observer } from 'mobx-react-lite';
+    import TodoDelete from './TodoDelete';
 
     function Todo({ todo }) {
         return (
             <li>
-                <div className="view">
+                <div className='view'>
                     <TodoDelete id={todo.id} />
                 </div>
             </li>
@@ -721,7 +725,7 @@ export default class TodoStore {
 1. 在 todoStore 中添加更改任务是否处于编辑状态的方法
 
     ```js
-    import { action, makeObservable } from "mobx";
+    import { action, makeObservable } from 'mobx';
 
     export default class Todo {
         constructor(todo) {
@@ -749,9 +753,9 @@ export default class TodoStore {
 3. 在 `Todo` 组件中调用 `TodoTitle` 组件，并为 `li` 添加 `editing` 类名
 
     ```js
-    import { observer } from "mobx-react-lite";
-    import TodoTitle from "./TodoTitle";
-    import classnames from "classnames";
+    import { observer } from 'mobx-react-lite';
+    import TodoTitle from './TodoTitle';
+    import classnames from 'classnames';
 
     function Todo({ todo }) {
         return (
@@ -761,7 +765,7 @@ export default class TodoStore {
                     editing: todo.isEditing,
                 })}
             >
-                <div className="view">
+                <div className='view'>
                     <TodoTitle todo={todo} />
                 </div>
             </li>
@@ -774,7 +778,7 @@ export default class TodoStore {
 4. 创建 `TodoEditing` 组件实现编辑 todo 任务标题
 
     ```js
-    import { useRef, useEffect } from "react";
+    import { useRef, useEffect } from 'react';
 
     function TodoEditing({ todo }) {
         const { title, modifyTodoTitle, isEditing } = todo;
@@ -785,7 +789,7 @@ export default class TodoStore {
         return (
             <input
                 ref={ref}
-                className="edit"
+                className='edit'
                 defaultValue={title}
                 onBlur={(e) => modifyTodoTitle(e.target.value)}
             />
@@ -798,10 +802,10 @@ export default class TodoStore {
 5. 在 `Todo` 组件中调用 `TodoEditing` 组件并传递 todo 任务
 
     ```js
-    import { observer } from "mobx-react-lite";
-    import TodoTitle from "./TodoTitle";
-    import classnames from "classnames";
-    import TodoEditing from "./TodoEditing";
+    import { observer } from 'mobx-react-lite';
+    import TodoTitle from './TodoTitle';
+    import classnames from 'classnames';
+    import TodoEditing from './TodoEditing';
 
     function Todo({ todo }) {
         return (
@@ -811,7 +815,7 @@ export default class TodoStore {
                     editing: todo.isEditing,
                 })}
             >
-                <div className="view">
+                <div className='view'>
                     <TodoTitle todo={todo} />
                 </div>
                 <TodoEditing todo={todo} />
@@ -827,8 +831,8 @@ export default class TodoStore {
 1. 在 todoStore 中添加获取未完成任务数量的派生状态
 
     ```js
-    import axios from "axios";
-    import { makeObservable, computed } from "mobx";
+    import axios from 'axios';
+    import { makeObservable, computed } from 'mobx';
 
     export default class TodoStore {
         constructor() {
@@ -845,14 +849,14 @@ export default class TodoStore {
 2. 创建 `UnCompletedTodoCount` 组件实现逻辑
 
     ```js
-    import { observer } from "mobx-react-lite";
-    import { useRootStore } from "../../store";
+    import { observer } from 'mobx-react-lite';
+    import { useRootStore } from '../../store';
 
     function UnCompletedTodoCount() {
         const { todoStore } = useRootStore();
         const { unCompletedTodoCount } = todoStore;
         return (
-            <span className="todo-count">
+            <span className='todo-count'>
                 <strong>{unCompletedTodoCount}</strong> item left
             </span>
         );
@@ -864,11 +868,11 @@ export default class TodoStore {
 3. 在 `Footer` 组件中调用 `UnCompletedTodoCount` 组件
 
     ```js
-    import UnCompletedTodoCount from "./UnCompletedTodoCount";
+    import UnCompletedTodoCount from './UnCompletedTodoCount';
 
     function Footer() {
         return (
-            <footer className="footer">
+            <footer className='footer'>
                 <UnCompletedTodoCount />
             </footer>
         );
@@ -882,12 +886,12 @@ export default class TodoStore {
 1. 在 `todoStore` 中添加存储过滤条件的属性以及更改过滤条件的方法
 
     ```js
-    import axios from "axios";
-    import { action, makeObservable, observable } from "mobx";
+    import axios from 'axios';
+    import { action, makeObservable, observable } from 'mobx';
 
     export default class TodoStore {
         constructor() {
-            this.filterCondition = "All";
+            this.filterCondition = 'All';
             makeObservable(this, {
                 modifyFilterCondition: action.bound,
                 filterCondition: observable,
@@ -902,20 +906,20 @@ export default class TodoStore {
 2. 创建 `TodoFilter` 组件，为过滤按钮添加事件以更改过滤条件，根据过滤条件为按钮添加 `selected` 类名
 
     ```js
-    import classNames from "classnames";
-    import { observer } from "mobx-react-lite";
-    import { useRootStore } from "../../store";
+    import classNames from 'classnames';
+    import { observer } from 'mobx-react-lite';
+    import { useRootStore } from '../../store';
 
     function TodoFilter() {
         const { todoStore } = useRootStore();
         const { filterCondition, modifyFilterCondition } = todoStore;
         return (
-            <ul className="filters">
+            <ul className='filters'>
                 <li>
                     <button
-                        onClick={() => modifyFilterCondition("All")}
+                        onClick={() => modifyFilterCondition('All')}
                         className={classNames({
-                            selected: filterCondition === "All",
+                            selected: filterCondition === 'All',
                         })}
                     >
                         All
@@ -923,9 +927,9 @@ export default class TodoStore {
                 </li>
                 <li>
                     <button
-                        onClick={() => modifyFilterCondition("Active")}
+                        onClick={() => modifyFilterCondition('Active')}
                         className={classNames({
-                            selected: filterCondition === "Active",
+                            selected: filterCondition === 'Active',
                         })}
                     >
                         Active
@@ -933,9 +937,9 @@ export default class TodoStore {
                 </li>
                 <li>
                     <button
-                        onClick={() => modifyFilterCondition("Completed")}
+                        onClick={() => modifyFilterCondition('Completed')}
                         className={classNames({
-                            selected: filterCondition === "Completed",
+                            selected: filterCondition === 'Completed',
                         })}
                     >
                         Completed
@@ -951,11 +955,11 @@ export default class TodoStore {
 3. 在 `Footer` 组件中调用 `TodoFilter` 组件
 
     ```js
-    import TodoFilter from "./TodoFilter";
+    import TodoFilter from './TodoFilter';
 
     function Footer() {
         return (
-            <footer className="footer">
+            <footer className='footer'>
                 <TodoFilter />
             </footer>
         );
@@ -967,9 +971,9 @@ export default class TodoStore {
 4. 在 `TodoStore` 中添加派生状态，根据条件获取过滤后的 todo 列表
 
     ```js
-    import axios from "axios";
-    import { action, flow, makeObservable, observable, computed } from "mobx";
-    import Todo from "./Todo";
+    import axios from 'axios';
+    import { action, flow, makeObservable, observable, computed } from 'mobx';
+    import Todo from './Todo';
 
     export default class TodoStore {
         constructor() {
@@ -979,9 +983,9 @@ export default class TodoStore {
         }
         get filterTodos() {
             switch (this.filterCondition) {
-                case "Active":
+                case 'Active':
                     return this.todos.filter((todo) => !todo.isCompleted);
-                case "Completed":
+                case 'Completed':
                     return this.todos.filter((todo) => todo.isCompleted);
                 default:
                     return this.todos;
@@ -993,16 +997,16 @@ export default class TodoStore {
 5. 在 Main 组件获取 `filterTodos` 派生状态
 
     ```js
-    import { observer } from "mobx-react-lite";
-    import { useRootStore } from "../../store";
-    import Todo from "./Todo";
+    import { observer } from 'mobx-react-lite';
+    import { useRootStore } from '../../store';
+    import Todo from './Todo';
 
     function Main() {
         const { todoStore } = useRootStore();
         const { filterTodos } = todoStore;
         return (
-            <section className="main">
-                <ul className="todo-list">
+            <section className='main'>
+                <ul className='todo-list'>
                     {filterTodos.map((todo) => (
                         <Todo key={todo.id} todo={todo} />
                     ))}
@@ -1019,8 +1023,8 @@ export default class TodoStore {
 1. 在 `TodoStore` 中添加清除已完成任务的方法
 
     ```js
-    import axios from "axios";
-    import { action, makeObservable } from "mobx";
+    import axios from 'axios';
+    import { action, makeObservable } from 'mobx';
 
     export default class TodoStore {
         constructor() {
@@ -1037,13 +1041,13 @@ export default class TodoStore {
 2. 创建 `ClearCompleted` 组件实现清除已完成任务功能
 
     ```js
-    import { useRootStore } from "../../store";
+    import { useRootStore } from '../../store';
 
     function ClearCompleted() {
         const { todoStore } = useRootStore();
         const { clearCompleted } = todoStore;
         return (
-            <button className="clear-completed" onClick={clearCompleted}>
+            <button className='clear-completed' onClick={clearCompleted}>
                 Clear completed
             </button>
         );
@@ -1055,11 +1059,11 @@ export default class TodoStore {
 3. 在 `Footer` 组件中调用 `ClearCompleted` 组件
 
     ```js
-    import ClearCompleted from "./ClearCompleted";
+    import ClearCompleted from './ClearCompleted';
 
     function Footer() {
         return (
-            <footer className="footer">
+            <footer className='footer'>
                 <ClearCompleted />
             </footer>
         );

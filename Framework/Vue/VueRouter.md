@@ -31,7 +31,7 @@
 -   通过`window.location.hash`获取到当前 url 的 hash；hash 模式下通过`hashchange`方法可以监听 url 中 hash 的变化
 
 ```js
-window.addEventListener("hashchange", function () {}, false);
+window.addEventListener('hashchange', function () {}, false);
 ```
 
 #### hash 模式优缺点
@@ -154,10 +154,10 @@ export default class VueRouter {
 
     constructor(options) {
         this.options = options;
-        this.mode = options.mode || "hash";
+        this.mode = options.mode || 'hash';
         this.routeMap = {};
         this.data = _Vue.observable({
-            current: "/",
+            current: '/',
         });
     }
 
@@ -177,7 +177,7 @@ export default class VueRouter {
 
     initComponents(Vue) {
         const Link = {
-            name: "RouterLink",
+            name: 'RouterLink',
             props: {
                 to: {
                     type: String,
@@ -186,10 +186,10 @@ export default class VueRouter {
             },
             methods: {},
         };
-        if (this.mode === "history") {
+        if (this.mode === 'history') {
             Link.render = function (h) {
                 return h(
-                    "a",
+                    'a',
                     {
                         attrs: {
                             href: this.to,
@@ -203,16 +203,16 @@ export default class VueRouter {
             };
             Link.methods.clickHandler = function (e) {
                 e.preventDefault();
-                history.pushState({}, "", this.to);
+                history.pushState({}, '', this.to);
                 this.$router.data.current = this.to;
             };
         } else {
             Link.render = function (h) {
                 return h(
-                    "a",
+                    'a',
                     {
                         attrs: {
-                            href: "/#" + this.to,
+                            href: '/#' + this.to,
                         },
                     },
                     this.$slots.default
@@ -224,31 +224,31 @@ export default class VueRouter {
             render: (h) => h(this.routeMap[this.data.current]),
         };
 
-        Vue.component("router-link", Link);
-        Vue.component("router-view", View);
+        Vue.component('router-link', Link);
+        Vue.component('router-view', View);
     }
 
     // 第一次加载页面初始化
     initCurrent() {
         // history模式
-        if (this.mode === "history") {
+        if (this.mode === 'history') {
             this.data.current = location.pathname;
             return;
         }
         // hash模式
-        if (location.hash === "") {
-            window.location.hash = "#/";
+        if (location.hash === '') {
+            window.location.hash = '#/';
         }
         this.data.current = location.hash.slice(1);
     }
 
     initEvents() {
         // 监听hash改变
-        window.addEventListener("hashchange", () => {
+        window.addEventListener('hashchange', () => {
             this.data.current = location.hash.slice(1);
         });
         // 监听浏览器的的历史记录  当历史记录条目更改时，将触发popstate事件
-        window.addEventListener("popstate", () => {
+        window.addEventListener('popstate', () => {
             this.data.current = window.location.pathname;
         });
     }
@@ -257,4 +257,4 @@ export default class VueRouter {
 
 附录：vue-router 源码图解
 
-![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1cceb1f6ce7041248ae2acb2cf1262ff~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image5.png)

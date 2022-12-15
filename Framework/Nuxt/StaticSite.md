@@ -35,14 +35,14 @@ gridsome develop
 ```
 
 3、目录结构
-![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/37c0afb7534d4948b8acf2fedfbfdbb4~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image10.png)
 
 -   关于项目的一些配置，参考：https://gridsome.org/docs/config/
 -   `Gridsome`需要 `gridsome.config.js` 才能工作。插件和项目设置位于此处。基本配置文件如下所示：
-    ![image.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5ec4cd50fa404d66a0fd5bab173677e5~tplv-k3u1fbpfcp-watermark.image?)
+    ![image.png](./images/image11.png)
     4、数据预处理  
-    如果您要在网站上放置博客文章，标签，产品等，则收藏很有用。可以使用 [Source 插件](https://gridsome.org/plugins)或 [Data Store API](https://gridsome.org/docs/data-store-api/) 从任何 Headless CMS，内容 API 或 Markdown 文件中获取集合
-    ![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ad0ff41ac41f44459c05e158bea87745~tplv-k3u1fbpfcp-watermark.image?)
+     如果您要在网站上放置博客文章，标签，产品等，则收藏很有用。可以使用 [Source 插件](https://gridsome.org/plugins)或 [Data Store API](https://gridsome.org/docs/data-store-api/) 从任何 Headless CMS，内容 API 或 Markdown 文件中获取集合
+    ![image.png](./images/image12.png)
     5、项目中 pages 文件夹
     通过在`src/pages`文件夹中添加`Vue`组件来创建页面。他们使用基于文件的路由系统。例如，`src/pages/
 About.vue`将是 mywebsite.com/about/`。页面用于简单页面和列出集合的页面（例如 `/blog/`）。
@@ -53,12 +53,12 @@ About.vue`将是 mywebsite.com/about/`。页面用于简单页面和列出集合
 -   其实这里 `GraphQL` 并不是作为服务器端部署，而是作为 `Gridsome` 在本地管理资源的一种方式。
 -   通过 `GraphQL` 统一管理实际上非常方便，因为作为一个数据库查询语言，它有非常完备的查询语句，与 JSON 相似的描述结构，再结合 `Relay` 的 `Connections` 方式处理集合，管理资源不再需要自行引入其它项目，大大减轻了维护难度。
     1、GraphQL 数据层
-    ![image.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5f37971f028f49d5b3d1c6130503031b~tplv-k3u1fbpfcp-watermark.image?)
+    ![image.png](./images/image13.png)
     2、GraphQL 资源管理器
 -   每个 `Gridsome` 项目都有一个 `GraphQL` 资源管理器，可以在开发模式下使用它来探索和测试查询。
 -   在这里，您还将获得所有可用 `GraphQL` 集合的列表。
 -   通常可以通过转到 `http:// localhost:8080/___explore` 来打开它。
-    ![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/381c123ad9ee41f5a5eba50c83b8e522~tplv-k3u1fbpfcp-watermark.image?)
+    ![image.png](./images/image14.png)
 
 四、部署 Strapi [参考](https://gitee.com/lagoufed/fed-e-questions/blob/master/part3/part3-4/01-%E5%AE%89%E8%A3%85strapi%E5%92%8Cmysql.md)
 

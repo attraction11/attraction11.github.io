@@ -1,3 +1,7 @@
+---
+outline: deep
+---
+
 # 服务端渲染
 
 ## 一、服务端渲染基础
@@ -6,16 +10,16 @@
 2、传统的服务端渲染
 
 -   图解过程
-    ![image.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c7087dc39a5e4abab40d6295ad7abf8a~tplv-k3u1fbpfcp-watermark.image?)
+    ![image.png](./images/image.png)
 -   服务端处理
 
 ```js
-app.get("/", (req, res) => {
+app.get('/', (req, res) => {
     // 1. 获取页面模板
-    const templateStr = fs.readFileSync("./index.html", "utf-8");
+    const templateStr = fs.readFileSync('./index.html', 'utf-8');
 
     // 2. 获取数据
-    const data = JSON.parse(fs.readFileSync("./data.json", "utf-8"));
+    const data = JSON.parse(fs.readFileSync('./data.json', 'utf-8'));
 
     // 3. 渲染：数据 + 模板 = 最终结果
     const html = template.render(templateStr, data);
@@ -34,9 +38,9 @@ app.get("/", (req, res) => {
 3、客户端渲染
 
 -   图解过程（后端处理数据接口、前端负责将接口数据渲染到页面中，前端更独立）
-    ![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dc0a8eaf90bb45a2a2dfca96489f250c~tplv-k3u1fbpfcp-watermark.image?)
+    ![image.png](./images/image2.png)
 -   缺点 - 首屏渲染慢: 对比穿透服务端渲染与客户端渲染页面呈现的耗时。  
-    ![9.2.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1a83c502c74f4ecf85fdf7927ffb6156~tplv-k3u1fbpfcp-watermark.image?) - 不利于`SEO`: 因为在请求一个地址后服务端返回的是空`HTML`,搜索引擎不能解析`JS`获取动态页面，在`body`标签内得不到有用的信息。
+    ![image.png](./images/image3.png) - 不利于`SEO`: 因为在请求一个地址后服务端返回的是空`HTML`,搜索引擎不能解析`JS`获取动态页面，在`body`标签内得不到有用的信息。
 
 4、现代化的服务端渲染（同构渲染）
 
@@ -47,7 +51,7 @@ app.get("/", (req, res) => {
     -   核心解决 SEO 和首屏渲染慢的问题
     -   拥有传统服务端渲染的优点，也有客户端渲染的优点
 -   图解过程
-    ![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ab65ca8198fe4912be33b9fba9ed9d63~tplv-k3u1fbpfcp-watermark.image?)
+    ![image.png](./images/image4.png)
 -   实现同构渲染的方案
     -   使用 Vue、React 等框架的官方解决方案
         -   优点：有助于理解原理

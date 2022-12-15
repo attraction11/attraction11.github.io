@@ -2,13 +2,15 @@
 outline: deep
 ---
 
+# 框架设计与实现
+
 ## 介绍
 
 React 由 `Facebook` 开源，是一个声明式、高效且灵活的用于构建用户界面的 JavaScript 库。使用 React 可以将一些简短、独立的代码片段组合成复杂的 `UI` 界面，这些代码片段被称作组件
 
-- [英文文档](https://reactjs.org/)
-- [中文文档 1](https://react.docschina.org/)
-- [中文文档 2](https://reactjs.bootcss.com/)
+-   [英文文档](https://reactjs.org/)
+-   [中文文档 1](https://react.docschina.org/)
+-   [中文文档 2](https://reactjs.bootcss.com/)
 
 ## 特点
 
@@ -22,35 +24,35 @@ React 由 `Facebook` 开源，是一个声明式、高效且灵活的用于构�
 ```html
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>hello_react</title>
-  </head>
-  <body>
-    <!-- 准备好一个容器 -->
-    <div id="app"></div>
+    <head>
+        <meta charset="UTF-8" />
+        <title>hello_react</title>
+    </head>
+    <body>
+        <!-- 准备好一个容器 -->
+        <div id="app"></div>
 
-    <!--React核心库-->
-    <script
-      src="https://unpkg.com/react@16/umd/react.development.js"
-      crossorigin
-    ></script>
-    <!--react-dom用于支持React操作DOM-->
-    <script
-      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
-      crossorigin
-    ></script>
-    <!-- 引入Babel帮助转译JSX转为JS语法 -->
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <!--React核心库-->
+        <script
+            src="https://unpkg.com/react@16/umd/react.development.js"
+            crossorigin
+        ></script>
+        <!--react-dom用于支持React操作DOM-->
+        <script
+            src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+            crossorigin
+        ></script>
+        <!-- 引入Babel帮助转译JSX转为JS语法 -->
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
-    <script type="text/babel">
-      // 1. 创建虚拟DOM
-      const VDOM = <h1>Hello World</h1>;
+        <script type="text/babel">
+            // 1. 创建虚拟DOM
+            const VDOM = <h1>Hello World</h1>;
 
-      // 2. 将虚拟DOM渲染到页面中
-      ReactDOM.render(VDOM, document.getElementById("app"));
-    </script>
-  </body>
+            // 2. 将虚拟DOM渲染到页面中
+            ReactDOM.render(VDOM, document.getElementById('app'));
+        </script>
+    </body>
 </html>
 ```
 
@@ -83,8 +85,8 @@ JSX 全称 JavaScript XML。React 定义了一种类似于 XML 的 JavaScript �
 4. 只有一个根标签
 5. 标签必须闭合
 6. 标签首字母
-   1. **标签首字母是小写字母开头**，则将该标签转为 HTML 中同名元素，若 HTML 中无该标签对应的同名元素则报错
-   2. **标签首字母是大写字母开头**，React 就去渲染对应的组件，若组件没有定义则报错
+    1. **标签首字母是小写字母开头**，则将该标签转为 HTML 中同名元素，若 HTML 中无该标签对应的同名元素则报错
+    2. **标签首字母是大写字母开头**，React 就去渲染对应的组件，若组件没有定义则报错
 
 ## JSX 基本语法
 
@@ -119,7 +121,7 @@ const VDom = (
 在 React 中，通过 `className` 这个属性来指定 `CSS` 类。这个和 HTML 的 `class` 的属性功能是一样的
 
 ```jsx
-const VDom = <h1 className="container">Hello World</h1>;
+const VDom = <h1 className='container'>Hello World</h1>;
 ```
 
 ### 列表渲染
@@ -129,16 +131,16 @@ const VDom = <h1 className="container">Hello World</h1>;
 Key 值的作用：如果数据索引没有发生变化则 UI 不会发送重绘， 只有发生变化的部分会发生重绘，这样达到节省资源节省渲染提升性能。
 
 ```jsx
-const numbers = ["React", "Vue", "Angular", "JavaScript", "TypeScript"];
+const numbers = ['React', 'Vue', 'Angular', 'JavaScript', 'TypeScript'];
 const VDom = (
-  <ul>
-    {numbers.map((item, index) => {
-      return <li key={index}>{item}</li>;
-    })}
-  </ul>
+    <ul>
+        {numbers.map((item, index) => {
+            return <li key={index}>{item}</li>;
+        })}
+    </ul>
 );
 // 渲染虚拟DOM
-ReactDOM.render(VDom, document.getElementById("app"));
+ReactDOM.render(VDom, document.getElementById('app'));
 ```
 
 ### 条件渲染
@@ -154,13 +156,13 @@ let content;
 const isReact = true;
 // 通过If语法来实现条件渲染
 if (isReact) {
-  content = "It is React framework";
+    content = 'It is React framework';
 } else {
-  content = "It's not React framework";
+    content = "It's not React framework";
 }
 const VDom = <div>{content}</div>;
 // 渲染虚拟DOM
-ReactDOM.render(VDom, document.getElementById("app"));
+ReactDOM.render(VDom, document.getElementById('app'));
 ```
 
 #### 条件表达式
@@ -206,26 +208,26 @@ React 用来定义组件有两种方式：**函数式组件**、**类式组件**
 
 ```jsx
 function MyComponent() {
-  // 函数式组件的This是undefined
-  console.log(this);
-  return <h2>函数式组件</h2>;
+    // 函数式组件的This是undefined
+    console.log(this);
+    return <h2>函数式组件</h2>;
 }
 // 渲染组件
-ReactDOM.render(<MyComponent />, document.getElementById("app"));
+ReactDOM.render(<MyComponent />, document.getElementById('app'));
 ```
 
 ### 类式组件
 
 ```jsx
 class MyComponent extends React.Component {
-  render() {
-    // This是组件实例对象
-    console.log(this);
-    return <h2>类式组件</h2>;
-  }
+    render() {
+        // This是组件实例对象
+        console.log(this);
+        return <h2>类式组件</h2>;
+    }
 }
 // 渲染组件
-ReactDOM.render(<MyComponent />, document.getElementById("app"));
+ReactDOM.render(<MyComponent />, document.getElementById('app'));
 ```
 
 ### 注意点
@@ -242,19 +244,19 @@ ReactDOM.render(<MyComponent />, document.getElementById("app"));
 
 ```jsx
 class Weather extends React.Component {
-  constructor(props) {
-    super(props);
-    // 组件状态初始化
-    this.state = { isHot: false };
-  }
-  render() {
-    return (
-      <div>
-        {/* 通过组件状态数据来进行条件渲染 */}
-        今天天气很热吗？ {this.state.isHot ? "是" : "不是"}
-      </div>
-    );
-  }
+    constructor(props) {
+        super(props);
+        // 组件状态初始化
+        this.state = { isHot: false };
+    }
+    render() {
+        return (
+            <div>
+                {/* 通过组件状态数据来进行条件渲染 */}
+                今天天气很热吗？ {this.state.isHot ? '是' : '不是'}
+            </div>
+        );
+    }
 }
 ```
 
@@ -270,14 +272,14 @@ this.setState({ isHot: !isHot });
 
 `setState(stateChange, [callback])`
 
-- `stateChange` 为状态对象（该对象可以体现出状态的更改）
-- callback 是可选的回调函数，它在状态更新完毕、界面也更新后(render 调用后)才被调用
+-   `stateChange` 为状态对象（该对象可以体现出状态的更改）
+-   callback 是可选的回调函数，它在状态更新完毕、界面也更新后(render 调用后)才被调用
 
 `setState(updater, [callback])`
 
-- `updater` 为返回 `stateChange` 对象的函数
-- `updater`可以接收到 State 和 Props
-- callback 是可选的回调函数，它在状态更新完毕、界面也更新后(render 调用后)才被调用
+-   `updater` 为返回 `stateChange` 对象的函数
+-   `updater`可以接收到 State 和 Props
+-   callback 是可选的回调函数，它在状态更新完毕、界面也更新后(render 调用后)才被调用
 
 ## React Props 属性
 
@@ -289,22 +291,22 @@ this.setState({ isHot: !isHot });
 
 ```jsx
 class Person extends React.Component {
-  render() {
-    const { name, sex, age } = this.props;
-    return (
-      <ul>
-        <li>姓名：{name}</li>
-        <li>性别：{sex}</li>
-        <li>年龄：{age}</li>
-      </ul>
-    );
-  }
+    render() {
+        const { name, sex, age } = this.props;
+        return (
+            <ul>
+                <li>姓名：{name}</li>
+                <li>性别：{sex}</li>
+                <li>年龄：{age}</li>
+            </ul>
+        );
+    }
 }
-const tom = { name: "Tom", sex: "男", age: 20 };
+const tom = { name: 'Tom', sex: '男', age: 20 };
 ReactDOM.render(
-  // 简写方式：<Person {...tom} />
-  <Person name={tom.name} sex={tom.sex} age={tom.age} />,
-  document.getElementById("app")
+    // 简写方式：<Person {...tom} />
+    <Person name={tom.name} sex={tom.sex} age={tom.age} />,
+    document.getElementById('app')
 );
 ```
 
@@ -335,21 +337,21 @@ Person.propTypes = {
 
 ```jsx
 class Person extends React.Component {
-  render() {
-    const { name, sex, age } = this.props;
-    return (
-      <ul>
-        <li>姓名：{name}</li>
-        <li>性别：{sex}</li>
-        <li>年龄：{age}</li>
-      </ul>
-    );
-  }
+    render() {
+        const { name, sex, age } = this.props;
+        return (
+            <ul>
+                <li>姓名：{name}</li>
+                <li>性别：{sex}</li>
+                <li>年龄：{age}</li>
+            </ul>
+        );
+    }
 }
 // 对Props属性设置默认值
 Person.defaultProps = {
-  sex: "男",
-  age: 18,
+    sex: '男',
+    age: 18,
 };
 ```
 
@@ -394,28 +396,34 @@ class Person extends React.Component {
 
 ```jsx
 class Demo extends React.Component {
-  showData() {
-    const { input1 } = this.refs;
-    console.log(input1.value);
-  }
-  showData2() {
-    const { input2 } = this.refs;
-    console.log(input2.value);
-  }
-  render() {
-    return (
-      <div>
-        <input ref="input1" type="text" placeholder="点击按钮提示数据" />
-        <button onClick={() => this.showData()}>点我提示左侧的数据</button>
-        <input
-          ref="input2"
-          type="text"
-          onBlur={() => this.showData2()}
-          placeholder="失去焦点提示数据"
-        />
-      </div>
-    );
-  }
+    showData() {
+        const { input1 } = this.refs;
+        console.log(input1.value);
+    }
+    showData2() {
+        const { input2 } = this.refs;
+        console.log(input2.value);
+    }
+    render() {
+        return (
+            <div>
+                <input
+                    ref='input1'
+                    type='text'
+                    placeholder='点击按钮提示数据'
+                />
+                <button onClick={() => this.showData()}>
+                    点我提示左侧的数据
+                </button>
+                <input
+                    ref='input2'
+                    type='text'
+                    onBlur={() => this.showData2()}
+                    placeholder='失去焦点提示数据'
+                />
+            </div>
+        );
+    }
 }
 ```
 
@@ -427,33 +435,35 @@ class Demo extends React.Component {
 
 ```jsx
 class Demo extends React.Component {
-  showData() {
-    const { input1 } = this;
-    console.log(input1.value);
-  }
-  showData2() {
-    const { input2 } = this;
-    console.log(input2.value);
-  }
-  render() {
-    return (
-      <div>
-        {/* element是绑定的DOM元素 */}
-        <input
-          ref={(element) => (this.input1 = element)}
-          type="text"
-          placeholder="点击按钮提示数据"
-        />
-        <button onClick={() => this.showData()}>点我提示左侧的数据</button>
-        <input
-          ref={(element) => (this.input2 = element)}
-          type="text"
-          onBlur={() => this.showData2()}
-          placeholder="失去焦点提示数据"
-        />
-      </div>
-    );
-  }
+    showData() {
+        const { input1 } = this;
+        console.log(input1.value);
+    }
+    showData2() {
+        const { input2 } = this;
+        console.log(input2.value);
+    }
+    render() {
+        return (
+            <div>
+                {/* element是绑定的DOM元素 */}
+                <input
+                    ref={(element) => (this.input1 = element)}
+                    type='text'
+                    placeholder='点击按钮提示数据'
+                />
+                <button onClick={() => this.showData()}>
+                    点我提示左侧的数据
+                </button>
+                <input
+                    ref={(element) => (this.input2 = element)}
+                    type='text'
+                    onBlur={() => this.showData2()}
+                    placeholder='失去焦点提示数据'
+                />
+            </div>
+        );
+    }
 }
 ```
 
@@ -463,30 +473,35 @@ class Demo extends React.Component {
 
 ```jsx
 class Demo extends React.Component {
-  inputOne = React.createRef();
-  inputTwo = React.createRef();
-  showData = () => {
-    console.log(this.inputOne.current.value);
-  };
-  showData2 = () => {
-    console.log(this.inputTwo.current.value);
-  };
-  render() {
-    return (
-      <div>
-        <input ref={this.inputOne} type="text" placeholder="点击按钮提示数据" />
-        &nbsp;
-        <button onClick={this.showData}>点我提示左侧的数据</button>&nbsp;
-        <input
-          ref={this.inputTwo}
-          onBlur={this.showData2}
-          type="text"
-          placeholder="失去焦点提示数据"
-        />
-        &nbsp;
-      </div>
-    );
-  }
+    inputOne = React.createRef();
+    inputTwo = React.createRef();
+    showData = () => {
+        console.log(this.inputOne.current.value);
+    };
+    showData2 = () => {
+        console.log(this.inputTwo.current.value);
+    };
+    render() {
+        return (
+            <div>
+                <input
+                    ref={this.inputOne}
+                    type='text'
+                    placeholder='点击按钮提示数据'
+                />
+                &nbsp;
+                <button onClick={this.showData}>点我提示左侧的数据</button>
+                &nbsp;
+                <input
+                    ref={this.inputTwo}
+                    onBlur={this.showData2}
+                    type='text'
+                    placeholder='失去焦点提示数据'
+                />
+                &nbsp;
+            </div>
+        );
+    }
 }
 ```
 
@@ -500,24 +515,24 @@ class Demo extends React.Component {
 
 ```jsx
 class Weather extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { isHot: false };
-  }
-  // 注册事件
-  setIsHot(value) {
-    this.setState({ isHot: !value });
-  }
-  render() {
-    const { isHot } = this.state;
-    return (
-      // 绑定事件函数（组件事件名大小写）
-      // <div onClick={this.setIsHot.bind(this, isHot)}>
-      <div onClick={() => this.setIsHot(isHot)}>
-        天气炎热吗？ {isHot ? "是" : "不是"}
-      </div>
-    );
-  }
+    constructor(props) {
+        super(props);
+        this.state = { isHot: false };
+    }
+    // 注册事件
+    setIsHot(value) {
+        this.setState({ isHot: !value });
+    }
+    render() {
+        const { isHot } = this.state;
+        return (
+            // 绑定事件函数（组件事件名大小写）
+            // <div onClick={this.setIsHot.bind(this, isHot)}>
+            <div onClick={() => this.setIsHot(isHot)}>
+                天气炎热吗？ {isHot ? '是' : '不是'}
+            </div>
+        );
+    }
 }
 ```
 
@@ -538,26 +553,26 @@ class Weather extends React.Component {
 
 ```jsx
 class NameForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.input = React.createRef();
-  }
-  handleSubmit(event) {
-    event.preventDefault();
-    alert("A name was submitted: " + this.input.current.value);
-  }
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input type="text" ref={this.input} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-    );
-  }
+    constructor(props) {
+        super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.input = React.createRef();
+    }
+    handleSubmit(event) {
+        event.preventDefault();
+        alert('A name was submitted: ' + this.input.current.value);
+    }
+    render() {
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <label>
+                    Name:
+                    <input type='text' ref={this.input} />
+                </label>
+                <input type='submit' value='Submit' />
+            </form>
+        );
+    }
 }
 ```
 
@@ -571,35 +586,35 @@ class NameForm extends React.Component {
 
 ```jsx
 class NameForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { value: "" };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-  }
-  handleSubmit(event) {
-    // 阻止默认事件提交
-    event.preventDefault();
-    alert("提交的名字: " + this.state.value);
-  }
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          名字:
-          <input
-            type="text"
-            value={this.state.value}
-            onChange={this.handleChange}
-          />
-        </label>
-        <input type="submit" value="提交" />
-      </form>
-    );
-  }
+    constructor(props) {
+        super(props);
+        this.state = { value: '' };
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    handleChange(event) {
+        this.setState({ value: event.target.value });
+    }
+    handleSubmit(event) {
+        // 阻止默认事件提交
+        event.preventDefault();
+        alert('提交的名字: ' + this.state.value);
+    }
+    render() {
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <label>
+                    名字:
+                    <input
+                        type='text'
+                        value={this.state.value}
+                        onChange={this.handleChange}
+                    />
+                </label>
+                <input type='submit' value='提交' />
+            </form>
+        );
+    }
 }
 ```
 
@@ -615,37 +630,37 @@ React 组件从创建到死亡会经历一些特定的阶段。其中就包含�
 
 ```jsx
 class Clock extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { date: new Date() };
-  }
+    constructor(props) {
+        super(props);
+        this.state = { date: new Date() };
+    }
 
-  // 组件挂载前
-  componentWillMount() {}
-  // 组件挂载后
-  componentDidMount() {}
+    // 组件挂载前
+    componentWillMount() {}
+    // 组件挂载后
+    componentDidMount() {}
 
-  // 子组件（父组件传递给子组件的Props发生改变调用）
-  // 此钩子函数被调用后 再进入 shouldComponentUpdate
-  componentWillReceiveProps() {}
+    // 子组件（父组件传递给子组件的Props发生改变调用）
+    // 此钩子函数被调用后 再进入 shouldComponentUpdate
+    componentWillReceiveProps() {}
 
-  // 组件是否更新（在组件挂载后，如果State状态发送改变，则进入此钩子）
-  // 返回 True 代表允许更新，返回 False 代表不允许更新（此钩子函数如果不写默认是True）
-  // 此钩子就是一个阀门
-  shouldComponentUpdate() {}
+    // 组件是否更新（在组件挂载后，如果State状态发送改变，则进入此钩子）
+    // 返回 True 代表允许更新，返回 False 代表不允许更新（此钩子函数如果不写默认是True）
+    // 此钩子就是一个阀门
+    shouldComponentUpdate() {}
 
-  // 组件更新前（State、Props、.forceUpdate()）
-  componentWillUpdate() {}
-  // 组件更新后（State、Props）
-  componentDidUpdate() {}
+    // 组件更新前（State、Props、.forceUpdate()）
+    componentWillUpdate() {}
+    // 组件更新后（State、Props）
+    componentDidUpdate() {}
 
-  // 组件卸载前
-  componentWillUnmount() {}
+    // 组件卸载前
+    componentWillUnmount() {}
 
-  // 初次渲染、State状态更新后
-  render() {
-    return <h2>It is {this.state.date.toLocaleTimeString()}</h2>;
-  }
+    // 初次渲染、State状态更新后
+    render() {
+        return <h2>It is {this.state.date.toLocaleTimeString()}</h2>;
+    }
 }
 ```
 
@@ -661,38 +676,38 @@ class Clock extends React.Component {
 
 ```jsx
 class Clock extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { date: new Date() };
-  }
+    constructor(props) {
+        super(props);
+        this.state = { date: new Date() };
+    }
 
-  // 组件挂载后
-  componentDidMount() {}
+    // 组件挂载后
+    componentDidMount() {}
 
-  // 组件是否更新（在组件挂载后，如果State状态发送改变，则进入此钩子）
-  // 返回 True 代表允许更新，返回 False 代表不允许更新（此钩子函数如果不写默认是True）
-  // 此钩子就是一个阀门
-  shouldComponentUpdate() {}
+    // 组件是否更新（在组件挂载后，如果State状态发送改变，则进入此钩子）
+    // 返回 True 代表允许更新，返回 False 代表不允许更新（此钩子函数如果不写默认是True）
+    // 此钩子就是一个阀门
+    shouldComponentUpdate() {}
 
-  // derived 派生的
-  // 若State的值在任何时候都取决于Props，那么可以使用此钩子函数
-  static getDerivedStateFromProps(props, state) {
-    return props;
-  }
-  // snapshot 快照
-  // 参考文档：https://react.docschina.org/docs/react-component.html#getsnapshotbeforeupdate
-  static getSnapshotBeforeUpdate() {}
+    // derived 派生的
+    // 若State的值在任何时候都取决于Props，那么可以使用此钩子函数
+    static getDerivedStateFromProps(props, state) {
+        return props;
+    }
+    // snapshot 快照
+    // 参考文档：https://react.docschina.org/docs/react-component.html#getsnapshotbeforeupdate
+    static getSnapshotBeforeUpdate() {}
 
-  // 组件更新后（State、Props）
-  componentDidUpdate() {}
+    // 组件更新后（State、Props）
+    componentDidUpdate() {}
 
-  // 组件卸载前
-  componentWillUnmount() {}
+    // 组件卸载前
+    componentWillUnmount() {}
 
-  // 初次渲染、State状态更新后
-  render() {
-    return <h2>It is {this.state.date.toLocaleTimeString()}</h2>;
-  }
+    // 初次渲染、State状态更新后
+    render() {
+        return <h2>It is {this.state.date.toLocaleTimeString()}</h2>;
+    }
 }
 ```
 
@@ -702,14 +717,14 @@ class Clock extends React.Component {
 
 ```jsx
 class Demo extends React.Component {
-  render() {
-    return (
-      // Fragment 不会被渲染在DOM节点上
-      <Fragment>
-        <div>Hello World</div>
-      </Fragment>
-    );
-  }
+    render() {
+        return (
+            // Fragment 不会被渲染在DOM节点上
+            <Fragment>
+                <div>Hello World</div>
+            </Fragment>
+        );
+    }
 }
 ```
 
@@ -719,5 +734,5 @@ class Demo extends React.Component {
 
 ## VsCode 相关插件
 
-- `Simple React Snippets`
-- `ES7 React/Redux/GraphQL/React-Native`
+-   `Simple React Snippets`
+-   `ES7 React/Redux/GraphQL/React-Native`

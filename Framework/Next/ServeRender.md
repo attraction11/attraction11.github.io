@@ -7,14 +7,14 @@
 -   `CSR：Client Side Rendering`
 -   服务器端仅返回 `JSON` 数据, `DATA` 和 `HTML` 在客户端进行渲染
 
-![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/24aa9ec709934ea68ca28a9e8efca2e7~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image.png)
 
 #### 2. 什么是服务器端渲染?
 
 -   `SSR：Server Side Rendering`
 -   服务器端返回`HTML`, `DATA` 和 `HTML` 在服务器端进行渲染.
 
-![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6ea1658a47e04075be65e71d855e2ab0~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image2.png)
 
 #### 3. 客户端渲染存在的问题
 
@@ -29,11 +29,11 @@
 
 #### 1. 项目结构
 
-![image.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e2f22f8715664ac6b3b28ff8728b7b97~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image3.png)
 
 #### 2. 创建 Node 服务器
 
-![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/17193f44152441d980cdbdfa0960834e~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image4.png)
 
 #### 3. 实现`React SSR`
 
@@ -59,7 +59,7 @@ ReactDOM.hydrate(
     <Provider store={store}>
         <BrowserRouter>{renderRoutes(routes)}</BrowserRouter>
     </Provider>,
-    document.getElementById("root")
+    document.getElementById('root')
 );
 ```
 
@@ -73,14 +73,14 @@ ReactDOM.hydrate(
 
 -   在响应给客户端的 `HTML` 代码中添加 `script` 标签, 请求客户端 `JavaScript` 打包文件.
 
-![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/09ea1d765dfe4deba480e72be36078eb~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image5.png)
 
 #### 5.3. 服务器端实现静态资源访问
 
 -   服务器端程序实现静态资源访问功能, 客户端 JavaScript 打包文件会被作为静态资源使用
 
 ```js
-app.use(express.static("public"));
+app.use(express.static('public'));
 ```
 
 #### 6. 优化`webpack`配置
@@ -89,7 +89,7 @@ app.use(express.static("public"));
 
 -   服务器端 `webpack` 配置和客户端 `webpack` 配置存在重复. 将重复配置抽象到 `webpack.base.js` 配置文件中
 
-![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ca20e4803c4e4d71af4639319ba9ae57~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image6.png)
 
 #### 6.2. 合并项目启动命令
 
@@ -104,7 +104,7 @@ app.use(express.static("public"));
 -   问题：在服务器端打包文件中, 包含了 `Node` 系统模块. 导致打包文件本身体积庞大.
 -   解决：通过 `webpack` 配置剔除打包文件中的 `Node` 模块.
 
-![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3b2d6feb64374ccca047488e5b070f6d~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image7.png)
 
 #### 6.4. 将启动服务器代码和渲染代码进行模块化拆分
 
@@ -121,17 +121,17 @@ app.use(express.static("public"));
 
 ```js
 // react-ssr\src\share\routes.js
-import Home from "../share/pages/Home";
-import List from "../share/pages/List";
+import Home from '../share/pages/Home';
+import List from '../share/pages/List';
 
 export default [
     {
-        path: "/",
+        path: '/',
         component: Home,
         exact: true,
     },
     {
-        path: "/list",
+        path: '/list',
         ...List,
     },
 ];
@@ -143,20 +143,20 @@ export default [
 
 ```js
 // react-ssr\src\server\index.js
-app.get("*", (req, res) => {});
+app.get('*', (req, res) => {});
 ```
 
 -   服务器端路由配置
 
 ```js
 // react-ssr\src\server\renderer.js
-import React from "react";
-import { renderToString } from "react-dom/server";
-import { StaticRouter } from "react-router-dom";
-import routes from "../share/routes";
-import { renderRoutes } from "react-router-config";
-import { Provider } from "react-redux";
-import serialize from "serialize-javascript";
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import { StaticRouter } from 'react-router-dom';
+import routes from '../share/routes';
+import { renderRoutes } from 'react-router-config';
+import { Provider } from 'react-redux';
+import serialize from 'serialize-javascript';
 
 export default (req, store) => {
     const content = renderToString(
@@ -188,19 +188,19 @@ export default (req, store) => {
 
 ```js
 // react-ssr\src\client\index.js
-import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
-import { renderRoutes } from "react-router-config";
-import routes from "../share/routes";
-import { Provider } from "react-redux";
-import store from "./createStore";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
+import routes from '../share/routes';
+import { Provider } from 'react-redux';
+import store from './createStore';
 
 ReactDOM.hydrate(
     <Provider store={store}>
         <BrowserRouter>{renderRoutes(routes)}</BrowserRouter>
     </Provider>,
-    document.getElementById("root")
+    document.getElementById('root')
 );
 ```
 
@@ -220,9 +220,9 @@ ReactDOM.hydrate(
 -   配置 polyfill, 由于浏览器不能识别异步函数代码, 所以需要 polyfill 进行填充.
 
 ```js
-import { applyMiddleware, createStore } from "redux";
-import thunk from "redux-thunk";
-import reducer from "../share/store/reducers";
+import { applyMiddleware, createStore } from 'redux';
+import thunk from 'redux-thunk';
+import reducer from '../share/store/reducers';
 
 const store = createStore(
     reducer,
@@ -239,9 +239,9 @@ export default store;
 
 ```js
 // react-ssr\src\server\createStore.js
-import { createStore, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
-import reducer from "../share/store/reducers";
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import reducer from '../share/store/reducers';
 
 export default () => createStore(reducer, {}, applyMiddleware(thunk));
 ```
@@ -249,7 +249,7 @@ export default () => createStore(reducer, {}, applyMiddleware(thunk));
 -   配置 Store
 
 ```js
-app.get("*", (req, res) => {
+app.get('*', (req, res) => {
     const store = createStore();
     // 1. 请求地址 req.path
     // 2. 获取到路由配置信息 routes
@@ -312,7 +312,7 @@ function loadData(store) {
     服务器端在接收到请求以后，先根据请求路径分析出要渲染的路由信息，再从路由信息中得到 loadData 方法
 
 ```js
-app.get("*", (req, res) => {
+app.get('*', (req, res) => {
     const store = createStore();
     // 1. 请求地址 req.path
     // 2. 获取到路由配置信息 routes
@@ -334,7 +334,7 @@ app.get("*", (req, res) => {
     解决思路: 将服务器端获取到的数据回填给客户端, 让客户端拥有初始数据
     服务器响应 Store 初始状态:
 
-![image.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1984bddba1da44d7856d68035ea90b3d~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image8.png)
 客户端设置 Store 初始状态:
 
 ```js
@@ -350,4 +350,4 @@ const store = createStore(
 
 -   转义状态中的恶意代码
 
-![image.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fe6767cdd677486bb0253c8b7d80d769~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image9.png)

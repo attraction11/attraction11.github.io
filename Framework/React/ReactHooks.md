@@ -1,3 +1,5 @@
+# 响应式系统
+
 ## ReactHooks
 
 `React Hooks`就是**用函数的形式代替原来的继承类的形式**，并且**使用预函数的形式管理`state`**
@@ -6,11 +8,11 @@
 
 Hooks 只是多了一种写组件的方法，使编写一个组件更简单更方便，同时可以自定义 Hook 把公共的逻辑提取出来，让逻辑在多个组件之间共享
 
-**Hook使用的注意事项：**
+**Hook 使用的注意事项：**
 
-- Hook不能在类组件中使用
-- 只能在函数最外层调用Hook，不能在循环或者条件判断或者子函数中调用
-- 只能在React的函数组件中调用Hook，不能在其他的JavaScript函数中调用
+-   Hook 不能在类组件中使用
+-   只能在函数最外层调用 Hook，不能在循环或者条件判断或者子函数中调用
+-   只能在 React 的函数组件中调用 Hook，不能在其他的 JavaScript 函数中调用
 
 ## React Hooks 编写形式的对比
 
@@ -19,27 +21,27 @@ Hooks 只是多了一种写组件的方法，使编写一个组件更简单更�
 ### React 类组件写法
 
 ```jsx
-import React, { Component } from "react";
+import React, { Component } from 'react';
 class Example extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      count: 0,
-    };
-  }
-  render() {
-    return (
-      <div>
-        <p>你点击的次数{this.state.count}</p>
-        <button onClick={this.addCount.bind(this)}>请点击</button>
-      </div>
-    );
-  }
-  addCount() {
-    this.setState({
-      count: this.state.count + 1,
-    });
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            count: 0,
+        };
+    }
+    render() {
+        return (
+            <div>
+                <p>你点击的次数{this.state.count}</p>
+                <button onClick={this.addCount.bind(this)}>请点击</button>
+            </div>
+        );
+    }
+    addCount() {
+        this.setState({
+            count: this.state.count + 1,
+        });
+    }
 }
 export default Example;
 ```
@@ -47,39 +49,39 @@ export default Example;
 ### React Hooks 函数组件写法
 
 ```jsx
-import React, { useState } from "react";
+import React, { useState } from 'react';
 function Example() {
-  const [count, setCount] = useState(0);
-  return (
-    <div>
-      <p>你点击的次数{count}</p>
-      <button
-        onClick={() => {
-          setCount(count + 1);
-        }}
-      >
-        请点击
-      </button>
-    </div>
-  );
+    const [count, setCount] = useState(0);
+    return (
+        <div>
+            <p>你点击的次数{count}</p>
+            <button
+                onClick={() => {
+                    setCount(count + 1);
+                }}
+            >
+                请点击
+            </button>
+        </div>
+    );
 }
 export default Example;
 ```
 
-## `useState`  
+## `useState`
 
-是 React 自带的一个 Hook 函数，它的作用是用来声明状态State变量
+是 React 自带的一个 Hook 函数，它的作用是用来声明状态 State 变量
 
 ```jsx
-import React, { useState } from "react";
+import React, { useState } from 'react';
 function Counter() {
-  const [count, setCount] = useState(0)
-  return (
-    <div>
-    	<p>{count}</p>
-      <button onClick={() => setCount(count + 1)}></button>
-    </div>
-  )
+    const [count, setCount] = useState(0);
+    return (
+        <div>
+            <p>{count}</p>
+            <button onClick={() => setCount(count + 1)}></button>
+        </div>
+    );
 }
 export default Counter;
 ```
@@ -88,53 +90,51 @@ export default Counter;
 
 ```jsx
 // 第一种直接传入更新的值
-setState(value)
+setState(value);
 // 第二种传入一个回调函数，进行复制的更新逻辑操作
-setState(callback)
+setState(callback);
 ```
 
- **注意**：如果更新的数据与上一次一样，React将跳过子组件的渲染和 Effect 的执行
+**注意**：如果更新的数据与上一次一样，React 将跳过子组件的渲染和 Effect 的执行
 
 ## `useContext`
 
-使用 `useContext` 可以**实现跨级组件之间的数据通信**。接收一个Context对象并且返回该Context的当前值
+使用 `useContext` 可以**实现跨级组件之间的数据通信**。接收一个 Context 对象并且返回该 Context 的当前值
 
 **以计数器为例子：**
 
-在父级组件导入 `createContext` 并调用函数来创建Context上下文，我们可以得到一个新组件
+在父级组件导入 `createContext` 并调用函数来创建 Context 上下文，我们可以得到一个新组件
 
-- `const CountContext= CountContext()`
+-   `const CountContext= CountContext()`
 
 使用这个新组件，组件内部包裹的就是自己的子组件
 
-- `<CountContext.Provider value={count}> <Counter /> </CountContext>`
+-   `<CountContext.Provider value={count}> <Counter /> </CountContext>`
 
 同时还要将这个新组件导出
 
-- `export {CountContext}`
+-   `export {CountContext}`
 
 ```jsx
 // 1. 在父组件 导入createContext函数
-import React, { useState, createContext } from "react";
-import Counter from "./component/Counter";
+import React, { useState, createContext } from 'react';
+import Counter from './component/Counter';
 
 // 2. 调用createContext函数得到一个新组件
 const CountContext = createContext();
 
 function Example() {
-  const [count, setCount] = useState(0);
-  return (
-    <div>
-      <p>你点击的次数{count}</p>
-      <button onClick={() => setCount(count + 1)}>
-        请点击
-      </button>
-      {/3. 使用这个 CountContext.Provider，组件内部包裹的就是子组件/}
-      <CountContext.Provider value={count}>
-        <Counter />
-      </CountContext.Provider>
-    </div>
-  );
+    const [count, setCount] = useState(0);
+    return (
+        <div>
+            <p>你点击的次数{count}</p>
+            <button onClick={() => setCount(count + 1)}>请点击</button>
+            {/3. 使用这个 CountContext.Provider，组件内部包裹的就是子组件/}
+            <CountContext.Provider value={count}>
+                <Counter />
+            </CountContext.Provider>
+        </div>
+    );
 }
 export { Example, CountContext };
 ```
@@ -144,13 +144,13 @@ export { Example, CountContext };
 在子组件中，我们使用 `useContext` 接收上下文变量，并且需要导入到父组件提供的新组件
 
 ```jsx
-import React, { useContext } from "react";
-import { CountContext } from "./Example";
+import React, { useContext } from 'react';
+import { CountContext } from './Example';
 
 function Counter() {
-  // 在组件使用 useContext(CountConext) 来接收父组件传递的值
-  const count = useContext(CountContext);
-  return <h2>{count}</h2>;
+    // 在组件使用 useContext(CountConext) 来接收父组件传递的值
+    const count = useContext(CountContext);
+    return <h2>{count}</h2>;
 }
 export default Counter;
 ```
@@ -163,8 +163,8 @@ export default Counter;
 
 **执行时机：**
 
-- React会在首次页面渲染后调用副作用函数
-- 当数据状态发送改变后页面重新渲染也会调用副作用函数
+-   React 会在首次页面渲染后调用副作用函数
+-   当数据状态发送改变后页面重新渲染也会调用副作用函数
 
 ```jsx
 import React, { useState, useEffect } from "react"; =
@@ -189,8 +189,8 @@ export default Example;
 
 总结：
 
-- React 首次渲染和之后的每次渲染都会调用一遍 `useEffect` 函数
-- `useEffect` 函数执行的时刻是**页面渲染后再去执行的**，也就是说这些函数时异步执行的，执行不会阻碍浏览器更新视图。而`componentDidMonut`和`componentDidUpdate`中的代码都是同步执行的。个人认为这个有好处也有坏处吧，比如我们要根据页面的大小，然后绘制当前弹出窗口的大小，如果时异步的就不好操作了。
+-   React 首次渲染和之后的每次渲染都会调用一遍 `useEffect` 函数
+-   `useEffect` 函数执行的时刻是**页面渲染后再去执行的**，也就是说这些函数时异步执行的，执行不会阻碍浏览器更新视图。而`componentDidMonut`和`componentDidUpdate`中的代码都是同步执行的。个人认为这个有好处也有坏处吧，比如我们要根据页面的大小，然后绘制当前弹出窗口的大小，如果时异步的就不好操作了。
 
 ### 只执行一次 `useEffect`
 
@@ -205,80 +205,78 @@ export default Example;
 例子： 这里使用 React-Router 路由为例子
 
 ```jsx
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 function Index() {
-  useEffect(() => {
-    console.log("欢迎来到index页面");
-    return () => {
-      console.log("离开 index 页面");
-    };
-  }, []);
+    useEffect(() => {
+        console.log('欢迎来到index页面');
+        return () => {
+            console.log('离开 index 页面');
+        };
+    }, []);
 
-  return <h2>yyblog/vuepress.top</h2>;
+    return <h2>yyblog/vuepress.top</h2>;
 }
 function List() {
-  useEffect(() => {
-    console.log("欢迎来到list页面");
-    return () => {
-      console.log("离开 list 页面");
-    };
-  }, [count]);
+    useEffect(() => {
+        console.log('欢迎来到list页面');
+        return () => {
+            console.log('离开 list 页面');
+        };
+    }, [count]);
 
-  return <h2>List-Page</h2>;
+    return <h2>List-Page</h2>;
 }
 // 如果这里不在 useEffect方法里加 第二个参数 [] 空数组的时候。就会出现当我们点击 Example 组件的按钮时也会 执行useEffect 里的 return 的函数实现解绑。
 // 如果我们想每次 count 发生变化， 我们都进行解绑 能执行 useEffect 里的 return 的函数。只需要在第二个参数的数组加入count 变量就行了。
 function Example() {
-  const [count, setCount] = useState(0);
-  return (
-    <div>
-      <p>你点击的次数{count}</p>
-      <button onClick={() => setCount(count + 1)}>
-        请点击
-      </button>
+    const [count, setCount] = useState(0);
+    return (
+        <div>
+            <p>你点击的次数{count}</p>
+            <button onClick={() => setCount(count + 1)}>请点击</button>
 
-      <Router>
-        <Link to="/">首页</Link>
-        <Link to="/list/">列表</Link>
-        
-        <Route path="/" exact component={Index} />
-        <Route path="/list/" component={List} />
-      </Router>
-    </div>
-  );
+            <Router>
+                <Link to='/'>首页</Link>
+                <Link to='/list/'>列表</Link>
+
+                <Route path='/' exact component={Index} />
+                <Route path='/list/' component={List} />
+            </Router>
+        </div>
+    );
 }
 export default Example;
 ```
 
-## `useReducer` 
+## `useReducer`
 
-它也是React hooks 提供的钩子函数，可以增强我们的`Reducer`，实现类似 ` Redux` 的功能。
+它也是 React hooks 提供的钩子函数，可以增强我们的`Reducer`，实现类似 ` Redux` 的功能。
 
 以计数器为例子：
 
 ```jsx
-import React, { useReducer } from "react";
+import React, { useReducer } from 'react';
 
 function ReducerDemo() {
-  const [count, dispatch] = useReducer((state, action) => {
-    switch (action) {
-      case "add":
-        return state + 1;
-      case "sub":
-        return state - 1;
-      default:
-        return state;
-    }
-  }, 0);
+    const [count, dispatch] = useReducer((state, action) => {
+        switch (action) {
+            case 'add':
+                return state + 1;
+            case 'sub':
+                return state - 1;
+            default:
+                return state;
+        }
+    }, 0);
 
-  return (
-    <div>
-      <h2>现在的分数是{count}</h2>
-      <button onClick={() => dispatch("add")}>增加</button>
-      <button onClick={() => dispatch("sub")}>减少</button>
-    </div>
-  );
+    return (
+        <div>
+            <h2>现在的分数是{count}</h2>
+            <button onClick={() => dispatch('add')}>增加</button>
+            <button onClick={() => dispatch('sub')}>减少</button>
+        </div>
+    );
 }
 export default ReducerDemo;
 ```
@@ -288,43 +286,46 @@ export default ReducerDemo;
 这里还是举例子来说明，更容易明白
 
 ```jsx
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo } from 'react';
 function Example7() {
-  const [xiaohong, setXiaohong] = useState("小红待客状态");
-  const [zhiling, setZhiling] = useState("志玲待客状态");
+    const [xiaohong, setXiaohong] = useState('小红待客状态');
+    const [zhiling, setZhiling] = useState('志玲待客状态');
 
-  return (
-    <>
-      <button
-        onClick={() => {
-          setXiaohong(new Date().getTime() + "小红");
-        }}
-      >
-        小红
-      </button>
-      <button
-        onClick={() => {
-          setZhiling(new Date().getTime() + ",志玲向我们走来了");
-        }}
-      >
-        志玲
-      </button>
-      <ChildComponent xiaohong={xiaohong} zhiling={zhiling}></ChildComponent>
-    </>
-  );
+    return (
+        <>
+            <button
+                onClick={() => {
+                    setXiaohong(new Date().getTime() + '小红');
+                }}
+            >
+                小红
+            </button>
+            <button
+                onClick={() => {
+                    setZhiling(new Date().getTime() + ',志玲向我们走来了');
+                }}
+            >
+                志玲
+            </button>
+            <ChildComponent
+                xiaohong={xiaohong}
+                zhiling={zhiling}
+            ></ChildComponent>
+        </>
+    );
 }
 function ChildComponent({ xiaohong, zhiling }) {
-  function changeXiaohong(name) {
-    console.log("她来了，她来了。");
-    return name + ",小红向我们走来了";
-  }
-  const actionXiaohong = useMemo(() => changeXiaohong(xiaohong), [xiaohong]);
-  return (
-    <div>
-      <div>{actionXiaohong}</div>
-      <div>{zhiling}</div>
-    </div>
-  );
+    function changeXiaohong(name) {
+        console.log('她来了，她来了。');
+        return name + ',小红向我们走来了';
+    }
+    const actionXiaohong = useMemo(() => changeXiaohong(xiaohong), [xiaohong]);
+    return (
+        <div>
+            <div>{actionXiaohong}</div>
+            <div>{zhiling}</div>
+        </div>
+    );
 }
 export default Example7;
 ```
@@ -348,27 +349,27 @@ export default Example7;
 举例子为例：
 
 ```jsx
-import React, { useRef } from "react"; // 1. 引入 useRef
+import React, { useRef } from 'react'; // 1. 引入 useRef
 
 function Exapmple8() {
-  // 2. 调用 useRef()
-  const inputRef = useRef();
-  const buttonRef = useRef();
+    // 2. 调用 useRef()
+    const inputRef = useRef();
+    const buttonRef = useRef();
 
-  const onButtonClick = () => {
-    console.log(inputRef);
-    console.log(buttonRef);
-    inputRef.current.value = buttonRef.current.textContent;
-  };
-  return (
-    <div>
-      {/绑定到 DOM节点上 /}
-      <input ref={inputRef} type="text" />
-      <button ref={buttonRef} onClick={onButtonClick}>
-        在input上展示文字
-      </button>
-    </div>
-  );
+    const onButtonClick = () => {
+        console.log(inputRef);
+        console.log(buttonRef);
+        inputRef.current.value = buttonRef.current.textContent;
+    };
+    return (
+        <div>
+            {/绑定到 DOM节点上 /}
+            <input ref={inputRef} type='text' />
+            <button ref={buttonRef} onClick={onButtonClick}>
+                在input上展示文字
+            </button>
+        </div>
+    );
 }
 export default Exapmple8;
 ```
@@ -378,31 +379,31 @@ export default Exapmple8;
 > 封装成一个自定义 Hooks 函数，记住一定要用 use 开头，这样才能区分出什么是组件，什么是自定义函数。
 
 ```jsx
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect } from 'react';
 
 function useWinSize() {
-  const [size, setSize] = useState({
-    width: document.documentElement.clientWidth,
-    height: document.documentElement.clientHeight,
-  });
-
-  const onResize = useCallback(() => {
-    setSize({
-      width: document.documentElement.clientWidth,
-      height: document.documentElement.clientHeight,
+    const [size, setSize] = useState({
+        width: document.documentElement.clientWidth,
+        height: document.documentElement.clientHeight,
     });
-    console.log("addEventListener");
-  }, []);
 
-  useEffect(() => {
-    window.addEventListener("resize", onResize);
-    console.log("1");
-    return () => {
-      window.removeEventListener("resize", onResize);
-    };
-  }, []);
+    const onResize = useCallback(() => {
+        setSize({
+            width: document.documentElement.clientWidth,
+            height: document.documentElement.clientHeight,
+        });
+        console.log('addEventListener');
+    }, []);
 
-  return size;
+    useEffect(() => {
+        window.addEventListener('resize', onResize);
+        console.log('1');
+        return () => {
+            window.removeEventListener('resize', onResize);
+        };
+    }, []);
+
+    return size;
 }
 // 只有在 组件被卸载 resize 事件才会被移除
 ```

@@ -1,14 +1,18 @@
+---
+outline: deep
+---
+
 # Nuxt 基础
 
 ## 一、NuxtJS 基础
 
-1、[官网学习](https://www.nuxtjs.cn/guide/installation)
+#### 1、[官网学习](https://www.nuxtjs.cn/guide/installation)
 
 -   一个基于 Vue.js 生态的第三方开源服务端渲染应用框架
 -   它可以帮我们轻松的使用 Vue.js 技术栈构建同构应用
     [备注](https://zhuanlan.zhihu.com/p/407408742)
 
-2、Nuxt.js 的异步数据--asyncData 方法
+#### 2、Nuxt.js 的异步数据--asyncData 方法
 
 -   基本用法
     -   它会将`asyncData`返回的数据融合组件`data`方法返回数据一并给组件
@@ -17,7 +21,7 @@
     -   只能在页面组件中使用
     -   没有 this,因为它是在组件初始化之前被调用的
 
-3、具体实现
+#### 3、具体实现
 
 ```js
   // 当你想要动态页面内容有利于 SEO 或者是提升首屏渲染速度的时候，就在 asyncData 中发请求拿数据
@@ -39,7 +43,8 @@
   }
 ```
 
-4、Nuxt.js 的异步数据--上下文对象
+#### 4、Nuxt.js 的异步数据--上下文对象
+
 [官方参考](https://www.nuxtjs.cn/api/context)
 
 ```js
@@ -58,14 +63,14 @@
 
 ## 二、NuxtJS 实战
 
-1、用户的登录状态保存
+#### 1、用户的登录状态保存
 
 -   `vuex`的`state`中定义`user`保存当前登录用户的登录状态。为了防止刷新页面数据丢失，通过`Cookie`把数据持久化(由于`cookie`客户端和服务端都可以访问)。
 -   客户端通过`Cookie.set('user', data.user)`配置`Cookie`
 
 ```js
 // 仅在客户端加载 js-cookie 包
-const Cookie = process.client ? require("js-cookie") : undefined;
+const Cookie = process.client ? require('js-cookie') : undefined;
 ```
 
 -   服务端通过`cookieparser`解析请求头中的`cookie`字符串,并转为`JavaScript`对象。方法定义在`vuex`的`action`方法中。
@@ -90,12 +95,12 @@ export const actions = {
         }
 
         // 提交 mutation 修改 state 状态
-        commit("setUser", user);
+        commit('setUser', user);
     },
 };
 ```
 
-2、`vuex`中`state`的定义
+#### 2、`vuex`中`state`的定义
 
 -   在服务端渲染期间运行都是同一个`store`实例，为了防止数据冲突，务必要把 state 定义成一个函数，返回数据对象。
 
@@ -108,7 +113,7 @@ export const state = () => {
 };
 ```
 
-3、`nuxtJS`中的中间件
+#### 3、`nuxtJS`中的中间件
 
 -   项目根目录新建`middleware`文件夹，其中定义各种中间件，应用在组件中。
 
@@ -117,7 +122,7 @@ export const state = () => {
 export default function ({ store, redirect }) {
     // If the user is not authenticated
     if (!store.state.user) {
-        return redirect("/login");
+        return redirect('/login');
     }
 }
 ```
@@ -125,27 +130,27 @@ export default function ({ store, redirect }) {
 ```js
 /* 在pages页面组件中使用中间件，限制登陆后才可访问 */
 export default {
-    middleware: "authenticated",
-    name: "UserProfile",
+    middleware: 'authenticated',
+    name: 'UserProfile',
 };
 ```
 
-3、`nuxtJS`中的插件
+#### 4、`nuxtJS`中的插件
 
 -   项目根目录新建`plugins`文件夹，其中定义各种插件(可以作用于全局)，在运行 Vue.js 应用程序之前执行。通过插件机制获取到上下文对象（`query`、`params`、`req`、`res`、`app`、`store`...）。插件导出函数必须作为 `default`成员
 -   注册各种插件。在`nuxt.config.js`文件中配置。
 
 ```js
 module.exports = {
-    plugins: ["~/plugins/request.js", "~/plugins/dayjs.js"],
+    plugins: ['~/plugins/request.js', '~/plugins/dayjs.js'],
 };
 ```
 
-4、组件的`watchQuery`属性
+#### 5、组件的`watchQuery`属性
 
 -   观察查询字符串并在更改时执行组件方法（`asyncData`、`fetch`、`validate`、`layout` 等）。示例`watchQuery: ['page', 'tag', 'tab']`
 
-5、设置页面 meto 优化 SEO
+#### 6、设置页面 meto 优化 SEO
 
 -   Nuxt.js 允许你在  `nuxt.config.js`  里定义应用所需的所有默认 meta 标签，在  `head`  字段里配置就可以了。
 
@@ -181,14 +186,15 @@ head: {
     }
 ```
 
-6、项目打包部署
-|命令 | 描述  
-| ---------- | --------------------------- |
-| nuxt | 启动一个热加载的 Web 服务器（开发模式） |
-| nuxt build | 利用 webpack 编译应用，压缩 JS 和 CSS 资源（发布用）。 |
-| nuxt start | 以生产模式启动一个 Web 服务器 (需要先执行`nuxt build`)。
+#### 7、项目打包部署
 
-7、简单的发布部署（传统方式）
+| 命令       | 描述                                                     |
+| ---------- | -------------------------------------------------------- |
+| nuxt       | 启动一个热加载的 Web 服务器（开发模式）                  |
+| nuxt build | 利用 webpack 编译应用，压缩 JS 和 CSS 资源（发布用）。   |
+| nuxt start | 以生产模式启动一个 Web 服务器 (需要先执行`nuxt build`)。 |
+
+#### 8、简单的发布部署（传统方式）
 
 -   配置`Host`+`Port`。在`nuxt.config.js`中配置如：`server: { host: '0.0.0.0', port: 3000 },`
 -   压缩发布包。选中项目中的某些文件，这些文件都是必要的文件，如`static`是项目的静态资源，并合并压缩为`realworld-nuxtjs.zip`。

@@ -16,7 +16,7 @@
 -   `bundler`：需要配合打包工具使用，`vue.runtime.esm-bundler.js`是`vue`的最小版本,只打包使用到的代码
 
 3、项目目录结构变化
-![image.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3c32e26d11f84419bf098d3f27ae6c52~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image3.png)
 
 4、`Composition API`设计动机
 
@@ -80,14 +80,14 @@ const app = createApp({
     },
 });
 
-app.mount("#app");
+app.mount('#app');
 ```
 
 -   `return`的对象可以使用在模板、`methods`、生命周期钩子函数中
 -   `setup`的执行时机是`props`解析完毕，组件实例被创建之前执行的,因此其中通过`this`获取到组件的实例
 
 2、生命周期钩子函数
-![image.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a7590141a0b8418c9494e454e84128d4~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image4.png)
 
 3、`reactive`、`toRefs`、`ref`声明响应式对象
 
@@ -213,14 +213,14 @@ export function ref(raw) {
     const r = {
         __v_isRef: true,
         get value() {
-            track(r, "value");
+            track(r, 'value');
             return value;
         },
         set value(newValue) {
             if (newValue !== value) {
                 raw = newValue;
                 value = convert(raw);
-                trigger(r, "value");
+                trigger(r, 'value');
             }
         },
     };

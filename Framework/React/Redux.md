@@ -1,6 +1,6 @@
 ## Redux
 
-Redux是一专门用于做状态管理的JS库，集中式管理多个组件共享的状态
+Redux 是一专门用于做状态管理的 JS 库，集中式管理多个组件共享的状态
 
 ## 安装
 
@@ -15,7 +15,7 @@ npm install --save-dev redux-devtools
 
 ## Redux 工作流程
 
-![Redux 工作流程](https://img2018.cnblogs.com/blog/1087883/201812/1087883-20181205145741397-1912744867.png)
+![Redux 工作流程](./images/image22.png)
 
 在 React Components 中派发`dispatch` 出 **Action**，**Store** 会自动调用 **Reducers** 去修改 `State` 状态后将新的 `State` 交给 **Store**。 `State` 发生变化后重新渲染。
 
@@ -33,11 +33,11 @@ npm install --save-dev redux-devtools
 
 Store 有以下职责：
 
-- 维持应用的 state；
-- 提供 [`getState()`](https://www.redux.org.cn/docs/api/Store.html#getState) 方法获取 state；
-- 提供 [`dispatch(action)`](https://www.redux.org.cn/docs/api/Store.html#dispatch) 方法更新 state；
-- 通过 [`subscribe(listener)`](https://www.redux.org.cn/docs/api/Store.html#subscribe) 注册监听器;
-- 通过 [`replaceReducer(nextReducer)`](https://www.redux.org.cn/docs/api/Store.html#replaceReducer) 返回的函数注销监听器。
+-   维持应用的 state；
+-   提供 [`getState()`](https://www.redux.org.cn/docs/api/Store.html#getState) 方法获取 state；
+-   提供 [`dispatch(action)`](https://www.redux.org.cn/docs/api/Store.html#dispatch) 方法更新 state；
+-   通过 [`subscribe(listener)`](https://www.redux.org.cn/docs/api/Store.html#subscribe) 注册监听器;
+-   通过 [`replaceReducer(nextReducer)`](https://www.redux.org.cn/docs/api/Store.html#replaceReducer) 返回的函数注销监听器。
 
 ### Reducers
 
@@ -50,11 +50,11 @@ Store 有以下职责：
 ### 创建 Store
 
 ```jsx
-import { createStore } from 'redux'
-import Reducer from './Reducer'
+import { createStore } from 'redux';
+import Reducer from './Reducer';
 
-const store = createStore(Reducer)
-export default store
+const store = createStore(Reducer);
+export default store;
 ```
 
 ### 创建纯函数 Reducer
@@ -69,21 +69,21 @@ export default const Reducer = (previousState = defaultState, action) => {
 }
 ```
 
-### 组件中获取Store的状态数据
+### 组件中获取 Store 的状态数据
 
 在组件中通过 `store.getState()` 获取数据
 
-### 组件中修改Store的状态数据
+### 组件中修改 Store 的状态数据
 
 在组件调用 `store.dispatch({type: '', data: {}})` 方法去执行 `Reducer`
 
-- `dispatch` 派发
+-   `dispatch` 派发
 
 ### 状态数据发生变化后，更新页面
 
 通过 `store.subscribe(callback)` 方法，在数据发送变化后，执行回调
 
-- `subscribe` 订阅
+-   `subscribe` 订阅
 
 ```jsx
 componentDidMount(){
@@ -91,21 +91,22 @@ componentDidMount(){
   store.subscribe(()=>{
     this.setState({})
   })
-} 
+}
 ```
 
 ## Redux DevTools 调试插件
 
 1. 在谷歌浏览器下载 Redux DevTools 插件
 2. 配置 Redux DevTools 插件
-   - [Github 网址](https://github.com/zalmoxisus/redux-devtools-extension)
+    - [Github 网址](https://github.com/zalmoxisus/redux-devtools-extension)
 
 ```js
 // 只需要要 创建 store 仓库添加下面一条代码，就是最简单的配置
 // 3. 创建 store 仓库
 const store = createStore(
-  reducer,
-  ++window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    reducer,
+    ++window.__REDUX_DEVTOOLS_EXTENSION__ &&
+        window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 ```
@@ -116,16 +117,16 @@ const store = createStore(
 
 > 写`Redux Action`的时候，我们写了很多 Action 的派发，产生了很多`Action Types`，如果需要`Action`的地方我们就自己命名一个`Type`,会出现两个基本问题：
 >
-> - 这些 Types 如果不统一管理，不利于大型项目的服用，设置会长生冗余代码。
-> - 因为`Action`里的`Type`，一定要和`Reducer`里的`type`一一对应在，所以这部分代码或字母写错后，浏览器里并没有明确的报错，这给调试带来了极大的困难。
+> -   这些 Types 如果不统一管理，不利于大型项目的服用，设置会长生冗余代码。
+> -   因为`Action`里的`Type`，一定要和`Reducer`里的`type`一一对应在，所以这部分代码或字母写错后，浏览器里并没有明确的报错，这给调试带来了极大的困难。
 
 建议把 Action Type 拆分出来， 把 type 变量名 放在一个文件统一管理
 
 ```js
 // 例子：
-export const TYPE_1 = "type1";
-export const TYPE_2 = "type2";
-export const TYPE_3 = "type3";
+export const TYPE_1 = 'type1';
+export const TYPE_2 = 'type2';
+export const TYPE_3 = 'type3';
 ```
 
 #### 把 Action 也单独写入一个文件
@@ -162,26 +163,26 @@ deleteItem(index) {
 
 ```js
 // Action 文件  来管理 action 对象
-import { CHANGE_INPUT, ADD_ITEM, DELETE_ITEM } from "./actionTypes";
+import { CHANGE_INPUT, ADD_ITEM, DELETE_ITEM } from './actionTypes';
 
 export const changeInputAction = (value) => {
-  return {
-    type: CHANGE_INPUT,
-    value,
-  };
+    return {
+        type: CHANGE_INPUT,
+        value,
+    };
 };
 
 export const addItemAction = () => {
-  return {
-    type: ADD_ITEM,
-  };
+    return {
+        type: ADD_ITEM,
+    };
 };
 
 export const deleteItemAction = (index) => {
-  return {
-    type: DELETE_ITEM,
-    index,
-  };
+    return {
+        type: DELETE_ITEM,
+        index,
+    };
 };
 ```
 
@@ -212,9 +213,9 @@ store拿到了Reducer的数据，自己对自己进行了更新。
 
 **永远不要**在 reducer 里做这些操作：
 
-- 修改传入参数；
-- 执行有副作用的操作，如 API 请求和路由跳转；
-- 调用非纯函数，如 `Date.now()` 或 `Math.random()`。
+-   修改传入参数；
+-   执行有副作用的操作，如 API 请求和路由跳转；
+-   调用非纯函数，如 `Date.now()` 或 `Math.random()`。
 
 ## Redux 中间件
 
@@ -234,12 +235,12 @@ store拿到了Reducer的数据，自己对自己进行了更新。
 
 1. 如果你没有 **Redux DevTools 调试插件** 官方提供的配置步骤就是正确的
 
-- 要启用 Redux Thunk，请使用 `applyMiddleware()`
+-   要启用 Redux Thunk，请使用 `applyMiddleware()`
 
 ```js
-import { createStore, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
-import reducer from "./reducers/index";
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import reducer from './reducers/index';
 
 // Note: this API requires redux@>=3.1.0
 const store = createStore(reducer, applyMiddleware(thunk));
@@ -249,44 +250,44 @@ const store = createStore(reducer, applyMiddleware(thunk));
 
 `const store = createStore(rootReducer, applyMiddleware(thunk));`
 
-- createStore() 函数的第二个参数就是 Redux DevTools 的 配置
-  - `window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()`
-- 这个时候 官方的配置就没有用了
+-   createStore() 函数的第二个参数就是 Redux DevTools 的 配置
+    -   `window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()`
+-   这个时候 官方的配置就没有用了
 
 **方法：**
 
 1. 如果想两个同时使用，需要使用**增强函数**。使用增加函数前需要先引入`compose`
 
-   1. `import { createStore , applyMiddleware ,compose } from 'redux'`
+    1. `import { createStore , applyMiddleware ,compose } from 'redux'`
 
 2. 然后利用`compose`创造一个增强函数，就相当于建立了一个链式函数，代码如下:
 
-   1. ```js
-      const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-        ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
-        : compose;
-      ```
+    1. ```js
+       const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+           ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
+           : compose;
+       ```
 
 3. 有了增强函数后，就可以把`thunk`加入进来了，这样两个函数就都会执行了。
 
-   1. `const enhancer = composeEnhancers(applyMiddleware(thunk))`
+    1. `const enhancer = composeEnhancers(applyMiddleware(thunk))`
 
 4. 这时候直接在`createStore`函数中的第二个参数，使用这个`enhancer`变量就可以了，相当于两个函数都执行了。
 
-   1. `const store = createStore( reducer, enhancer) // 创建数据存储仓库`
+    1. `const store = createStore( reducer, enhancer) // 创建数据存储仓库`
 
 5. **也许对增加函数还不能完全理解，其实你完全把这个想成固定代码，直接使用就好，**
 
 全部代码：
 
 ```js
-import { createStore, applyMiddleware, compose } from "redux"; //  引入createStore方法
-import reducer from "./reducer";
-import thunk from "redux-thunk";
+import { createStore, applyMiddleware, compose } from 'redux'; //  引入createStore方法
+import reducer from './reducer';
+import thunk from 'redux-thunk';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-  ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
-  : compose;
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
+    : compose;
 
 const enhancer = composeEnhancers(applyMiddleware(thunk));
 
@@ -312,28 +313,28 @@ export default store; //暴露出去
 // 在 actionCreators 文件中
 // 使用 Redux-thunk 后 现在的 action可以是个函数
 export const getSongData = () => {
-  return (dispatch) => {
-    axios.get("http://120.25.163.140:3000/playlist/hot").then((res) => {
-      const data = res.data.tags;
-      console.log(data);
-      // 最后数据 data 是通过另外一个 action 对象 给 dispatch 回 store
-      dispatch(songData(data));
-    });
-  };
+    return (dispatch) => {
+        axios.get('http://120.25.163.140:3000/playlist/hot').then((res) => {
+            const data = res.data.tags;
+            console.log(data);
+            // 最后数据 data 是通过另外一个 action 对象 给 dispatch 回 store
+            dispatch(songData(data));
+        });
+    };
 };
 
 export const songData = (song) => {
-  return {
-    type: SONG_DATA,
-    song,
-  };
+    return {
+        type: SONG_DATA,
+        song,
+    };
 };
 
 // 在 reducer.js 文件中
 if (action.type === SONG_DATA) {
-  let newState = JSON.parse(JSON.stringify(state)); // 对 state 深度拷贝
-  newState[action.type] = action.song;
-  return newState;
+    let newState = JSON.parse(JSON.stringify(state)); // 对 state 深度拷贝
+    newState[action.type] = action.song;
+    return newState;
 }
 ```
 
@@ -361,15 +362,15 @@ componentDidMount() {
 1. 如果没有配置了 **Redux DevTools 调试插件**
 
 ```js
-import { createStore, applyMiddleware } from "redux";
-import createSagaMiddleware from "redux-saga"; // +
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga'; // +
 // redux-saga希望你把业务逻辑单独写一个文件
 // 在 sagas文件中 最先基本的配置 (此处必须使用Generator函数)
-import helloSaga from "./sagas"; // +
+import helloSaga from './sagas'; // +
 const sagaMiddleware = createSagaMiddleware(); // +
 const store = createStore(
-  reducer,
-  applyMiddleware(sagaMiddleware) // +
+    reducer,
+    applyMiddleware(sagaMiddleware) // +
 );
 sagaMiddleware.run(helloSaga); // +
 ```
@@ -378,15 +379,15 @@ sagaMiddleware.run(helloSaga); // +
 
 ```js
 // 先再 store的index文件中引入 redux-saga
-import createSagaMiddleware from "redux-saga"; // +
-import { createStore, applyMiddleware, compose } from "redux";
-import reducer from "./reducer";
-import todoSagas from "./sagas"; // +
+import createSagaMiddleware from 'redux-saga'; // +
+import { createStore, applyMiddleware, compose } from 'redux';
+import reducer from './reducer';
+import todoSagas from './sagas'; // +
 
 const sagaMiddleware = createSagaMiddleware(); // +
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-  ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
-  : compose;
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
+    : compose;
 
 const enhancer = composeEnhancers(applyMiddleware(sagaMiddleware)); // +
 const store = createStore(reducer, enhancer);

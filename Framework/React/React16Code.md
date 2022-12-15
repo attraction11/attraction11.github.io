@@ -35,7 +35,7 @@
     ```javascript
     // 文件位置: react-test/config/env.js
     const stringified = {
-        "process.env": Object.keys(raw).reduce((env, key) => {
+        'process.env': Object.keys(raw).reduce((env, key) => {
             env[key] = JSON.stringify(raw[key]);
             return env;
         }, {}),
@@ -59,7 +59,7 @@
 
     ```javascript
     // 文件位置: react-test/config/webpack.config.js [babel-loader]
-    plugins: [require.resolve("@babel/plugin-transform-flow-strip-types")];
+    plugins: [require.resolve('@babel/plugin-transform-flow-strip-types')];
     ```
 
 7. 导出 HostConfig
@@ -98,8 +98,8 @@
     export default function invariant(condition, format, a, b, c, d, e, f) {
         if (condition) return;
         throw new Error(
-            "Internal React error: invariant() is meant to be replaced at compile " +
-                "time. There is no runtime version."
+            'Internal React error: invariant() is meant to be replaced at compile ' +
+                'time. There is no runtime version.'
         );
     }
     ```
@@ -129,8 +129,8 @@
 12. 修改 react react-dom 引入方式
 
     ```javascript
-    import * as React from "react";
-    import * as ReactDOM from "react-dom";
+    import * as React from 'react';
+    import * as ReactDOM from 'react-dom';
     ```
 
 13. 解决 vsCode 中 flow 报错
@@ -143,7 +143,7 @@
 
     如果你的 vscode 编辑器安装了 prettier 插件并且在保存 react 源码文件时右下角出现如下错误，按照如下步骤解决
 
-![1.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a69f435b207247a0ab38d2b957c92d0e~tplv-k3u1fbpfcp-watermark.image?)
+![1.png](./images/image12.png)
 
     1. 全局安装 prettier
 
@@ -153,8 +153,7 @@
 
        Settings > Extensions > Prettier > Prettier path
 
-
-![2.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f7bef42c6931498284098cdcddc7d9a6~tplv-k3u1fbpfcp-watermark.image?)
+![1.png](./images/image13.png)
 
 15. \_\_DEV\_\_ 报错
 
@@ -216,7 +215,7 @@ export function createElement(type, config, children) {
         // 如果在 config 对象中拥有合法的 key 属性
         if (hasValidKey(config)) {
             // 将 config.key 属性中的值提取到 key 变量中
-            key = "" + config.key;
+            key = '' + config.key;
         }
 
         self = config.__self === undefined ? null : config.__self;
@@ -310,8 +309,8 @@ export function createElement(type, config, children) {
             // 如果开发者显式定义了 displayName 属性 就显示开发者定义的
             // 否者就显示组件名称 如果组件也没有名称 就显示 'Unknown'
             const displayName =
-                typeof type === "function"
-                    ? type.displayName || type.name || "Unknown"
+                typeof type === 'function'
+                    ? type.displayName || type.name || 'Unknown'
                     : type;
             // 如果 key 属性存在
             if (key) {
@@ -429,7 +428,7 @@ function hasValidKey(config) {
  */
 export function isValidElement(object) {
     return (
-        typeof object === "object" &&
+        typeof object === 'object' &&
         object !== null &&
         object.$$typeof === REACT_ELEMENT_TYPE
     );
@@ -457,10 +456,10 @@ function defineKeyPropWarningGetter(props, displayName) {
                 specialPropKeyWarningShown = true;
                 // 指定报错信息和组件名称
                 console.error(
-                    "%s: `key` is not a prop. Trying to access it will result " +
-                        "in `undefined` being returned. If you need to access the same " +
-                        "value within the child component, you should pass it as a different " +
-                        "prop. (https://reactjs.org/link/special-props)",
+                    '%s: `key` is not a prop. Trying to access it will result ' +
+                        'in `undefined` being returned. If you need to access the same ' +
+                        'value within the child component, you should pass it as a different ' +
+                        'prop. (https://reactjs.org/link/special-props)',
                     displayName
                 );
             }
@@ -468,7 +467,7 @@ function defineKeyPropWarningGetter(props, displayName) {
     };
     warnAboutAccessingKey.isReactWarning = true;
     // 为 props 对象添加 key 属性
-    Object.defineProperty(props, "key", {
+    Object.defineProperty(props, 'key', {
         // 当获取 key 属性时调用 warnAboutAccessingKey 方法进行报错
         get: warnAboutAccessingKey,
         configurable: true,
@@ -496,10 +495,10 @@ function defineRefPropWarningGetter(props, displayName) {
                 specialPropRefWarningShown = true;
                 // 指定报错信息和组件名称
                 console.error(
-                    "%s: `ref` is not a prop. Trying to access it will result " +
-                        "in `undefined` being returned. If you need to access the same " +
-                        "value within the child component, you should pass it as a different " +
-                        "prop. (https://reactjs.org/link/special-props)",
+                    '%s: `ref` is not a prop. Trying to access it will result ' +
+                        'in `undefined` being returned. If you need to access the same ' +
+                        'value within the child component, you should pass it as a different ' +
+                        'prop. (https://reactjs.org/link/special-props)',
                     displayName
                 );
             }
@@ -508,7 +507,7 @@ function defineRefPropWarningGetter(props, displayName) {
 
     warnAboutAccessingRef.isReactWarning = true;
     // 为 props 对象添加 key 属性
-    Object.defineProperty(props, "ref", {
+    Object.defineProperty(props, 'ref', {
         get: warnAboutAccessingRef,
         configurable: true,
     });
@@ -616,7 +615,7 @@ type Fiber = {
 };
 ```
 
-![6.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8cbf6b96511d434aaed894a424b01bae~tplv-k3u1fbpfcp-watermark.image?)
+![1.png](./images/image14.png)
 
 ### 4.2 WorkTag
 
@@ -788,9 +787,8 @@ React 使用双缓存技术完成 Fiber 树的构建与替换，实现 DOM 对�
 
 在 current Fiber 节点对象中有一个 alternate 属性指向对应的 workInProgress Fiber 节点对象，在 workInProgress Fiber 节点中有一个 alternate 属性也指向对应的 current Fiber 节点对象。
 
-![3.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3adc1ecb25c7456f8095d7715e06a9b7~tplv-k3u1fbpfcp-watermark.image?)
-
-![4.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/43de7214ac804ecca66fa73843e8dbcb~tplv-k3u1fbpfcp-watermark.image?)
+![3.png](./images/image15.png)
+![3.png](./images/image16.png)
 
 ### 4.8 区分 fiberRoot 与 rootFiber
 
@@ -806,7 +804,7 @@ rootFiber 指向 fiberRoot，在 rootFiber 对象中有一个 stateNode 属性�
 
 fiberRoot 会记录应用的更新信息，比如协调器在完成工作后，会将工作成果存储在 fiberRoot 中。
 
-![7.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f817f807a3fc422d87e11a82cab644eb~tplv-k3u1fbpfcp-watermark.image?)
+![3.png](./images/image17.png)
 
 ## 5. 初始化渲染
 
@@ -839,7 +837,7 @@ export function render(
     // 如果不符合要求就报错
     invariant(
         isValidContainer(container),
-        "Target container is not a DOM element."
+        'Target container is not a DOM element.'
     );
     return legacyRenderSubtreeIntoContainer(
         // 父组件 初始渲染没有父组件 传递 null 占位
@@ -873,7 +871,7 @@ export function isValidContainer(node: mixed): boolean {
             node.nodeType === DOCUMENT_NODE ||
             node.nodeType === DOCUMENT_FRAGMENT_NODE ||
             (node.nodeType === COMMENT_NODE &&
-                (node: any).nodeValue === " react-mount-point-unstable "))
+                (node: any).nodeValue === ' react-mount-point-unstable '))
     );
 }
 ```
@@ -932,7 +930,7 @@ function legacyRenderSubtreeIntoContainer(
          * 使其指向 render 方法第一个参数的真实 DOM 对象
          */
         // 如果 callback 参数是函数类型
-        if (typeof callback === "function") {
+        if (typeof callback === 'function') {
             // 使用 originalCallback 存储 callback 函数
             const originalCallback = callback;
             // 为 callback 参数重新赋值
@@ -955,7 +953,7 @@ function legacyRenderSubtreeIntoContainer(
     } else {
         // 非初始化渲染 即更新
         fiberRoot = root._internalRoot;
-        if (typeof callback === "function") {
+        if (typeof callback === 'function') {
             const originalCallback = callback;
             callback = function () {
                 const instance = getPublicRootInstance(fiberRoot);
@@ -971,7 +969,7 @@ function legacyRenderSubtreeIntoContainer(
 }
 ```
 
-![5.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/39c8b72da4294d84ba56eb6eba387bc7~tplv-k3u1fbpfcp-watermark.image?)
+![3.png](./images/image18.png)
 
 ##### 5.1.3.2 legacyCreateRootFromDOMContainer
 
@@ -1424,8 +1422,8 @@ function performSyncWorkOnRoot(root) {
             // 无法提交不完整的 root, 此错误可能是由于React中的错误所致. 请提出问题.
             invariant(
                 false,
-                "Cannot commit an incomplete root. This error is likely caused by a " +
-                    "bug in React. Please file an issue."
+                'Cannot commit an incomplete root. This error is likely caused by a ' +
+                    'bug in React. Please file an issue.'
             );
         } else {
             // 将构建好的新 Fiber 对象存储在 finishedWork 属性中
@@ -1896,7 +1894,7 @@ function ChildReconciler(shouldTrackSideEffects) {
         // 判断新的子 vdom 是否为占位组件 比如 <></>
         // false
         const isUnkeyedTopLevelFragment =
-            typeof newChild === "object" &&
+            typeof newChild === 'object' &&
             newChild !== null &&
             newChild.type === REACT_FRAGMENT_TYPE &&
             newChild.key === null;
@@ -1907,7 +1905,7 @@ function ChildReconciler(shouldTrackSideEffects) {
         }
 
         // 检测 newChild 是否为对象类型
-        const isObject = typeof newChild === "object" && newChild !== null;
+        const isObject = typeof newChild === 'object' && newChild !== null;
 
         // newChild 是单个对象的情况
         if (isObject) {
@@ -1931,13 +1929,13 @@ function ChildReconciler(shouldTrackSideEffects) {
         }
 
         // 处理 children 为文本和数值的情况 return "App works"
-        if (typeof newChild === "string" || typeof newChild === "number") {
+        if (typeof newChild === 'string' || typeof newChild === 'number') {
             return placeSingleChild(
                 reconcileSingleTextNode(
                     returnFiber,
                     currentFirstChild,
                     // 如果 newChild 是数值, 转换为字符串
-                    "" + newChild,
+                    '' + newChild,
                     expirationTime
                 )
             );

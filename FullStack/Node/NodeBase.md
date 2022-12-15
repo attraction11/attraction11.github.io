@@ -10,7 +10,7 @@
 
 总体架构分层如下：
 
-![image.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f3f2c273dbb749cda25ffde86a1a72bb~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image.png)
 
 1. Natives modules
 
@@ -36,21 +36,20 @@
 -   Nodejs 采用 Reactor 模式实现异步 IO、事件驱动，单线程完成多线程工作，采用异步非阻塞的 IO，来更好的使用 CPU 资源，并且实现高并发请求的处理。避免多个线程之间在进行上下文切换的时候，考虑状态保存、时间消耗、状态锁等问题。
 -   Nodejs 更适用于 IO 密集型高并发请求。
 
-![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d357b3d15140442bad2b2c80e28150ae~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image2.png)
 
 1. Nodejs 异步 IO  
    同步与异步任务示意图
 
-![image.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4763a6cc267446b3b0a16d8d1b20f36f~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image3.png)
 
 -   阻塞 IO ：重复调用 IO 操作，判断 IO 是否结束（轮询）。常见的轮询技术：read、select、poll、kqueue、event ports。
 -   期望实现无须主动判断的非阻塞 IO。Nodejs 中通过 libUv 库实现多种异步 IO 实现方式的抽象。依据平台的不同调用相应的异步 IO 处理方式（实现跨平台）。
-
-![image.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/789268bd2bec4e7e95aed6d080ee65cb~tplv-k3u1fbpfcp-watermark.image?)
+    ![image.png](./images/image4.png)
 
 -   Nodejs 异步 IO 的实现过程：IO 是应用程序的瓶颈所在、异步 IO 可以提高性能，因为无须原地等待结果的返回（提高 CPU 利用率）、IO 操作属于操作系统级别，平台都有对应的实现、Nodejs 单线程配合事件驱动架构及 libuv 库实现异步非阻塞 IO.
 
-![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8e396016aa1b4ba3ba6074da87d73d01~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image5.png)
 
 2. Nodejs 事件驱动架构
 
@@ -58,19 +57,19 @@
 -   类比事件驱动 、发布订阅、观察者：相同点是都是主体发布消息，其他实例监听之前订阅的事件，接收消息。
 
 ```js
-const EventEmitter = require("events");
+const EventEmitter = require('events');
 
 const myEvent = new EventEmitter();
 
-myEvent.on("事件1", () => {
-    console.log("事件1执行了");
+myEvent.on('事件1', () => {
+    console.log('事件1执行了');
 });
 
-myEvent.on("事件1", () => {
-    console.log("事件1-2执行了");
+myEvent.on('事件1', () => {
+    console.log('事件1-2执行了');
 });
 
-myEvent.emit("事件1");
+myEvent.emit('事件1');
 ```
 
 3. Nodejs 单线程（单线程指的是主线程（v8）, libuv 库中有 4 个线程-网络 IO/非网络 IO/非 IO）
@@ -79,7 +78,7 @@ myEvent.emit("事件1");
 -   单线程在处理 CPU 密集型问题时，所存在的阻塞现象
 
 ```js
-const http = require("http");
+const http = require('http');
 
 function sleepTime(time) {
     const sleep = Date.now() + time * 1000;
@@ -88,11 +87,11 @@ function sleepTime(time) {
 }
 sleepTime(4);
 const server = http.createServer((req, res) => {
-    res.end("server starting......");
+    res.end('server starting......');
 });
 
 server.listen(8080, () => {
-    console.log("服务启动了");
+    console.log('服务启动了');
 });
 ```
 
@@ -100,7 +99,7 @@ server.listen(8080, () => {
 
 1. IO 密集型高并发请求- Nodejs 作为中间层
 
-![image.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9b25bf5a42ee4ae482907048723ac081~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image6.png)
 
 2. 操作数据库提供 API 服务- 搭建高效轻量的 API 服务
 
@@ -198,37 +197,37 @@ setTimeout(() => {
 }, 3000);
 
 // 4. 事件监听
-process.on("beforeExit", (code) => {
+process.on('beforeExit', (code) => {
     // 可以写同步代码或异步代码
-    console.log("beforeExit" + code);
+    console.log('beforeExit' + code);
 });
-process.on("exit", (code) => {
-    console.log("exit" + code);
+process.on('exit', (code) => {
+    console.log('exit' + code);
     // 无效-因为只能写同步代码
     // setTimeout(() => {
     //   console.log('123')
     // }, 1000)
 });
-console.log("代码执行结束");
+console.log('代码执行结束');
 // process.exit() // 主动退出
 
 // 5. 标准输入、输出、错误
 console.log = function (data) {
-    process.stdout.write("---" + data + "\n");
+    process.stdout.write('---' + data + '\n');
 };
 console.log(111);
 console.log(222);
 
-const fs = require("fs");
-fs.createReadStream("data.txt").pipe(process.stdout);
+const fs = require('fs');
+fs.createReadStream('data.txt').pipe(process.stdout);
 // 标准输入经管道输出
 process.stdin.pipe(process.stdout);
 
-process.stdin.setEncoding("utf-8");
-process.stdin.on("readable", () => {
+process.stdin.setEncoding('utf-8');
+process.stdin.on('readable', () => {
     const chunk = process.stdin.read();
     if (chunk !== null) {
-        process.stdout.write("dasss" + chunk);
+        process.stdout.write('dasss' + chunk);
     }
 });
 ```

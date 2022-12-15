@@ -1,15 +1,11 @@
 # VirtualDOM 及 Diff 算法
 
----
-
-## theme: vue-pro
-
 ## 1.JSX 到底是什么？
 
 使用 React 就一定会写 JSX，JSX 到底是什么呢？它是一种 JavaScript 语法的扩展，React 使用它来描述用户界面长成什么样子。虽然它看起来非常像 HTML，但它确实是 JavaScript 。在 React 代码执行之前，Babel 会对将 JSX 编译为 React API.
 
 ```js
-<div className="container">
+<div className='container'>
     <h3>Hello React</h3>
     <p>React is great </p>
 </div>
@@ -17,12 +13,12 @@
 
 ```js
 React.createElement(
-    "div",
+    'div',
     {
-        className: "container",
+        className: 'container',
     },
-    React.createElement("h3", null, "Hello React"),
-    React.createElement("p", null, "React is great")
+    React.createElement('h3', null, 'Hello React'),
+    React.createElement('p', null, 'React is great')
 );
 ```
 
@@ -45,7 +41,7 @@ React.createElement(
 可以把 Virtual DOM 对象理解为 DOM 对象的副本，但是它不能直接显示在屏幕上。
 
 ```js
-<div className="container">
+<div className='container'>
     <h3>Hello React</h3>
     <p>React is great </p>
 </div>
@@ -91,29 +87,29 @@ React.createElement(
 在 React 第一次创建 DOM 对象后，会为每个 DOM 对象创建其对应的 Virtual DOM 对象，在 DOM 对象发生更新之前，React 会先更新所有的 Virtual DOM 对象，然后 React 会将更新后的 Virtual DOM 和 更新前的 Virtual DOM 进行比较，从而找出发生变化的部分，React 会将发生变化的部分更新到真实的 DOM 对象中，React 仅更新必要更新的部分。
 
 Virtual DOM 对象的更新和比较仅发生在内存中，不会在视图中渲染任何内容，所以这一部分的性能损耗成本是微不足道的。
-![1.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6933ee6692bf4a129dfb17464845d35a~tplv-k3u1fbpfcp-watermark.image?)
+![1.png](./images/image5.png)
 
 ```js
-<div id="container">
+<div id='container'>
     <p>Hello React</p>
 </div>
 ```
 
 ```js
-<div id="container">
+<div id='container'>
     <p>Hello Angular</p>
 </div>
 ```
 
 ```js
 const before = {
-    type: "div",
-    props: { id: "container" },
+    type: 'div',
+    props: { id: 'container' },
     children: [
         {
-            type: "p",
+            type: 'p',
             props: null,
-            children: [{ type: "text", props: { textContent: "Hello React" } }],
+            children: [{ type: 'text', props: { textContent: 'Hello React' } }],
         },
     ],
 };
@@ -121,14 +117,14 @@ const before = {
 
 ```js
 const after = {
-    type: "div",
-    props: { id: "container" },
+    type: 'div',
+    props: { id: 'container' },
     children: [
         {
-            type: "p",
+            type: 'p',
             props: null,
             children: [
-                { type: "text", props: { textContent: "Hello Angular" } },
+                { type: 'text', props: { textContent: 'Hello Angular' } },
             ],
         },
     ],
@@ -168,7 +164,7 @@ function createElement(type, props, ...children) {
 
 ```js
 const virtualDOM = (
-    <div className="container">
+    <div className='container'>
         <h1>你好 Tiny React</h1>
         <h2>(编码必杀技)</h2>
         <div>
@@ -178,7 +174,7 @@ const virtualDOM = (
         {2 == 1 && <div>如果2和1相等渲染当前内容</div>}
         {2 == 2 && <div>2</div>}
         <span>这是一段内容</span>
-        <button onClick={() => alert("你好")}>点击我</button>
+        <button onClick={() => alert('你好')}>点击我</button>
         <h3>这个将会被删除</h3>
         2, 3
     </div>
@@ -188,16 +184,16 @@ console.log(virtualDOM);
 
 通过以上代码测试，发现返回的 Virtual DOM 存在一些问题，第一个问题是文本节点被直接放入到了数组中
 
-![2.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c74560460122468c9d9ccb98ee8392e5~tplv-k3u1fbpfcp-watermark.image?)
+![2.png](./images/image6.png)
 
 而我们期望是文本节点应该是这样的
 
 ```js
 children: [
     {
-        type: "text",
+        type: 'text',
         props: {
-            textContent: "React is great",
+            textContent: 'React is great',
         },
     },
 ];
@@ -214,7 +210,7 @@ const childElements = [].concat(...children).map((child) => {
         return child;
     } else {
         // 如果不是对象就是文本 手动调用 createElement 方法将文本转换为 Virtual DOM
-        return createElement("text", { textContent: child });
+        return createElement('text', { textContent: child });
     }
 });
 return {
@@ -224,7 +220,7 @@ return {
 };
 ```
 
-![3.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1f43bfe55dd842189a0cb3a54fb3703a~tplv-k3u1fbpfcp-watermark.image?)
+![3.png](./images/image7.png)
 通过观察返回的 Virtual DOM，文本节点已经被转化成了对象类型的 Virtual DOM，但是布尔值也被当做文本节点被转化了，在 JSX 中，如果 Virtual DOM 被转化为了布尔值或者 null，是不应该被更新到真实 DOM 中的，所以接下来要做的事情就是清除 Virtual DOM 中的布尔值和 null。
 
 ```js
@@ -235,7 +231,7 @@ const childElements = [].concat(...children).reduce((result, child) => {
         if (child instanceof Object) {
             result.push(child);
         } else {
-            result.push(createElement("text", { textContent: child }));
+            result.push(createElement('text', { textContent: child }));
         }
     }
     // 将需要保留的 Virtual DOM 放入 result 数组
@@ -275,7 +271,7 @@ export default function render(
 
 ```js
 // diff.js
-import mountElement from "./mountElement";
+import mountElement from './mountElement';
 
 export default function diff(virtualDOM, container, oldDOM) {
     // 判断 oldDOM 是否存在
@@ -296,7 +292,7 @@ export default function diff(virtualDOM, container, oldDOM) {
 
 ```js
 // mountElement.js
-import mountNativeElement from "./mountNativeElement";
+import mountNativeElement from './mountNativeElement';
 
 export default function mountElement(virtualDOM, container) {
     // 通过调用 mountNativeElement 方法转换 Native Element
@@ -306,7 +302,7 @@ export default function mountElement(virtualDOM, container) {
 
 ```js
 // mountNativeElement.js
-import createDOMElement from "./createDOMElement";
+import createDOMElement from './createDOMElement';
 
 export default function mountNativeElement(virtualDOM, container) {
     const newElement = createDOMElement(virtualDOM);
@@ -316,12 +312,12 @@ export default function mountNativeElement(virtualDOM, container) {
 
 ```js
 // createDOMElement.js
-import mountElement from "./mountElement";
-import updateElementNode from "./updateElementNode";
+import mountElement from './mountElement';
+import updateElementNode from './updateElementNode';
 
 export default function createDOMElement(virtualDOM) {
     let newElement = null;
-    if (virtualDOM.type === "text") {
+    if (virtualDOM.type === 'text') {
         // 创建文本节点
         newElement = document.createTextNode(virtualDOM.props.textContent);
     } else {
@@ -344,7 +340,7 @@ export default function createDOMElement(virtualDOM) {
 ```js
 // createDOMElement.js
 // 看看节点类型是文本类型还是元素类型
-if (virtualDOM.type === "text") {
+if (virtualDOM.type === 'text') {
     // 创建文本节点 设置节点内容
     newElement = document.createTextNode(virtualDOM.props.textContent);
 } else {
@@ -363,17 +359,17 @@ export default function updateElementNode(element, virtualDOM) {
     Object.keys(newProps).forEach((propName) => {
         const newPropsValue = newProps[propName];
         // 考虑属性名称是否以 on 开头 如果是就表示是个事件属性 onClick -> click
-        if (propName.slice(0, 2) === "on") {
+        if (propName.slice(0, 2) === 'on') {
             const eventName = propName.toLowerCase().slice(2);
             element.addEventListener(eventName, newPropsValue);
             // 如果属性名称是 value 或者 checked 需要通过 [] 的形式添加
-        } else if (propName === "value" || propName === "checked") {
+        } else if (propName === 'value' || propName === 'checked') {
             element[propName] = newPropsValue;
             // 刨除 children 因为它是子元素 不是属性
-        } else if (propName !== "children") {
+        } else if (propName !== 'children') {
             // className 属性单独处理 不直接在元素上添加 class 属性是因为 class 是 JavaScript 中的关键字
-            if (propName === "className") {
-                element.setAttribute("class", newPropsValue);
+            if (propName === 'className') {
+                element.setAttribute('class', newPropsValue);
             } else {
                 // 普通属性
                 element.setAttribute(propName, newPropsValue);
@@ -424,7 +420,7 @@ export default function mountElement(virtualDOM, container) {
 
 // Virtual DOM 是否为函数类型
 export function isFunction(virtualDOM) {
-    return virtualDOM && typeof virtualDOM.type === "function";
+    return virtualDOM && typeof virtualDOM.type === 'function';
 }
 ```
 
@@ -432,7 +428,7 @@ export function isFunction(virtualDOM) {
 
 ```js
 // mountComponent.js
-import mountNativeElement from "./mountNativeElement";
+import mountNativeElement from './mountNativeElement';
 
 export default function mountComponent(virtualDOM, container) {
     // 存放组件调用后返回的 Virtual DOM 的容器
@@ -493,7 +489,7 @@ class Alert extends TinyReact.Component {
         // 将 props 传递给父类的好处是 当 props 发生更改时 父类可以帮助更新 props 更新组件视图
         super(props);
         this.state = {
-            title: "default title",
+            title: 'default title',
         };
     }
     render() {
@@ -506,7 +502,7 @@ class Alert extends TinyReact.Component {
     }
 }
 
-TinyReact.render(<Alert message="Hello React" />, root);
+TinyReact.render(<Alert message='Hello React' />, root);
 ```
 
 ```js
@@ -561,7 +557,7 @@ function buildStatefulComponent(virtualDOM) {
 
 ```js
 // mountElement.js
-import mountElement from "./mountElement";
+import mountElement from './mountElement';
 
 export default function mountNativeElement(virtualDOM, container) {
     // 将 Virtual DOM 挂载到真实 DOM 对象的属性中 方便在对比时获取其 Virtual DOM
@@ -569,7 +565,7 @@ export default function mountNativeElement(virtualDOM, container) {
 }
 ```
 
-![8.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1415a5d3885f44d0bf25d80cfb18ec98~tplv-k3u1fbpfcp-watermark.image?)
+![8.png](./images/image8.png)
 
 #### 9.1 Virtual DOM 类型相同
 
@@ -633,7 +629,7 @@ export default function updateNodeElement(
         const oldPropsValue = oldProps[propName];
         if (newPropsValue !== oldPropsValue) {
             // 判断属性是否是否事件属性 onClick -> click
-            if (propName.slice(0, 2) === "on") {
+            if (propName.slice(0, 2) === 'on') {
                 // 事件名称
                 const eventName = propName.toLowerCase().slice(2);
                 // 为元素添加事件
@@ -642,11 +638,11 @@ export default function updateNodeElement(
                 if (oldPropsValue) {
                     newElement.removeEventListener(eventName, oldPropsValue);
                 }
-            } else if (propName === "value" || propName === "checked") {
+            } else if (propName === 'value' || propName === 'checked') {
                 newElement[propName] = newPropsValue;
-            } else if (propName !== "children") {
-                if (propName === "className") {
-                    newElement.setAttribute("class", newPropsValue);
+            } else if (propName !== 'children') {
+                if (propName === 'className') {
+                    newElement.setAttribute('class', newPropsValue);
                 } else {
                     newElement.setAttribute(propName, newPropsValue);
                 }
@@ -659,10 +655,10 @@ export default function updateNodeElement(
         const oldPropsValue = oldProps[propName];
         if (!newPropsValue) {
             // 属性被删除了
-            if (propName.slice(0, 2) === "on") {
+            if (propName.slice(0, 2) === 'on') {
                 const eventName = propName.toLowerCase().slice(2);
                 newElement.removeEventListener(eventName, oldPropsValue);
-            } else if (propName !== "children") {
+            } else if (propName !== 'children') {
                 newElement.removeAttribute(propName);
             }
         }
@@ -681,7 +677,7 @@ else if (oldVirtualDOM && virtualDOM.type === oldVirtualDOM.type) {
   }
 ```
 
-![7.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3d7666776d1740c2bac3bd910442b66d~tplv-k3u1fbpfcp-watermark.image?)
+![7.png](./images/image9.png)
 
 #### 9.2 Virtual DOM 类型不同
 
@@ -734,7 +730,7 @@ class Alert extends TinyReact.Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: "default title",
+            title: 'default title',
         };
         // 更改 handleChange 方法中的 this 指向 让 this 指向类实例对象
         this.handleChange = this.handleChange.bind(this);
@@ -742,7 +738,7 @@ class Alert extends TinyReact.Component {
     handleChange() {
         // 调用父类中的 setState 方法更改状态
         this.setState({
-            title: "changed title",
+            title: 'changed title',
         });
     }
     render() {
@@ -983,7 +979,7 @@ if (isSameComponent(virtualDOM, oldComponent)) {
 在 updateComponent 方法中调用组件的生命周期函数，更新组件获取最新 Virtual DOM，最终调用 diff 方法进行更新
 
 ```js
-import diff from "./diff";
+import diff from './diff';
 
 export default function updateComponent(
     virtualDOM,
@@ -1037,7 +1033,7 @@ class DemoRef extends TinyReact.Component {
     render() {
         return (
             <div>
-                <input type="text" ref={(input) => (this.input = input)} />
+                <input type='text' ref={(input) => (this.input = input)} />
                 <button onClick={this.handle.bind(this)}>按钮</button>
             </div>
         );
@@ -1064,12 +1060,12 @@ class DemoRef extends TinyReact.Component {
         console.log(this.alert);
     }
     componentDidMount() {
-        console.log("componentDidMount");
+        console.log('componentDidMount');
     }
     render() {
         return (
             <div>
-                <input type="text" ref={(input) => (this.input = input)} />
+                <input type='text' ref={(input) => (this.input = input)} />
                 <button onClick={this.handle.bind(this)}>按钮</button>
                 <Alert ref={(alert) => (this.alert = alert)} />
             </div>
@@ -1242,7 +1238,7 @@ export default function unmount(dom) {
     // 获取节点对应的 virtualDOM 对象
     const virtualDOM = dom._virtualDOM;
     // 如果要删除的节点时文本
-    if (virtualDOM.type === "text") {
+    if (virtualDOM.type === 'text') {
         // 直接删除节点
         dom.remove();
         // 阻止程序向下运行
@@ -1263,7 +1259,7 @@ export default function unmount(dom) {
 
     // 事件处理
     Object.keys(virtualDOM.props).forEach((propName) => {
-        if (propName.slice(0, 2) === "on") {
+        if (propName.slice(0, 2) === 'on') {
             const eventName = propName.toLowerCase().slice(2);
             const eventHandler = virtualDOM.props[propName];
             dom.removeEventListener(eventName, eventHandler);

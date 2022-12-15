@@ -13,7 +13,7 @@
 
 #### 2. Gatsby 总览
 
-![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/573c62f6efa04c66b5b2e3b4b18c05fc~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image13.png)
 
 1. 基于 React 和 GraphQL. 结合了 webpack, babel, react-router 等前端领域中最先进工具. 开发人员开发体验好\
 2. 采用数据层和 UI 层分离而不失 SEO 的现代前端开发模式. 对 SEO 非常友好\
@@ -37,13 +37,13 @@
 -   基于同一个模板创建多个 HTML 页面，有多少数据就创建多少页面
 -   比如商品详情页面，有多少商品就生成多少商品详情展示页面
 
-![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5332c936f5834bf296d5073172578abc~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image14.png)
 
 #### 6、 Link 组件
 
 -   在 Gatsby 框架中页面跳转通过 Link 组件实现.
 
-![image.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fd3f035dc0724b818aeeb7b5071c8856~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image15.png)
 
 ## 二、GraphQL 数据层
 
@@ -51,19 +51,19 @@
 -   在应用构建时，Gatsby 会从外部获取数据并将数据放入数据层，组件可以直接从数据层查询数据.
 -   数据层使用 GraphQL 构建.
 -   调试工具：localhost:8000/\_\_\_graphql
-    ![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/573c62f6efa04c66b5b2e3b4b18c05fc~tplv-k3u1fbpfcp-watermark.image?)
+    ![image.png](./images/image13.png)
 
 #### 1、 页面组件
 
 -   在组件文件中导出查询命令, 框架执行查询并将结果传递给组件的 prop 对象. 存储在 props 对象的 data 属性中
 
-![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/915bd97a37e346b09257a5e8b9444ca8~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image14.png)
 
 #### 2、 非页面组件
 
 -   通过钩子函数 useStaticQuery 进行手动查询\
 
-![image.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/25cf964bc8c0435dab069285cd5f4616~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image15.png)
 
 #### 3、Gatsby 插件
 
@@ -80,7 +80,7 @@
 -   gatsby-transformer-json：将原始 JSON 字符串转换为 JavaScript 对象.
 
 -   // guide\gatsby-config.js
-    ![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7ca138a9c1f6420a96efe8fd512c8043~tplv-k3u1fbpfcp-watermark.image?)
+    ![image.png](./images/image16.png)
 
 #### 5、图像优化
 
@@ -100,15 +100,15 @@
 
 -   通过 gatsby-source-filesystem 将 markdown 文件数据放入数据层
 
-![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a79a1d7382e34e03b8650431e4ba3ae0~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image17.png)
 
 -   通过 gatsby-transformer-remark 将数据层中的原始 markdown 数据转换为对象形式
 
-![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/50ac2711694144a29f10ed711a704986~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image18.png)
 
 -   组件数据查询
 
-![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0e1e6623942e4cf087bf1cba683316fd~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image19.png)
 
 -   重新构建查询数据, 添加 slug 作为请求标识, slug 值为文件名称
 
@@ -119,20 +119,20 @@ react.md -> /posts/react
 
 -   重新构建查询数据, 添加 slug 作为请求标识, slug 值为文件名称
 
-![image.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f6d69388bd7a475888f77b5d7f31d9b8~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image20.png)
 
 -   根据 slug 标识构建页面
 
-![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e8bd07a30ac3423eb53bd2331fcce69e~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image21.png)
 
 -   组件数据查询
 
-![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/86d1f0bcad854aea92211ab5a1708031~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image22.png)
 
 -   处理 markdown 文件中图片
     gatsby-remark-images: 处理 markdown 中的图片, 以便可以在生产环境中使用\
 
-![image.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6527c18e52a54d658fac6add7eaaeaa3~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image23.png)
 
 #### 7、Gatsby Source 插件开发
 

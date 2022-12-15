@@ -5,11 +5,11 @@
 ```js
 function createStore(reducer, preloadedState, enhancer) {
     // reducer 类型判断
-    if (typeof reducer !== "function") throw new Error("redcuer必须是函数");
+    if (typeof reducer !== 'function') throw new Error('redcuer必须是函数');
 
-    if (typeof enhancer !== "undefined") {
-        if (typeof enhancer !== "function") {
-            throw new Error("enhancer必须是函数");
+    if (typeof enhancer !== 'undefined') {
+        if (typeof enhancer !== 'function') {
+            throw new Error('enhancer必须是函数');
         }
         return enhancer(createStore)(reducer, preloadedState);
     }
@@ -24,10 +24,10 @@ function createStore(reducer, preloadedState, enhancer) {
     // 用于触发action的方法
     function dispatch(action) {
         // 判断action是否是一个对象
-        if (!isPlainObject(action)) throw new Error("action必须是一个对象");
+        if (!isPlainObject(action)) throw new Error('action必须是一个对象');
         // 判断action中的type属性是否存在
-        if (typeof action.type === "undefined")
-            throw new Error("action对象中必须有type属性");
+        if (typeof action.type === 'undefined')
+            throw new Error('action对象中必须有type属性');
         // 调用reducer函数 处理状态
         currentState = reducer(currentState, action);
         // 调用订阅者 通知订阅者状态发生了改变
@@ -42,7 +42,7 @@ function createStore(reducer, preloadedState, enhancer) {
     }
 
     // 默认调用一次dispatch方法 存储初始状态(通过reducer函数传递的默认状态)
-    dispatch({ type: "initAction" });
+    dispatch({ type: 'initAction' });
 
     return {
         getState,
@@ -61,17 +61,17 @@ function createStore(reducer, preloadedState, enhancer) {
 1. `reducer`的参数类型必须是函数
 
 ```js
-if (typeof reducer !== "function") throw new Error("redcuer必须是函数");
+if (typeof reducer !== 'function') throw new Error('redcuer必须是函数');
 ```
 
 2. `dispatch`函数的参数`action`必须是对象，并且有`type`属性
 
 ```js
 // 判断action是否是一个对象
-if (!isPlainObject(action)) throw new Error("action必须是一个对象");
+if (!isPlainObject(action)) throw new Error('action必须是一个对象');
 // 判断action中的type属性是否存在
-if (typeof action.type === "undefined")
-    throw new Error("action对象中必须有type属性");
+if (typeof action.type === 'undefined')
+    throw new Error('action对象中必须有type属性');
 ```
 
 3. 定义判断是否为对象的函数（原理：判断对象的当前原型对象是否和顶层原型对象相同）
@@ -79,7 +79,7 @@ if (typeof action.type === "undefined")
 ```js
 function isPlainObject(obj) {
     // 排除基本类型和null
-    if (typeof obj !== "object" || obj === null) return false;
+    if (typeof obj !== 'object' || obj === null) return false;
     // 区分数组和对象（采用原型对象对比的方式）
     var proto = obj;
     while (Object.getPrototypeOf(proto) != null) {
@@ -92,9 +92,9 @@ function isPlainObject(obj) {
 4. 使用`enhancer`对`store`对象进行功能增强（可选参数）
 
 ```js
-if (typeof enhancer !== "undefined") {
-    if (typeof enhancer !== "function") {
-        throw new Error("enhancer必须是函数");
+if (typeof enhancer !== 'undefined') {
+    if (typeof enhancer !== 'function') {
+        throw new Error('enhancer必须是函数');
     }
     // 返回更加强大的store对象
     return enhancer(createStore)(reducer, preloadedState);
@@ -109,7 +109,7 @@ function enhancer(createStore) {
         var store = createStore(reducer, preloadedState);
         var dispatch = store.dispatch;
         function _dispatch(action) {
-            if (typeof action === "function") {
+            if (typeof action === 'function') {
                 return action(dispatch);
             }
             // 正常的action
@@ -136,7 +136,7 @@ function logger(store) {
     return function (next) {
         // 这才是中间件函数
         return function (action) {
-            console.log("logger");
+            console.log('logger');
             next(action);
         };
     };
@@ -161,7 +161,7 @@ function applyMiddleware(...middlewares) {
                 middleware(middlewareAPI)
             );
             var dispatch = compose(...chain)(store.dispatch);
-            console.log("dispatch: ", dispatch);
+            console.log('dispatch: ', dispatch);
             return {
                 ...store,
                 dispatch,
@@ -198,12 +198,12 @@ var actions = bindActionCreators({ increment, decrement }, store.dispatch);
 
 function increment() {
     // `ActionCreator`函数
-    return { type: "increment" };
+    return { type: 'increment' };
 }
 
 function decrement() {
     // `ActionCreator`函数
-    return { type: "decrement" };
+    return { type: 'decrement' };
 }
 ```
 
@@ -232,9 +232,9 @@ function bindActionCreators(actionCreators, dispatch) {
 ```js
 function counterReducer(state, action) {
     switch (action.type) {
-        case "increment":
+        case 'increment':
             return state + 1;
-        case "decrement":
+        case 'decrement':
             return state - 1;
         default:
             return state;
@@ -257,8 +257,8 @@ function combineReducers(reducers) {
     var reducerKeys = Object.keys(reducers);
     for (var i = 0; i < reducerKeys.length; i++) {
         var key = reducerKeys[i];
-        if (typeof reducers[key] !== "function")
-            throw new Error("reducer必须是函数");
+        if (typeof reducers[key] !== 'function')
+            throw new Error('reducer必须是函数');
     }
     // 2. 调用一个一个的小的reducer 将每一个小的reducer中返回的状态存储在一个新的大的对象中
     return function (state, action) {
@@ -300,15 +300,15 @@ export default TodosReducer
 3. 创建`store`
 
 ```js
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import TodosReducer, { TODOS_FEATURE_KEY } from "./todos.slice";
-import logger from "redux-logger";
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import TodosReducer, { TODOS_FEATURE_KEY } from './todos.slice';
+import logger from 'redux-logger';
 
 export default configureStore({
     reducer: {
         [TODOS_FEATURE_KEY]: TodosReducer,
     },
-    devTools: process.env.NODE_ENV !== "production",
+    devTools: process.env.NODE_ENV !== 'production',
     middleware: [...getDefaultMiddleware(), logger],
 });
 ```
@@ -316,27 +316,29 @@ export default configureStore({
 4. 配置`Provider`触发`Action`
 
 ```js
-import { Provider } from "react-redux";
-import store from "./Store";
+import { Provider } from 'react-redux';
+import store from './Store';
 
 ReactDOM.render(
     <Provider store={store}>
         <Global styles={styles} />
         <App />
     </Provider>,
-    document.getElementById("root")
+    document.getElementById('root')
 );
 ```
 
-![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d43a019db9324675b61f7e802fa70cfb~tplv-k3u1fbpfcp-watermark.image?) 5. `Action`预处理
+![image.png](./images/image19.png)  
+5. `Action`预处理
 当`Action`被触发后，可以通过`prepare`方法对`Action`进行预处理，处理完成后交给`Reducer`， `prepare`方法必须返回对象。
-![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8d303f2efb094a6c88169cb423a24080~tplv-k3u1fbpfcp-watermark.image?) 6. 执行异步操作
+![image.png](./images/image20.png)  
+6. 执行异步操作
 
 ```js
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-export const loadTodos = createAsyncThunk("todos/loadTodos", (payload) =>
+export const loadTodos = createAsyncThunk('todos/loadTodos', (payload) =>
     axios.get(payload).then((response) => response.data)
 );
 ```
@@ -360,15 +362,15 @@ createSlice({
 注意在引入自定义中间件前，需要导入`toolkit`中默认的中间件
 
 ```js
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import TodosReducer, { TODOS_FEATURE_KEY } from "./todos.slice";
-import logger from "redux-logger";
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import TodosReducer, { TODOS_FEATURE_KEY } from './todos.slice';
+import logger from 'redux-logger';
 
 export default configureStore({
     reducer: {
         [TODOS_FEATURE_KEY]: TodosReducer,
     },
-    devTools: process.env.NODE_ENV !== "production",
+    devTools: process.env.NODE_ENV !== 'production',
     middleware: [...getDefaultMiddleware(), logger],
 });
 ```
@@ -379,7 +381,7 @@ export default configureStore({
    将状态放入实体适配器中，因为实体适配器提供了操作状态的各种方法，简化增删改查的操作。
 
 ```js
-import { createEntityAdapter } from "@reduxjs/toolkit";
+import { createEntityAdapter } from '@reduxjs/toolkit';
 
 const todosAdapter = createEntityAdapter();
 
@@ -404,7 +406,7 @@ const todosAdapter = createEntityAdapter({
     提供从实体适配器中获取状态的快捷途径
 
 ```js
-import { createSelector } from "@reduxjs/toolkit";
+import { createSelector } from '@reduxjs/toolkit';
 
 // 从实体适配器中获取一些便捷的状态选择器和我们自己的状态选择器一起使用
 const { selectAll } = todosAdapter.getSelectors();

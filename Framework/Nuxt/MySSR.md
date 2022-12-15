@@ -41,14 +41,14 @@
 
 ```js
 // 第 1 步：创建一个 Vue 实例
-const Vue = require("vue");
+const Vue = require('vue');
 const app = new Vue({
     template: `{{ message }}`,
-    data: { message: "Hello World" },
+    data: { message: 'Hello World' },
 });
 
 // 第 2 步：创建一个 renderer
-const renderer = require("vue-server-renderer").createRenderer();
+const renderer = require('vue-server-renderer').createRenderer();
 
 // 第 3 步：将 Vue 实例渲染为 HTML
 renderer.renderToString(app, (err, html) => {
@@ -70,11 +70,11 @@ renderer
 2、与服务器集成(使用`Express`创建一个基本的`Web`服务,在`Web`服务中渲染`Vue`实例)
 
 ```js
-const Vue = require("vue");
-const server = require("express")();
-const renderer = require("vue-server-renderer").createRenderer();
+const Vue = require('vue');
+const server = require('express')();
+const renderer = require('vue-server-renderer').createRenderer();
 
-server.get("*", (req, res) => {
+server.get('*', (req, res) => {
     const app = new Vue({
         data: {
             url: req.url,
@@ -83,7 +83,7 @@ server.get("*", (req, res) => {
     });
     renderer.renderToString(app, (err, html) => {
         if (err) {
-            res.status(500).end("Internal Server Error");
+            res.status(500).end('Internal Server Error');
             return;
         }
         res.end(`
@@ -109,9 +109,9 @@ server.listen(8080);
 ```js
 if (isProd) {
     // 生产模式，直接基于已构建好的包创建渲染器
-    const serverBundle = require("./dist/vue-ssr-server-bundle.json");
-    const template = fs.readFileSync("./index.template.html", "utf-8");
-    const clientManifest = require("./dist/vue-ssr-client-manifest.json");
+    const serverBundle = require('./dist/vue-ssr-server-bundle.json');
+    const template = fs.readFileSync('./index.template.html', 'utf-8');
+    const clientManifest = require('./dist/vue-ssr-client-manifest.json');
     renderer = createBundleRenderer(serverBundle, {
         template, // 指定服务端渲染的模板和指定编码
         clientManifest,
@@ -134,7 +134,7 @@ if (isProd) {
 
 ```js
 const html = await renderer.renderToString({
-    title: "渲染示例",
+    title: '渲染示例',
     meta: `<meta name="description" content="渲染示例">`,
     url: req.url,
 });
@@ -143,24 +143,24 @@ const html = await renderer.renderToString({
 ## 五、Vue SSR 构建配置
 
 1、构建基本流程如图：
-![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/49511d09a09a44ff9a4770d0d8a55efa~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](./images/image5.png)
 2、源码结构
 
 -   通常 Vue 应用程序都是采用`webpack`和`vue-loader`构建的，由于许多特定的功能不能直接在`Node.js`中运行（如 `css-loader`导入`css`）
 -   尽管`Node.js`最近版本已经完全支持`ES2015`特性，但客户端代码需要转译以适应老版浏览器。
 -   对于客户端应用程序和服务器应用程序，我们都要使用 `webpack` 打包。服务器需要 「服务器 `bundle`」然后用于服务器端渲染(`SSR`)，而「客户端 `bundle`」会发送给浏览器，用于混合静态标记。
 -   基本的项目结构可以如下：
-    ![image.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d4fb35d6f20a45e5b9f9e90497472b7a~tplv-k3u1fbpfcp-watermark.image?)
+    ![image.png](./images/image6.png)
 -   `app.js` 是我们应用程序的「通用 `entry`」。在纯客户端应用程序中，我们将在此文件中创建根`Vue`实 例，并直接挂载到`DOM`。但是，对于服务器端渲染(`SSR`)，责任转移到纯客户端`entry`文件。
 -   `entry-client.js`是客户端入口，作用是创建应用程序，并将其挂载到`DOM`上。
 -   `entry-server.js`是服务器入口，导出应用程序实例，并在每次渲染中重复调用此函数。
 -   `server.js`是通用应用`Web`服务启动脚本。
 -   使用到的主要生产依赖
-    ![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2226c2b533764ae5992cf607bdc5c229~tplv-k3u1fbpfcp-watermark.image?)
+    ![image.png](./images/image7.png)
 -   使用到的主要开发依赖
-    ![image.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bf374ba11bfb475fb7f696dc27481405~tplv-k3u1fbpfcp-watermark.image?)
+    ![image.png](./images/image8.png)
 -   配置文件及打包命令,区分 3 个文件
-    ![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/54b4a317e2e04153b5111c63a57ac755~tplv-k3u1fbpfcp-watermark.image?)
+    ![image.png](./images/image9.png)
     3、解析渲染流程  
     服务端渲染：
 -   `renderer.renderToString` 渲染了什么？
@@ -191,9 +191,9 @@ const html = await renderer.renderToString({
 ```js
 // 生产模式，直接基于已构建好的包创建渲染器
 if (isProd) {
-    const template = fs.readFileSync(templatePath, "utf-8");
-    const serverBundle = require("./dist/vue-ssr-server-bundle.json");
-    const clientManifest = require("./dist/vue-ssr-client-manifest.json");
+    const template = fs.readFileSync(templatePath, 'utf-8');
+    const serverBundle = require('./dist/vue-ssr-server-bundle.json');
+    const clientManifest = require('./dist/vue-ssr-client-manifest.json');
     renderer = createBundleRenderer(serverBundle, {
         runInNewContext: false, // 推荐
         template, // （可选）页面模板
@@ -262,30 +262,30 @@ module.exports = function (app, templatePath, cb) {
 1、`router/index.js`配置
 
 ```js
-import Vue from "vue";
-import VueRouter from "vue-router";
-import Home from "@/pages/Home";
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Home from '@/pages/Home';
 
 Vue.use(VueRouter);
 
 export const createRouter = () => {
     const router = new VueRouter({
-        mode: "history", // 同构应用不能使用 hash 路由，应该使用 history 模式，兼容前后端
+        mode: 'history', // 同构应用不能使用 hash 路由，应该使用 history 模式，兼容前后端
         routes: [
             {
-                path: "/",
-                name: "home",
+                path: '/',
+                name: 'home',
                 component: Home,
             },
             {
-                path: "/about",
-                name: "about",
-                component: () => import("@/pages/About"),
+                path: '/about',
+                name: 'about',
+                component: () => import('@/pages/About'),
             },
             {
-                path: "*",
-                name: "error404",
-                component: () => import("@/pages/404"),
+                path: '*',
+                name: 'error404',
+                component: () => import('@/pages/404'),
             },
         ],
     });
@@ -329,9 +329,9 @@ export const createRouter = () => {
 
 ```js
 export default {
-    name: "PostList",
+    name: 'PostList',
     metaInfo: {
-        title: "Posts",
+        title: 'Posts',
     },
     data() {
         return {
@@ -339,7 +339,7 @@ export default {
         };
     },
     computed: {
-        ...mapState(["posts"]),
+        ...mapState(['posts']),
     },
     // Vue SSR 特殊为服务端渲染提供的一个生命周期钩子函数
     serverPrefetch() {
@@ -347,7 +347,7 @@ export default {
         return this.getPosts();
     },
     methods: {
-        ...mapActions(["getPosts"]),
+        ...mapActions(['getPosts']),
     },
 };
 ```
