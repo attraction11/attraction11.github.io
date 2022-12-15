@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as a}from"./app.5eebf8c0.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"FullStack/WebDev/Nest.md"}'),s={name:"FullStack/WebDev/Nest.md"};function r(c,o,n,p,_,l){return a(),t("div")}const m=e(s,[["render",r]]);export{i as __pageData,m as default};
