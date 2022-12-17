@@ -1,1 +1,0 @@
-import{_ as e,c as t,o as s}from"./app.5eebf8c0.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"FullStack/WebDev/Express.md"}'),a={name:"FullStack/WebDev/Express.md"};function r(c,o,n,p,_,l){return s(),t("div")}const m=e(a,[["render",r]]);export{i as __pageData,m as default};

@@ -1,1 +1,0 @@
-import{_ as e,c as t,o as a}from"./app.5eebf8c0.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"FullStack/WebDev/Egg.md"}'),r={name:"FullStack/WebDev/Egg.md"};function c(o,s,n,p,_,l){return a(),t("div")}const m=e(r,[["render",c]]);export{i as __pageData,m as default};
