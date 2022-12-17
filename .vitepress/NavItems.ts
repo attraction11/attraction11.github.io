@@ -33,7 +33,7 @@ export const NavItemList: DefaultTheme.NavItem[] = [
                 link: '/JavaScript/Engineering/',
             },
             {
-                text: '模块检测',
+                text: '杂记',
                 link: '/JavaScript/Module/',
             },
         ],
@@ -68,7 +68,7 @@ export const NavItemList: DefaultTheme.NavItem[] = [
         items: [
             {
                 text: 'Node',
-                link: '/FullStack/Node/WebCli',
+                link: '/FullStack/Node/NodeBase',
             },
             {
                 text: 'NoSQL数据库',
@@ -95,6 +95,10 @@ export const NavItemList: DefaultTheme.NavItem[] = [
                 text: 'Flutter',
                 link: '/PanClient/RN/WebCli',
             },
+            {
+                text: 'Electron',
+                link: '/PanClient/Electron/WebCli',
+            },
         ],
     },
     {
@@ -103,6 +107,18 @@ export const NavItemList: DefaultTheme.NavItem[] = [
             {
                 text: 'Micro Frontend',
                 link: '/ProgramTopics/MicroFrontend/WebCli',
+            },
+            {
+                text: 'Test Automation',
+                link: '/ProgramTopics/TestAutomation/WebCli',
+            },
+            {
+                text: 'Data Visualization',
+                link: '/ProgramTopics/DataVisualization/WebCli',
+            },
+            {
+                text: 'Serverless',
+                link: '/ProgramTopics/Serverless/WebCli',
             },
         ],
     },

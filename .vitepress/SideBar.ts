@@ -161,19 +161,19 @@ export const SideBarList: DefaultTheme.Sidebar = {
             ],
         },
         {
-            text: '模块检测',
+            text: '杂记',
             collapsible: true,
             items: [
                 {
-                    text: '模块检测一',
+                    text: '问答题一',
                     link: '/JavaScript/Module/',
                 },
                 {
-                    text: '模块检测二',
+                    text: '问答题二',
                     link: '/JavaScript/Module/Two',
                 },
                 {
-                    text: '模块检测三',
+                    text: '问答题三',
                     link: '/JavaScript/Module/Three',
                 },
             ],
@@ -257,6 +257,10 @@ export const SideBarList: DefaultTheme.Sidebar = {
                 {
                     text: 'React16+源码解析',
                     link: '/Framework/React/React16Code',
+                },
+                {
+                    text: 'React组件性能优化',
+                    link: '/Framework/React/ReactOptimize',
                 },
                 {
                     text: 'React Router',
@@ -367,11 +371,11 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true,
             items: [
                 {
-                    text: 'Mongodb',
+                    text: 'MongoDB教程',
                     link: '/FullStack/DataBase/Mongodb',
                 },
                 {
-                    text: 'Redis',
+                    text: 'Redis教程',
                     link: '/FullStack/DataBase/Redis',
                 },
             ],
@@ -430,6 +434,16 @@ export const SideBarList: DefaultTheme.Sidebar = {
                 },
             ],
         },
+        {
+            text: 'Electron',
+            collapsible: true,
+            items: [
+                {
+                    text: '第一篇：框架设计与实现',
+                    link: '/PanClient/Electron/WebCli',
+                },
+            ],
+        },
     ],
     '/ProgramTopics': [
         {
@@ -439,6 +453,36 @@ export const SideBarList: DefaultTheme.Sidebar = {
                 {
                     text: '第一篇：框架设计与实现',
                     link: '/Framework/MicroFrontend/WebCli',
+                },
+            ],
+        },
+        {
+            text: 'Test Automation',
+            collapsible: true,
+            items: [
+                {
+                    text: '第一篇：框架设计与实现',
+                    link: '/Framework/TestAutomation/WebCli',
+                },
+            ],
+        },
+        {
+            text: 'Data Visualization',
+            collapsible: true,
+            items: [
+                {
+                    text: '第一篇：框架设计与实现',
+                    link: '/Framework/DataVisualization/WebCli',
+                },
+            ],
+        },
+        {
+            text: 'Serverless',
+            collapsible: true,
+            items: [
+                {
+                    text: '第一篇：框架设计与实现',
+                    link: '/Framework/Serverless/WebCli',
                 },
             ],
         },
