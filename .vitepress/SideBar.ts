@@ -419,8 +419,12 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true,
             items: [
                 {
-                    text: '第一篇：框架设计与实现',
-                    link: '/PanClient/RN/WebCli',
+                    text: 'React Native介绍',
+                    link: '/PanClient/RN/',
+                },
+                {
+                    text: 'React Native环境搭建',
+                    link: '/PanClient/RN/SetUp',
                 },
             ],
         },

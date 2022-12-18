@@ -89,7 +89,7 @@ export const NavItemList: DefaultTheme.NavItem[] = [
         items: [
             {
                 text: 'React Native',
-                link: '/PanClient/RN/WebCli',
+                link: '/PanClient/RN/',
             },
             {
                 text: 'Flutter',
