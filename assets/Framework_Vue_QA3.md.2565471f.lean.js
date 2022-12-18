@@ -1,0 +1,1 @@
+import{_ as s,c as a,o as n,a as l}from"./app.f19302ae.js";const B=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"Framework/Vue/QA3.md"}'),o={name:"Framework/Vue/QA3.md"},p=l("",12),e=[p];function c(t,r,y,D,A,d){return n(),a("div",null,e)}const E=s(o,[["render",c]]);export{B as __pageData,E as default};
