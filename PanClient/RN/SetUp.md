@@ -33,6 +33,7 @@
     -   创建项目
         -   安装 Android JDK
         -   配置环境变量
+    -   cd 到项目的 Android 目录，执行 ./gradlew --version 查看应用的 java 版本
 -   详细内容参考：[RN 安卓环境搭建](./files/RN%20%E5%AE%89%E5%8D%93%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.pdf)
 
 ## 安装 Android SDK
@@ -86,8 +87,8 @@ yarn android
 -   rnc （react native class）
 
 ```js
-import React, { Component } from "react";
-import { Text, View } from "react-native";
+import React, { Component } from 'react';
+import { Text, View } from 'react-native';
 export default class FileName extends Component {
     render() {
         return (
@@ -102,8 +103,8 @@ export default class FileName extends Component {
 -   rnf （react native function）
 
 ```js
-import React from "react";
-import { View, Text } from "react-native";
+import React from 'react';
+import { View, Text } from 'react-native';
 export default function $1() {
     return (
         <View>
