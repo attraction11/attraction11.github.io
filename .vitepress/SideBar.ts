@@ -430,6 +430,14 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     text: "StyleSheet 语法",
                     link: "/PanClient/RN/StyleSheet",
                 },
+                {
+                    text: "组件和API",
+                    link: "/PanClient/RN/Component",
+                },
+                {
+                    text: "路由与导航",
+                    link: "/PanClient/RN/Router&Nav",
+                },
             ],
         },
         {
