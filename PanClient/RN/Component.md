@@ -358,7 +358,7 @@ react-native link react-native-webview
 react-native unlink react-native-webview // 如果需要取消链接，执行此命令
 ```
 
--   iOS 应用：如果你在 iOS 下，请在 ios/ 或 macos/ 目录下运行
+-   iOS 应用：如果你在 iOS 下，请在 ios/ 或 macos/ 目录下运行。如果不切换到 ios 目录，则执行 npx pod-install
 
 ```js
 cd ios && pod install && cd ../
@@ -417,7 +417,7 @@ class MyInlineWeb extends Component {
 yarn add @react-native-picker/picker
 ```
 
--   在 iOS 下，还需要执行
+-   在 iOS 下，还需要执行。如果不切换到 ios 目录，则执行 npx pod-install
 
 ```js
 cd ios && pod install && cd ../

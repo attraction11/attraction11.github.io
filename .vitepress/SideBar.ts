@@ -438,6 +438,10 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     text: "路由与导航",
                     link: "/PanClient/RN/Router&Nav",
                 },
+                {
+                    text: "杂记",
+                    link: "/PanClient/RN/RandomRecord",
+                },
             ],
         },
         {
