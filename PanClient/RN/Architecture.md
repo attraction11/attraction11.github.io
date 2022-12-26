@@ -74,4 +74,107 @@ outline: deep
 ![image](./images/image31.png)
 解析：
 
--   首先 React
+-   首先 React 源代码经过 Metro 的打包后，生成 JS Bundle 文件。
+-   JS Bundle 文件需要 JS Core 引擎去解析，解析后生成 JSON 文件传递给 Bridge（异步队列）。
+-   Bridge 收到消息后，会将 JSON 序列传递给 Main 线程。Main 线程中主要涉及 UI 渲染和原生模块。
+-   若涉及 UI 渲染，则会调用 Shadow 线程，采用 Yoga 解析引擎，将 React 样式布局转换为原生的布局方式。
+
+#### 应用过程
+
+![image](./images/image32.png)
+解析：
+
+-   原生层收集事件和相关数据，传递给 JS，JS 进行相关的处理。处理后将数据传递给原生层，可能会触发 UI 的更新。
+
+![image](./images/image33.png)
+
+## 新架构
+
+#### 新架构重构背景
+
+-   之前版本，存在诸多性能问题
+-   受 Flutter 等新的跨端开发框架的压力
+-   2018 年 6 月，提出重构计划
+
+##### 现有架构的问题
+
+-   JS 与 Native 的沟通都是通过 Bridge 完成的，一旦 Bridge 有问题，沟通的环节就会被打断。比如在高并发的场景下，消息比较多，此时消息就会积压在 Bridge 的两侧，会导致严重的性能问题。因此重构的一大方向是让 JS 与 Native 直接沟通。
+-   新架构通过
+
+#### 新旧架构对比
+
+![image](./images/image34.png)
+
+#### 新架构的主要改动
+
+-   JavaScript 层：
+    -   支持 React 16+ 的新特征
+    -   增强 JS 静态类型检查（CodeGen）
+    -   引入 JSI，允许替换不同的 JavaScript 引擎。支持 JS 与 Native 直接通信
+-   Bridge 层：
+    -   划分成 Fabric 和 TurboModules 两部分，分别负责 UI 管理与 Native 模块
+-   Native 层：
+    -   精简核心模块，将非核心部分拆分出去，作为社区模块，独立更新维护
+
+#### 增强类型检查
+
+-   CodeGen 是 FaceBook 推出的代码生成工具
+    -   通过 CodeGen，自动将 Flow 或者 TypeScript 等有静态类型的 JS 代码翻译成 Fabric 和
+        TurboModules 使用的接口文件。
+-   加入类型约束后的作用：
+    -   减少了数据类型错误
+    -   减少了数据验证的次数，提高了通信性能
+
+> 举个例子：JS 中的数字经常被引号引起来，从而将数字类型转成了字符串。将转换后的数字传递
+> 给 bridge 的时候，通常 iOS 下会静默失败，而 Android 会崩溃。
+> 另外。类型约束对通信性能也有一定提升。因为，在加入类型约束之前，每次通信都需要进行数据
+> 验证。加载类型约束之后，我们就没有必要每次通信都进行数据验证了。减少了数据验证的次数，
+> 就会提高通信性能。
+
+#### JSI（JavaScript Interface）
+
+不同于之前直接将 JavaScript 代码输入给 JSC，新的架构中引入了一层 JSI（JavaScript Interface），作为 JSC 之上的抽象。
+![image](./images/image35.png)
+JSI 是一个用 C++写成的轻量级框架。其作用主要有 2 个：
+
+-   通过 JSI，可以实现 JS 引擎的更换
+-   通过 JSI，可以通过 JS 直接调用 Native
+    -   JS 对象可以直接获得 C++ 对象(Host Objects)引用，从而允许 JS 与 Native 的直接调用
+    -   减少不必要的线程通信
+    -   省去了序列化和反序列化的成本
+    -   减轻了通信压力，提高了通信性能
+
+#### 优化 Bridge 层
+
+-   Fabric
+    -   简化了 UI 渲染
+
+> Fabric 简化了 React Native 渲染，简化之前渲染流程中，有复杂跨线程交互（React 结构树 -> Native ->Shadow Tree -> Native UI）。优化之后，直接在 C++ 层创建 JavaScript 与 Native 共享的 Shadow Tree，并通过 JSI 层将 UI 操作接口暴露给 JS，允许 JS 直接控制高优先级的 UI 操作，甚至允许同步调用（应对列表快速滚动、页面切换、手势处理等场景）。这样避免了跨线程的操作，极大地提高了 UI 的响应速度。
+
+-   Turbo Modules
+    -   通过 JSI，可以让 JS 直接调用 Native 模块，实现同步操作
+    -   实现 Native 模块按需加载，减少启动时间，提高性能
+
+> 之前所有 Native Modules（无论是否需要用到）都要在应用启动时进行初始化，因为 Native 不知
+> 道 JS 将会调用哪些功能模块。而新的 Turbo Modules 允许按需加载 Native 模块，并在模块初始
+> 化之后直接持有其引用，不再依靠消息通信来调用模块功能。因此，应用的启动时间也会有所提升
+
+#### 精简核心
+
+-   将 react-native 核心包进行瘦身
+
+    -   RN 自 2015 年推出已多年，其核心包太过臃肿
+    -   有些包在项目中用不到，每次也要引入，造成资源浪费
+
+-   非必要的包，移到社区模块，单独维护（例如：AsyncStorage、WebView 等）
+
+#### 新架构启动流程
+
+![image](./images/image36.png)
+解析：
+
+-   首先 React 源代码经过 Metro 的打包后，生成 JS Bundle 文件。
+-   JS Bundle 文件在某个 JS 引擎上运行。
+-   然后传递文件到 JSI,JSI 中包含 Renderer(渲染器)和 NativeModules(调用原生模块)两部分。
+-   JSI 的渲染器会调用 Shadow 线程使用 Yoga 引擎解析 Shadow Tree，并最终呈现一个 Native UI
+-   JSI 的调用原生模块部分用于调用原生模块。

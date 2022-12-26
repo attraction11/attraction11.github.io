@@ -443,6 +443,10 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     link: '/PanClient/RN/Architecture',
                 },
                 {
+                    text: 'RN 项目实践',
+                    link: '/PanClient/RN/ProjectDemo',
+                },
+                {
                     text: '杂记',
                     link: '/PanClient/RN/RandomRecord',
                 },
