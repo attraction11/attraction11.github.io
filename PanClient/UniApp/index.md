@@ -51,7 +51,7 @@
 
 ### （3）UniAPP 功能框架
 
-![img](./asserts/images/11.png)
+![img](./images/11.png)
 
 ### （4）UniAPP 开发环境搭建
 
@@ -441,7 +441,7 @@ onLoad: function (option) { //option为object类型，会序列化上个页面�
 
 4. 交互关系
 
-> ![img](./asserts/images/12.png)
+> ![img](./images/12.png)
 
 5. 使用方式
 
