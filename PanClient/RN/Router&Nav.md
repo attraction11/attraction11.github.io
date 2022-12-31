@@ -169,7 +169,8 @@ export default class index extends Component {
 -   安装 npm 包
 
 ```js
-yarn add --save react-native-vector-icons
+yarn add react-native-vector-icons --save
+yarn add @types/react-native-vector-icons --save-dev
 ```
 
 -   配置 Android：选项：使用 Gradle（推荐）

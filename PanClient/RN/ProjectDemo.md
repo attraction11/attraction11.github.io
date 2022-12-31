@@ -58,8 +58,15 @@ UI 界面中用到的技术，大部分都是之前学习的。包括 RN 样式�
     -   背景图（ImageBackground）
     -   动画效果（react-native-linear-gradient）
     -   表单（常用属性和方法，数据验证与提示）
--   用户注册
-    -   所用技术与用户登录页面一致
+-   用户注册 - 所用技术与用户登录页面一致
+
+![image](./images/image42.png)
+![image](./images/image43.png)
+![image](./images/image44.png)
+![image](./images/image39.png)
+![image](./images/image40.png)
+![image](./images/image41.png)
+![image](./images/image45.png)
 
 ## 状态管理
 

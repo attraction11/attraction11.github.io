@@ -69,8 +69,8 @@ React Native 的 核心组件。（来自 react-native 的组件叫核心组件�
 不能使用 style 属性
 
 ```js
-import { Button } from "react-native";
-<Button onPress={onPressLearnMore} title="Learn More" color="#841584" />;
+import { Button } from 'react-native';
+<Button onPress={onPressLearnMore} title='Learn More' color='#841584' />;
 ```
 
 #### Alert
@@ -78,17 +78,17 @@ import { Button } from "react-native";
 提示窗口(三个按钮)
 
 ```js
-Alert.alert("更新提醒", "发现新版本，是否现在更新", [
+Alert.alert('更新提醒', '发现新版本，是否现在更新', [
     {
-        text: "稍后再说",
-        onPress: () => console.log("Ask me later pressed"),
+        text: '稍后再说',
+        onPress: () => console.log('Ask me later pressed'),
     },
     {
-        text: "取消",
-        onPress: () => console.log("Cancel Pressed"),
-        style: "cancel",
+        text: '取消',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel',
     },
-    { text: "确认", onPress: () => console.log("OK Pressed") },
+    { text: '确认', onPress: () => console.log('OK Pressed') },
 ]);
 ```
 
@@ -99,11 +99,11 @@ Alert.alert("更新提醒", "发现新版本，是否现在更新", [
 开关按钮，类似 HTML 中的 CheckBox
 
 ```js
-import { Switch } from "react-native";
+import { Switch } from 'react-native';
 <Switch
-    trackColor={{ false: "#999", true: "#666" }} // 背景色
-    thumbColor={this.state.hideStatusBar ? "red" : "white"} // 前景色
-    ios_backgroundColor="#3e3e3e"
+    trackColor={{ false: '#999', true: '#666' }} // 背景色
+    thumbColor={this.state.hideStatusBar ? 'red' : 'white'} // 前景色
+    ios_backgroundColor='#3e3e3e'
     value={this.state.hideStatusBar}
     onValueChange={this.toggleStatusBar} // 开关处理函数
 />;
@@ -114,9 +114,9 @@ import { Switch } from "react-native";
 状态栏位于手机的顶部，一般用来显示网络信号，时间，电量等信息。在 RN 可以通过 StatusBar 来控制状态栏
 
 ```js
-import { StatusBar } from "react-native";
+import { StatusBar } from 'react-native';
 <StatusBar
-    backgroundColor="blue" // 设置背景色，仅在 Android 下有效
+    backgroundColor='blue' // 设置背景色，仅在 Android 下有效
     animated={false}
     hidden={this.state.hideStatusBar} // 是否隐藏 StatusBar
 />;
@@ -170,8 +170,8 @@ export default class index extends Component {
         super();
 
         this.state = {
-            username: "",
-            password: "",
+            username: '',
+            password: '',
         };
     }
 
@@ -184,7 +184,7 @@ export default class index extends Component {
             <View style={[styles.container]}>
                 <TextInput
                     style={[styles.input]}
-                    placeholder="请输入用户名"
+                    placeholder='请输入用户名'
                     value={this.state.username}
                     onChangeText={(val) => {
                         this.setState({
@@ -195,7 +195,7 @@ export default class index extends Component {
 
                 <TextInput
                     style={[styles.input]}
-                    placeholder="请输入密码"
+                    placeholder='请输入密码'
                     value={this.state.password}
                     secureTextEntry={true}
                     onChangeText={(val) => {
@@ -207,8 +207,8 @@ export default class index extends Component {
 
                 <TextInput
                     style={[styles.input]}
-                    placeholder="手机号"
-                    keyboardType="number-pad"
+                    placeholder='手机号'
+                    keyboardType='number-pad'
                     // value={this.state.password}
                     // onChangeText={(val) => {
                     //   this.setState({
@@ -219,14 +219,14 @@ export default class index extends Component {
 
                 <TextInput
                     style={[styles.input]}
-                    placeholder="请输入自我介绍"
+                    placeholder='请输入自我介绍'
                     multiline={true}
                     numberOfLines={5}
-                    textAlignVertical="top"
+                    textAlignVertical='top'
                 />
 
                 <View style={[styles.btn]}>
-                    <Button title="登陆" onPress={this.doLogin} />
+                    <Button title='登陆' onPress={this.doLogin} />
                 </View>
             </View>
         );
@@ -239,7 +239,7 @@ export default class index extends Component {
 触碰插件一般与事件一起使用
 
 ```js
-import React from "react";
+import React from 'react';
 import {
     Text,
     StyleSheet,
@@ -247,24 +247,24 @@ import {
     TouchableHighlight,
     TouchableOpacity,
     TouchableWithoutFeedback,
-} from "react-native";
+} from 'react-native';
 
 export default function index() {
     return (
         <View style={[styles.container]}>
-            <TouchableHighlight onPress={() => console.log("触碰高亮显示")}>
+            <TouchableHighlight onPress={() => console.log('触碰高亮显示')}>
                 <View style={[styles.item]}>
                     <Text>触碰高亮</Text>
                 </View>
             </TouchableHighlight>
 
-            <TouchableOpacity onPress={() => console.log("触碰透明度变化")}>
+            <TouchableOpacity onPress={() => console.log('触碰透明度变化')}>
                 <View style={[styles.item]}>
                     <Text>触碰透明度变化</Text>
                 </View>
             </TouchableOpacity>
 
-            <TouchableWithoutFeedback onPress={() => console.log("触碰无响应")}>
+            <TouchableWithoutFeedback onPress={() => console.log('触碰无响应')}>
                 <View style={[styles.item]}>
                     <Text>触碰无响应</Text>
                 </View>
@@ -276,14 +276,14 @@ export default function index() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     item: {
         marginBottom: 20,
         padding: 10,
         borderWidth: 1,
-        borderColor: "red",
+        borderColor: 'red',
     },
 });
 ```
@@ -427,22 +427,22 @@ cd ios && pod install && cd ../
 -   使用及效果展示
 
 ```js
-import React, { useState } from "react";
-import { StyleSheet, View } from "react-native";
-import { Picker } from "@react-native-picker/picker";
+import React, { useState } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 
 export default function Index() {
-    const [color, setColor] = useState("white");
+    const [color, setColor] = useState('white');
     return (
         <View style={[styles.container, { backgroundColor: color }]}>
             <Picker
                 selectedValue={color}
                 style={{ height: 50, width: 100 }}
-                mode={"dropdown"} // 只在 Android 下有效
+                mode={'dropdown'} // 只在 Android 下有效
                 onValueChange={(itemValue, _itemIndex) => setColor(itemValue)}
             >
-                <Picker.Item label="白色" value="white" />
-                <Picker.Item label="红色" value="red" />
+                <Picker.Item label='白色' value='white' />
+                <Picker.Item label='红色' value='red' />
             </Picker>
         </View>
     );
@@ -451,8 +451,8 @@ export default function Index() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 });
 ```
@@ -472,9 +472,9 @@ yarn add react-native-swiper --save
 -   使用
 
 ```js
-import React from "react";
-import { StyleSheet, ScrollView, Image, Dimensions } from "react-native";
-import Swiper from "react-native-swiper";
+import React from 'react';
+import { StyleSheet, ScrollView, Image, Dimensions } from 'react-native';
+import Swiper from 'react-native-swiper';
 
 export default function Index() {
     return (
@@ -486,15 +486,15 @@ export default function Index() {
             >
                 <Image
                     style={[styles.slideImage]}
-                    source={require("./images/1.jpg")}
+                    source={require('./images/1.jpg')}
                 />
                 <Image
                     style={[styles.slideImage]}
-                    source={require("./images/2.jpg")}
+                    source={require('./images/2.jpg')}
                 />
                 <Image
                     style={[styles.slideImage]}
-                    source={require("./images/3.jpg")}
+                    source={require('./images/3.jpg')}
                 />
             </Swiper>
         </ScrollView>
@@ -507,7 +507,7 @@ const styles = StyleSheet.create({
     },
     slideImage: {
         height: 200,
-        width: Dimensions.get("window").width,
+        width: Dimensions.get('window').width,
     },
 });
 ```
@@ -535,7 +535,7 @@ yarn add @react-native-async-storage/async-storage
     // 字符串
     const storeData = async (value) => {
         try {
-            await AsyncStorage.setItem("@storage_Key", value);
+            await AsyncStorage.setItem('@storage_Key', value);
         } catch (e) {
             // saving error
         }
@@ -544,21 +544,21 @@ yarn add @react-native-async-storage/async-storage
     const storeData = async (value) => {
         try {
             const jsonValue = JSON.stringify(value);
-            await AsyncStorage.setItem("@storage_Key", jsonValue);
+            await AsyncStorage.setItem('@storage_Key', jsonValue);
         } catch (e) {
             // saving error
         }
     };
     // 添加多条数据
     multiSet = async () => {
-        const firstPair = ["@MyApp_user", "value_1"];
-        const secondPair = ["@MyApp_key", "value_2"];
+        const firstPair = ['@MyApp_user', 'value_1'];
+        const secondPair = ['@MyApp_key', 'value_2'];
         try {
             await AsyncStorage.multiSet([firstPair, secondPair]);
         } catch (e) {
             //save error
         }
-        console.log("Done.");
+        console.log('Done.');
     };
     ```
     -   查：获取数据
@@ -578,7 +578,7 @@ yarn add @react-native-community/geolocation
 -   配置 Android：在 android/app/src/main/AndroidManifest.xml 下添加允许授权的配置。
 
 ```js
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name='android.permission.ACCESS_FINE_LOCATION' />
 ```
 
 -   配置 IOS
@@ -588,7 +588,7 @@ yarn add @react-native-community/geolocation
     iOS 小于 10，还需要添加 NSLocationAlwaysUsageDescription
 
 ```js
-<plist version="1.0">
+<plist version='1.0'>
     <dict>
         ...
         <key>NSLocationWhenInUseUsageDescription</key>
@@ -625,7 +625,9 @@ Geolocation.getCurrentPosition((info) => console.log(info));
 
 #### Camera
 
-[react-native-camera](https://react-native-camera.github.io/react-native-camera/) 是 React Native 中调用摄像头的模块。
+~~[react-native-camera](https://react-native-camera.github.io/react-native-camera/) 是 React Native 中调用摄像头的模块。~~
+
+[react-native-vision-camera](https://mrousavy.com/react-native-vision-camera/docs/guides/) 是 新版的 React Native 中调用摄像头的模块。
 
 #### ImagePicker
 
@@ -638,13 +640,13 @@ AppRegistry.registerComponent 方法注册自己，然后原生系统才可以�
 完成之后通过调用 AppRegistry.runApplication 来真正运行应用。
 
 ```js
-import { Text, AppRegistry } from "react-native";
+import { Text, AppRegistry } from 'react-native';
 const App = (props) => (
     <View>
         <Text>App1</Text>
     </View>
 );
-AppRegistry.registerComponent("Appname", () => App);
+AppRegistry.registerComponent('Appname', () => App);
 ```
 
 #### Dimensions
@@ -652,9 +654,9 @@ AppRegistry.registerComponent("Appname", () => App);
 本模块用于获取设备屏幕的宽高
 
 ```js
-import { Dimensions } from "react-native";
-Dimensions.get("window").width;
-Dimensions.get("window").height;
+import { Dimensions } from 'react-native';
+Dimensions.get('window').width;
+Dimensions.get('window').height;
 // 获取屏幕尺寸之后，我们可以根据屏幕尺寸做一些适配工作。例如：将屏幕三等分。
 // width: Dimensions.get("window").width / 3;
 ```
@@ -664,14 +666,14 @@ Dimensions.get("window").height;
 Share 模块用来完成分享功能
 
 ```js
-import React, { Component } from "react";
-import { Share, View, Button } from "react-native";
+import React, { Component } from 'react';
+import { Share, View, Button } from 'react-native';
 class ShareExample extends Component {
     onShare = async () => {
         try {
             const result = await Share.share({
                 message:
-                    "React Native | A framework for building native apps using React",
+                    'React Native | A framework for building native apps using React',
             });
             if (result.action === Share.sharedAction) {
                 if (result.activityType) {
@@ -689,7 +691,7 @@ class ShareExample extends Component {
     render() {
         return (
             <View style={{ marginTop: 50 }}>
-                <Button onPress={this.onShare} title="Share" />
+                <Button onPress={this.onShare} title='Share' />
             </View>
         );
     }
@@ -702,8 +704,8 @@ export default ShareExample;
 Platform 模块可以区分平台，来完成针对平台的定制代码。例如：Platform.OS 会返回 ios 或 android
 
 ```js
-import { Platform, StyleSheet } from "react-native";
+import { Platform, StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
-    height: Platform.OS === "ios" ? 200 : 100,
+    height: Platform.OS === 'ios' ? 200 : 100,
 });
 ```
