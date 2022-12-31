@@ -415,6 +415,20 @@ export const SideBarList: DefaultTheme.Sidebar = {
     ],
     '/PanClient': [
         {
+            text: 'UniApp',
+            collapsible: true,
+            items: [
+                {
+                    text: 'uniapp 基础',
+                    link: '/PanClient/UniApp/',
+                },
+                {
+                    text: 'uniapp 实战',
+                    link: '/PanClient/UniApp/ProjectDemo',
+                },
+            ],
+        },
+        {
             text: 'React Native',
             collapsible: true,
             items: [

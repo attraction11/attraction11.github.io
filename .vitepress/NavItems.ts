@@ -88,6 +88,10 @@ export const NavItemList: DefaultTheme.NavItem[] = [
         text: '泛客户端开发',
         items: [
             {
+                text: 'UniApp',
+                link: '/PanClient/UniApp/',
+            },
+            {
                 text: 'React Native',
                 link: '/PanClient/RN/',
             },
