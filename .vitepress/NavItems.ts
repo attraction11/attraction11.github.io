@@ -51,7 +51,7 @@ export const NavItemList: DefaultTheme.NavItem[] = [
             },
             {
                 text: 'Nuxt',
-                link: '/Framework/Nuxt/serveRender',
+                link: '/Framework/Nuxt/ServeRender',
             },
             {
                 text: 'Next',
