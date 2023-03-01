@@ -17,14 +17,14 @@ jobs:
             # 获取源码
             - name: Checkout
               uses: actions/checkout@v3
-            # 指定node版本
-            - name: Setup Node.js environment
-              uses: actions/setup-node@v3
-              with:
-                node-version: 18
-            # 下载依赖
-            - name: Install dependencies and Build
-              run: npm install && npm run build
+            # # 指定node版本
+            # - name: Setup Node.js environment
+            #   uses: actions/setup-node@v3
+            #   with:
+            #     node-version: 18
+            # # 下载依赖
+            # - name: Install dependencies and Build
+            #   run: npm install && npm run build
             # 发布
             - name: Deploy
               uses: JamesIves/github-pages-deploy-action@4.1.4
