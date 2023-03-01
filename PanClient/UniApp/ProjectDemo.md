@@ -2040,7 +2040,7 @@ uni.$on('myFeedsUpdate', () ={
 
 ### 6.1 微信小程序打包发布
 
-![6](/Users/buhe/Desktop/前端进阶/04-基于uniapp社区项目实战/01-教案讲义/6.jpg)
+![6](./images/6.jpg)
 
 ### 6.2 H5 端相关兼容性开发及打包发布
 
@@ -2178,8 +2178,8 @@ api.uploadFile = async (file) ={
 
 PS: 可以使用托管工具，快速发布体验，尤其需要注意的是：开发的时候配置的代理服务器，在正式环境打包的时候是不会被调用的，所以要更改对应的配置信息
 
-![8](/Users/buhe/Desktop/前端进阶/04-基于uniapp社区项目实战/01-教案讲义/8.jpg)
+![8](./images/7.jpg)
 
 ### 6.3 安卓云端体验版本打包发布
 
-![7](/Users/buhe/Desktop/前端进阶/04-基于uniapp社区项目实战/01-教案讲义/7.jpg)
+![7](./images/7.jpg)

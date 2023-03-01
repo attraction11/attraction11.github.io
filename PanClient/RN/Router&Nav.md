@@ -99,7 +99,7 @@ options: 可以在每个屏幕组件的 prop 中传递
 
 效果如下（不支持滑动切换）：
 
-<video autoplay muted width=210 src="./video/bottom-tabs-demo-1.mov" />
+<video autoplay muted width=210 src="./video/bottom-tabs-demo-1.mp4" />
 
 代码使用如下：
 
@@ -194,7 +194,7 @@ apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 
 效果如下：
 
-<video autoplay muted width=210 src="./video/drawer.mov" />
+<video autoplay muted width=210 src="./video/drawer.mp4" />
 
 要使用此导航器，请确保您具有 @react-navigation/native 和 它的依赖（[参考此文档](https://reactnavigation.org/docs/getting-started/)）
 
@@ -252,7 +252,7 @@ import 'react-native-gesture-handler';
 
 效果如下：
 
-<video autoplay muted width=210 src="./video/material-top-tabs.mov" />
+<video autoplay muted width=210 src="./video/material-top-tabs.mp4" />
 
 生成可以左右滑动的 Tab 导航。屏幕顶部的材质设计主题标签栏，可让您通过点击选项卡或水平滑动来切换不同的路线。
 首先安装 npm 包：

@@ -82,6 +82,10 @@ export const NavItemList: DefaultTheme.NavItem[] = [
                 text: 'GraphQL API 开发',
                 link: '/FullStack/GraphQL/',
             },
+            {
+                text: 'Nginx 配置',
+                link: '/FullStack/Nginx/',
+            },
         ],
     },
     {

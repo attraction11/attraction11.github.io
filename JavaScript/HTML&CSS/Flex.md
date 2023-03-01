@@ -123,9 +123,9 @@ stretch（默认值）：轴线占满整个交叉轴。
 
 - order：定义项目的排列顺序。属性越小，排列越前。默认为 0
 - flex-grow：定义项目的放大比例，默认为 0，即如果存在剩余空间，也不放大
-- flex-shrink
-- flex-basis
-- flex
+- flex-shrink: 属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。若属性为0，则空间不足时不缩小
+- flex-basis： 定义在分配多余空间之前，项目占据的主轴空间（main size），默认值为auto，即项目的本来大小
+- flex：是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选
 - align-self： 属性允许单个项目有与其他项目不一样的对齐方式
 
 ### order

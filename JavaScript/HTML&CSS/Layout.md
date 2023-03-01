@@ -110,7 +110,7 @@ absolute 是最棘手的 position 值。 absolute 与 fixed 的表现类似，�
 
 ## clear 清除浮动
 
-关于 浮动 和 清除浮动 可以参考 这个网址 [学习 CSS 布局](http://zh.learnlayout.com/float.html)
+关于 浮动 和 清除浮动 可以参考 这个网址 [学习 CSS 布局](https://zh.learnlayout.com/float.html)
 
 ## 百分比宽度
 

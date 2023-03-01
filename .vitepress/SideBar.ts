@@ -7,11 +7,11 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true, // 是否开启折叠
             items: [
                 {
-                    text: '概述',
+                    text: 'HTML',
                     link: '/JavaScript/HTML&CSS/',
                 },
                 {
-                    text: '布局',
+                    text: 'CSS布局',
                     link: '/JavaScript/HTML&CSS/Layout',
                 },
                 {
@@ -27,7 +27,7 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     link: '/JavaScript/HTML&CSS/Skill',
                 },
                 {
-                    text: '杂记',
+                    text: 'CSS问答题',
                     link: '/JavaScript/HTML&CSS/RandomRecord',
                 },
             ],
@@ -85,6 +85,10 @@ export const SideBarList: DefaultTheme.Sidebar = {
                 {
                     text: '理解堆栈执行',
                     link: '/JavaScript/Asynchronous/heap&stack',
+                },
+                {
+                    text: '33个JS概念',
+                    link: '/JavaScript/Asynchronous/jsConcepts',
                 },
             ],
         },
@@ -224,10 +228,6 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     text: 'Q&A-2',
                     link: '/Framework/Vue/QA2.md',
                 },
-                {
-                    text: 'Q&A-3',
-                    link: '/Framework/Vue/QA3.md',
-                },
             ],
         },
         {
@@ -241,6 +241,14 @@ export const SideBarList: DefaultTheme.Sidebar = {
                 {
                     text: '响应式系统',
                     link: '/Framework/React/ReactHooks',
+                },
+                {
+                    text: 'ReactHooks优缺点',
+                    link: '/Framework/React/ReactHooks优缺点',
+                },
+                {
+                    text: 'useState注意事项',
+                    link: '/Framework/React/UseStateNote',
                 },
                 {
                     text: 'React 基础',
@@ -281,6 +289,10 @@ export const SideBarList: DefaultTheme.Sidebar = {
                 {
                     text: 'ReactRedux',
                     link: '/Framework/React/ReactRedux',
+                },
+                {
+                    text: 'ReduxOrMobX',
+                    link: '/Framework/React/ReduxOrMobX',
                 },
                 {
                     text: 'Q&A-1',
@@ -410,6 +422,16 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     text: 'GraphQL',
                     link: '/FullStack/GraphQL/',
                 },
+            ],
+        },
+        {
+            text: 'Nginx 配置',
+            collapsible: true,
+            items: [
+                {
+                    text: 'Nginx',
+                    link: '/FullStack/Nginx/',
+                }
             ],
         },
     ],

@@ -441,3 +441,146 @@ export default function App() {
 #### 详细介绍
 
 [简书-在 React 函数式组件中使用 useState， 变量，useRef 的时机](https://www.jianshu.com/p/c6da6cae5e9c)
+
+## 7、useState是如何保存并更新数据的？
+
+#### 在项目中，我们通常会使用useState来初始化并更新数据。如下：
+
+```
+function App(){
+  const [num, setNum] = useState(0);
+
+  function increment() {
+    setTimeout(() => {
+      setNum(num + 1);
+    }, 1000);
+  }
+  
+  return <button onClick={increment}>{num}</button>;
+}
+```
+
+num初始化为0，点击按钮进行加一操作。但是在以上代码中，如果用户在一秒内点击五次按钮，最后依然会显示1。
+
+为什么呢？这就不得不聊聊useState是如何工作的了。
+
+#### hook如何保存数据
+
+在react中通过currentRenderingFiber来标识当前渲染节点，每个组件都有一个对应的fiber节点，用来保存组件的相关数据信息。\
+每次函数组件渲染时，currentRenderingFiber就被赋值为当前组件对应的fiber，所以实际上hook是通过currentRenderingFiber来获取状态信息的。
+
+#### 多个hook如何获取数据
+
+react hook允许我们在一个组件中多次使用hook。如下：
+
+```
+function App(){
+      const [num, setNum] = useState(0);
+      const [name, setName] = useState('ashen');
+      const [age, setAge] = useState(21);
+}
+```
+
+currentRenderingFiber.memorizedState中保存一条hook对应数据的单向链表。
+
+```
+const hookNum = {
+      memorizedState: null,
+      next: hookName
+}
+hookName.next = hookAge;
+currentRenderingFiber.memorizedState.next = hookNum;
+```
+
+当函数组件渲染时，每执行到一个hook，就会将currentRenderingFiber.memorizedState的指针向后移一下。这也是hook的调用顺序不能改变的原因（不能再条件语句中使用hook）
+
+#### hook如何更新数据
+
+使用useState时，返回值数组的第二个参数是用来更新数据的，称为dispatchAction.\
+每当调用dispatchAction时，都会创建一个update对象：
+
+```
+const update = {
+      // 更新数据
+      action: action,
+      // 指向下一个更新
+      next: null
+}
+```
+
+当我们多次更新state时，会形成一条环式更新链表\
+在以上例子中，如果点击按钮多次进行自增操作
+
+```
+function increment() {
+  // 产生update1
+  updateNum(num + 1);
+  // 产生update2
+  updateNum(num + 2);
+  // 产生update3
+  updateNum(num + 3);
+}
+```
+
+```
+update3 --next--> update1
+  ^                 |
+  |               update2
+  |______next_______|
+```
+
+这些dispatchAction产生的update对象也会保存在hook当中
+
+```
+const hook = {
+      memorizedState: null,
+      next: null,
+      baseState: null,
+      baseQueue: null,
+      queue: null
+}
+```
+
+其中queue中保存了本次更新的链表，baseQueue中保存了本次更新开始时已有的链表，在计算state时，会基于baseState进行更新操作。在计算state完成后，新的state就会成为memorizedState。\
+为什么更新不基于memoizedState而是baseState，是因为state的计算过程需要考虑优先级，可能有些update优先级不够被跳过。所以memoizedState并不一定和baseState相同。
+
+现在我们回到最开始的那个问题，在一秒内点击五次按钮进行更新，但是在这五次更新生成的时候，第一次的更新还没有进行，所以baseState并未改变，都是基于0进行更新，点击五次后依然是1。
+
+那么如何解决这个问题呢？实际上，更新state的函数不只可以传值，还可以传函数。
+
+```
+function increment() {
+    setTimeout(() => {
+      setNum(num => num + 1);
+    }, 1000);
+  }
+```
+
+在基于baseState和update更新state时：
+
+```
+let newState = baseState;
+let firstUpdate = hook.baseQueue.next;
+let update = firstUpdate;
+
+if(typeof update === 'function'){
+      newState = update.action(newState)
+}else {
+    newState = action;
+}
+```
+
+如上可见，当传入值时，由于5次action都是同一个值，所以结果为1.\
+当传入函数时，每次更新都是基于上一次更新后的值进行改变，所以点击五次会变为5。
+
+而上例中，如果使用的是useReducer，由于第二个参数action只能是函数，所以不会产生上述问题。\
+useState实际上就是内置了如下reducer的useReducer
+
+```
+function basicStateReducer(state, action){
+      return typeof action === 'function' ? action(state) : action;
+}
+```
+
+可以用下图来概括本文内容\
+![](./images/useState.webp)
