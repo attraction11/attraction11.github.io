@@ -247,6 +247,10 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     link: '/Framework/React/ReactHooks优缺点',
                 },
                 {
+                    text: 'ReactHooks功能',
+                    link: '/Framework/React/ReactHooks功能',
+                },
+                {
                     text: 'useState注意事项',
                     link: '/Framework/React/UseStateNote',
                 },
@@ -283,16 +287,24 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     link: '/Framework/React/ReduxCode',
                 },
                 {
-                    text: 'MobX6基础',
-                    link: '/Framework/React/MobX6',
-                },
-                {
                     text: 'ReactRedux',
                     link: '/Framework/React/ReactRedux',
                 },
                 {
+                    text: 'MobX6基础',
+                    link: '/Framework/React/MobX6',
+                },
+                {
                     text: 'ReduxOrMobX',
                     link: '/Framework/React/ReduxOrMobX',
+                },
+                {
+                    text: 'CSS-IN-JSS解决方案',
+                    link: '/Framework/React/CSSINJS',
+                },
+                {
+                    text: 'Chakra-UI介绍',
+                    link: '/Framework/React/ChakraUI',
                 },
                 {
                     text: 'Q&A-1',
@@ -342,9 +354,15 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     text: 'React SSR简介及应用',
                     link: '/Framework/Next/ServeRender',
                 },
+            ],
+        },
+        {
+            text: 'Gatsby',
+            collapsible: true,
+            items: [
                 {
                     text: 'Gatsby 基础',
-                    link: '/Framework/Next/Gatsby',
+                    link: '/Framework/Gatsby/',
                 },
             ],
         },

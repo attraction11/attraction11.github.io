@@ -58,6 +58,10 @@ export const NavItemList: DefaultTheme.NavItem[] = [
                 link: '/Framework/Next/NextJS',
             },
             {
+                text: 'Gatsby',
+                link: '/Framework/Gatsby/',
+            },
+            {
                 text: '杂记',
                 link: '/Framework/Module/',
             },
