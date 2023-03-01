@@ -1,8 +1,8 @@
-# Nodejs 通信
+# Node.js 通信
 
-## 一、网络通信
 
-#### 1. 基本原理
+
+## 1. 基本原理
 
 -   主机之间需要有传输介质
 -   主机必须有网卡设备（用于设备的调制和解调）
@@ -12,9 +12,9 @@
 
 ![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e096220a3d4a499da442b42b86676d65~tplv-k3u1fbpfcp-watermark.image?)
 
-#### 2. 网络层次模型
+## 2. 网络层次模型
 
-##### OSI 七层模型
+### OSI 七层模型
 
 -   应用层：他是用户与网络、应用程序和网络的接口。可以用不同的协议完成用户请求的服务（http-->网站服务/ FTP-->文件传输服务/SSH-->远程登陆服务）。
 -   表示层：数据加密、转换、压缩。
@@ -24,9 +24,9 @@
 -   数据链路层：通过 MAC 地址，确定目标主机（APR 寻址协议）
 -   物理层：各种物理设备和标准
 
-#### 3. TCP 通信
+## 3. TCP 通信
 
-##### TCP 协议：
+### TCP 协议：
 
 -   属于传输层协议
 -   面向连接的协议
@@ -43,13 +43,13 @@ TCP 三次握手与四次挥手
 
 > 四次挥手的原因：由于一个服务端会服务于多个客户端，我们不能保证客户端请求断开连接后，服务端能将结果立即返回给客户端。
 
-##### 创建 TCP 通信过程
+### 创建 TCP 通信过程
 
 -   创建服务端：接收和回写客户端数据
 -   创建客户端：发送和接收服务端数据
 -   数据传输：内置服务事件和方法读写数据
 
-##### 通信事件&方法
+### 通信事件&方法
 
 -   listening 事件：调用 server.listen 方法之后触发
 -   connection 事件：新的连接建立时触发
@@ -59,7 +59,7 @@ TCP 三次握手与四次挥手
 -   write 方法：在 socket 上发送数据，默认是 UT8 编码
 -   end 操作：当 socket 的一端发送 FIN 包时触发，结束可读端
 
-##### TCP 粘包及解决
+### TCP 粘包及解决
 
 ```js
 const net = require("net");
@@ -133,7 +133,7 @@ client.on("close", () => {
 });
 ```
 
-##### 封包拆包：为了避免客户端连续多次发送数据时，出现粘包的现象。
+### 封包拆包：为了避免客户端连续多次发送数据时，出现粘包的现象。
 
 -   包的结构：
 
@@ -194,8 +194,9 @@ class MyTransformCode {
 module.exports = MyTransformCode;
 ```
 
-#### 4. Http 协议
+## 4. Http 协议
 
+```
 -   请求行: GET / HTTP/1.1
 -   请求头: Host: localhost:1234 Connection: keep-alive ....
 -   请求空行：
@@ -205,7 +206,9 @@ module.exports = MyTransformCode;
 -   响应空行：
 -   响应体: {"code":200,"message": ...}
 
-##### 获取 http 请求头：
+```
+
+### 获取 http 请求头：
 
 ```js
   ...
@@ -233,7 +236,7 @@ module.exports = MyTransformCode;
   ...
 ```
 
-##### 设置 http 响应：
+### 设置 http 响应：
 
 ```js
 ...
@@ -293,7 +296,7 @@ server.listen(2345, () => {
 });
 ```
 
-##### Http 静态服务:
+### Http 静态服务:
 
 ```js
 const http = require("http");

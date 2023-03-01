@@ -379,19 +379,19 @@ export const SideBarList: DefaultTheme.Sidebar = {
     ],
     '/FullStack': [
         {
-            text: 'Node',
+            text: 'Node.js',
             collapsible: true,
             items: [
                 {
-                    text: 'Nodejs基础',
+                    text: 'Node.js基础',
                     link: '/FullStack/Node/NodeBase',
                 },
                 {
-                    text: 'Nodejs核心模块',
+                    text: 'Node.js核心模块',
                     link: '/FullStack/Node/NodeCore',
                 },
                 {
-                    text: 'Nodejs通信',
+                    text: 'Node.js通信',
                     link: '/FullStack/Node/NodeMessage',
                 },
             ],
@@ -411,7 +411,7 @@ export const SideBarList: DefaultTheme.Sidebar = {
             ],
         },
         {
-            text: 'Web开发框架',
+            text: 'Node.js开发框架',
             collapsible: true,
             items: [
                 {
@@ -511,7 +511,7 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true,
             items: [
                 {
-                    text: '第一篇：框架设计与实现',
+                    text: '框架设计与实现',
                     link: '/PanClient/Flutter/WebCli',
                 },
             ],
@@ -521,7 +521,7 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true,
             items: [
                 {
-                    text: '第一篇：框架设计与实现',
+                    text: '框架设计与实现',
                     link: '/PanClient/Electron/WebCli',
                 },
             ],
@@ -533,8 +533,8 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true,
             items: [
                 {
-                    text: '第一篇：框架设计与实现',
-                    link: '/Framework/MicroFrontend/WebCli',
+                    text: '框架设计与实现',
+                    link: '/ProgramTopics/MicroFrontend/WebCli',
                 },
             ],
         },
@@ -543,8 +543,8 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true,
             items: [
                 {
-                    text: '第一篇：框架设计与实现',
-                    link: '/Framework/TestAutomation/WebCli',
+                    text: '框架设计与实现',
+                    link: '/ProgramTopics/TestAutomation/WebCli',
                 },
             ],
         },
@@ -553,8 +553,8 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true,
             items: [
                 {
-                    text: '第一篇：框架设计与实现',
-                    link: '/Framework/DataVisualization/WebCli',
+                    text: '框架设计与实现',
+                    link: '/ProgramTopics/DataVisualization/WebCli',
                 },
             ],
         },
@@ -563,8 +563,8 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true,
             items: [
                 {
-                    text: '第一篇：框架设计与实现',
-                    link: '/Framework/Serverless/WebCli',
+                    text: '框架设计与实现',
+                    link: '/ProgramTopics/Serverless/WebCli',
                 },
             ],
         },

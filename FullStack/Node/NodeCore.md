@@ -1,4 +1,4 @@
-# Nodejs 核心模块
+# Node.js 核心模块
 
 ## 一、核心模块 path
 

@@ -71,7 +71,7 @@ export const NavItemList: DefaultTheme.NavItem[] = [
         text: '全栈开发',
         items: [
             {
-                text: 'Node',
+                text: 'Node.js',
                 link: '/FullStack/Node/NodeBase',
             },
             {
@@ -79,7 +79,7 @@ export const NavItemList: DefaultTheme.NavItem[] = [
                 link: '/FullStack/DataBase/Mongodb',
             },
             {
-                text: 'Web开发框架',
+                text: 'Node.js开发框架',
                 link: '/FullStack/WebDev/Express',
             },
             {
@@ -105,7 +105,7 @@ export const NavItemList: DefaultTheme.NavItem[] = [
             },
             {
                 text: 'Flutter',
-                link: '/PanClient/RN/WebCli',
+                link: '/PanClient/Flutter/WebCli',
             },
             {
                 text: 'Electron',
