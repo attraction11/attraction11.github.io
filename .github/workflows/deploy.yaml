@@ -22,7 +22,6 @@ jobs:
               uses: actions/setup-node@v3
               with:
                 node-version: 16
-                cache: 'npm'
             # 下载依赖
             - name: Install dependencies and Build
               run: npm install && npm run build
