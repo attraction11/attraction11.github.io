@@ -59,6 +59,16 @@ export const SideBarList: DefaultTheme.Sidebar = {
             ],
         },
         {
+            text: 'JS核心原理',
+            collapsible: true,
+            items: [
+                {
+                    text: 'JS核心原理',
+                    link: '/JavaScript/JSCore/',
+                },
+            ],
+        },
+        {
             text: 'JS异步编程',
             collapsible: true,
             items: [
@@ -117,7 +127,7 @@ export const SideBarList: DefaultTheme.Sidebar = {
             ],
         },
         {
-            text: 'JS性能优化',
+            text: '性能优化',
             collapsible: true,
             items: [
                 {
@@ -135,6 +145,24 @@ export const SideBarList: DefaultTheme.Sidebar = {
                 {
                     text: 'JS性能优化',
                     link: '/JavaScript/Performance/Optimize',
+                },
+                {
+                    text: '前端性能优化',
+                    link: '/JavaScript/Performance/Overall',
+                },
+            ],
+        },
+        {
+            text: '网络与安全',
+            collapsible: true,
+            items: [
+                {
+                    text: '前端安全',
+                    link: '/JavaScript/WebSafety/',
+                },
+                {
+                    text: '网络传输',
+                    link: '/JavaScript/WebSafety/Transfer',
                 },
             ],
         },
@@ -447,7 +475,7 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true,
             items: [
                 {
-                    text: 'Nginx',
+                    text: 'Nginx 问题解决',
                     link: '/FullStack/Nginx/',
                 }
             ],

@@ -13,6 +13,10 @@ export const NavItemList: DefaultTheme.NavItem[] = [
                 link: '/JavaScript/Functional/',
             },
             {
+                text: 'JS核心原理',
+                link: '/JavaScript/JSCore/',
+            },
+            {
                 text: 'JS异步编程',
                 link: '/JavaScript/Asynchronous/',
             },
@@ -25,8 +29,12 @@ export const NavItemList: DefaultTheme.NavItem[] = [
                 link: '/JavaScript/TypeScript/',
             },
             {
-                text: 'JS性能优化',
+                text: '性能优化',
                 link: '/JavaScript/Performance/',
+            },
+            {
+                text: '网络与安全',
+                link: '/JavaScript/WebSafety/',
             },
             {
                 text: '项目工程化',
