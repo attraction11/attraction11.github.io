@@ -422,6 +422,10 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     text: 'Node.js通信',
                     link: '/FullStack/Node/NodeMessage',
                 },
+                {
+                    text: 'Node.js问答',
+                    link: '/FullStack/Node/NodeQA',
+                },
             ],
         },
         {
@@ -593,6 +597,28 @@ export const SideBarList: DefaultTheme.Sidebar = {
                 {
                     text: '框架设计与实现',
                     link: '/ProgramTopics/Serverless/WebCli',
+                },
+            ],
+        },
+        {
+            text: 'BusinessScene',
+            collapsible: true,
+            items: [
+                {
+                    text: '登录功能',
+                    link: '/ProgramTopics/BusinessScene/Login',
+                },
+                {
+                    text: '懒加载',
+                    link: '/ProgramTopics/BusinessScene/Lazy',
+                },
+                {
+                    text: '刷新与加载',
+                    link: '/ProgramTopics/BusinessScene/Refresh',
+                },
+                {
+                    text: '用户体验优化',
+                    link: '/ProgramTopics/BusinessScene/Experience',
                 },
             ],
         },

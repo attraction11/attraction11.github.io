@@ -140,6 +140,10 @@ export const NavItemList: DefaultTheme.NavItem[] = [
                 text: 'Serverless',
                 link: '/ProgramTopics/Serverless/WebCli',
             },
+            {
+                text: 'Business Scene',
+                link: '/ProgramTopics/BusinessScene/Login',
+            }, 
         ],
     },
     {
