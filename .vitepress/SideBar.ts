@@ -423,6 +423,10 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     link: '/FullStack/Node/NodeMessage',
                 },
                 {
+                    text: 'Node.js应用开发',
+                    link: '/FullStack/Node/NodeDev',
+                },
+                {
                     text: 'Node.js问答',
                     link: '/FullStack/Node/NodeQA',
                 },
@@ -461,6 +465,10 @@ export const SideBarList: DefaultTheme.Sidebar = {
                 {
                     text: 'Egg',
                     link: '/FullStack/WebDev/Egg',
+                },
+                {
+                    text: 'NodeJS框架对比',
+                    link: '/FullStack/WebDev/Comparison',
                 },
             ],
         },
@@ -619,6 +627,20 @@ export const SideBarList: DefaultTheme.Sidebar = {
                 {
                     text: '用户体验优化',
                     link: '/ProgramTopics/BusinessScene/Experience',
+                },
+            ],
+        },
+        {
+            text: 'InterviewBible',
+            collapsible: true,
+            items: [
+                {
+                    text: '面试准备',
+                    link: '/ProgramTopics/InterviewBible/',
+                },
+                {
+                    text: '自检清单',
+                    link: '/ProgramTopics/InterviewBible/Check',
                 },
             ],
         },

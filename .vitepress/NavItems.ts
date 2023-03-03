@@ -144,6 +144,10 @@ export const NavItemList: DefaultTheme.NavItem[] = [
                 text: 'Business Scene',
                 link: '/ProgramTopics/BusinessScene/Login',
             }, 
+            {
+                text: 'Interview Bible',
+                link: '/ProgramTopics/InterviewBible/',
+            }, 
         ],
     },
     {
