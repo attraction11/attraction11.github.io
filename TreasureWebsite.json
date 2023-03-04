@@ -1,16 +1,5 @@
 [
-  {
-    "title": "Canva 可画",
-    "href": "https://www.canva.cn/",
-    "logo": "https://static.canva.cn/static/images/android-192x192-2.png",
-    "description": "在线设计网站 | 海报设计 | 免费图标"
-  },
-  {
-    "title": "Git配置GPG",
-    "href": "https://zhuanlan.zhihu.com/p/76861431",
-    "logo": "https://picx.zhimg.com/v2-4288e43abc4c8ad0e37cdb93ccce6b28_xs.jpg?source=172ae18b",
-    "description": "在Github上使用GPG的全过程"
-  },
+
   {
     "title": "极简插件",
     "href": "https://chrome.zzzmh.cn/#/index",
@@ -24,28 +13,10 @@
     "description": "Favicon.icon 图标生成工具"
   },
   {
-    "title": "Happy Hues",
-    "href": "https://www.happyhues.co",
-    "logo": "https://assets.website-files.com/5dd40aa8049df8748c72d0ee/5dd9b92056a2d6ed5e537c61_happy-hues-apple-icon.png",
-    "description": "配色设计网站"
-  },
-  {
-    "title": "Type Scale",
-    "href": "https://type-scale.com",
-    "logo": "https://ts2.cn.mm.bing.net/th?id=ODLS.49046716-42d0-4de2-afc6-4d33cae93026",
-    "description": "帮助设置页面元素的字体大小"
-  },
-  {
     "title": "Smooth Shadow",
     "href": "https://shadows.brumm.af",
     "logo": "https://shadows.brumm.af/favicon.svg",
     "description": "设置 box-shadow 阴影效果"
-  },
-  {
-    "title": "unDraw",
-    "href": "https://undraw.co/",
-    "logo": "https://undraw.co/favicon.ico",
-    "description": "SVG插画素材网站"
   },
   {
     "title": "TingPNG",
@@ -60,33 +31,81 @@
     "description": "创造师导航为创意工作者而设计"
   },
   {
-    "title": "Color Tool",
-    "href": "https://material.io/resources/color/#!/?view.left=1&view.right=0&primary.color=D81B60",
-    "logo": "https://m2.material.io/resources/color/assets/images/color_light.svg",
-    "description": "颜色工具"
-  },
-  {
-    "title": "Modern.js 现代Web工程体系",
-    "href": "https://modernjs.dev/",
-    "logo": "https://lf3-static.bytednsdoc.com/obj/eden-cn/uhbfnupenuhf/favicon.ico",
-    "description": "Modern.js 现代Web工程体系"
-  },
-  {
     "title": "MKLab在线工具",
     "href": "https://www.mklab.cn/utils/regex",
     "logo": "https://cdn.mklab.cn/images/favicon.png",
     "description": "Regex正则表达式在线测试生成工具 - MKLab在线工具"
   },
   {
-    "title": "CodePen",
-    "href": "https://codepen.io/",
-    "logo": "https://cpwebassets.codepen.io/assets/favicon/favicon-touch-de50acbf5d634ec6791894eba4ba9cf490f709b3d742597c6fc4b734e6492a5a.png",
-    "description": "可以再上面找到自己感兴趣的CSS效果和一些布局上面的需求"
-  },
-  {
     "title": "印记中文",
     "href": "https://docschina.org/",
     "logo": "https://docschina.org/favicon.ico",
     "description": "印记中文 - 深入挖掘国外前端新领域，为国内 Web 前端开发人员提供优质文档！"
+  },
+  {
+    "title": "阿里巴巴图标库",
+    "href": "https://www.iconfont.cn/",
+    "logo": "https://img.alicdn.com/imgextra/i4/O1CN01Z5paLz1O0zuCC7osS_!!6000000001644-55-tps-83-82.svg",
+    "description": "iconfont-国内功能很强大且图标内容很丰富的矢量图标库"
+  },
+  {
+    "title": "技术胖",
+    "href": "https://jspang.com/",
+    "logo": "https://blogimages.jspang.com/blogtouxiang1.jpg",
+    "description": "关注web前端技术-前端免费视频第一博客"
+  },
+  {
+    "title": "平克小站",
+    "href": "https://pincman.com/",
+    "logo": "https://pincman.com/custom/favicon.ico",
+    "description": "平克小站 | 最好的全栈开发学习网站"
+  },
+  {
+    "title": "StackBlitz",
+    "href": "https://stackblitz.com/",
+    "logo": "https://c.staticblitz.com/assets/favicon_sb-861fe1b85c0dc928750c62de15fed96fc75e57ee366bd937bad17a3938917b3f.svg",
+    "description": "在线 IDE，主要面向 Web 开发者，移植了很多 VS Code 的特性与功能，非常的方便易用"
+  },
+  {
+    "title": "Road 2 Coding",
+    "href": "https://r2coding.com/",
+    "logo": "https://r2coding.com/r2_static/img/favicon.ico",
+    "description": "自学编程-资源和分享内容的大聚合"
+  },
+  {
+    "title": "慕课网",
+    "href": "https://www.imooc.com/",
+    "logo": "https://www.imooc.com/static/img/common/touch-icon-iphone-retina.png",
+    "description": "慕课网 - IT技能学习平台"
+  },
+  {
+    "title": "拉勾教育",
+    "href": "https://kaiwu.lagou.com/",
+    "logo": "https://s0.lgstatic.com/mds-icon-fed/kaiwu/logo@2x.png",
+    "description": "拉勾教育 - 拉勾旗下教育平台"
+  },
+  {
+    "title": "diagrams.net",
+    "href": "https://app.diagrams.net/",
+    "logo": "https://www.diagrams.net/favicon.ico",
+    "description": "在线绘图"
+  },
+  {
+    "title": "中国大学MOOC",
+    "href": "https://www.icourse163.org/",
+    "logo": "https://attraction11.github.io/docs-logo.png",
+    "description": "国家精品课程在线学习平台"
+  },
+  {
+    "title": "网易公开课",
+    "href": "https://open.163.com/",
+    "logo": "https://c.open.163.com/favicon.ico",
+    "description": "开拓视野看世界，获取有深度的好知识"
+  },
+  {
+    "title": "LeetCode",
+    "href": "https://leetcode.cn/",
+    "logo": "https://static.leetcode.cn/cn-mono-assets/production/assets/logo-dark-cn.4c5e285b.svg",
+    "description": "全球极客挚爱的技术成长平台"
   }
 ]

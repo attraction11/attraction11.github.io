@@ -55,7 +55,7 @@ const websiteList = ref<WebSiteInfo[]>(treasureWebsite);
   width: 80%;
   height: 90%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   grid-column-gap: 20px;
   grid-row-gap: 10px;
   overflow-y: scroll;

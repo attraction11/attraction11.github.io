@@ -14,7 +14,7 @@ hero:
     actions:
         - theme: brand
           text: 开始
-          link: /frontend/HTML5/RandomRecord
+          link: /JavaScript/HTML&CSS/
         - theme: alt
           text: GitHub
           link: https://github.com/attraction11
