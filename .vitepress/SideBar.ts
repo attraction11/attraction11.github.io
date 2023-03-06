@@ -63,8 +63,48 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true,
             items: [
                 {
-                    text: 'JS核心原理',
+                    text: 'JS数据类型',
                     link: '/JavaScript/JSCore/',
+                },
+                {
+                    text: '实现深浅拷贝',
+                    link: '/JavaScript/JSCore/Copy',
+                },
+                {
+                    text: 'JS继承',
+                    link: '/JavaScript/JSCore/Inherit',
+                },
+                {
+                    text: '底层逻辑',
+                    link: '/JavaScript/JSCore/Call',
+                },
+                {
+                    text: 'JS闭包',
+                    link: '/JavaScript/JSCore/Closure',
+                },
+                {
+                    text: 'JSON.stringify',
+                    link: '/JavaScript/JSCore/Stringify',
+                },
+                {
+                    text: 'JS 的类数组',
+                    link: '/JavaScript/JSCore/ArrayLike',
+                },
+                {
+                    text: '数组扁平化',
+                    link: '/JavaScript/JSCore/ArrayFlat',
+                },
+                {
+                    text: '数组排序',
+                    link: '/JavaScript/JSCore/ArraySort',
+                },
+                {
+                    text: 'sort排序原理',
+                    link: '/JavaScript/JSCore/TheorySort',
+                },
+                {
+                    text: '手写JS数组方法',
+                    link: '/JavaScript/JSCore/ArrayCode',
                 },
             ],
         },

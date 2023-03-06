@@ -3,15 +3,15 @@
 ## V8 引擎的工作流程
 
 首先通过一张图整体理解一下：
-![image.png](./images/image13.png)
+![image.png](./image/image13.png)
 
 ## 基本的堆栈处理
 
-![image.png](./images/image14.png)
+![image.png](./image/image14.png)
 
 ## 引用类型堆栈处理
 
-![image.png](./images/image15.png)
+![image.png](./image/image15.png)
 这里插入一道练习题检测是否理解：
 
 ```js
@@ -39,12 +39,12 @@ console.log(a === b, b === c, c === d, c === d.x, d.x === d.y, d.y === d.z);
 
 ## 函数堆栈处理
 
-![image.png](./images/image16.png)
+![image.png](./image/image16.png)
 
 ## 闭包堆栈处理
 
-![image.png](./images/image17.png)
+![image.png](./image/image17.png)
 
 ## 闭包与垃圾回收
 
-![image.png](./images/image18.png)
+![image.png](./image/image18.png)

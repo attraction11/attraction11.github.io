@@ -100,7 +100,7 @@ fn = null;
 
 -   Nodejs：对 js 功能的拓展，提供了网络、文件、dns 解析、进程线程等功能，利用 v8 提供接口。
 -   libuv - 一个跨平台异步 IO 库。Nodejs 把 IO 操作交给 libuv，保证主线程可以继续处理其他事情。 - 利用系统提供的事件驱动模块解决网络异步 IO，利用线程池解决文件 IO。另外还实现了定时器，对进程，线程等使用进行了封装。
-    ![image](./images/image.png)
+    ![image](./image/image.png)
 -   nodejs 中的事件循环根据不同的操作系统可能存在特殊的阶段，但总体是可以分为以下 6 个阶段
     -   timer 阶段： 执行所有通过计时器函数（即 setTimeout 和 setInterval）注册的回调函数。
     -   pending callbacks 阶段： 虽然大部分 I/O 回调都是在 poll 阶段被立即执行，但是会存在一些被延迟调用的 I/O 回调函数。那么此阶段就是为了调用之前事件循环延迟执行的 I/O 回调函数。
@@ -115,7 +115,7 @@ fn = null;
     -   在 nodejs 中事件循环不再是由单一个 task queue 和 micro-task queue 组成，而是由多个 阶段 phase 的多个回调函数队列 callbacks queues 组成一次事件循环 tick
     -   在每一个单独的阶段都存在一个单独的 回调函数 FIFO 队列。
 -   libuv 的运行原理
-    -   libuv 的架构 [!image](../../images/libuv.png)
+    -   libuv 的架构 [!image](../../image/libuv.png)
         -   从左往右可分为两部分，Network I/O 的相关请求，另一部分 File I/O，DNS Ops 和 User Code 组成。
 
 #### 详细介绍：
@@ -382,7 +382,7 @@ fn = null;
 -   代理模式：为其它对象提供一种代理以控制这个对象的访问，具体执行的功能还是这个对象本身。
 -   责任链模式：避免请求发送者与接收者耦合在一起，让多个对象都有可能接收请求，将这些对象连接成一条链，并且沿着这条链传递请求，直到有对象处理它为止。（各环节可复用、有执行顺序、可重组）
 -   图片总结：
-    ![image](./images/23 种设计模式.png)
+    ![image](./image/23 种设计模式.png)
 
 #### 详细介绍
 

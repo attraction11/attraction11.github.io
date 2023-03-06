@@ -76,7 +76,7 @@ console.log(f(["one", "two", "three"])); // THREE
 ## flow() 与 flowRight()
 
 -   lodash 中组合函数 flow() 或者 flowRight()，他们都可以组合多个函数
--   low() 是从左到右运行
+-   flow() 是从左到右运行
 -   flowRight() 是从右到左运行（更常使用）
 
 ## 函数组合-调试

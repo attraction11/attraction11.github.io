@@ -17,7 +17,7 @@ for (var i = 0; i < abtns.length; i++) {
 ```
 
 那为什么每次点击 button,都会输出 3 呢？
-![image.png](./images/image20.png)
+![image.png](./image/image20.png)
 
 -   改造一：使用立即执行函数的方式
 
@@ -33,7 +33,7 @@ for (var i = 0; i < abtns.length; i++) {
 ```
 
 图解代码的堆栈执行情况：
-![image.png](./images/image21.png)
+![image.png](./image/image21.png)
 这种方式存在缺陷：图中被虚线框住的部分匿名函数创建、执行产生了闭包，无法出栈释放，因此消耗了更多的空间  
 为了避免内存的泄露，当在 button 不再被点击时，需要手动将 abtns 置空，这个 GC 就会释放闭包中堆栈占用内存  
 那如何才能尽量少开辟新的内存空间，也避免内存无法自动释放的问题呢？
@@ -51,7 +51,7 @@ for (var i = 0; i < abtns.length; i++) {
 ```
 
 图解代码的堆栈执行情况：
-![image.png](./images/image22.png)
+![image.png](./image/image22.png)
 
 -   改造三：采用事件委托的方式
 
@@ -67,19 +67,19 @@ document.body.onclick = function (ev) {
 ```
 
 图解代码的堆栈执行情况：
-![image.png](./images/image23.png)
+![image.png](./image/image23.png)
 
 ## JSBench 对 JS 性能测试
 
 [JSBench 网址](https://jsbench.me/)
-![image.png](./images/image24.png)
+![image.png](./image/image24.png)
 **模块介绍**：  
 带 Setup 的都是填写一些前置初始化的代码。  
 Test case 是添加测试用例，我们需要比对的 JS 代码填写在这个版块。  
 Teardown 和 Setup 是相对的，可以理解为 Teardown 是做收尾的工作。好比链接完数据库之后，操作完数据，把连接给释放掉。这部分都是一样的，那我们可以不写在测试用例里面，而是把它抽离出来，写到 Teardown 中去。  
 **使用介绍**：  
 我们在 Test Case 中红框地方填写我们需要测试的代码，然后点击 RUN 之后，蓝框地方会输出结果。因为单位是 ops/s 也就是每秒钟的操作数，所以前面那个数值越大越好。
-![image.png](./images/image25.png)
+![image.png](./image/image25.png)
 **使用建议**：
 
 1. 使用性能测试的时候，建议浏览器只打开一个标签页，因为开启过多标签页会抢占资源，测试结果不那么准确。
@@ -248,7 +248,7 @@ window.onscroll = myThrottle(scrollFn, 600);
 ```
 
 图解以上代码的实现逻辑：
-![image.png](./images/image26.png)
+![image.png](./image/image26.png)
 
 ## 减少判断层级
 
@@ -293,7 +293,7 @@ doSomeThing("ES6", 6);
 ```
 
 对比性能提升：
-![image.png](./images/image27.png)
+![image.png](./image/image27.png)
 总结编程思想：
 
 -   当我们在进行多层区间判断的时候(`if...else...`),可以根据需求将多层嵌套扁平化处理，对异常情况优先处理并返回，正常流程滞后处理。
@@ -336,7 +336,7 @@ test();
 ```
 
 对比性能(执行时间)提升：
-![image.png](./images/image28.png)
+![image.png](./image/image28.png)
 总结编程思想：
 
 -   对循环体中的不变量，避免通过查找的方式取值，可以提前进行缓存。
@@ -369,7 +369,7 @@ console.log(test());
 ```
 
 对比性能(执行时间)提升：
-![image.png](./images/image29.png)
+![image.png](./image/image29.png)
 分析：两者有一些差异，第一种方式因为执行 new Object()调用了 Object 函数导致时间多了。  
 **基本类型的字面量与构造式的定义：**
 
@@ -381,5 +381,5 @@ console.log(str2);
 ```
 
 对比性能(执行时间)提升：
-![9c6bde5f18b4cd17d6da5b4545b58ce.png](./images/image30.png)
+![9c6bde5f18b4cd17d6da5b4545b58ce.png](./image/image30.png)
 分析：基本类型字面量定义相比于构造式定义，执行时间有极大的提升。原因是 new String() 会开辟堆内存，将值与原型对象存储起来。字面量的方式 str1 也是 String 对象的一个实例，按照原型链也可以找到 scice 等方法

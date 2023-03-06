@@ -2,8 +2,8 @@
 
 ## Performance 工具
 
-了解垃圾回收策略，但是如何判断程序中 是否存在内存泄漏等性能问题，可以借助浏览器`Performance`工具。GC 的目的时为了实现内存空间的良性循环。但是否能实现良性循环需要程序合理使用内存，因此需要`Performance`工具监控程序的内存空间，从而发现问题。图示：
-![image.png](./images/image9.png)
+了解垃圾回收策略，但是如何判断程序中 是否存在内存泄漏等性能问题，可以借助浏览器`Performance`工具。GC 的目的是为了实现内存空间的良性循环。但是否能实现良性循环需要程序合理使用内存，因此需要`Performance`工具监控程序的内存空间，从而发现问题。图示：
+![image.png](./image/image9.png)
 
 #### 1、内存问题的外在表现（假定网络正常）
 
@@ -20,11 +20,11 @@
 #### 3、监控内存的方式
 
 -   浏览器任务管理器（在浏览器界面按下`Shift` + `Esc`调出）
-    ![image.png](./images/image10.png)
+    ![image.png](./image/image10.png)
 -   `timeline`时序图记录
-    ![image.png](./images/image11.png)
+    ![image.png](./image/image11.png)
 -   堆快照查找分离`DOM`
     什么是分离 DOM？DOM 节点已经从 DOM 中移除，但在 JS 中还在引用。
-    ![image.png](./images/image12.png)
+    ![image.png](./image/image12.png)
 -   判断是否存在频繁的垃圾回收
     页面不活动时，`Timeline`中频繁`JS Heap`的内存线上下波动。任务管理器中`JS`堆栈内存频繁的增加减少。
