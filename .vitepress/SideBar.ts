@@ -193,6 +193,20 @@ export const SideBarList: DefaultTheme.Sidebar = {
             ],
         },
         {
+            text: '数据结构与算法',
+            collapsible: true,
+            items: [
+                {
+                    text: '数据结构',
+                    link: '/JavaScript/LeetCode/',
+                },
+                {
+                    text: '数组算法',
+                    link: '/JavaScript/LeetCode/Array',
+                },
+            ],
+        },
+        {
             text: '网络与安全',
             collapsible: true,
             items: [

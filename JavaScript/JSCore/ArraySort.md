@@ -165,6 +165,20 @@ selectSort(a); // [1, 1, 3, 3, 6, 6, 23, 34, 76, 221, 222, 456]
 
 ## 堆排序
 
+原理
+堆是一棵完全二叉树，它可以使用数组存储，并且大顶堆的最大值存储在根节点（i=1），所以我们可以每次取大顶堆的根结点与堆的最后一个节点交换，此时最大值放入了有效序列的最后一位，并且有效序列减1，有效堆依然保持完全二叉树的结构，然后堆化，成为新的大顶堆，重复此操作，知道有效堆的长度为 0，排序完成。
+
+完整步骤为：
+
+- 将原序列（n个）转化成一个大顶堆
+- 设置堆的有效序列长度为 n
+- 将堆顶元素（第一个有效序列）与最后一个子元素（最后一个有效序列）交换，并有效序列- 长度减1
+- 堆化有效序列，使有效序列重新称为一个大顶堆
+- 重复以上2步，直到有效序列的长度为 1，排序完成
+
+图示：
+![image.png](./image/22.gif)
+
 堆排序是指利用堆这种数据结构所设计的一种排序算法。堆积是一个近似完全二叉树的结构，并同时满足堆积的性质，即子结点的键值或索引总是小于（或者大于）它的父节点。堆的底层实际上就是一棵完全二叉树，可以用数组实现。
 
 根节点最大的堆叫作大根堆，根节点最小的堆叫作小根堆，你可以根据从大到小排序或者从小到大来排序，分别建立对应的堆就可以。请看下面的代码。
@@ -172,41 +186,58 @@ selectSort(a); // [1, 1, 3, 3, 6, 6, 23, 34, 76, 221, 222, 456]
 ```js
 var a = [1, 3, 6, 3, 23, 76, 1, 34, 222, 6, 456, 221];
 
-function heap_sort(arr) {
-    var len = arr.length;
-    var k = 0;
-    function swap(i, j) {
-        var temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+let len; // 因为声明的多个函数都需要数据长度，所以把len设置成为全局变量
+
+function buildMaxHeap(arr) {
+    // 建立大顶堆
+    len = arr.length;
+    for (let i = Math.floor(len / 2); i >= 0; i--) {
+        heapify(arr, i);
+    }
+}
+
+function heapify(arr, i) {
+    // 堆调整
+    let left = 2 * i + 1,
+        right = 2 * i + 2,
+        largest = i;
+
+    if (left < len && arr[left] > arr[largest]) {
+        largest = left;
     }
 
-    function max_heapify(start, end) {
-        var dad = start;
-        var son = dad * 2 + 1;
-        if (son >= end) return;
-        if (son + 1 < end && arr[son] < arr[son + 1]) {
-            son++;
-        }
-
-        if (arr[dad] <= arr[son]) {
-            swap(dad, son);
-            max_heapify(son, end);
-        }
+    if (right < len && arr[right] > arr[largest]) {
+        largest = right;
     }
 
-    for (var i = Math.floor(len / 2) - 1; i >= 0; i--) {
-        max_heapify(i, len);
+    if (largest != i) {
+        swap(arr, i, largest);
+        heapify(arr, largest);
     }
+}
 
-    for (var j = len - 1; j > k; j--) {
-        swap(0, j);
-        max_heapify(0, j);
+function swap(arr, i, j) {
+    let temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
+
+function sortArray(arr) {
+    buildMaxHeap(arr);
+
+    for (let i = arr.length - 1; i > 0; i--) {
+        swap(arr, 0, i);
+        len--;
+        heapify(arr, 0);
     }
     return arr;
 }
 
-heap_sort(a); // [1, 1, 3, 3, 6, 6, 23, 34, 76, 221, 222, 456]
+sortArray(a); // [1, 1, 3, 3, 6, 6, 23, 34, 76, 221, 222, 456]
 ```
 
 从代码来看，堆排序相比上面几种排序整体上会复杂一些，不太容易理解。不过你应该知道两点：一是堆排序最核心的点就在于排序前先建堆；二是由于堆其实就是完全二叉树，如果父节点的序号为 n，那么叶子节点的序号就分别是 2n 和 2n+1。

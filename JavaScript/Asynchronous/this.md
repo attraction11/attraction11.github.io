@@ -20,7 +20,7 @@ JS 中的 this 是什么呢？
 ## 判定 this 的规律
 
 -   函数执行的时候需要查看函数的前端是否有 . 如果有，则点前面的对象就执行主体
--   方法调用模式下，this 总是指向调用它所在方法的对象，this 的指向与所在方法的调用位置有关，而与方法的声明位置无关（箭头函数特殊）；
+-   方法调用模式下，this 总是指向调用它所在方法的对象，this 的指向与**所在方法的调用位置有关**，而与方法的声明位置无关（箭头函数特殊）；
 -   setTimeout、匿名函数中的 this 是 window 或者 undefined
 -   构造函数调用模式下，this 指向被构造的对象；
 -   apply,call,bind 调用模式下，this 指向第一个参数；
@@ -38,7 +38,7 @@ function a() {
     console.log(this.user); //undefined
     console.log(this); //Window
 }
-a();
+a(); // 与所在方法的调用位置有关 this --> window
 ```
 
 > 解析：上面的函数调用实际可以改写为 Window.a()。函数执行时，它内部的 this 指向调用它的主体对象。在本例中就是 Window。

@@ -33,6 +33,10 @@ export const NavItemList: DefaultTheme.NavItem[] = [
                 link: '/JavaScript/Performance/',
             },
             {
+                text: '数据结构与算法',
+                link: '/JavaScript/LeetCode/',
+            },
+            {
                 text: '网络与安全',
                 link: '/JavaScript/WebSafety/',
             },

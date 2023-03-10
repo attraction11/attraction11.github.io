@@ -134,14 +134,31 @@ Promise.resolve("拉勾教育")
 
 1. promise.all 等待所有的 promise 实例都成功，整体返回的状态才成功，只要有一个失败，整体失败
 2. promise.race 看多个实例谁先处理完，先处理完成的状态，不论失败还是成功，就是最后整体的状态
-3. Promise.any()  接收一个由  [`Promise`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)  所组成的可迭代对象，该方法会返回一个新的  `promise`，一旦可迭代对象内的任意一个  `promise`  变成了兑现状态，那么由该方法所返回的  `promise`  就会变成兑现状态，并且它的兑现值就是可迭代对象内的首先兑现的  `promise`  的兑现值。如果可迭代对象内的  `promise`  最终都没有兑现（即所有  `promise`  都被拒绝了），那么该方法所返回的  `promise`  就会变成拒绝状态，并且它的拒因会是一个  [`AggregateError`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/AggregateError)  实例。该功能处于实验阶段。
+3. Promise.any()  执行所有 promise，使用最先返回的成功结果；全部失败才判定为失败； p.then("谁先成功就返回谁"，"失败了先存起来，都失败了才返回")
+4. Promise.allSettled() 批处理 promise，返回 promise；存在失败结果也会拿到全部执行结果，不会走 catch；解决了 Promise.all 不能拿到失败执行结果的问题；全部执行完成，返回执行结果数组（下标与按执行顺序一致）
+
+```js
+Promise.allSettled([
+  Promise.resolve(33),
+  new Promise((resolve) => setTimeout(() => resolve(66), 0)),
+  99,
+  Promise.reject(new Error("an error")),
+]).then((values) => console.log(values));
+
+// [
+//   { status: 'fulfilled', value: 33 },
+//   { status: 'fulfilled', value: 66 },
+//   { status: 'fulfilled', value: 99 },
+//   { status: 'rejected', reason: Error: an error }
+// ]
+```
 
 ## promise 与微任务
 
 1. .then 操作
     1. 当前实例的状态如果是明确的，则会创建一个异步微任务
     2. 当前实例的状态如果是 pending ，则只是将异步任务保存到，并没有创建微任务
-2. resolve|reject 执行
+2. resolve | reject 执行
     1. 此时会创建一个异步微任务，同步结束后基于状态执行 then 的相关操作
 
 ## async 与 await

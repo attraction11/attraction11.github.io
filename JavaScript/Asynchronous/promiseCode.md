@@ -30,9 +30,9 @@
 
 ```js
 // 2、Promise 中有三种状态，分别是fulfilled 成功   rejected 失败    pending 等待
-const PENDING = "pending";
-const FULFILLED = "fulfilled";
-const REJECTED = "rejected";
+const PENDING = 'pending';
+const FULFILLED = 'fulfilled';
+const REJECTED = 'rejected';
 
 // 1.1、Promise是一个类
 class MyPromise {
@@ -179,6 +179,84 @@ class MyPromise {
             }
         });
     }
+    // race: 批处理 promise，返回 promise；全部成功才成功，返回全部结果；一个出错就失败，返回第一个失败结果；
+    static race(promises) {
+        return new Promise((resolve, reject) => {
+            for (let i = 0; i < promises.length; i++) {
+                let p = promises[i];
+                // 校验是否是 promise
+                if (p && typeof p.then === 'function') {
+                    p.then(resolve, reject); // 使用第一个执行成功的结果
+                } else {
+                    resolve(p);
+                }
+            }
+        });
+    }
+    // allSettle：全部执行完成后，返回全部执行结果（成功+失败）
+    static allSettled(promises) {
+        const result = new Array(promises.length); // 记录执行的结果：用于返回直接结果
+        let times = 0; // 记录执行完成的次数：判断是否完成
+        return new Promise((resolve, reject) => {
+            for (let i = 0; i < promises.length; i++) {
+                let p = promises[i];
+                if (p && typeof p.then === 'function') {
+                    p.then((data) => {
+                        result[i] = { status: 'fulfilled', value: data };
+                        times++;
+                        if (times === promises.length) {
+                            resolve(result);
+                        }
+                    }).catch((err) => {
+                        result[i] = { status: 'rejected', reason: err };
+                        times++;
+                        if (times === promises.length) {
+                            resolve(result);
+                        }
+                    });
+                } else {
+                    // 普通值，加入
+                    result[i] = { status: 'fulfilled', value: p };
+                    times++;
+                    if (times === promises.length) {
+                        resolve(result);
+                    }
+                }
+            }
+        });
+    }
+    // any：一个成功就成功，全部失败才失败
+    static any(promises) {
+        const rejectedArr = []; // 记录失败的结果
+        let rejectedTimes = 0; // 记录失败的次数
+        return new Promise((resolve, reject) => {
+            if (promises == null || promises.length == 0) {
+                reject('无效的 any');
+            }
+            for (let i = 0; i < promises.length; i++) {
+                let p = promises[i];
+                // 处理 promise
+                if (p && typeof p.then === 'function') {
+                    p.then(
+                        (data) => {
+                            resolve(data); // 使用最先成功的结果
+                        },
+                        (err) => {
+                            // 如果失败了，保存错误信息；当全失败时，any 才失败
+                            rejectedArr[i] = err;
+                            rejectedTimes++;
+                            if (rejectedTimes === promises.length) {
+                                reject(rejectedArr);
+                            }
+                        }
+                    );
+                } else {
+                    // 处理普通值，直接成功
+                    resolve(p);
+                }
+            }
+        });
+    }
     // 16、Promise对象上有一个静态方法resolve，用于将现有对象转换为Promise对象，从而控制异步流程。
     static resolve(value) {
         if (value instanceof MyPromise) return value;
@@ -189,7 +267,7 @@ class MyPromise {
 function paserPomiseX(promise2, x, resolve, reject) {
     // 11.1、当then方法中返回的值为一个MyPromise，并且这个MyPromise就是该then方法的返回值时，会发生MyPromise的循环调用，这种情况在执行中会报错的。
     if (promise2 === x) {
-        reject(new TypeError("Chaining cycle detected for promise #<Promise>"));
+        reject(new TypeError('Chaining cycle detected for promise #<Promise>'));
         return;
     }
     if (x instanceof MyPromise) {
@@ -200,4 +278,52 @@ function paserPomiseX(promise2, x, resolve, reject) {
         resolve(x);
     }
 }
+```
+
+## Promise.race 应用：解决超时问题
+
+借助 Promise.race 特性，为 promise 绑个炸弹：
+
+```js
+// 包装 promise，使之具备新功能：控制 promise 状态
+function wrap(p1) {
+    let abort;
+    let p = new Promise((resolve, reject) => {
+        // 拿到 p 的 reject，以便于随时更新 p 的状态
+        abort = reject;
+    });
+
+    // Promise.race：相当于给 p1 绑了一个定时炸弹 p
+    let p2 = Promise.race([p, p1]);
+    p2.abort = abort; // p2 就获得炸弹的遥控器
+
+    return p2;
+}
+```
+
+超时了，就直接引爆：
+
+```js
+let p1 = new Promise((resolve, reject) => {
+    abort = reject;
+    setTimeout(() => {
+        resolve('成功');
+    }, 3000);
+});
+
+let p2 = wrap(p1);
+
+p2.then(
+    (data) => {
+        console.log('then', data);
+    },
+    (err) => {
+        console.log('err', err);
+    }
+);
+setTimeout(() => {
+    p2.abort('已超时');
+}, 1000);
+
+// 执行结果:1 秒后输出"err 已超时",3 秒全部执行完成
 ```
