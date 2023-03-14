@@ -52,3 +52,5 @@ const searchRange = function (nums, target) {
     const last = findTarget(nums, target, false);
     return [first, last];
 };
+
+
