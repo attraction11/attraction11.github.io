@@ -203,6 +203,8 @@ const person = {
 };
 
 log("name" in person);
+log(Reflect.get(person, "name"));
+log(Reflect.set(person, "name", 'link'));
 // 判断一个对象是否存在某个属性，和 in 运算符 的功能完全相同。
 log(Reflect.has(person, "name"));
 log(delete person.name);
@@ -211,6 +213,36 @@ log(Reflect.deleteProperty(person, "name"));
 log(Object.keys(person));
 // 返回一个包含所有自身属性（不包含继承属性）的数组。(类似于 Object.keys(), 但不会受enumerable影响).
 log(Reflect.ownKeys(person));
+
+// 如果参数为 Object，返回结果相同
+Object.getPrototypeOf({})   // Object.prototype
+Reflect.getPrototypeOf({})  // Object.prototype
+Reflect.setPrototypeOf({}, Object.prototype); // true
+
+// 新对象是可扩展的.
+var empty = {};
+Reflect.isExtensible(empty); // === true
+// ...但这可以改变.
+Reflect.preventExtensions(empty);
+Reflect.isExtensible(empty); // === false
+
+// 与 Object.getOwnPropertyDescriptor() 的不同点
+Reflect.getOwnPropertyDescriptor("foo", 0);
+// 类型错误:foo并不非null对象
+Object.getOwnPropertyDescriptor("foo", 0);
+// { value: "f", writable: false, enumerable: true, configurable: false }
+
+// 使用 Reflect.defineProperty()
+let obj = {}
+Reflect.defineProperty(obj, 'x', {value: 7})  // true
+obj.x                                         // 7
+
+// 静态方法 Reflect.ownKeys() 返回一个由目标对象自身的属性键组成的数组。
+Reflect.ownKeys({z: 3, y: 2, x: 1}); // [ "z", "y", "x" ]
+Reflect.ownKeys([]); // ["length"]
+
+// 静态方法 Reflect.apply() 通过指定的参数列表发起对目标 (target) 函数的调用。
+Reflect.apply(Math.floor, undefined, [1.75]);
 ```
 
 可以改造之前的`Proxy`获取对象属性的方法

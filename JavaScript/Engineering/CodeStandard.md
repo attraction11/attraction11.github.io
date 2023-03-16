@@ -1,6 +1,4 @@
----
-theme: vue-pro
----
+# 规范化标准
 
 ## 模块化开发
 
@@ -341,7 +339,7 @@ require(["./heading.js", "./icon.png", "./main.css"], (createHeading, icon) => {
 ```
 
 6. 核心工作原理
-   图解：`webpack`通过入口文件遍历整个文件加载书，然后将不同的资源文件交由相应的`loader`加载此模块，最后将结果放到`bundle.js`中,从而实现整个项目的打包，因此`Loader`机制是`webpack`的核心。
+   图解：`webpack`通过入口文件遍历整个文件加载树，然后将不同的资源文件交由相应的`loader`加载此模块，最后将结果放到`bundle.js`中,从而实现整个项目的打包，因此`Loader`机制是`webpack`的核心。
    ![image.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/21f1516c9f014315b7afb0406f7730e5~tplv-k3u1fbpfcp-watermark.image)
 
 7. Loader 的工作原理

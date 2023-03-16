@@ -6,18 +6,18 @@
 
 ```ts
 interface Todo {
-  title: string;
-  description: string;
-  completed: boolean;
+    title: string;
+    description: string;
+    completed: boolean;
 }
 
 type TestPartialType = Partial<Todo>;
 
 // 转换为如下类型
 type TestPartialType = {
-  title?: string | undefined;
-  description?: string | undefined;
-  completed?: boolean | undefined;
+    title?: string | undefined;
+    description?: string | undefined;
+    completed?: boolean | undefined;
 };
 ```
 
@@ -26,7 +26,7 @@ type TestPartialType = {
 ```ts
 // keyof T 获取类型T的所有Key组成一个联合类型
 type CustomPartialType<T> = {
-  [K in keyof T]?: T[K];
+    [K in keyof T]?: T[K];
 };
 ```
 
@@ -36,18 +36,18 @@ type CustomPartialType<T> = {
 
 ```ts
 interface Todo {
-  title?: string;
-  description: string;
-  completed?: boolean;
+    title?: string;
+    description: string;
+    completed?: boolean;
 }
 
 type TestRequiredType = Required<Todo>;
 
 // 转换为如下类型
 type TestRequiredType = {
-  title: string;
-  description: string;
-  completed: boolean;
+    title: string;
+    description: string;
+    completed: boolean;
 };
 ```
 
@@ -55,7 +55,7 @@ type TestRequiredType = {
 
 ```ts
 type CustomRequiredType<T> = {
-  [K in keyof T]-?: T[K];
+    [K in keyof T]-?: T[K];
 };
 ```
 
@@ -65,18 +65,18 @@ type CustomRequiredType<T> = {
 
 ```ts
 interface Todo {
-  title: string;
-  description: string;
-  completed: boolean;
+    title: string;
+    description: string;
+    completed: boolean;
 }
 
 type TestReadonlyType = Readonly<Todo>;
 
 // 转换为如下类型
 type TestReadonlyType = {
-  readonly title: string;
-  readonly description: string;
-  readonly completed: boolean;
+    readonly title: string;
+    readonly description: string;
+    readonly completed: boolean;
 };
 ```
 
@@ -84,7 +84,7 @@ type TestReadonlyType = {
 
 ```ts
 type CustomReadonlyType<T> = {
-  readonly [K in keyof T]: T[K];
+    readonly [K in keyof T]: T[K];
 };
 ```
 
@@ -94,18 +94,18 @@ type CustomReadonlyType<T> = {
 
 ```ts
 interface CatInfo {
-  age: number;
-  breed: string;
+    age: number;
+    breed: string;
 }
-type CatName = "miffy" | "boris" | "mordred";
+type CatName = 'miffy' | 'boris' | 'mordred';
 
-type TestRecordType = RecordType<CatName, CatInfo>;
+type TestRecordType = Record<CatName, CatInfo>;
 
 // 转换为如下类型
 type TestRecordType = {
-  miffy: CatInfo;
-  boris: CatInfo;
-  mordred: CatInfo;
+    miffy: CatInfo;
+    boris: CatInfo;
+    mordred: CatInfo;
 };
 ```
 
@@ -113,7 +113,7 @@ type TestRecordType = {
 
 ```ts
 type CustomRecordType<K extends keyof any, V> = {
-  [P in K]: V;
+    [P in K]: V;
 };
 ```
 
@@ -123,17 +123,17 @@ type CustomRecordType<K extends keyof any, V> = {
 
 ```ts
 interface Todo {
-  title: string;
-  description: string;
-  completed: boolean;
+    title: string;
+    description: string;
+    completed: boolean;
 }
 
-type TestPickType = Pick<Todo, "title" | "description">;
+type TestPickType = Pick<Todo, 'title' | 'description'>;
 
 // 转换为如下类型
 type TestPickType = {
-  title: string;
-  description: string;
+    title: string;
+    description: string;
 };
 ```
 
@@ -141,7 +141,7 @@ type TestPickType = {
 
 ```ts
 type CustomPickType<T extends object, K extends keyof T> = {
-  [P in K]: T[P];
+    [P in K]: T[P];
 };
 ```
 
@@ -151,16 +151,16 @@ type CustomPickType<T extends object, K extends keyof T> = {
 
 ```ts
 interface Todo {
-  title: string;
-  description: string;
-  completed: boolean;
+    title: string;
+    description: string;
+    completed: boolean;
 }
 
-type TestOmitType = Omit<Todo, "completed" | "description">;
+type TestOmitType = Omit<Todo, 'completed' | 'description'>;
 
 // 转换为如下类型
 type TestOmitType = {
-  title: string;
+    title: string;
 };
 ```
 
@@ -168,7 +168,7 @@ type TestOmitType = {
 
 ```ts
 type CustomOmitType<T, K extends keyof T> = {
-  [P in keyof T as P extends K ? never : P]: T[P];
+    [P in keyof T as P extends K ? never : P]: T[P];
 };
 ```
 
@@ -188,8 +188,8 @@ type TestPartialType = string;
 ```ts
 // 想象成联合类型的每一个类型都会进一遍这个三元表达式，因此来进行判断
 type CustomExcludeType<T extends keyof any, K extends T> = T extends K
-  ? never
-  : T;
+    ? never
+    : T;
 ```
 
 ## `Extract<Type, Union>`
@@ -197,10 +197,10 @@ type CustomExcludeType<T extends keyof any, K extends T> = T extends K
 `Extract<Type, Union>` 从联合类型 Type、Union 中提取共有的类型来构造一个新的类型
 
 ```ts
-type TestExtractType = Extract<"a" | "b" | "c", "a" | "b" | "d" | "f">;
+type TestExtractType = Extract<'a' | 'b' | 'c', 'a' | 'b' | 'd' | 'f'>;
 
 // 转换为如下类型
-type TestExtractType = "a" | "b";
+type TestExtractType = 'a' | 'b';
 ```
 
 **实现源码：**
@@ -214,9 +214,7 @@ type CustomExtractType<T, K> = T extends K ? T : never;
 `NonNullable<Type>` 排除类型 Type 中的 null 和 undefined 构造一个新的类型
 
 ```ts
-type TestNonNullableType = CustomNonNullableType<
-  string | number | undefined | null
->;
+type TestNonNullableType = NonNullable<string | number | undefined | null>;
 
 // 转换为如下类型
 type TestNonNullableType = string | number;
@@ -235,10 +233,12 @@ type CustomNonNullableType<T> = T extends null | undefined ? never : T;
 ```ts
 declare function f1(arg: { a: number; b: string }): void;
 
-type TestParametersType = Parameters<(s: string, b: number) => any>;
+type T1 = Parameters<typeof f1>;
+type T2 = Parameters<(s: string) => void>;
 
 // 转换为如下类型
-type TestParametersType = [s: string, b: number];
+// type T1 = [arg: {a: number;b: string;}];
+// type T2 = [s: string]
 ```
 
 **实现源码：**
@@ -246,10 +246,10 @@ type TestParametersType = [s: string, b: number];
 ```ts
 // infer X 类型推断 假设为X类型的意思
 type CustomParametersType<T extends (...args: any[]) => any> = T extends (
-  ...args: infer X
+    ...args: infer X
 ) => any
-  ? X
-  : never;
+    ? X
+    : never;
 ```
 
 ## `ConstructorParameters<Type>`
@@ -263,22 +263,22 @@ type CustomParametersType<T extends (...args: any[]) => any> = T extends (
 ```ts
 // 对类的静态部分 构造函数、静态变量、静态方法等进行约束
 interface ClockConstructor {
-  new (hour: number, minute: number): ClockInterface;
-  currentTime: Date;
+    new (hour: number, minute: number): ClockInterface;
+    currentTime: Date;
 }
 
 // 对类想实例部分进行约束
 interface ClockInterface {
-  tick(): void;
+    tick(): void;
 }
 
 // 实现类接口对类的静态部分、实例部分约束写法：
 const Clock: ClockConstructor = class Clock implements ClockInterface {
-  constructor(h: number, m: number) {}
-  static currentTime: Date = new Date();
-  tick() {
-    console.log("beep beep");
-  }
+    constructor(h: number, m: number) {}
+    static currentTime: Date = new Date();
+    tick() {
+        console.log('beep beep');
+    }
 };
 
 let clock = new Clock(12, 17);
@@ -301,7 +301,7 @@ type TestConstructorParametersType = [message?: string | undefined];
 
 ```ts
 type CustomConstructorParametersType<
-  T extends abstract new (...args: any) => any
+    T extends abstract new (...args: any) => any
 > = T extends abstract new (...args: infer P) => any ? P : never;
 ```
 
@@ -316,8 +316,8 @@ type TestReturnType = ReturnType<typeof f1>;
 
 // 转换为如下类型
 type TestReturnType = {
-  a: number;
-  b: string;
+    a: number;
+    b: string;
 };
 ```
 
@@ -325,8 +325,8 @@ type TestReturnType = {
 
 ```ts
 type CustomReturnType<T extends () => any> = T extends () => infer X
-  ? X
-  : never;
+    ? X
+    : never;
 ```
 
 ## `InstanceType<Type>`
@@ -336,22 +336,22 @@ type CustomReturnType<T extends () => any> = T extends () => infer X
 ```ts
 // 对类的静态部分 构造函数、静态变量、静态方法等进行约束
 interface ClockConstructor {
-  new (hour: number, minute: number): ClockInterface;
-  currentTime: Date;
+    new (hour: number, minute: number): ClockInterface;
+    currentTime: Date;
 }
 
 // 对类想实例部分进行约束
 interface ClockInterface {
-  tick(): void;
+    tick(): void;
 }
 
 // 实现类接口对类的静态部分、实例部分约束写法：
 const Clock: ClockConstructor = class Clock implements ClockInterface {
-  constructor(h: number, m: number) {}
-  static currentTime: Date = new Date();
-  tick() {
-    console.log("beep beep");
-  }
+    constructor(h: number, m: number) {}
+    static currentTime: Date = new Date();
+    tick() {
+        console.log('beep beep');
+    }
 };
 
 type TestCustomInstanceType = InstanceType<typeof Clock>;
@@ -364,7 +364,7 @@ type TestCustomInstanceType = ClockInterface;
 
 ```ts
 type CustomInstanceType<T extends abstract new (...args: any) => any> =
-  T extends abstract new (...args: any) => infer X ? X : never;
+    T extends abstract new (...args: any) => infer X ? X : never;
 ```
 
 ## `ThisParameterType<Type>`
@@ -373,7 +373,7 @@ type CustomInstanceType<T extends abstract new (...args: any) => any> =
 
 ```ts
 function toHex(this: number) {
-  return this.toString(16);
+    return this.toString(16);
 }
 
 type TestThisParameterType = ThisParameterType<typeof toHex>;
@@ -386,7 +386,7 @@ type TestThisParameterType = number;
 
 ```ts
 type CustomThisParameterType<T extends (this: any, ...args: any) => any> =
-  T extends (this: infer X, ...args: any) => any ? X : unknown;
+    T extends (this: infer X, ...args: any) => any ? X : unknown;
 ```
 
 ## `OmitThisParameter<Type>`
@@ -395,7 +395,7 @@ type CustomThisParameterType<T extends (this: any, ...args: any) => any> =
 
 ```ts
 function toHex(this: number) {
-  return this.toString(16);
+    return this.toString(16);
 }
 
 type TestOmitThisParameter = OmitThisParameter<typeof toHex>;
@@ -408,9 +408,9 @@ type TestOmitThisParameter = () => string;
 
 ```ts
 type CustomOmitThisParameter<T extends (this: any, ...args: any) => any> =
-  T extends (this: any, ...args: infer A) => infer X
-    ? (...args: A) => X
-    : never;
+    T extends (this: any, ...args: infer A) => infer X
+        ? (...args: A) => X
+        : never;
 ```
 
 ## `ThisType<Type>`
@@ -421,23 +421,23 @@ type CustomOmitThisParameter<T extends (this: any, ...args: any) => any> =
 
 ```ts
 type Point = {
-  x: number;
-  y: number;
-  moveBy: (dx: number, dy: number) => void;
+    x: number;
+    y: number;
+    moveBy: (dx: number, dy: number) => void;
 } & ThisType<{ message: string }>;
 
 let p: Point = {
-  x: 10,
-  y: 20,
-  moveBy(dx, dy) {
-    this; // {message:string}
-  },
+    x: 10,
+    y: 20,
+    moveBy(dx, dy) {
+        this; // {message:string}
+    },
 };
 ```
 
 ## 四个内置字符串工具类型
 
-- `Uppercase<StringType>` 将字符串字母全部大写
-- `Lowercase<StringType>` 将字符串字母全部小写
-- `Capitalize<StringType>` 将字符串首字母都大写
-- `Uncapitalize<StringType>` 将字符串首字母都小写
+-   `Uppercase<StringType>` 将字符串字母全部大写
+-   `Lowercase<StringType>` 将字符串字母全部小写
+-   `Capitalize<StringType>` 将字符串首字母都大写
+-   `Uncapitalize<StringType>` 将字符串首字母都小写

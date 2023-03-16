@@ -12,7 +12,7 @@
 
 ## 1、iframe
 - 如何让自己的网站不被其他网站的 iframe 引用？
-```
+```js
 // 检测当前网站是否被第三方iframe引用
 // 若相等证明没有被第三方引用，若不等证明被第三方引用。当发现被引用时强制跳转百度。
 if(top.location != self.location){
@@ -28,13 +28,13 @@ sandbox是html5的新属性，主要是提高iframe安全系数。iframe因安�
 - allow-same-origin：允许被视为同源，即可操作父级DOM或cookie等
 - allow-top-navigation：允许当前iframe的引用网页通过url跳转链接或加载
 - allow-forms：允许表单提交
-- allow-scripts：允许执行脚本文件
+- allow-scripts：允许执行脚本文件  
 - allow-popups：允许浏览器打开新窗口进行跳转
 - “”：设置为空时上面所有允许全部禁止
 
 ## 2、opener
 如果在项目中需要 打开新标签 进行跳转一般会有两种方式
-```
+```js
 // 1) HTML -> <a target='_blank' href='http://www.baidu.com'>
 // 2)  JS  -> window.open('http://www.baidu.com')
 
@@ -279,7 +279,10 @@ CSP可以通过HTTP头部（Content-Security-Policy）或``元素配置页面的
 
 JavaScript中有三个可以对字符串编码的函数，分别是： escape,encodeURI,encodeURIComponent，相应3个解码函数：unescape,decodeURI,decodeURIComponent 。
 
-三种方式的特点：escape()除了 ASCII 字母、数字和特定的符号外，对传进来的字符串全部进行转义编码，因此如果想对URL编码，最好不要使用此方法。而encodeURI() 用于编码整个URI,因为URI中的合法字符都不会被编码转换。encodeURIComponent方法在编码单个URIComponent（指请求参数）应当是最常用的，它可以讲参数中的中文、特殊字符进行转义，而不会影响整个URL。
+三种方式的特点：  
+escape() 除了 ASCII 字母、数字和特定的符号外，对传进来的字符串全部进行转义编码，因此如果想对URL编码，最好不要使用此方法。  
+encodeURI() 用于编码整个URI,因为URI中的合法字符都不会被编码转换。  
+encodeURIComponent() 方法在编码单个URIComponent（指请求参数）应当是最常用的，它可以讲参数中的中文、特殊字符进行转义，而不会影响整个URL。
 
 1. escape()函数
 

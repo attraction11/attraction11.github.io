@@ -6,9 +6,9 @@ https://www.nowcoder.com/issue/tutorial?tutorialId=96&uuid=2bd3ce3987d64587b8c71
 
 ## 具体实践
 
-前端性能优化手段从以下几个方面入手：加载优化、执行优化、渲染优化、样式优化、脚本优化
+前端性能优化手段从以下几个方面入手：加载、执行、渲染、样式、脚本
 
-1. 加载优化:减少HTTP请求、缓存资源、压缩代码、无阻塞、首屏加载、按需加载、预加载、压缩图像、减少Cookie、避免重定向、异步加载第三方资源
+1. 加载优化：减少HTTP请求、缓存资源、压缩代码、无阻塞、首屏加载、按需加载、预加载、压缩图像、减少Cookie、避免重定向、异步加载第三方资源
 
 2. 执行优化：CSS写在头部，JS写在尾部并异步、避免img、iframe等的src为空、尽量避免重置图像大小、图像尽量避免使用DataURL
 
@@ -273,12 +273,12 @@ var getState = function(state) {
 }
 ```
 - 优化DOM操作  
-DOM操作如改变样式，改变内容可能会引起页面的重绘重排，是比较消耗性能的。网上也有很多优化jq操作的方法。
-如将查询到的DOM使用变量存起来，避免重复查询。以及将多次DOM操作变成一次等。这里重点讲一下第二种。
-常见的需求是渲染一个列表，如果直接在for循环里面append到父元素中，性能是非常差的。幸好原来的操作是将所有DOM用字符串拼接起来，再用html()方法一次性添加到页面中。
+DOM操作如改变样式，改变内容可能会引起页面的重绘重排，是比较消耗性能的。网上也有很多优化jq操作的方法。  
+如将查询到的DOM使用变量存起来，避免重复查询。以及将多次DOM操作变成一次等。这里重点讲一下第二种。  
+常见的需求是渲染一个列表，如果直接在for循环里面append到父元素中，性能是非常差的。幸好原来的操作是将所有DOM用字符串拼接起来，再用html()方法一次性添加到页面中。    
 还有另一种方法是使用文档碎片(fragment)。通过document.createDocumentFragment()可以新建一个fragment。向fragment中appendChild元素的时候是不会阻塞渲染进程的。最后将fragment替换掉页面上的元素。将fragment元素用appendChild的方法添加到页面上时，实际上添加上去的是它内部的元素，也就是它的子元素。
 
-```
+```js
 var fragment = document.createDocumentFragment()
 for (var i = 0; i < data.length; i++) {
   var str = '<div>' + i + '</div>'

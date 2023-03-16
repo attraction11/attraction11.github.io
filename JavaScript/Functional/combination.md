@@ -54,7 +54,9 @@ console.log(f(["one", "two", "three"])); // three
 const compose =
     (...args) =>
     (value) =>
+        // args 是传入的函数集合
         args.reduce((acc, fn) => {
+            // acc 为传入每个函数的参数
             return fn(acc);
         }, value);
 

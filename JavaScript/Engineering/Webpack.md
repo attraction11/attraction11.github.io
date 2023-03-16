@@ -52,29 +52,40 @@ apply 函数中注册了 compilation、make 钩子监听 'SingleEntryPlugin' 事
 ---> 具备了 fs 操作能力之后，又将 plugins 中的插件都挂载到 compiler 对象身上
 ---> 将内部默认的插件与 compiler 建立关系 其中有一个 EntryOptionPlugin 处理入口模块的 id
 ---> 上述的实例化 compiler 的时候只是监听了 make 钩子 （SingleEntryPlugin）
-1、在 SingleEntryPlugin 模块中有两个钩子的监听，其中 compilation 钩子 就是让 钩子 具备利用 normalModuleFactory 工厂创建普通模块的能力
-2、因为 它就是利用一个自己创建的模块来加载需要打包的模块
-3、其中 make 钩子 在 compiler.run 的时候会被触发，走到这里就意味就意味着某个模块执行打包之前的所有准备工作完成了。
-4、addEntry 方法调用（）
+- 1、在 SingleEntryPlugin 模块中有两个钩子的监听，其中 compilation 钩子 就是让 钩子 具备利用 normalModuleFactory 工厂创建普通模块的能力
+- 2、因为 它就是利用一个自己创建的模块来加载需要打包的模块
+- 3、其中 make 钩子 在 compiler.run 的时候会被触发，走到这里就意味就意味着某个模块执行打包之前的所有准备工作完成了。
+- 4、addEntry 方法调用（）
 
 09、run 方法执行（当前想看一下什么时候触发了 make 钩子）
 ---> run 方法里就是一堆钩子、按照顺序触发 （beforeRun、Run、compiler 方法调用）
 ----> compiler 方法执行
-1、准备参数(其中 NormalModuleFactory 后续用于创建模块)
-2、触发 beforeCompile 方法
-3、将第一步的参数传给函数，开始创建一个 compilation
-4、在调用 newCompilation 方法的内部， - 调用 createCompilation - 触发了 this.compilation 钩子和 compilation 钩子的监听
-5、当创建了 compilation 对象之后就触发了 make 钩子
-6、当我们触发 make 钩子监听的时候，将 copilation 对象传递过去
+- 1、准备参数(其中 NormalModuleFactory 后续用于创建模块)
+- 2、触发 beforeCompile 方法
+- 3、将第一步的参数传给函数，开始创建一个 compilation
+- 4、在调用 newCompilation 方法的内部， - 调用 createCompilation - 触发了 this.compilation 钩子和 compilation 钩子的监听
+- 5、当创建了 compilation 对象之后就触发了 make 钩子
+- 6、当我们触发 make 钩子监听的时候，将 copilation 对象传递过去
 
 ## 总结
 
-    1、实例化 compiler
-    2、调用 compile 方法
-    3、newCompilation
-    4、实例化一个 compilation 对象（它 和 compiler 是有关系的）
-    5、触发 make 监听
-    6、addEntry 方法(这个时候 就带着 context name entry一堆东西)  就奔着编译去了
+1. 实例化 compiler
+2. 调用 compile 方法
+3. newCompilation
+4. 实例化一个 compilation 对象（它 和 compiler 是有关系的）
+5. 触发 make 监听
+6. addEntry 方法(这个时候 就带着 context name entry一堆东西)  就奔着编译去了
+
+:::tip 关键函数
+ * beforeRun
+ * run
+ * thisCompilation
+ * compilation
+ * beforeCompile
+ * compile
+ * make
+ * afterCompile
+ :::
 
 -------------------依赖模块处理----------------------  
 1、需要将 index.js 里面的 require 方法替换成 `__webpack_require__`  

@@ -6,10 +6,10 @@
 > 做为一种优秀的代码管理模式，可以有效的管理异步编程当中的代码，让代码开发起来更便捷，维护起来更方便，可读性更强
 
 1. 执行 new 操作时必须传入函数做为参数（executor 函数）
-    1. executor 函数接收两个函数做为参数，且会立即执行
+    1. executor 函数接收两个函数做为参数，且会**立即执行**
     2. executor 函数一般用于管控异步操作（书写异步代码）
 2. new 操作执行之后会返回一个 Promise 实例
-    1. [[PromiseState]] promise 状态： pending（准备状态） fulfilled(成功态) rejected(已拒绝)
+    1. [[PromiseState]] promise 状态：pending（准备状态）fulfilled（成功态）  rejected（已拒绝）
     2. [[PromiseResult]] promise 值：默认的是 undefined， 一般用于存储成功的结果或者失败的原因
     3. **proto**：查找 Promise.prototype 原型，存在 then catch finally 三个常见的方法
 3. 改变状态
@@ -190,26 +190,26 @@ await 特点
 
 ```js
 function foo() {
-    console.log(1);
+    console.log(3);
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve(2);
+            resolve(5);
         }, 1000);
     });
 }
 
-console.log(3);
+console.log(1);
 
 async function fn() {
-    console.log(4);
+    console.log(2);
     let result = await foo();
     console.log(result);
-    console.log(5);
+    console.log(6);
 }
 
 fn();
 
-console.log(6);
+console.log(4);
 ```
 
 ## 代码执行顺序
