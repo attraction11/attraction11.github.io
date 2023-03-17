@@ -6,7 +6,7 @@ outline: deep
 
 ## 一、NuxtJS 基础
 
-#### 1、[官网学习](https://www.nuxtjs.cn/guide/installation)
+#### 1、[官网学习](https://nuxt.com/)
 
 -   一个基于 Vue.js 生态的第三方开源服务端渲染应用框架
 -   它可以帮我们轻松的使用 Vue.js 技术栈构建同构应用
@@ -45,7 +45,7 @@ outline: deep
 
 #### 4、Nuxt.js 的异步数据--上下文对象
 
-[官方参考](https://www.nuxtjs.cn/api/context)
+[官方参考](https://nuxt.com/docs/api/utils/define-nuxt-component#asyncdata)
 
 ```js
   async asyncData (context) {
@@ -207,7 +207,10 @@ head: {
 -   启动服务，运行`npm run start`启动服务
     ![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d43a8cd41b9b4fa7a675bb455c43afcc~tplv-k3u1fbpfcp-watermark.image?)
 -   在外网访问。这里不能使用`http://172.17.215.90:3000`（当前链接是在服务端的局域网地址）进行访问，应该用服务器对应的公网`IP`+端口号访问。此处应访问`http://39.105.28.5:3000/`,就可以测试网页功能了。  
-    8、使用 PM2 启动 Node 服务，解决 nodeJS 进程的管理，实现后台运行
+    
+#### 9、使用 PM2 启动 Node 服务
+
+解决 nodeJS 进程的管理，实现后台运行
 -   GitHub 仓库地址: https://github.com/Unitech/om2
 -   官方文档： https://pm2.io/
 -   安装： npm install—global pm2
@@ -215,11 +218,15 @@ head: {
     ![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/707ce4727eb94ca4bf04faf5bba40dca~tplv-k3u1fbpfcp-watermark.image?)
 -   PM2 常用命令
     ![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bb672e3c0780421b95e7c45727841d8d~tplv-k3u1fbpfcp-watermark.image?)
-    9、自动化部署--现代化的部署方式（CI 持续集成/CD 持续部署）
+    
+#### 10、自动化部署--现代化的部署方式（CI 持续集成/CD 持续部署）
+
 -   图解过程：
     ![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/be8e330e3b074ebda03d75a6d8168f89~tplv-k3u1fbpfcp-watermark.image?)
 -   常见的 CI/CD 服务 - `Jenkins`、`Gitlab CI`、`GitHub Actions`、`Travic CI`、`Circle CI`...
-    10、以`GitHub Actions`为例，演示具体实现
+    
+#### 11、以`GitHub Actions`为例，演示具体实现
+
 -   环境准备
     -   首先准备一台`Linux`服务器
     -   把代码提交到`GitHub`远程仓库

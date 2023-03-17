@@ -6,7 +6,7 @@ outline: deep
 
 ## 一、MobX6 基础知识
 
-1. MobX 概述
+#### 1. MobX 概述
    MobX 是一个简单的可扩展的状态管理库，无样板代码风格简约。
 
 目前最新版本为 6，版本 4 和版本 5 已不再支持。
@@ -17,18 +17,18 @@ MobX 可以运行在任何支持 ES5 的环境中，包含浏览器和 Node。
 
 [MobX](https://mobx.js.org/README.html) 通常和 React 配合使用，但是在 [Angular](https://github.com/mobxjs/mobx-angular) 和 [Vue](https://github.com/mobxjs/mobx-vue) 中也可以使用 MobX。
 
-2. 核心概念
+#### 2. 核心概念
 
 -   observable：被 MobX 跟踪的状态。
 -   action：允许修改状态的方法，在严格模式下只有 action 方法被允许修改状态。
 -   computed：根据现有状态衍生出来的状态。
 -   flow：执行副作用，它是 generator 函数。可以更改状态值。
 
-3. 工作流程
+#### 3. 工作流程
 
 ![1.png](./images/image21.png)
 
-4. makeAutoObservable
+#### 4. makeAutoObservable
 
 ```js
 // target: 将目标对象中的属性和方法设置为 observable state 和 action
@@ -65,7 +65,7 @@ class CounterStore {
 export default CounterStore;
 ```
 
-5. 下载 npm 包
+#### 5. 下载 npm 包
 
 -   mobx：MobX 核心库
 -   mobx-react-lite：仅支持函数组件
@@ -73,7 +73,7 @@ export default CounterStore;
 
 `yarn add mobx@6.3.1 mobx-react-lite@3.2.0`
 
-6. 案例驱动之计数器
+#### 6. 案例驱动之计数器
 
 在组件中显示数值状态，单击[+1]按钮使数值加一，单击[-1]按钮使数值减一。
 

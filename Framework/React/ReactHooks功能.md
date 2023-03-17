@@ -248,7 +248,39 @@ function useEffect(callback, depsAry) {
 ## 12、forwardRef()
 > 少部分时候我们希望props包含ref，这时候就需要forwardRef
 
+您将收到一个ref作为 props 之后的第二个参数。将它传递给要公开的 DOM 节点：
+```jsx
+import { forwardRef } from 'react';
 
+const MyInput = forwardRef(function MyInput(props, ref) {
+  const { label, ...otherProps } = props;
+  return (
+    <label>
+      {label}
+      <input {...otherProps} ref={ref} />
+    </label>
+  );
+});
+```
+这允许父Form组件访问由以下内容公开的`<input>`DOM 节点MyInput：
+```jsx
+function Form() {
+  const ref = useRef(null);
+
+  function handleClick() {
+    ref.current.focus();
+  }
+
+  return (
+    <form>
+      <MyInput label="Enter your name:" ref={ref} />
+      <button type="button" onClick={handleClick}>
+        Edit
+      </button>
+    </form>
+  );
+}
+```
 ## 13、自定义`Hook`
 - 自定义 `Hook` 是标准的封装和共享逻辑的方式.
 - 自定义 `Hook` 是一个函数, 其名称以 `use` 开头.

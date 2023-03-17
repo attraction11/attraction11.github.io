@@ -1,3 +1,6 @@
+---
+outline: deep
+---
 # Gatsby 基础
 
 ## 一、Gatsby 介绍
@@ -15,16 +18,16 @@
 
 ![image.png](./images/image13.png)
 
-1. 基于 React 和 GraphQL. 结合了 webpack, babel, react-router 等前端领域中最先进工具. 开发人员开发体验好\
-2. 采用数据层和 UI 层分离而不失 SEO 的现代前端开发模式. 对 SEO 非常友好\
-3. 数据预读取, 在浏览器空闲的时候预先读取链接对应的页面内容. 使静态页面拥有 SPA 应用的用户体验, 用户体验好\
-4. 数据来源多样化: Headless CMS, markdown, API.\
+1. 基于 React 和 GraphQL. 结合了 webpack, babel, react-router 等前端领域中最先进工具. 开发人员开发体验好
+2. 采用数据层和 UI 层分离而不失 SEO 的现代前端开发模式. 对 SEO 非常友好
+3. 数据预读取, 在浏览器空闲的时候预先读取链接对应的页面内容. 使静态页面拥有 SPA 应用的用户体验, 用户体验好
+4. 数据来源多样化: Headless CMS, markdown, API.
 5. 功能插件化, Gatsby 中提供了丰富且功能强大的各种类型的插件, 用什么装什么
 
 #### 3. 创建 Gatsby 项目
 
 -   全局安装脚手架工具 `npm install gatsby-cli -g`
--   创建：gatsby new project-name https://github.com/gatsbyjs/gatsby-starter-hello-world\
+-   创建：gatsby new project-name https://github.com/gatsbyjs/gatsby-starter-hello-world
 -   启动：gatsby develop 或 npm start
 -   访问：localhost:8000
 

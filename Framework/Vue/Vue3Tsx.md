@@ -4,7 +4,7 @@
 
 -   安装插件 `@vitejs/plugin-vue-jsx` 来编译 `jsx 和 tsx` 文件
 
--   [官方网站](https://github.com/vitejs/vite/tree/main/packages/plugin-vue-jsx#readme)
+-   [官方网站](https://github.com/vitejs/vite-plugin-vue/blob/main/packages/plugin-vue-jsx/README.md)
 
 ```tsx
 import { defineComponent } from "vue";

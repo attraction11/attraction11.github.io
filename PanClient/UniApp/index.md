@@ -1,3 +1,6 @@
+---
+outline: deep
+---
 # uniapp 基础
 
 ## 背景

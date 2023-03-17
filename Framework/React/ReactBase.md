@@ -8,7 +8,7 @@
 ## 二、JSX 语法
 
 1、在 `React` 中使用 `JSX` 语法描述用户界面，它是一种 `JavaScript` 语法扩展。在 `React` 代码执行之前，`Babel` 会将 `JSX` 语法转换为标准的 `JavaScript API`。
-`JSX` 语法就是一种语法糖，让开发人员使用更加舒服的代码构建用户界面。
+`JSX` 语法就是一种语法糖，让开发人员使用更加舒服的代码构建用户界面。  
 2、在 JSX 中使用表达式
 
 ```js
@@ -305,8 +305,9 @@ class App extends Component {
 
 1. 组件名称首字母必须大写，用以区分组件和普通标签。
 2. jsx 语法外层必须有一个根元素
-   3 组件 props  
-   3.1 props 传递数据  
+3. 组件 props  
+
+3.1 props 传递数据  
    在调用组件时可以向组件内部传递数据，在组件中可以通过 props 对象获取外部传递进来的数据。
 
 ```js
@@ -344,21 +345,6 @@ const Person = (props) => {
 
 1. props 对象中存储的数据是只读的，不能在组件内部被修改。
 2. 当 props 数据源中的数据被修改后，组件中的接收到的 props 数据会被同步更新。( 数据驱动 DOM )
-   3.2 设置 props 默认值
-
-```js
-class App extends Component {
-    static defaultProps = {};
-}
-```
-
-```js
-function ThemedButton(props) {}
-ThemedButton.defaultProps = {
-    theme: 'secondary',
-    label: 'Button Text',
-};
-```
 
 3.2 设置 props 默认值
 
@@ -571,7 +557,8 @@ export class C extends Component {
 }
 ```
 
-7 表单
+7 表单 
+
 7.1 受控表单
 
 表单控件中的值由组件的 state 对象来管理，state 对象中存储的值和表单控件中的值时同步状态的

@@ -1,3 +1,6 @@
+---
+outline: deep
+---
 # React SSR 简介及应用
 
 ## 一、React SSR 介绍

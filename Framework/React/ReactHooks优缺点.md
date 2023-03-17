@@ -7,7 +7,7 @@
 
 1.  每调用useHook一次都会生成一份独立的状态，这个没有什么黑魔法，函数每次调用都会开辟一份独立的内存空间。
 2.  虽然状态(from useState)和副作用(`useEffect`)的存在依赖于组件，但它们可以在组件外部进行定义。这点是`class component`做不到的，你无法在外部声明state和副作用（如`componentDidMount`）。
-3.  组件树层级变浅。在原本的代码中，我们经常使用 HOC/render props 等方式来复用组件的状态，增强功能等，无疑增加了组件树层数及渲染，在 React DevTools 中观察过 React 应用，你会发现由 providers，consumers，高阶组件，render props 等其他抽象层组成的组件会形成“嵌套地狱”。而在 React Hooks 中，这些功能都可以通过强大的自定义的 Hooks 来实现。\
+3.  组件树层级变浅。在原本的代码中，我们经常使用 HOC/render props 等方式来复用组件的状态，增强功能等，无疑增加了组件树层数及渲染，在 React DevTools 中观察过 React 应用，你会发现由 providers，consumers，高阶组件，render props 等其他抽象层组成的组件会形成“嵌套地狱”。而在 React Hooks 中，这些功能都可以通过强大的自定义的 Hooks 来实现。
 3.  不用再去考虑 this 的指向问题。在类组件中，你必须去理解 JavaScript 中 this 的工作方式。
 
 上面这两点，高阶组件也能做到。但高阶组件的缺点是：

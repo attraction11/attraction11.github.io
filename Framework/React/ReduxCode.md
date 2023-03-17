@@ -143,7 +143,9 @@ function logger(store) {
 }
 ```
 
-`applyMiddleware`函数用于给中间件传参 2. `applyMiddleware`函数的实现
+`applyMiddleware`函数用于给中间件传参 
+
+2. `applyMiddleware`函数的实现
 
 ```js
 function applyMiddleware(...middlewares) {

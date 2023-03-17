@@ -36,7 +36,7 @@ git 地址：https://github.com/windicss/nuxt-windicss/tree/main/playground/nuxt
 
 ## 最终模板地址（(❤ ω ❤)期待小星星 ⭐⭐⭐）
 
-git 地址：https://github.com/attraction11/nuxt3-start-tpl
+git 地址：https://github.com/attraction11/nuxt3-starter
 
 ## 添加环境变量
 

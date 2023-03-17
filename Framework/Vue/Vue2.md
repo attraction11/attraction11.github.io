@@ -566,7 +566,7 @@ Vue.directive("color-swatch", function (el, binding) {
 
 ## --通过 **组件库**（Element 等） 来体验组件的威力
 
--   Element 是基于 Vue 开发的一个知名的第三方组件库，能够帮炸更加快速构建应用
+-   Element 是基于 Vue 开发的一个知名的第三方组件库，能够帮助更加快速构建应用
 -   [官方网址](element.eleme.cn)：
 
 ---
@@ -668,7 +668,7 @@ Vue.component(组件的名称,{
     }
     ```
 
--   **组件模板的内容必须是单个跟元素**：意思就是说最好用个 <div></div>等类似标签包裹起来。 和 el 选项绑定 元素 是一个道理
+-   **组件模板的内容必须是单个根元素**：意思就是说最好 1 个 <div></div>等类似标签包裹起来。 和 el 选项绑定 元素 是一个道理
 
 -   **组件模板内容可以是模板字符串**（模板字符串需要浏览器提供支持 es6 语法） `
 
@@ -1031,7 +1031,7 @@ Vue.component(组件的名称,{
 
 ### 匿名插槽
 
-1.插槽位置
+1. 插槽位置
 
 ```javascript
 Vue.component("alert-box", {
@@ -1044,7 +1044,7 @@ Vue.component("alert-box", {
 });
 ```
 
-2.插槽的内容
+2. 插槽的内容
 
 ```javascript
 <alert-box>Something bad happened.</alert-box>
@@ -1054,7 +1054,7 @@ Vue.component("alert-box", {
 
 ### 具名插槽
 
-1.插槽定义
+1. 插槽定义
 
 ```javascript
 <div class="container">
@@ -1070,7 +1070,7 @@ Vue.component("alert-box", {
 </div>
 ```
 
-2.插槽内容
+2. 插槽内容
 
 ```javascript
 <base-layout>

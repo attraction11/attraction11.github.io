@@ -1,3 +1,6 @@
+---
+outline: deep
+---
 # React16+源码解析
 
 ## 1. 配置 React 源码本地调试环境
