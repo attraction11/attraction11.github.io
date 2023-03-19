@@ -87,12 +87,16 @@ export const NavItemList: DefaultTheme.NavItem[] = [
                 link: '/FullStack/Node/NodeBase',
             },
             {
-                text: 'NoSQL数据库',
-                link: '/FullStack/DataBase/Mongodb',
+                text: 'Node.js 高级编程',
+                link: '/FullStack/NodeDev/Introduce',
             },
             {
                 text: 'Node.js开发框架',
                 link: '/FullStack/WebDev/Express',
+            },
+            {
+                text: 'NoSQL数据库',
+                link: '/FullStack/DataBase/Mongodb',
             },
             {
                 text: 'GraphQL API 开发',

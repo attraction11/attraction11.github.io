@@ -1,6 +1,8 @@
+---
+outline: deep
+---
+
 # Node.js 通信
-
-
 
 ## 1. 基本原理
 
@@ -113,6 +115,7 @@ client.on("connect", () => {
     // 解决数据粘包
     for (let i = 0; i < dataArr.length; i++) {
         (function (val, index) {
+            // 写入数据设置时间间隔
             setTimeout(() => {
                 client.write(val);
             }, 1000 * (index + 1));
@@ -133,7 +136,8 @@ client.on("close", () => {
 });
 ```
 
-### 封包拆包：为了避免客户端连续多次发送数据时，出现粘包的现象。
+### 封包拆包
+为了避免客户端连续多次发送数据时，出现粘包的现象。
 
 -   包的结构：
 
@@ -159,7 +163,6 @@ class MyTransformCode {
 
         // 02
         headerBuf.writeInt16BE(serialNum || this.serialNum);
-
         headerBuf.writeInt16BE(body.length, this.serialLen);
 
         if (serialNum == undefined) {

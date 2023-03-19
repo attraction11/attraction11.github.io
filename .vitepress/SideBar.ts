@@ -487,16 +487,12 @@ export const SideBarList: DefaultTheme.Sidebar = {
             ],
         },
         {
-            text: 'NoSQL数据库',
+            text: 'Node.js高级编程',
             collapsible: true,
             items: [
                 {
-                    text: 'MongoDB教程',
-                    link: '/FullStack/DataBase/Mongodb',
-                },
-                {
-                    text: 'Redis教程',
-                    link: '/FullStack/DataBase/Redis',
+                    text: '基本介绍',
+                    link: '/FullStack/NodeDev/Introduce',
                 },
             ],
         },
@@ -523,6 +519,20 @@ export const SideBarList: DefaultTheme.Sidebar = {
                 {
                     text: 'NodeJS框架对比',
                     link: '/FullStack/WebDev/Comparison',
+                },
+            ],
+        },
+        {
+            text: 'NoSQL数据库',
+            collapsible: true,
+            items: [
+                {
+                    text: 'MongoDB教程',
+                    link: '/FullStack/DataBase/Mongodb',
+                },
+                {
+                    text: 'Redis教程',
+                    link: '/FullStack/DataBase/Redis',
                 },
             ],
         },

@@ -1,3 +1,7 @@
+---
+outline: deep
+---
+
 # Node.js 核心模块
 
 ## 一、核心模块 path
@@ -38,8 +42,8 @@ console.log(path.dirname('/a/b/c/'));
  */
 console.log(path.extname(__filename));
 console.log(path.extname('/a/b'));
-console.log(path.extname('/a/b/index.html.js.css'));
-console.log(path.extname('/a/b/index.html.js.'));
+console.log(path.extname('/a/b/index.html.js.css')); // .css
+console.log(path.extname('/a/b/index.html.js.')); // .
 ```
 
 -   isAbsolute（） 获取路径是否为绝对路径
@@ -47,20 +51,20 @@ console.log(path.extname('/a/b/index.html.js.'));
 ```js
 console.log(path.isAbsolute('foo')); // false
 console.log(path.isAbsolute('/foo')); // true
-console.log(path.isAbsolute('///foo'));
-console.log(path.isAbsolute(''));
-console.log(path.isAbsolute('.'));
-console.log(path.isAbsolute('../bar'));
+console.log(path.isAbsolute('///foo')); // true
+console.log(path.isAbsolute('')); // false
+console.log(path.isAbsolute('.')); // false
+console.log(path.isAbsolute('../bar')); // false
 ```
 
 -   join（） 拼接多个路径片段
 
 ```js
-console.log(path.join('a/b', 'c', 'index.html'));
-console.log(path.join('/a/b', 'c', 'index.html'));
-console.log(path.join('/a/b', 'c', '../', 'index.html'));
-console.log(path.join('/a/b', 'c', './', 'index.html'));
-console.log(path.join('/a/b', 'c', '', 'index.html'));
+console.log(path.join('a/b', 'c', 'index.html')); // a\b\c\index.html
+console.log(path.join('/a/b', 'c', 'index.html')); // \a\b\c\index.html
+console.log(path.join('/a/b', 'c', '../', 'index.html')); // \a\b\index.html
+console.log(path.join('/a/b', 'c', './', 'index.html')); // \a\b\c\index.html
+console.log(path.join('/a/b', 'c', '', 'index.html')); // \a\b\c\index.html
 console.log(path.join(''));
 ```
 
@@ -70,7 +74,7 @@ console.log(path.join(''));
 /**
  * resolve([from], to)
  */
-console.log(path.resolve('/a', '../b'));
+console.log(path.resolve('/a', '../b')); // D:\b
 console.log(path.resolve('index.html'));
 ```
 
@@ -85,6 +89,13 @@ const obj = path.parse('/a/b/c/index.html');
 // const obj = path.parse('/a/b/c/')
 // const obj = path.parse('./a/b/c/')
 console.log(obj);
+/* {
+  root: '/',
+  dir: '/a/b/c',
+  base: 'index.html',
+  ext: '.html',
+  name: 'index'
+} */
 ```
 
 -   format（） 序列化路径
@@ -389,16 +400,18 @@ const fs = require('fs');
 // read ： 所谓的读操作就是将数据从磁盘文件中写入到 buffer 中
 let buf = Buffer.alloc(10);
 
-/**
- * fd 定位当前被打开的文件
- * buf 用于表示当前缓冲区
- * offset 表示当前从 buf 的哪个位置开始执行写入
- * length 表示当前次写入的长度
- * position 表示当前从文件的哪个位置开始读取
- */
 fs.open('data.txt', 'r', (err, rfd) => {
     console.log(rfd);
-    fs.read(rfd, buf, 1, 4, 3, (err, readBytes, data) => {
+    /**
+     * fs.read(fd, buffer, offset, length, position, callback)
+     * fd 定位当前被打开的文件
+     * buffer 用于表示当前缓冲区
+     * offset 表示当前从 buffer 的哪个位置开始执行写入
+     * length 表示当前次写入的长度
+     * position 表示当前从文件的哪个位置开始读取
+     * callback 回调函数接受三个参数，即（错误，字节读取，缓冲区）
+     */
+    fs.read(rfd, buf, 0, 4, 0, (err, readBytes, data) => {
         console.log(readBytes);
         console.log(data);
         console.log(data.toString());
@@ -408,7 +421,10 @@ fs.open('data.txt', 'r', (err, rfd) => {
 // write 将缓冲区里的内容写入到磁盘文件中
 buf = Buffer.from('1234567890');
 fs.open('b.txt', 'w', (err, wfd) => {
-    fs.write(wfd, buf, 2, 4, 0, (err, written, buffer) => {
+     /**
+     * fs.write(fd, buffer, offset, length, position, callback)
+     */
+    fs.write(wfd, buf, 0, 4, 0, (err, written, buffer) => {
         console.log(written, '----');
         fs.close(wfd);
     });
@@ -466,7 +482,9 @@ fs.access('a.txt', (err) => {
 -   stat：获取目录及文件信息
 
 ```js
+// fs.stat( path, options, callback )
 fs.stat('a.txt', (err, statObj) => {
+    // stats: 它是包含文件路径细节的Stats对象
     console.log(statObj.size);
     console.log(statObj.isFile());
     console.log(statObj.isDirectory());
@@ -476,6 +494,8 @@ fs.stat('a.txt', (err, statObj) => {
 -   mkdir：创建目录
 
 ```js
+// fs.mkdir(path, mode, callback)
+// 设置 recursive: true 为了处理目录已经存在的情况（递归）
 fs.mkdir('a/b/c', { recursive: true }, (err) => {
     if (!err) {
         console.log('创建成功');
@@ -513,6 +533,106 @@ fs.unlink('a/a.txt', (err) => {
         console.log('删除成功');
     }
 });
+```
+
+-   目录创建-同步实现
+
+```js
+const fs = require('fs')
+const path = require('path')
+
+/**
+ * 01 将来调用时需要接收类似于 a/b/c ，这样的路径，它们之间是采用 / 去行连接
+ * 02 利用 / 分割符将路径进行拆分，将每一项放入一个数组中进行管理  ['a', 'b', 'c']
+ * 03 对上述的数组进行遍历，我们需要拿到每一项，然后与前一项进行拼接 /
+ * 04 判断一个当前对拼接之后的路径是否具有可操作的权限，如果有则证明存在，否则的话就需要执行创建
+ */
+
+function makeDirSync (dirPath) {
+  let items = dirPath.split(path.sep)
+  for(let i = 1; i <= items.length; i++) {
+    let dir = items.slice(0, i).join(path.sep)
+    try {
+      fs.accessSync(dir)
+    } catch (err) {
+      fs.mkdirSync(dir)
+    }
+  }
+}
+
+makeDirSync('a\\b\\c')
+```
+
+-   目录创建-异步实现
+
+```js
+const fs = require('fs')
+const path = require('path')
+const {promisify} = require('util')
+
+// 将 access 与 mkdir 处理成 async... 风格
+const access = promisify(fs.access)
+const mkdir = promisify(fs.mkdir)
+
+async function myMkdir (dirPath, cb) {
+  let parts = dirPath.split('/')
+  for(let index = 1; index <= parts.length; index++) {
+    let current = parts.slice(0, index).join('/')
+    try {
+      await access(current)
+    } catch (err) {
+      await mkdir(current)
+    }
+  }
+  cb && cb()
+}
+
+myMkdir('a/b/c', () => {
+  console.log('创建成功')
+})
+```
+
+-   目录删除-同步实现
+
+```js
+const { dir } = require('console')
+const fs = require('fs')
+const path = require('path')
+
+/**
+ * 需求：自定义一个函数，接收一个路径，然后执行删除
+ * 01 判断当前传入的路径是否为一个文件，直接删除当前文件即可
+ * 02 如果当前传入的是一个目录，我们需要继续读取目录中的内容，然后再执行删除操作
+ * 03 将删除行为定义成一个函数，然后通过递归的方式进行复用
+ * 04 将当前的名称拼接成在删除时可使用的路径
+ */
+function myRmdir (dirPath, cb) {
+  // 判断当前 dirPath 的类型
+  fs.stat(dirPath, (err, statObj) => {
+    if (statObj.isDirectory()) {
+      // 目录---> 继续读取
+      fs.readdir(dirPath, (err, files) => {
+        let dirs = files.map(item => {
+          return path.join(dirPath, item)
+        })
+        let index = 0
+        function next () {
+          if (index == dirs.length) return fs.rmdir(dirPath, cb)
+          let current = dirs[index++]
+          myRmdir(current, next)
+        }
+        next()
+      })
+    } else {
+      // 文件---> 直接删除
+      fs.unlink(dirPath, cb)
+    }
+  })
+}
+
+myRmdir('tmp', () => {
+  console.log('删除成功了')
+})
 ```
 
 ## 五、Nodejs 模块化
@@ -1015,7 +1135,7 @@ myWriteable.write('AABBCC', 'utf-8', () => {
 
 Duplex: 双工流，既能生产又能消费数据，读和写相互独立的。
 
-```
+```js
 let { Duplex } = require('stream')
 
 class MyDuplex extends Duplex {
@@ -1044,7 +1164,7 @@ myDuplex.write('AABBXCC', () => {
 })
 ```
 
-Transform: 双工流，但底层将读写操作进行了联通，可以对数据相应的转换操作。
+Transform: 转换流，但底层将读写操作进行了联通，可以对数据相应的转换操作。
 
 ```js
 let { Transform } = require('stream');
@@ -1213,8 +1333,10 @@ ws.on('drain', () => {
 });
 ```
 
--   背压机制
-    Nodejs 的 stream 已经实现了背压机制。
+-   背压机制：Nodejs 的 stream 已经实现了背压机制。
+:::tip 背压机制
+这个是Reactive（反应） 的概念，当订阅者的消费能力，远低于发布者时，订阅者（也就是消费者）有通知取消或终止，发布者生产数据的机制，这种机制可以称作为'背压'。 说白了就是：当消费者消费积压的时候，反向告诉推送生产者，我不需要你生产了，你慢点，这个叫背压
+:::
 
 ![image.png](./images/image23.png)
 
@@ -1468,3 +1590,108 @@ console.log(a);
 ```
 
 #### 5. 模拟文件可写流
+```js
+const fs = require('fs')
+const EventsEmitter = require('events')
+const Queue = require('../09Linklist/4-linked-queue')
+
+class MyWriteStream extends EventsEmitter{
+  constructor(path, options={}) {
+    super()
+    this.path = path
+    this.flags = options.flags || 'w'
+    this.mode = options.mode || 438
+    this.autoClose = options.autoClose || true 
+    this.start = options.start || 0
+    this.encoding = options.encoding || 'utf8'
+    this.highWaterMark = options.highWaterMark || 16*1024
+
+    this.open()
+
+    this.writeoffset = this.start 
+    this.writing = false 
+    this.writeLen = 0
+    this.needDrain = false 
+    this.cache = new Queue()
+  }
+  open() {
+    // 原生 fs.open 
+    fs.open(this.path, this.flags, (err, fd) => {
+      if (err) {
+        this.emit('error', err)
+      }
+      // 正常打开文件
+      this.fd = fd 
+      this.emit('open', fd)
+    })
+  }
+  write(chunk, encoding, cb) {
+    chunk = Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk)
+
+    this.writeLen += chunk.length
+    let flag = this.writeLen < this.highWaterMark
+    this.needDrain = !flag
+
+    if (this.writing) {
+      // 当前正在执行写入，所以内容应该排队
+      this.cache.enQueue({chunk, encoding, cb})
+    } else {
+      this.writing = true
+      // 当前不是正在写入那么就执行写入
+      this._write(chunk, encoding, () => {
+        cb()
+        // 清空排队的内容
+        this._clearBuffer()
+      })
+    }
+    return flag
+  }
+  _write(chunk, encoding, cb) {
+    if (typeof this.fd !== 'number') {
+      return this.once('open', ()=>{return this._write(chunk, encoding, cb)})
+    }
+    fs.write(this.fd, chunk, this.start, chunk.length, this.writeoffset, (err, written) => {
+      this.writeoffset += written
+      this.writeLen -= written
+
+      cb && cb()
+    })
+  }
+  _clearBuffer() {
+    let data = this.cache.deQueue()
+    if (data) {
+      this._write(data.element.chunk, data.element.encoding, ()=>{
+        data.element.cb && data.element.cb()
+        this._clearBuffer()
+      })
+    } else {
+      if (this.needDrain) {
+        this.needDrain = false 
+        this.emit('drain')
+      }
+    }
+  }
+}
+
+const ws = new MyWriteStream('./f9.txt', {})
+
+ws.on('open', (fd) => {
+  console.log('open---->', fd)
+})
+
+let flag = ws.write('1', 'utf8', () => {
+  console.log('ok1')
+})
+
+flag = ws.write('10', 'utf8', () => {
+  console.log('ok1')
+})
+
+flag = ws.write('xxx', 'utf8', () => {
+  console.log('ok3')
+})
+
+ws.on('drain', () => {
+  console.log('drain')
+})
+```
