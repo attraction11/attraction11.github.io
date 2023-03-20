@@ -10,7 +10,7 @@ outline: deep
 在 NodeJS 中，中间件主要是指封装所有 Http 请求细节处理的方法。一次 Http 请求通常包含很多工作，如记录日志、ip 过滤、查询字符串、请求体解析、Cookie 处理、权限验证、参数验证、异常处理等，但对于 Web 应用而言，并不希望接触到这么多细节性的处理，因此引入中间件来简化和隔离这些基础设施与业务逻辑之间的细节，让开发者能够关注在业务的开发上，以达到提升开发效率的目的。
 
 中间件的行为比较类似 Java 中过滤器的工作原理，就是在进入具体的业务处理之前，先让过滤器处理。它的工作模型下图所示。
-![image.png](./images/1.png)
+![image.png](./images/7.png)
 
 #### 中间件工作模型
 
@@ -292,7 +292,7 @@ cp.execFile('worker.js', function (err, stdout, stderr) {
 //fork
 cp.fork('./worker.js');
 ```
-![image.png](./images/2.png)
+![image.png](./images/8.png)
 
 如果是JavaScript文件通过execFile()运行,它的首行内容必须添加如下代码
 ```shell

@@ -461,38 +461,64 @@ export const SideBarList: DefaultTheme.Sidebar = {
     ],
     '/FullStack': [
         {
-            text: 'Node.js',
+            text: 'Node.js 编程',
             collapsible: true,
             items: [
+                {
+                    text: 'Node.js介绍',
+                    link: '/FullStack/Node/Introduce',
+                },
                 {
                     text: 'Node.js基础',
                     link: '/FullStack/Node/NodeBase',
                 },
                 {
-                    text: 'Node.js核心模块',
+                    text: '模块系统',
+                    link: '/FullStack/Node/Module',
+                },
+                {
+                    text: '文件操作',
+                    link: '/FullStack/Node/FileOpt',
+                },
+                {
+                    text: '会话保持',
+                    link: '/FullStack/Node/KeepSession',
+                },
+                {
+                    text: '核心模块',
                     link: '/FullStack/Node/NodeCore',
                 },
                 {
-                    text: 'Node.js通信',
+                    text: '网络通信',
                     link: '/FullStack/Node/NodeMessage',
                 },
                 {
-                    text: 'Node.js应用开发',
+                    text: '应用开发',
                     link: '/FullStack/Node/NodeDev',
                 },
                 {
-                    text: 'Node.js问答',
+                    text: 'QA问答',
                     link: '/FullStack/Node/NodeQA',
                 },
             ],
         },
         {
-            text: 'Node.js高级编程',
+            text: 'Express 开发',
             collapsible: true,
             items: [
                 {
-                    text: '基本介绍',
-                    link: '/FullStack/NodeDev/Introduce',
+                    text: 'Express 介绍',
+                    link: '/FullStack/Express/Introduce',
+                },
+            ],
+        },
+        {
+            text: 'Nest.js 开发',
+            collapsible: true,
+            items: [
+                {
+                    text: 'Nest.js 介绍',
+                    link: '/FullStack/Nest/Introduce',
                 },
             ],
         },
@@ -501,16 +527,8 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true,
             items: [
                 {
-                    text: 'Express',
-                    link: '/FullStack/WebDev/Express',
-                },
-                {
                     text: 'Koa',
                     link: '/FullStack/WebDev/Koa',
-                },
-                {
-                    text: 'Nest',
-                    link: '/FullStack/WebDev/Nest',
                 },
                 {
                     text: 'Egg',
@@ -523,16 +541,66 @@ export const SideBarList: DefaultTheme.Sidebar = {
             ],
         },
         {
-            text: 'NoSQL数据库',
+            text: 'Redis 应用',
             collapsible: true,
             items: [
                 {
-                    text: 'MongoDB教程',
-                    link: '/FullStack/DataBase/Mongodb',
+                    text: 'Redis 简介',
+                    link: '/FullStack/Redis/Introduce',
                 },
                 {
-                    text: 'Redis教程',
-                    link: '/FullStack/DataBase/Redis',
+                    text: 'Redis 安装',
+                    link: '/FullStack/Redis/SetUp',
+                },
+                {
+                    text: 'Redis 配置',
+                    link: '/FullStack/Redis/Config',
+                },
+                {
+                    text: 'Redis 多数据库',
+                    link: '/FullStack/Redis/MoreDB',
+                },
+                {
+                    text: 'Redis 操作命令',
+                    link: '/FullStack/Redis/CRUD',
+                },
+                {
+                    text: 'Redis 过期时间',
+                    link: '/FullStack/Redis/Expire',
+                },
+                {
+                    text: 'Redis 事务',
+                    link: '/FullStack/Redis/Multi',
+                },
+                {
+                    text: 'Redis 持久化',
+                    link: '/FullStack/Redis/Persistence',
+                },
+                {
+                    text: 'Redis 图形管理软件',
+                    link: '/FullStack/Redis/SoftAdmin',
+                },
+                {
+                    text: '客户端操作 Redis',
+                    link: '/FullStack/Redis/Client',
+                },
+                {
+                    text: 'Redis 集群',
+                    link: '/FullStack/Redis/Cluster',
+                },
+                {
+                    text: 'Redis 设置远程连接',
+                    link: '/FullStack/Redis/Connect',
+                },
+            ],
+        },
+        {
+            text: 'MongoDB 应用',
+            collapsible: true,
+            items: [
+                {
+                    text: 'MongoDB 介绍',
+                    link: '/FullStack/MongoDB/Introduce',
                 },
             ],
         },
@@ -541,8 +609,24 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true,
             items: [
                 {
-                    text: 'GraphQL',
+                    text: 'GraphQL 简介',
                     link: '/FullStack/GraphQL/',
+                },
+                {
+                    text: 'GraphQL 入门',
+                    link: '/FullStack/GraphQL/First',
+                },
+                {
+                    text: 'GraphQL 模式和类型',
+                    link: '/FullStack/GraphQL/Type',
+                },
+                {
+                    text: 'Apollo GraphQL',
+                    link: '/FullStack/GraphQL/Apollo',
+                },
+                {
+                    text: 'QA 问答',
+                    link: '/FullStack/GraphQL/QA',
                 },
             ],
         },
@@ -673,7 +757,7 @@ export const SideBarList: DefaultTheme.Sidebar = {
             ],
         },
         {
-            text: 'BusinessScene',
+            text: 'Business Scene',
             collapsible: true,
             items: [
                 {
@@ -695,7 +779,7 @@ export const SideBarList: DefaultTheme.Sidebar = {
             ],
         },
         {
-            text: 'InterviewBible',
+            text: 'Interview Bible',
             collapsible: true,
             items: [
                 {

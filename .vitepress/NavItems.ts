@@ -83,20 +83,28 @@ export const NavItemList: DefaultTheme.NavItem[] = [
         text: '全栈开发',
         items: [
             {
-                text: 'Node.js',
-                link: '/FullStack/Node/NodeBase',
+                text: 'Node.js 编程',
+                link: '/FullStack/Node/Introduce',
             },
             {
-                text: 'Node.js 高级编程',
-                link: '/FullStack/NodeDev/Introduce',
+                text: 'Express 开发',
+                link: '/FullStack/Express/Introduce',
+            },
+            {
+                text: 'Nest.js 开发',
+                link: '/FullStack/Nest/Introduce',
             },
             {
                 text: 'Node.js开发框架',
-                link: '/FullStack/WebDev/Express',
+                link: '/FullStack/WebDev/Comparison',
             },
             {
-                text: 'NoSQL数据库',
-                link: '/FullStack/DataBase/Mongodb',
+                text: 'Redis 应用',
+                link: '/FullStack/Redis/Introduce',
+            },
+            {
+                text: 'MongoDB 应用',
+                link: '/FullStack/MongoDB/Introduce',
             },
             {
                 text: 'GraphQL API 开发',
