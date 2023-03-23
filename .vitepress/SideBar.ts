@@ -699,7 +699,7 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true,
             items: [
                 {
-                    text: '框架设计与实现',
+                    text: '简介',
                     link: '/PanClient/Flutter/WebCli',
                 },
             ],
@@ -709,7 +709,7 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true,
             items: [
                 {
-                    text: '框架设计与实现',
+                    text: '简介',
                     link: '/PanClient/Electron/WebCli',
                 },
             ],
@@ -721,7 +721,7 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true,
             items: [
                 {
-                    text: '框架设计与实现',
+                    text: '简介',
                     link: '/ProgramTopics/MicroFrontend/WebCli',
                 },
             ],
@@ -731,7 +731,7 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true,
             items: [
                 {
-                    text: '框架设计与实现',
+                    text: '简介',
                     link: '/ProgramTopics/TestAutomation/WebCli',
                 },
             ],
@@ -741,7 +741,7 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true,
             items: [
                 {
-                    text: '框架设计与实现',
+                    text: '简介',
                     link: '/ProgramTopics/DataVisualization/WebCli',
                 },
             ],
@@ -751,7 +751,7 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true,
             items: [
                 {
-                    text: '框架设计与实现',
+                    text: '简介',
                     link: '/ProgramTopics/Serverless/WebCli',
                 },
             ],

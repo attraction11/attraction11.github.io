@@ -8,9 +8,8 @@ outline: deep
 1. [大前端面试题库](http://bigerfe.com/)
 2. [前端面试题宝典](https://fe.ecool.fun/topic-list)
 3. [前端知识库](https://www.html5iq.com/index.html)
-4. [前端面试宝典](https://www.kancloud.cn/pillys/qianduan/2049475)
-5. [面试进阶之道](https://whyknown.com/)
-6. [牛客-前端工程师](https://www.nowcoder.com/issue/tutorial?tutorialId=96&uuid=6b04165463a84068a931f70c14cdf0c4)
+4. [面试进阶之道](https://whyknown.com/)
+5. [牛客-前端工程师](https://www.nowcoder.com/issue/tutorial?tutorialId=96&uuid=6b04165463a84068a931f70c14cdf0c4)
 
 ## 面试经验总结
 #### 一、按公司分类

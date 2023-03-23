@@ -134,7 +134,7 @@ HSTS：通知浏览器此网站禁止使用 HTTP 方式加载，浏览器应该�
 :::
 integrity 属性分为两个部分，第一部分是指定哈希值的生成算法（例：sha384），第二部分是经过编码的实际哈希值，两者之前用一个短横(-)来分隔
 
-## 前端安全相关-XSS和CSRF
+## 8、前端安全相关-XSS和CSRF
 
 XSS（Cross-site scripting），指的是跨站脚本攻击，攻击者通过向页面A注入代码，达到窃取信息等目的，本质是数据被当作程序执行。XSS危害是很大的，一般XSS可以做到以下的事情：
 
@@ -275,7 +275,7 @@ CSP(content security policy)，是一个额外的安全层，用于检测并削�
 
 CSP可以通过HTTP头部（Content-Security-Policy）或``元素配置页面的内容安全策略，以控制浏览器可以为该页面获取哪些资源。比如一个可以上传文件和显示图片页面，应该允许图片来自任何地方，但限制表单的action属性只可以赋值为指定的端点。一个经过恰当设计的内容安全策略应该可以有效的保护页面免受跨站脚本攻击。
 
-## url的加密解密
+## 9、url的加密解密
 
 JavaScript中有三个可以对字符串编码的函数，分别是： escape,encodeURI,encodeURIComponent，相应3个解码函数：unescape,decodeURI,decodeURIComponent 。
 
