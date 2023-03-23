@@ -241,6 +241,14 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     link: '/JavaScript/Engineering/Webpack',
                 },
                 {
+                    text: 'Webpack对比',
+                    link: '/JavaScript/Engineering/Webpack4V5',
+                },
+                {
+                    text: 'Webpack升级',
+                    link: '/JavaScript/Engineering/WebpackToV5',
+                },
+                {
                     text: '规范化标准',
                     link: '/JavaScript/Engineering/CodeStandard',
                 },
