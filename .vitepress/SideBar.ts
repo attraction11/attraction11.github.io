@@ -717,8 +717,8 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true,
             items: [
                 {
-                    text: '简介',
-                    link: '/PanClient/Electron/WebCli',
+                    text: 'Electron基础',
+                    link: '/PanClient/Electron/',
                 },
             ],
         },

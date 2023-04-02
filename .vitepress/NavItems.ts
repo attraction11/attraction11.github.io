@@ -133,7 +133,7 @@ export const NavItemList: DefaultTheme.NavItem[] = [
             },
             {
                 text: 'Electron',
-                link: '/PanClient/Electron/WebCli',
+                link: '/PanClient/Electron/',
             },
         ],
     },
