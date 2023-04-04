@@ -720,6 +720,10 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     text: 'Electron基础',
                     link: '/PanClient/Electron/',
                 },
+                {
+                    text: 'Electron应用',
+                    link: '/PanClient/Electron/Application',
+                },
             ],
         },
     ],
