@@ -1,6 +1,6 @@
-# redux 还是 mobx？
+# Redux 还是 Mobx？
 
-## **redux的缺点：**
+## **Redux的缺点**
 
 1）繁重的代码模板：修改一个state可能要动四五个文件，可谓牵一发而动全身；
 
@@ -19,7 +19,7 @@
 最开始接触mobx也是因为redux作者DanAbramov的那句：Unhappywith redux？try mobx，我相信很多人也是因为这句话而开始了解学习并使用它的。
 
 
-下面列举一些**mobx的优势**（和redux进行一个对比）
+下面列举一些**Mobx的优势**（和redux进行一个对比）
 
 1）redux不允许直接修改state，而mobx可随意修改；
 
@@ -31,9 +31,9 @@
 
 5）redux需要对监听的组件做SCU优化，减少重复render；而mobx都是SmartComponent，不用我们手动做SCU；
 
-****
 
-## **mobx的设计思想：**
+
+## **Mobx的设计思想**
 
 ![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/601b5bdf491d45abb3f830a4d0e5f696~tplv-k3u1fbpfcp-zoom-1.image)
 

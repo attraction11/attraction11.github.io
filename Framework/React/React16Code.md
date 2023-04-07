@@ -3,6 +3,8 @@ outline: deep
 ---
 # React16+源码解析
 
+[源码调试库](https://github.com/bubucuo/DebugReact)
+[源码知识图谱](https://www.processon.com/view/link/60b206c2e0b34d3841931a88)
 ## 1. 配置 React 源码本地调试环境
 
 1. 使用 create-react-app 脚手架创建项目

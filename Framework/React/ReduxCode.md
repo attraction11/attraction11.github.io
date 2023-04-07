@@ -1,3 +1,7 @@
+---
+outline: deep
+---
+
 # Redux 源码及应用
 
 ## 一、定义创建`store`的函数
@@ -52,19 +56,19 @@ function createStore(reducer, preloadedState, enhancer) {
 }
 ```
 
-1. 其中`preloadedState`为`state`的初始值
-2. 订阅状态改变时，通过`subscribe`函数将订阅者保存入数组`currentListeners`
-3. 触发`action`时，调用`reducer`函数修改`state`，同时遍历执行订阅者函数
+- 其中`preloadedState`为`state`的初始值
+- 订阅状态改变时，通过`subscribe`函数将订阅者保存入数组`currentListeners`
+- 触发`action`时，调用`reducer`函数修改`state`，同时遍历执行订阅者函数
 
 ## 二、参数类型的约束
 
-1. `reducer`的参数类型必须是函数
+#### 1. `reducer`的参数类型必须是函数
 
 ```js
 if (typeof reducer !== 'function') throw new Error('redcuer必须是函数');
 ```
 
-2. `dispatch`函数的参数`action`必须是对象，并且有`type`属性
+#### 2. `dispatch`函数的参数`action`必须是对象，并且有`type`属性
 
 ```js
 // 判断action是否是一个对象
@@ -74,7 +78,7 @@ if (typeof action.type === 'undefined')
     throw new Error('action对象中必须有type属性');
 ```
 
-3. 定义判断是否为对象的函数（原理：判断对象的当前原型对象是否和顶层原型对象相同）
+#### 3. 定义判断是否为对象的函数（原理：判断对象的当前原型对象是否和顶层原型对象相同）
 
 ```js
 function isPlainObject(obj) {
@@ -89,7 +93,7 @@ function isPlainObject(obj) {
 }
 ```
 
-4. 使用`enhancer`对`store`对象进行功能增强（可选参数）
+#### 4. 使用`enhancer`对`store`对象进行功能增强（可选参数）
 
 ```js
 if (typeof enhancer !== 'undefined') {
@@ -101,7 +105,7 @@ if (typeof enhancer !== 'undefined') {
 }
 ```
 
-5. `enhancer`进行功能增强（中间件用于覆盖原有`dispatch`方法）
+#### 5. `enhancer`进行功能增强（中间件用于覆盖原有`dispatch`方法）
 
 ```js
 function enhancer(createStore) {
@@ -127,7 +131,7 @@ function enhancer(createStore) {
 
 ## 三、enhancer 演变为 applyMiddleware 函数
 
-1. `applyMiddleware`规定中间件函数的写法
+#### 1. `applyMiddleware`规定中间件函数的写法
 
 ```js
 // 中间件外层的两个函数是用来接收参数的
@@ -145,7 +149,7 @@ function logger(store) {
 
 `applyMiddleware`函数用于给中间件传参 
 
-2. `applyMiddleware`函数的实现
+#### 2. `applyMiddleware`函数的实现
 
 ```js
 function applyMiddleware(...middlewares) {
@@ -173,7 +177,7 @@ function applyMiddleware(...middlewares) {
 }
 ```
 
-3. 使用`compose`函数串联中间件函数
+#### 3. 使用`compose`函数串联中间件函数
 
 ```js
 function compose() {
@@ -192,7 +196,7 @@ function compose() {
 
 ## 四、bindActionCreators 函数的实现
 
-1. `bindActionCreators`函数的写法
+#### 1. `bindActionCreators`函数的写法
    作用：将`ActionCreator`函数转换为能触发`action`的函数（返回对象）
 
 ```js
@@ -209,7 +213,7 @@ function decrement() {
 }
 ```
 
-2. `bindActionCreators`函数的实现
+#### 2. `bindActionCreators`函数的实现
 
 ```js
 function bindActionCreators(actionCreators, dispatch) {
@@ -228,7 +232,7 @@ function bindActionCreators(actionCreators, dispatch) {
 
 ## 五、combineReducers 函数的实现
 
-1. `combineReducers`函数的用法
+#### 1. `combineReducers`函数的用法
    作用：`Redux`中允许我们将大的`reducer`拆分为一个个小的`reducer`,再通过`combineReducers`合并`reducer`。
 
 ```js
@@ -251,7 +255,7 @@ var store = createStore(
 );
 ```
 
-2. `combineReducers`函数的写法
+#### 2. `combineReducers`函数的写法
 
 ```js
 function combineReducers(reducers) {
@@ -278,8 +282,16 @@ function combineReducers(reducers) {
 
 ## 六、Redux Tookit 应用
 
-1. `Redux Tookit`是`redux`的工具集，对`Redux`进行二次封装，用于高效`Redux`开发，使`Redux`使用更简单
-2. 创建状态切片
+:::tip 简介
+Redux Toolkit 是 Redux 官方**强烈推荐**，开箱即用的一个高效的 Redux 开发工具集。注意，RTK只是封装了一层Redux而已。
+
+它包括几个实用程序功能，这些功能可以简化最常见场景下的 Redux 开发，包括配置 store、定义 reducer，不可变的更新逻辑、甚至可以立即创建整个状态的 “切片 slice”，而无需手动编写任何 action creator 或者 action type。它还自带了一些最常用的 Redux 插件，例如用于异步逻辑 Redux Thunk，用于编写选择器 selector 的函数 Reselect ，你都可以立刻使用。
+:::
+
+#### 1、`Redux Tookit`是`redux`的工具集
+对`Redux`进行二次封装，用于高效`Redux`开发，使`Redux`使用更简单
+
+#### 2、创建状态切片
 
 -   对于状态切片，我们可以认为它就是原本 Redux 中的那一个个的小的 Reducer 函数。在 Redux 中，原本 Reducer 函数和 Action 对象需要分别创建，现在通过状态切片替代，它会返回 Reducer 函数和 Action 对象.
 
@@ -299,7 +311,7 @@ export const { addTodo } = actions
 export default TodosReducer
 ```
 
-3. 创建`store`
+#### 3、创建`store`
 
 ```js
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
@@ -315,7 +327,7 @@ export default configureStore({
 });
 ```
 
-4. 配置`Provider`触发`Action`
+#### 4、配置`Provider`触发`Action`
 
 ```js
 import { Provider } from 'react-redux';
@@ -331,10 +343,13 @@ ReactDOM.render(
 ```
 
 ![image.png](./images/image19.png)  
-5. `Action`预处理
+
+#### 5、`Action`预处理
+
 当`Action`被触发后，可以通过`prepare`方法对`Action`进行预处理，处理完成后交给`Reducer`， `prepare`方法必须返回对象。
 ![image.png](./images/image20.png)  
-6. 执行异步操作
+
+#### 6、执行异步操作
 
 ```js
 import { createAsyncThunk } from '@reduxjs/toolkit';
@@ -360,7 +375,8 @@ createSlice({
 })
 ```
 
-7、配置中间件
+#### 7、配置中间件
+
 注意在引入自定义中间件前，需要导入`toolkit`中默认的中间件
 
 ```js
@@ -377,10 +393,11 @@ export default configureStore({
 });
 ```
 
-8. 实体适配器
-   实体：可以理解为一条数据  
-   实体适配器：可以理解为一个放入数据的容器  
-   将状态放入实体适配器中，因为实体适配器提供了操作状态的各种方法，简化增删改查的操作。
+#### 8、实体适配器
+
+实体：可以理解为一条数据  
+实体适配器：可以理解为一个放入数据的容器  
+将状态放入实体适配器中，因为实体适配器提供了操作状态的各种方法，简化增删改查的操作。
 
 ```js
 import { createEntityAdapter } from '@reduxjs/toolkit';
@@ -395,7 +412,8 @@ todosAdapter.addOne(state, action.payload);
 todosAdapter.addMany(state, action.payload);
 ```
 
-9、将实体唯一标识指定为某个字段
+#### 9、将实体唯一标识指定为某个字段
+
 实体适配器要求每一个实体必须拥有`id`属性作为唯一标识，如果实体中唯一标识的字段不叫`id`，则需要使用`selectId`进行声明。
 
 ```js
@@ -404,8 +422,9 @@ const todosAdapter = createEntityAdapter({
 });
 ```
 
-10. 状态选择器
-    提供从实体适配器中获取状态的快捷途径
+#### 10、状态选择器
+
+提供从实体适配器中获取状态的快捷途径
 
 ```js
 import { createSelector } from '@reduxjs/toolkit';

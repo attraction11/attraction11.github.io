@@ -12,49 +12,36 @@ React 由 `Facebook` 开源，是一个声明式、高效且灵活的用于构�
 -   [中文文档 1](https://react.docschina.org/)
 -   [中文文档 2](https://reactjs.bootcss.com/)
 
-## 特点
+## React 版本之间的差异
 
-1. 声明式的设计
-2. 组件化、模块化开发
-3. 采用虚拟 DOM 来实现 DOM 渲染（最大限度的减少 DOM 操作）
-4. 单向的数据流（非双向数据流）
+-   16.3：引入 fiber 架构。
+-   16.8：正式引入 Hooks。（这条很重要，一定要能说出来）
+-   17：垫脚石版本
+    -   事件委托的变更 、启发式更新算法更新 、
+    -   React16 的 expirationTimes 模型只能区分是否>=expirationTimes 决定节点是否更新。
+    -   React17 的 lanes 模型可以选定一个更新区间，并且动态的向区间中增减优先级，可以处理更细粒度的更新。
+-   18： 大量新特性出现，如自动批量处理、非紧急更新、Concurrent 等。
 
-## 初次体验
+## 设计思想
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>hello_react</title>
-    </head>
-    <body>
-        <!-- 准备好一个容器 -->
-        <div id="app"></div>
+1. 组件化
+   每个组件都符合开放-封闭原则，封闭是针对渲染工作流来说的，指的是组件内部的状态都由自身维护，只处理内部的渲染逻辑。开放是针对组件通信来说的，指的是不同组件可以通过 props（单项数据流）进行数据交互
 
-        <!--React核心库-->
-        <script
-            src="https://unpkg.com/react@16/umd/react.development.js"
-            crossorigin
-        ></script>
-        <!--react-dom用于支持React操作DOM-->
-        <script
-            src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
-            crossorigin
-        ></script>
-        <!-- 引入Babel帮助转译JSX转为JS语法 -->
-        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+2. 数据驱动视图
+   UI=f(data)
+   通过上面这个公式得出，如果要渲染界面，不应该直接操作 DOM，而是通过修改数据(state 或 prop)，数据驱动视图更新
 
-        <script type="text/babel">
-            // 1. 创建虚拟DOM
-            const VDOM = <h1>Hello World</h1>;
+3. 虚拟 DOM
+   由浏览器的渲染流水线可知，DOM 操作是一个昂贵的操作，很耗性能，因此产生了虚拟 DOM。虚拟 DOM 是对真实 DOM 的映射，React 通过新旧虚拟 DOM 对比，得到需要更新的部分，实现数据的增量更新
 
-            // 2. 将虚拟DOM渲染到页面中
-            ReactDOM.render(VDOM, document.getElementById('app'));
-        </script>
-    </body>
-</html>
-```
+## React 事件机制
+我们在React中平常使用的onClick、onChange等写法，其实用的就是React中事件，我们通常称之为合成事件。
+
+React自定义的合成事件机制，帮助用户解决了平台兼容性、事件委托等优化机制，用户只需关注写React本身就行了。
+
+关于合成事件，React17曾发生过一次变化，在17以前，事件是委托在document上的，但是实际上，React项目是可以作为其它项目的子项目的。那么这个时候就会出现这样的问题，比如父项目在document层定义了事件，而React的事件也委托在document层，那么这两个事件就会产生交叉，出现bug。React17解决了这个问题，把事件委托在了自己的container层。
+
+![1.png](./images/9.png)
 
 ## React JSX
 
@@ -87,6 +74,15 @@ JSX 全称 JavaScript XML。React 定义了一种类似于 XML 的 JavaScript �
 6. 标签首字母
     1. **标签首字母是小写字母开头**，则将该标签转为 HTML 中同名元素，若 HTML 中无该标签对应的同名元素则报错
     2. **标签首字母是大写字母开头**，React 就去渲染对应的组件，若组件没有定义则报错
+
+### JSX 转换升级
+React 17以前，React中如果使用JSX，则必须导入React，否则会报错，这是因为旧的 JSX 转换会把 JSX 转换为 React.createElement(...) 调用。
+
+当然，这并不完美，除了增加了学习成本，还有无法做到的性能优化和简化， 如createElement里还要动态做children的拼接、依赖于React的导入等等。
+
+而React 17带来了改变，可以让我们单独使用 JSX 而无需引入 React。这是因为新的 JSX 转换不会将 JSX 转换为 React.createElement，而是自动从 React 的 package 中引入新的入口函数并调用。另外此次升级不会改变 JSX 语法，旧的 JSX 转换也将继续工作。  
+React 17 版本中的 JSX 转换支持自动导入 react/jsx-runtime 中的函数，因此在使用 JSX 时不再需要显式地引入 React
+
 
 ## JSX 基本语法
 

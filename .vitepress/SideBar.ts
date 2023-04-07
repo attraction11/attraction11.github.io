@@ -329,24 +329,12 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     link: '/Framework/React/React',
                 },
                 {
-                    text: '响应式系统',
+                    text: 'React18+新特性',
+                    link: '/Framework/React/React18+新特性',
+                },
+                {
+                    text: 'ReactHooks',
                     link: '/Framework/React/ReactHooks',
-                },
-                {
-                    text: 'ReactHooks优缺点',
-                    link: '/Framework/React/ReactHooks优缺点',
-                },
-                {
-                    text: 'ReactHooks功能',
-                    link: '/Framework/React/ReactHooks功能',
-                },
-                {
-                    text: 'useState注意事项',
-                    link: '/Framework/React/UseStateNote',
-                },
-                {
-                    text: 'React 基础',
-                    link: '/Framework/React/ReactBase',
                 },
                 {
                     text: 'Diff 算法',
@@ -363,10 +351,6 @@ export const SideBarList: DefaultTheme.Sidebar = {
                 {
                     text: 'React组件性能优化',
                     link: '/Framework/React/ReactOptimize',
-                },
-                {
-                    text: 'React Router',
-                    link: '/Framework/React/ReactRouter',
                 },
                 {
                     text: 'Redux',
@@ -387,6 +371,10 @@ export const SideBarList: DefaultTheme.Sidebar = {
                 {
                     text: 'ReduxOrMobX',
                     link: '/Framework/React/ReduxOrMobX',
+                },
+                {
+                    text: 'React Router',
+                    link: '/Framework/React/ReactRouter',
                 },
                 {
                     text: 'CSS-IN-JSS解决方案',

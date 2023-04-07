@@ -1,6 +1,14 @@
-## Redux
+---
+outline: deep
+---
 
-Redux 是一专门用于做状态管理的 JS 库，集中式管理多个组件共享的状态
+# Redux vs MobX vs Redux、
+
+- Redux集中管理一个大状态，优点是比较专一，缺点是对于某些场景，比如不需要大量共享状态的时候，就不是特别灵活。
+- MobX和Recoil是可以分散式管理状态，因此相对Redux来说，状态比较单一来源。MobX主要实现思路是拦截状态值的get与set函数，get时候的把状态值标记可观察变量，set的时候让组件更新。
+- Recoil由于又多了一层selector，因此又可以渐进式定义状态。因此，就学习成本来说，一般是这样：Redux < MobX < Recoil。
+
+目前国内来看，Redux的使用率是高于MobX的，比如Umi/DVA底层就是Redux。Recoil到现在一直没发正式版，主要是用在Facebook内部比较多。
 
 ## 安装
 
@@ -14,6 +22,12 @@ npm install --save-dev redux-devtools
 ```
 
 ## Redux 工作流程
+
+Redux基于函数式编程思想实现，集中式管理状态：
+
+- **单一数据源**: 整个应用的 [全局 state](https://cn.redux.js.org/understanding/thinking-in-redux/glossary#state) 被储存在一棵 object tree 中，并且这个 object tree 只存在于唯一一个 [store](https://cn.redux.js.org/understanding/thinking-in-redux/glossary#store) 中。
+- **State 是只读的**: 唯一改变 state 的方法就是触发 [action](https://cn.redux.js.org/understanding/thinking-in-redux/glossary)，action 是一个用于描述已发生事件的普通对象。
+- **使用纯函数来执行修改**: 为了描述 action 如何改变 state tree，你需要编写纯的 reducers。
 
 ![Redux 工作流程](./images/image22.png)
 
@@ -216,6 +230,19 @@ store拿到了Reducer的数据，自己对自己进行了更新。
 -   修改传入参数；
 -   执行有副作用的操作，如 API 请求和路由跳转；
 -   调用非纯函数，如 `Date.now()` 或 `Math.random()`。
+
+## redux 中间件机制
+如果不用中间件能不能实现异步? 可以
+
+middleware只是包装了 store 的 dispatch 方法。技术上讲，任何 middleware 能做的事情，都可能通过手动包装 dispatch 调用来实现，但是放在同一个地方统一管理会使整个项目的扩展变的容易得多。
+
+详细介绍：https://cn.redux.js.org/understanding/history-and-design/middleware
+
+在 "Redux 深入浅出" 教程中 你已经学习过在 action 里的 middleware。如果你使用过服务端框架像 Express 或 Koa，你或许已经熟悉 middleware 的概念。在这些框架中，middlewares 可以让你在接收请求和生成响应之间放置的一些代码。例如，Express 或 Koa middleware 可能会添加 CORS 标头、记录日志、压缩等。Middleware 的最大特点是它可以组合成一个链。你可以在一个项目中使用多个不同的独立三方 middlewares。
+
+Redux middleware 解决的问题与 Express 或 Koa middleware 不同，但在概念上是相似的。它在 dispatch action 的时候和 action 到达 reducer 那一刻之间提供了三方的逻辑拓展点。可以使用 Redux middleware 进行日志记录、故障监控上报、与异步 API 通信、路由等。
+
+Redux只是个纯粹的状态管理器，默认只支持同步，实现异步任务 比如延迟，网络请求，需要中间件的支持，比如常见的redux-thunk、redux-saga、redux-logger 、redux-promise等。
 
 ## Redux 中间件
 

@@ -2,7 +2,9 @@
 outline: deep
 ---
 
-## React Redux
+# React Redux
+
+## 简介
 
 `React-Redux`这是一个 React 生态中常用组件，它可以简化`Redux`流程
 
