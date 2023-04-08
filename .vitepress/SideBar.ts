@@ -337,12 +337,8 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     link: '/Framework/React/ReactHooks',
                 },
                 {
-                    text: 'Diff 算法',
+                    text: 'VDOM 及 Diff 算法',
                     link: '/Framework/React/ReactDiff',
-                },
-                {
-                    text: 'React Fiber',
-                    link: '/Framework/React/ReactFilber',
                 },
                 {
                     text: 'React16+源码解析',
@@ -380,17 +376,10 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     text: 'CSS-IN-JSS解决方案',
                     link: '/Framework/React/CSSINJS',
                 },
+
                 {
-                    text: 'Chakra-UI介绍',
-                    link: '/Framework/React/ChakraUI',
-                },
-                {
-                    text: 'Q&A-1',
-                    link: '/Framework/React/QA1.md',
-                },
-                {
-                    text: 'Q&A-2',
-                    link: '/Framework/React/QA2.md',
+                    text: 'Q&A',
+                    link: '/Framework/React/QA.md',
                 },
             ],
         },
@@ -493,46 +482,32 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     link: '/FullStack/Node/NodeDev',
                 },
                 {
+                    text: 'Express 开发',
+                    link: '/FullStack/Node/ExpressDev',
+                },
+                {
+                    text: 'Koa 开发',
+                    link: '/FullStack/Node/KoaDev',
+                },
+                {
+                    text: 'Egg 开发',
+                    link: '/FullStack/Node/EggDev',
+                },
+                {
+                    text: 'Nest.js 教程', 
+                    link: '/FullStack/Node/NestLesson',
+                },
+                {
+                    text: 'Nest.js 开发',
+                    link: '/FullStack/Node/NestDev',
+                },
+                {
+                    text: 'Node.js框架对比',
+                    link: '/FullStack/Node/Comparison',
+                },
+                {
                     text: 'QA问答',
                     link: '/FullStack/Node/NodeQA',
-                },
-            ],
-        },
-        {
-            text: 'Express 开发',
-            collapsible: true,
-            items: [
-                {
-                    text: 'Express 介绍',
-                    link: '/FullStack/Express/Introduce',
-                },
-            ],
-        },
-        {
-            text: 'Nest.js 开发',
-            collapsible: true,
-            items: [
-                {
-                    text: 'Nest.js 介绍',
-                    link: '/FullStack/Nest/Introduce',
-                },
-            ],
-        },
-        {
-            text: 'Node.js开发框架',
-            collapsible: true,
-            items: [
-                {
-                    text: 'Koa',
-                    link: '/FullStack/WebDev/Koa',
-                },
-                {
-                    text: 'Egg',
-                    link: '/FullStack/WebDev/Egg',
-                },
-                {
-                    text: 'NodeJS框架对比',
-                    link: '/FullStack/WebDev/Comparison',
                 },
             ],
         },
@@ -687,16 +662,6 @@ export const SideBarList: DefaultTheme.Sidebar = {
                 {
                     text: '杂记',
                     link: '/PanClient/RN/RandomRecord',
-                },
-            ],
-        },
-        {
-            text: 'Flutter',
-            collapsible: true,
-            items: [
-                {
-                    text: '简介',
-                    link: '/PanClient/Flutter/WebCli',
                 },
             ],
         },

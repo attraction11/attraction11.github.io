@@ -413,6 +413,10 @@ state3 === hook2.memoizedState
 源码截图：
 ![8.png](./images/8.png)
 
+## 讲述Context原理
+
+![12.png](./images/12.png)
+
 ## hooks 缺点
 
 #### 简述

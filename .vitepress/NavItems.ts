@@ -87,18 +87,6 @@ export const NavItemList: DefaultTheme.NavItem[] = [
                 link: '/FullStack/Node/Introduce',
             },
             {
-                text: 'Express 开发',
-                link: '/FullStack/Express/Introduce',
-            },
-            {
-                text: 'Nest.js 开发',
-                link: '/FullStack/Nest/Introduce',
-            },
-            {
-                text: 'Node.js开发框架',
-                link: '/FullStack/WebDev/Comparison',
-            },
-            {
                 text: 'Redis 应用',
                 link: '/FullStack/Redis/Introduce',
             },
@@ -126,10 +114,6 @@ export const NavItemList: DefaultTheme.NavItem[] = [
             {
                 text: 'React Native',
                 link: '/PanClient/RN/',
-            },
-            {
-                text: 'Flutter',
-                link: '/PanClient/Flutter/WebCli',
             },
             {
                 text: 'Electron',
