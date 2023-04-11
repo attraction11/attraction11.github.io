@@ -494,20 +494,30 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     link: '/FullStack/Node/EggDev',
                 },
                 {
-                    text: 'Nest.js 教程', 
-                    link: '/FullStack/Node/NestLesson',
-                },
-                {
-                    text: 'Nest.js 开发',
-                    link: '/FullStack/Node/NestDev',
-                },
-                {
                     text: 'Node.js框架对比',
                     link: '/FullStack/Node/Comparison',
                 },
                 {
                     text: 'QA问答',
                     link: '/FullStack/Node/NodeQA',
+                },
+            ],
+        },
+        {
+            text: 'Nest.js 应用',
+            collapsible: true,
+            items: [
+                {
+                    text: 'Nest.js 简介',
+                    link: '/FullStack/Nest/Introduce',
+                },
+                {
+                    text: 'Nest.js 基本实践',
+                    link: '/FullStack/Nest/NestLesson',
+                },
+                {
+                    text: 'Nest.js 开发',
+                    link: '/FullStack/Nest/NestDev',
                 },
             ],
         },
@@ -609,6 +619,16 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     text: 'Nginx 问题解决',
                     link: '/FullStack/Nginx/',
                 }
+            ],
+        },
+        {
+            text: 'Docker 使用',
+            collapsible: true,
+            items: [
+                {
+                    text: 'Docker 介绍',
+                    link: '/FullStack/Docker/Introduce',
+                },
             ],
         },
     ],
