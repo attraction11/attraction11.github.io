@@ -3,32 +3,32 @@ import { DefaultTheme } from 'vitepress';
 export const SideBarList: DefaultTheme.Sidebar = {
     '/JavaScript/': [
         {
-            text: 'HTML&CSS',
+            text: 'HTML与CSS',
             collapsible: true, // 是否开启折叠
             items: [
                 {
                     text: 'HTML',
-                    link: '/JavaScript/HTML&CSS/',
+                    link: '/JavaScript/HTMLCSS/',
                 },
                 {
                     text: 'CSS布局',
-                    link: '/JavaScript/HTML&CSS/Layout',
+                    link: '/JavaScript/HTMLCSS/Layout',
                 },
                 {
                     text: 'Flex布局',
-                    link: '/JavaScript/HTML&CSS/Flex',
+                    link: '/JavaScript/HTMLCSS/Flex',
                 },
                 {
                     text: 'Grid网格布局',
-                    link: '/JavaScript/HTML&CSS/Grid',
+                    link: '/JavaScript/HTMLCSS/Grid',
                 },
                 {
                     text: 'CSS常用技巧',
-                    link: '/JavaScript/HTML&CSS/Skill',
+                    link: '/JavaScript/HTMLCSS/Skill',
                 },
                 {
                     text: 'CSS问答题',
-                    link: '/JavaScript/HTML&CSS/RandomRecord',
+                    link: '/JavaScript/HTMLCSS/RandomRecord',
                 },
             ],
         },
@@ -280,27 +280,11 @@ export const SideBarList: DefaultTheme.Sidebar = {
             items: [
                 {
                     text: '框架设计与实现',
-                    link: '/Framework/Vue/Vue2',
+                    link: '/Framework/Vue/Introduce',
                 },
                 {
-                    text: '响应式系统',
-                    link: '/Framework/Vue/Vue3',
-                },
-                {
-                    text: 'Vue3+TSX语法',
-                    link: '/Framework/Vue/Vue3Tsx.md',
-                },
-                {
-                    text: '虚拟DOM原理',
-                    link: '/Framework/Vue/VirtualDOM',
-                },
-                {
-                    text: 'Vue3源码解析',
-                    link: '/Framework/Vue/Vue3Code',
-                },
-                {
-                    text: 'Vue 组件库',
-                    link: '/Framework/Vue/Component',
+                    text: 'Vue 技术要点',
+                    link: '/Framework/Vue/VueCore',
                 },
                 {
                     text: 'Vue Router',
@@ -311,12 +295,8 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     link: '/Framework/Vue/Vuex',
                 },
                 {
-                    text: 'Q&A-1',
-                    link: '/Framework/Vue/QA1.md',
-                },
-                {
-                    text: 'Q&A-2',
-                    link: '/Framework/Vue/QA2.md',
+                    text: 'Q&A',
+                    link: '/Framework/Vue/QA.md',
                 },
             ],
         },
@@ -418,7 +398,7 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     link: '/Framework/Next/NextJS',
                 },
                 {
-                    text: 'React SSR简介及应用',
+                    text: 'React SSR',
                     link: '/Framework/Next/ServeRender',
                 },
             ],
@@ -432,17 +412,7 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     link: '/Framework/Gatsby/',
                 },
             ],
-        },
-        {
-            text: '杂记',
-            collapsible: true,
-            items: [
-                {
-                    text: '基础问答',
-                    link: '/Framework/Module/',
-                },
-            ],
-        },
+        }
     ],
     '/FullStack': [
         {

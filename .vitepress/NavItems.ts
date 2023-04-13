@@ -5,8 +5,8 @@ export const NavItemList: DefaultTheme.NavItem[] = [
         text: '前端基础',
         items: [
             {
-                text: 'HTML&CSS',
-                link: '/JavaScript/HTML&CSS/',
+                text: 'HTML与CSS',
+                link: '/JavaScript/HTMLCSS/',
             },
             {
                 text: '函数式编程',
@@ -55,7 +55,7 @@ export const NavItemList: DefaultTheme.NavItem[] = [
         items: [
             {
                 text: 'Vue',
-                link: '/Framework/Vue/Vue2',
+                link: '/Framework/Vue/Introduce',
             },
             {
                 text: 'React',
@@ -73,10 +73,6 @@ export const NavItemList: DefaultTheme.NavItem[] = [
                 text: 'Gatsby',
                 link: '/Framework/Gatsby/',
             },
-            {
-                text: '杂记',
-                link: '/Framework/Module/',
-            },
         ],
     },
     {
@@ -85,6 +81,10 @@ export const NavItemList: DefaultTheme.NavItem[] = [
             {
                 text: 'Node.js 编程',
                 link: '/FullStack/Node/Introduce',
+            },
+            {
+                text: 'Nest.js 应用',
+                link: '/FullStack/Nest/Introduce',
             },
             {
                 text: 'Redis 应用',
