@@ -6,7 +6,7 @@ export const NavItemList: DefaultTheme.NavItem[] = [
         items: [
             {
                 text: 'HTML与CSS',
-                link: '/JavaScript/HTMLCSS/',
+                link: '/JavaScript/HTMLCSS/Index',
             },
             {
                 text: '函数式编程',
@@ -62,16 +62,12 @@ export const NavItemList: DefaultTheme.NavItem[] = [
                 link: '/Framework/React/React',
             },
             {
-                text: 'Nuxt',
-                link: '/Framework/Nuxt/ServeRender',
+                text: 'Render',
+                link: '/Framework/Render/ServeRender',
             },
             {
-                text: 'Next',
-                link: '/Framework/Next/NextJS',
-            },
-            {
-                text: 'Gatsby',
-                link: '/Framework/Gatsby/',
+                text: 'StaticSite',
+                link: '/Framework/StaticSite/Gatsby',
             },
         ],
     },
@@ -150,8 +146,8 @@ export const NavItemList: DefaultTheme.NavItem[] = [
             }, 
         ],
     },
-    {
-        text: '宝藏网站',
-        link: '/Sites',
-    },
+    // {
+    //     text: '宝藏网站',
+    //     link: '/Sites',
+    // },
 ];

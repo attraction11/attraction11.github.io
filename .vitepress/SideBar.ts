@@ -8,7 +8,7 @@ export const SideBarList: DefaultTheme.Sidebar = {
             items: [
                 {
                     text: 'HTML',
-                    link: '/JavaScript/HTMLCSS/',
+                    link: '/JavaScript/HTMLCSS/Index',
                 },
                 {
                     text: 'CSS布局',
@@ -233,10 +233,6 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     link: '/JavaScript/Engineering/Automate',
                 },
                 {
-                    text: '模块化开发',
-                    link: '/JavaScript/Engineering/Modular',
-                },
-                {
                     text: 'Webpack解析',
                     link: '/JavaScript/Engineering/Webpack',
                 },
@@ -266,10 +262,6 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     text: '问答题二',
                     link: '/JavaScript/Module/Two',
                 },
-                {
-                    text: '问答题三',
-                    link: '/JavaScript/Module/Three',
-                },
             ],
         },
     ],
@@ -279,7 +271,7 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true,
             items: [
                 {
-                    text: '框架设计与实现',
+                    text: 'Vue 介绍',
                     link: '/Framework/Vue/Introduce',
                 },
                 {
@@ -291,7 +283,7 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     link: '/Framework/Vue/VueRouter',
                 },
                 {
-                    text: 'Vuex',
+                    text: 'Vuex 介绍',
                     link: '/Framework/Vue/Vuex',
                 },
                 {
@@ -305,7 +297,7 @@ export const SideBarList: DefaultTheme.Sidebar = {
             collapsible: true,
             items: [
                 {
-                    text: '框架设计与实现',
+                    text: 'React 介绍',
                     link: '/Framework/React/React',
                 },
                 {
@@ -329,7 +321,7 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     link: '/Framework/React/ReactOptimize',
                 },
                 {
-                    text: 'Redux',
+                    text: 'Redux 介绍',
                     link: '/Framework/React/Redux',
                 },
                 {
@@ -356,7 +348,10 @@ export const SideBarList: DefaultTheme.Sidebar = {
                     text: 'CSS-IN-JSS解决方案',
                     link: '/Framework/React/CSSINJS',
                 },
-
+                {
+                    text: 'React SSR',
+                    link: '/Framework/React/ServeRender',
+                },
                 {
                     text: 'Q&A',
                     link: '/Framework/React/QA.md',
@@ -364,52 +359,46 @@ export const SideBarList: DefaultTheme.Sidebar = {
             ],
         },
         {
-            text: 'Nuxt',
+            text: 'Render',
             collapsible: true,
             items: [
                 {
-                    text: '服务端渲染',
-                    link: '/Framework/Nuxt/ServeRender',
+                    text: '基础知识',
+                    link: '/Framework/Render/ServeRender',
                 },
                 {
-                    text: '搭建SSR',
-                    link: '/Framework/Nuxt/MySSR',
+                    text: 'Vue 搭建 SSR',
+                    link: '/Framework/Render/VueSSR',
                 },
                 {
                     text: 'Nuxt基础',
-                    link: '/Framework/Nuxt/NuxtBase',
+                    link: '/Framework/Render/NuxtBase',
                 },
                 {
                     text: 'Nuxt最佳实践',
-                    link: '/Framework/Nuxt/',
+                    link: '/Framework/Render/',
                 },
                 {
-                    text: '静态站点生成',
-                    link: '/Framework/Nuxt/StaticSite',
+                    text: 'React 搭建 SSR',
+                    link: '/Framework/Render/ReactSSR',
+                },
+                {
+                    text: 'Next基础',
+                    link: '/Framework/Render/NextJS',
                 },
             ],
         },
         {
-            text: 'Next',
-            collapsible: true,
-            items: [
-                {
-                    text: 'NextJS',
-                    link: '/Framework/Next/NextJS',
-                },
-                {
-                    text: 'React SSR',
-                    link: '/Framework/Next/ServeRender',
-                },
-            ],
-        },
-        {
-            text: 'Gatsby',
+            text: 'StaticSite',
             collapsible: true,
             items: [
                 {
                     text: 'Gatsby 基础',
-                    link: '/Framework/Gatsby/',
+                    link: '/Framework/StaticSite/Gatsby',
+                },
+                {
+                    text: 'Gridsome基础',
+                    link: '/Framework/StaticSite/Gridsome',
                 },
             ],
         }

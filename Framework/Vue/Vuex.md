@@ -1,7 +1,7 @@
 ---
 outline: deep
 ---
-# Vuex
+# Vuex 介绍
 
 ## 一、VueX 回顾
 

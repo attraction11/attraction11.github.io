@@ -2,10 +2,10 @@
 outline: deep
 ---
 
-# React18+新特性
+# React18+ 新特性
 
 [详细新特性参考](https://juejin.cn/post/7182382408807743548)
-## 统计react18+ 用法
+## 统计 React18+ 用法
 - 15个 hook（`useMemo`|`useCallback`、`useReducer`|`useState`、`useRef`、`useEffect`、`useContext`、`useTransition`|`useDeferredValue`、`useDebugValue`、`useId`、`useImperativeHandle`、`useInsertionEffect`、`useLayoutEffect`、`useSyncExternalStore`）
 - 4个 component（`<Fragment>`、`<Profiler>`、`<StrictMode>`、`<Suspense>`）
 - 5个 API（`createContext(defaultValue)`、`forwardRef(render)`、`lazy(load)`、`memo(SomeComponent, arePropsEqual?)`、`startTransition(scope)`）

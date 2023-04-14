@@ -1,533 +1,405 @@
 # Q&A
 
-## 1、谈谈你对工程化的初步认识，结合你之前遇到过的问题说出三个以上工程化能够解决问题或者带来的价值。
+## 1、 闭包是什么?核心原理？用途?优缺点?
 
-答:  
-前端工程化是在项目工程的创建、编码、预览/测试、提交、部署等阶段，采用一切**以提高效率、降低成本、质量保证为目的的手段**都属于工程化。
-具体表现：
+#### 简答
 
--   在创建项目阶段，通过脚手架工具创建工程或一些特定类型文件；
--   在编码阶段，通过代码格式化和代码校验确保统一的代码风格，通过编译工具可以使用语言新特性，通过自动构建打包工具提高编码效率，缩小代码体积等
--   在预览测试阶段，通过`Web Server / Mock`、`Live Reloading / HMR`、`Source Map`等提升开发体验
--   在代码提交阶段，通过`Git Hooks`规范代码提交日志，便于回滚排查问题；通过`Lint-staged`只检测暂存区的文件，加快代码检查速度。
--   在代码部署阶段，通过持续集成`Continuous Integration(CI)`通过持续集成让产品可以快速迭代，同时还能保持高质量。它的核心措施是，
-    代码集成到主干之前，必须通过自动化测试。只要有一个测试用例失败，就不能集成。持续交付`Continuous Delivery(CD)`指的是，频繁地将软件的新版本，
-    交付给质量团队或者用户，以供评审，如果评审通过，代码就进入生产阶段  
-    参考： [持续集成](https://www.ruanyifeng.com/blog/2015/09/continuous-integration.html)
+-   闭包：由函数以及声明该函数的词法环境组合而成的。
+-   闭包核心原理：将所需的数据，构成 Closure 对象储存在堆（Heap）上，然后函数引用这个对象，不会随着函数调用结束而被回收。
+-   闭包用途：解决命名空间污染问题（立即执行函数 + 闭包）、模拟类的私有属性或方法、高阶函数、函数柯里化、节流防抖、有状态的函数等
+-   闭包优点：
+    -   1、Closure 对象是私有的，不影响全局，可以用作私有变量。
+    -   2、可以外部读取局部变量。
+    -   3、让变量的值始终保持在内存中
+-   闭包缺点：处理速度和内存消耗方面对脚本的性能有负面的影响。 由于数据被 Closure 对象引用，无法被释放回收，也容易出现内存泄漏的问题。
 
-工程化能够解决的问题以及带来的价值：
+#### 详细介绍
 
--   工程化极大提高了开发的效率、开发体验。以往受限于运行平台对语言的支持情况和对各个平台的兼容。
--   工程化让前端开发阶段不再依赖后端服务。以往需要等待后端接口完成才能进行调试，而工程化提供了 Mock ，来帮助我们进行开发阶段的调试
--   工程化让开发的流程更加规范，有利于制定标准，让开发的各个阶段做的更精细，专业。以往开发界限不明、分类笼统不利于推进各个阶段的技术进步。
--   工程化让产品的迭代速度和代码质量、风格的控制有很大提高。以往没有持续集成和持续交付标准因为无法把控代码质量，测试阶段会延长发布交付周期，有了自动化测试发布部署，缩短了周期。
+-   [阮一峰讲闭包](http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html)
 
-## 2、你认为脚手架除了为我们创建项目结构，还有什么更深的意义？
+## 2、 如何避免闭包引起的内存泄漏？
 
-答:
+#### 简答
 
--   脚手架提供了项目规范和公共约定，包含了相同的组织结构、开发范式、模块依赖、工具配置、基础代码等。对于部门产品开发，前端开发人员使用一套脚手架，能够统一不同项目的代码管理，当有新成员加入时，可以快速上手提高工作效率。
--   脚手架集成了在代码创建、编码、预览/测试以及代码提交等阶段的工具，例如 vue-cli 创建约定的项目结构、编码风格检查、预览热更新、自动化单元测试以及代码提交规范。大大降低了开发者的开发成本，有利于开发者明确编程规范。
--   脚手架是对项目基础功能的抽象，对一些机械重复性工作的的简化集成，了解脚手架内部的原理能够对项目架构的设计能力有更好的提升。
+-   在退出函数前，将不使用的局部变量赋值为 null。
+-   将闭包函数赋值为 null，解除引用关系
 
-## 3、概述脚手架实现的过程，并使用 NodeJS 完成一个自定义的小型脚手架工具
+#### 详细介绍
 
-答:  
-实现过程：
-
-1. 通过命令行`mkdir sjk-cli`创建一个目录,并进入目录`cd sjk-cli`
-2. 在当前目录通过`yarn init`初始化一个`package.json`文件，并通过`code .`打开当前目录
-3. `package.json`文件中添加`bin`字段指定我们`cli`应用的入口文件(`"bin": "bin/cli.js"`)
-4. 打开`cli.js`文件并添加特定文件头`#!/usr/bin/env node`(window OS) 指明这个脚本文件的解释程序，告诉系统可以在 PATH 目录中查找 node 安装路径执行当前脚本
+-   在退出函数前，将不使用的局部变量赋值为 null。
 
 ```js
-#!/usr/bin/env node
-// cli.js的主体内容
-console.log("hello~");
-```
-
-5. 通过`yarn link`命令将当前模块链接到全局
-6. 命令行运行`sjk-cli`就可以打印出`cli.js`中的输出内容`hello~`
-7. 接下来就开始实现创建项目的需求：通过命令行的询问的方式，指引用户输入和选择一些信息，然后读取模板文件，使用`ejs`渲染数据后写入到项目目录的`src`文件夹中。
-
-代码: [sjk-cli](https://github.com/attraction11/lagoufed-e-task/tree/master/part2/fed-e-task-02-01/code/sjk-cli)  
-说明文档: [sjk-cli/README.md](https://github.com/attraction11/lagoufed-e-task/tree/master/part2/fed-e-task-02-01/code/sjk-cli)
-
-## 4、尝试使用 Gulp 完成项目的自动化构建
-
-(html,css,等素材已经放到 code/[pages-boilerplate](https://github.com/attraction11/lagoufed-e-task/tree/master/part2/fed-e-task-02-01/code/pages-boilerplate) 目录)
-
--   实现主要任务：
-
-1. gulp-sass 编译 scss 文件
-2. gulp-babel 编译 JS
-3. gulp-imagemin 处理图片、 字体、拷贝静态资源
-4. gulp-swig 处理 HTML 模板文件
-5. browser-sync 搭建开发服务器
-6. 监听文件改变
-7. gulp-useref gulp-if 文件引用处理
-8. gulp-load-plugins 自动加载插件
-
--   实现组合任务：
-
-9. develop 用于开发环境
-10. build 用于生产环境
-
-代码: [pages-boilerplate](https://github.com/attraction11/lagoufed-e-task/tree/master/part2/fed-e-task-02-01/code/pages-boilerplate)  
-说明文档: [pages-boilerplate/README.md](https://github.com/attraction11/lagoufed-e-task/tree/master/part2/fed-e-task-02-01/code/pages-boilerplate)
-
-## 5、Webpack 的构建流程主要有哪些环节？如果可以请尽可能详尽的描述 Webpack 打包的整个过程。
-
-`webpack`的概述：  
-`webpack`是一个模块打包工具，它将一切文件都视为模块，通过`loader`编译转换文件，通过`plugin`注入钩子，最后
-将输出的资源模块组合成文件。主要的配置信息有`entry`、`output`、`module`、`plugins`
-
-构建流程：
-
--   创建`compiler`实例，用于控制构建流程，`compiler`实例包含`webpack`基本环境信息
--   根据配置项转换成对应的内部插件，并初始化`options`配置项
--   执行`compiler.run`
--   创建`comppilation`实例，每次构建都会新建一个`comppilation`实例，包含了这次构建的基本信息
--   从`entry`开始递归分析依赖，对每个依赖模块会进行`buildModule`,通过`Loader`将不同类型的模块转换成`webpack`模块
--   通过`Parser.parse`将上面的结果转换成 AST 树
--   遍历`AST`树，收集依赖`dependency`,并保存在`compilation`实例的`dependiencies`属性中
--   生成`chunks`,不同`entry`生成不同`chunk`, 动态导入也会生成自己的`chunk`,生成`chunk`后还会进行优化
--   使用`template`基于`compilation`的数据生成结果代码
-
-总结：  
-`webpack`打包输出的文件其实就是一个闭包，传入的参数是一个对象，键值为所有输出文件的路径，内容为`eval`包裹的文件内容；闭包内重写了模块的加载方式，自己定义了`__webpack_require__`方法，来实现模拟的`common.js`规范模块加载机制。  
-`webpack`实际是基于事件流的，通过一系列的插件运行。`webpack`利用`tapable`库提供各种钩子来实现对于整个构建流程各个步骤的控制。
-
-## 6、Loader 和 Plugin 有哪些不同？请描述一下开发 Loader 和 Plugin 的思路。
-
-`Loader`：  
-用于对模块文件进行编译转换和加载处理，在`modules.rules`数组中进行配置，它用于告诉`webpack`在遇到什么类型的文件，应该采用哪些`Loader`进行加载和转换，`loader`可以通过`querystring`或`object`的方式指定选项参数。处理一类文件可以使用多个`loader`,`loader`的执行顺序类似出栈的方式（从后向前执行）
-
-`Plugin`:  
-主要是通过`webpack`内部的钩子机制，在`webpack`构建的不同阶段执行一些额外的工作。从打包 优化和压缩，到从新定义环境变量，功能强大到可以用来处理各种各样的任务。`plugin`让`webpack`的机制更加灵活，他的编译过程中留下的一系列生命周期钩子，通过调用这些钩子来实现在不同编译结果时对源模块进行处理。它的插件是一个函数或者一个包含`apply`方法的对象，接收一个`compile`对象，通过`webpack`的钩子来处理资源
-
-开发`Loader`的思路:
-
--   通过 module.export 导出一个函数
--   函数的默认参数为要处理的文件 source
--   函数体中处理资源
--   返回处理后结果（交给下一个 loader 进行处理）
-
-```js
-const marked = require("marked");
-
-module.exports = (source) => {
-    // console.log(source)
-    const html = marked(source);
-    // 返回一段js代码
-    // return `export default ${JSON.stringify(html)}`
-    return html;
+//  这段代码会导致内存泄露
+window.onload = function () {
+    var el = document.getElementById("id");
+    el.onclick = function () {
+        alert(el.id);
+    };
+};
+// 解决方法为
+window.onload = function () {
+    var el = document.getElementById("id");
+    var id = el.id; //解除循环引用
+    el.onclick = function () {
+        alert(id);
+    };
+    el = null; // 将闭包引用的外部函数中活动对象清除
 };
 ```
 
-开发`Plugin`的思路:
-
--   通过钩子机制实现,在生命周期的钩子中挂载函数实现扩展
--   函数方法体内通过 webpack 提供的 api 获取资源做相应处理
--   将处理完的资源通过 webpack 提供的方法返回
+-   将闭包函数赋值为 null，解除引用关系
 
 ```js
-class MyPlugin {
-    apply(compiler) {
-        console.log("自定义插件");
-        // tap方法注册钩子函数（emit是其中一个钩子）
-        compiler.hooks.emit.tap("MyPlugin", (compilation) => {
-            // compilation可以理解为此次打包的上下文
-            for (const name in compilation.assets) {
-                if (name.endsWith(".js")) {
-                    const contents = compilation.assets[name].source();
-                    const withoutComments = contents.replace(
-                        /\/\*\*+\*\//g,
-                        ""
-                    );
-                    compilation.assets[name] = {
-                        source: () => withoutComments,
-                        size: () => withoutComments.length,
-                    };
-                }
-            }
-        });
+function foo() {
+    var name = "foo";
+    function bar() {
+        console.log(name);
     }
-}
-```
-
-## 7、简述前端兼容性的解决方案及不同工具的使用（CSS 及 JS）
-
-CSS 兼容(不同浏览器的默认样式存在差异，可以使用 Normalize.css 抹平这些差异)：
-
-1. 不同浏览器的标签默认的 margin 和 padding 不同
-
--   CSS 里 \*{margin:0;padding:0;} 但是性能不好
--   一般我们会引入 reset.css 样式重置；
-
-2.  超链接访问过后 hover 样式就不出现的问题
-
--   被点击访问过的超链接样式不在具有 hover 和 active 了,很多人应该都遇到过这个问题,解决技巧是改变 CSS 属性的排列顺序: L-V-H-A
-
-```css
-<style type="text/css">
-a:link {}
-a:visited {}
-a:hover {}
-a:active {}
-</style>
-```
-
-3. 图片默认有间距(几个 img 标签放在一起的时候，有些浏览器会有默认的间距，加了问题一中提到的通配符也不起作用。)
-
--   因为 img 标签是行内属性标签，所以只要不超出容器宽度，img 标签都会排在一行里，但是部分浏览器的 img 标签之间会有个间距。去掉这个间距使用 float 是正道。
-
-4. 上下 margin 的重叠问题(给上边元素设置了 margin-bottom，给下边元素设置了 margin-top，浏览器只会识别较大值)
-
--   margin-top 和 margin-bottom 中选择一个，只设置其中一个值
-
-JS 兼容：
-
-1. 键盘事件 keyCode 兼容性写法
-
-```js
-const inp = document.getElementById("inp");
-const result = document.getElementById("result");
-
-function getKeyCode(e) {
-    e = e ? e : window.event ? window.event : "";
-    return e.keyCode ? e.keyCode : e.which;
+    return bar;
 }
 
-inp.onkeypress = function (e) {
-    result.innerHTML = getKeyCode(e);
-};
+var fn = foo();
+fn();
+fn = null;
 ```
 
-2. 求窗口大小的兼容写法
+## 3、简述一下事件循环的原理
 
-```js
-// 浏览器窗口可视区域大小（不包括工具栏和滚动条等边线）
-// 1600 * 525
-const client_w =
-    document.documentElement.clientWidth || document.body.clientWidth;
-const client_h =
-    document.documentElement.clientHeight || document.body.clientHeight;
+#### 简答
 
-// 网页内容实际宽高（包括工具栏和滚动条等边线）
-// 1600 * 8
-const scroll_w =
-    document.documentElement.scrollWidth || document.body.scrollWidth;
-const scroll_h =
-    document.documentElement.scrollHeight || document.body.scrollHeight;
+-   JavaScript 有一个基于事件循环的并发模型，事件循环负责执行代码、收集和处理事件以及执行队列中的子任务。
 
-// 网页内容实际宽高 (不包括工具栏和滚动条等边线）
-// 1600 * 8
-const offset_w =
-    document.documentElement.offsetWidth || document.body.offsetWidth;
-const offset_h =
-    document.documentElement.offsetHeight || document.body.offsetHeight;
+![image.png](./image/eventLoop.png)
 
-// 滚动的高度
-const scroll_Top =
-    document.documentElement.scrollTop || document.body.scrollTop;
-```
+#### 详细介绍
 
-3. addEventListener 与 attachEvent 区别
+-   [MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/EventLoop)
+-   [知乎](https://zhuanlan.zhihu.com/p/46068171)
 
--   attachEvent ——兼容：IE7、IE8；不兼容 firefox、chrome、IE9、IE10、IE11、safari、opera。
--   addEventListener——兼容：firefox、chrome、IE、safari、opera；不兼容 IE7、IE8
+## 4、Nodejs 异步 IO 模型及 libuv？
 
-```js
-function addEvent(elm, evType, fn, useCapture) {
-    if (elm.addEventListener) {
-        // W3C标准
-        elm.addEventListener(evType, fn, useCapture);
-        return true;
-    } else if (elm.attachEvent) {
-        // IE
-        const r = elm.attachEvent("on" + evType, fn); // IE5+
-        return r;
-    } else {
-        elm["on" + evType] = fn; // DOM事件
-    }
-}
-```
+#### 简答
 
-4. 阻止事件冒泡传播
+-   异步 IO 的目的：可以从用户体验和资源分配这两个方面说起。
+-   用户体验：JS 单线程执行，与 UI 渲染共用一个线程。JS 执行时，UI 渲染和响应是处于停滞的状态。
+-   资源分配：计算机将组件抽象，分为 I/O 设备和计算设备。
+-   对比单/多线程：
+    -   多线程的代价在于创建线程和执行期线程上下文切换的开销较大，另外，在复杂的业务中，多线程编程经常面临锁、状态同步等问题。但是多线程在多核 CPU 上能够有效提升 CPU 的利用率。
+    -   单线程顺序执行任务，比较符合编程人员按顺序思考的思维方式。但是串行执行的缺点在于性能，任意一个略慢的任务都会导致后续执行代码被阻塞。计算机资源中，通常 I/O 与 CPU 计算之间是可以并行进行的。
+-   Node 的方案：利用单线程，远离多线程死锁、状态同步等问题;利用异步 I/O，让单线程远离阻塞，以更好地使用 CPU。Node 提供了类似前端浏览器中 WebWorkers 的子进程，该子进程可以通过工作进程高效地利用 CPU 和 I/O。
+-   node 中实现异步 IO：完成整个异步 I/O 环节的有事件循环、观察者、线程池和请求对象等。
+    -   事件循环：Node 会创建一个类似于 while(true)的循环，每一次循环体称为 Tick。每个 Tick 的过程就是查看是否有事件待处理，如果有就取出事件和执行关联的回调函数。然后进入下次循环。
+    -   观察者：每个事件循环中有一个或者多个观察者，而判断是否有事件要处理的过程就是向这些观察者询问是否有要处理的事件。在 Node 中，事件主要来源于网络请求、文件 I/O，观察者有文件 I/O 观察者、网络 I/O 观察者等。事件循环是一个典型的生产者/消费者模型。异步 I/O、网络请求等则是事件的生产者，源源不断为 Node 提供不同类型的事件，这些事件被传递到对应的观察者那里，事件循环则从观察者那里取出事件并处理。
+    -   先看这张图，大致了解一下 node 中异步 io 的实现。
 
-```js
-//js阻止事件传播，这里使用click事件为例
-document.onclick = function (e) {
-    const e = e || window.event;
-    if (e.stopPropagation) {
-        e.stopPropagation(); //W3C标准
-    } else {
-        e.cancelBubble = true; //IE....
-    }
-};
-```
+#### 详细介绍
 
-5. 阻止事件默认行为
+-   [51CT0-“异步 IO” 有九问](https://www.51cto.com/article/667063.html)
 
-```js
-//js阻止默认事件   一般阻止a链接href，form表单submit提交
-document.onclick = function (e) {
-    const e = e || window.event;
-    if (e.preventDefault) {
-        e.preventDefault(); //W3C标准
-    } else {
-        e.returnValue = "false"; //IE..
-    }
-};
-```
+## 5、Nodejs 中的 libuv？
 
-## 8、列举三种常见的 webpack 打包优化手段及使用步骤
+#### 简答
 
-通过 webpack 优化前端的手段有:   
-可以通过文件体积大小入手，  
-其次还可通过分包的形式、减少 http 请求次数等方式，实现对前端性能的优化。  
+-   Nodejs：对 js 功能的拓展，提供了网络、文件、dns 解析、进程线程等功能，利用 v8 提供接口。
+-   libuv - 一个跨平台异步 IO 库。Nodejs 把 IO 操作交给 libuv，保证主线程可以继续处理其他事情。 - 利用系统提供的事件驱动模块解决网络异步 IO，利用线程池解决文件 IO。另外还实现了定时器，对进程，线程等使用进行了封装。
+    ![image](./image/image.png)
+-   nodejs 中的事件循环根据不同的操作系统可能存在特殊的阶段，但总体是可以分为以下 6 个阶段
+    -   timer 阶段： 执行所有通过计时器函数（即 setTimeout 和 setInterval）注册的回调函数。
+    -   pending callbacks 阶段： 虽然大部分 I/O 回调都是在 poll 阶段被立即执行，但是会存在一些被延迟调用的 I/O 回调函数。那么此阶段就是为了调用之前事件循环延迟执行的 I/O 回调函数。
+    -   idle prepare 阶段： 仅用于 nodejs 内部模块使用。
+    -   poll（轮询）阶段： 此阶段有两个主要职责：
+        -   1. 计算当前轮询需要阻塞后续阶段的时间；
+        -   2. 处理事件回调函数。
+    -   check 阶段： 用于在 poll 阶段的回调函数队列为空时，使用 setImmediate 实现调度执行特定代码片段。
+    -   close 回调函数阶段，执行所有注册 close 事件的回调函数。
+-   nodejs 的事件循环核心对应 libuv 中的 [uv_run 函数](https://github.com/libuv/libuv/blob/v1.35.0/src/unix/core.c#L365-L400)
+-   与浏览器实现对比
+    -   在 nodejs 中事件循环不再是由单一个 task queue 和 micro-task queue 组成，而是由多个 阶段 phase 的多个回调函数队列 callbacks queues 组成一次事件循环 tick
+    -   在每一个单独的阶段都存在一个单独的 回调函数 FIFO 队列。
+-   libuv 的运行原理
+    -   libuv 的架构 [!image](../../image/libuv.png)
+        -   从左往右可分为两部分，Network I/O 的相关请求，另一部分 File I/O，DNS Ops 和 User Code 组成。
 
--   JS 代码压缩
-    在 production 模式下，webpack 默认就是使用 TerserPlugin 来处理我们的代码的。如果想要自定义配置它，配置方法如下:
+#### 详细介绍：
 
-```js
-const TerserPlugin = require('terser-webpack-plugin')
-module.exports = {
-    ...
-    optimization: {
-        minimize: true,
-        minimizer: [
-            new TerserPlugin({
-                parallel: true // 电脑cpu核数-1
-            })
-        ]
-    }
-}
-```
+-   https://cloud.tencent.com/developer/article/1453103
+-   https://set.sh/post/200317-how-nodejs-event-loop-works
+-   https://www.cnblogs.com/peiyu1988/p/8520968.html
 
-可以将 TerserPlugin 中的 cache 设为 true，开启缓存
+## 6、webscoket 的连接原理
 
--   CSS 代码压缩
-    CSS 压缩通常是去除无用的空格等，因为很难去修改选择器、属性的名称、值等。CSS 的压缩可以使用：`css-minimizer-webpack-plugin`
+#### 简答
 
-```js
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-module.exports = {
-    // ...
-    optimization: {
-        minimize: true,
-        minimizer: [
-            new CssMinimizerPlugin({
-                parallel: true,
-            }),
-        ],
-    },
-};
-```
+-   WebSocket: HTML5 出的东西（新协议),实现了浏览器与服务器全双工通信。应用层协议、基于 TCP、全双工通信、一次 HTTP 握手、持久连接、双向数据传输。
+-   WebSocket 解决的问题： http 请求头信息多，带宽浪费。支持服务端主动推送消息，更好的实时通信。
+-   WebSocket 的特点：
+    -   建立在 TCP 协议之上
+    -   与 HTTP 协议有良好的兼容性，默认端口 80（ws）、443（wss）,并且握手阶段采用 HTTP 协议
+    -   较少的控制开销：创建连接后，ws 客户端与服务端进行数据交换时，协议控制的数据包头部较小。
+    -   可以发送文本，也可以发送二进制数据
+    -   没有同源策略的限制，客户端与任意服务器通信
+    -   支持扩展：ws 协议定义了扩展，用户可以扩展协议，或者实现自定义的子协议（比如支持自定义压缩算法等）
 
--   Html 文件代码压缩
-    使用 HtmlWebpackPlugin 插件来生成 HTML 的模板时候，通过配置属性 minify 进行 html 优化
+#### 详细介绍：
 
-```js
-module.exports = {
-    ...
-    plugin:[
-        new HtmlwebpackPlugin({
-            ...
-            minify:{
-                minifyCSS:false, // 是否压缩css
-                collapseWhitespace:false, // 是否折叠空格
-                removeComments:true // 是否移除注释
-            }
-        })
-    ]
-}
-```
+-   [掘金](https://juejin.cn/post/7086021621542027271)
+-   [知乎](https://www.zhihu.com/question/20215561)
+-   [segmentfault](https://segmentfault.com/a/1190000040793931)
 
--   文件大小压缩
-    对文件的大小进行压缩，减少 http 传输过程中宽带的损耗。可以采用`compression-webpack-plugin`
+## 7、react16.3+ 生命周期
 
-```js
-new ComepressionPlugin({
-    test: /\.(css|js)$/, // 哪些文件需要压缩
-    threshold: 500, // 设置文件多大开始压缩
-    minRatio: 0.7, // 至少压缩的比例
-    algorithm: "gzip", // 采用的压缩算法
-});
-```
+#### 简答
 
--   图片压缩
-    一般来说在打包之后，一些图片文件的大小是远远要比 js 或者 css 文件要来的大，所以图片压缩较为重要
+-   挂载阶段：
+    -   constructor： 在 React 组件挂载之前被调用，在为 React.Component 子类实现构造函数时使用。
+    -   getDerivedStateFromProps(nextProps, prevState)： 在调用 render 方法之前调用，在初始化和后续更新都会被调用。返回值：返回一个对象来更新 state, 如果返回 null 则不更新任何内容。
+    -   render：方法必须返回 reactDOM。不要在 render 里面 setState, 否则会触发死循环导致内存崩溃
+    -   componentDidMount： 在组件挂载后 (插入 DOM 树后) 立即调用。是发送网络请求、启用事件监听方法的好时机，并且可以在 此钩子函数里直接调用 setState()
+-   更新：
+    -   getDeriveStateFromProps
+    -   shouldComponentUpdate：在组件更新之前调用，可以控制组件是否进行更新， 返回 true 时组件更新， 返回 false 则不更新。建议可以使用内置 PureComponent 组件替代。
+    -   render
+    -   getSnapshotBeforeUpdate：它可以使组件在 DOM 真正更新之前捕获一些信息（例如滚动位置）
+    -   componentDidUpdate：在更新后会被立即调用。首次渲染不会执行
+-   卸载：
+    -   comonentWillUnmount：在组件即将被卸载或销毁时进行调用。是取消网络请求、移除监听事件、清理 DOM 元素、清理定时器等操作的好时机。
+-   从生命周期对比 16.3 以前版本，React 废弃了 componentWillMount、componentWillReaceiveProps、componentWillUpdate 这三个函数
+-   废弃的原因：由于 React15 同步更新导致主线程长时间被占用，有页面性能问题。React 采用 Filer 机制，利用 requestIdleCallback 机制，可将中断的任务进行分片处理，每个分片运行时间很短，这样主线程不会被长期占用。由于 Fiber Reconciliation 这个过程有可能暂停然后继续执行，所以挂载和更新之前的生命周期钩子就有可能不执行或者多次执行；因此废弃他们。
 
-```js
-module: {
-    rules: [
-        {
-            test: /\.(png|jpg|gif)$/,
-            use: [
-                {
-                    loader: "file-loader",
-                    options: {
-                        name: "[name]_[hash].[ext]",
-                        outputPath: "images/",
-                    },
-                },
-                {
-                    loader: "image-webpack-loader",
-                    options: {
-                        // 压缩 jpeg 的配置
-                        mozjpeg: {
-                            progressive: true,
-                            quality: 65,
-                        },
-                        // 使用 imagemin**-optipng 压缩 png，enable: false 为关闭
-                        optipng: {
-                            enabled: false,
-                        },
-                        // 使用 imagemin-pngquant 压缩 png
-                        pngquant: {
-                            quality: "65-90",
-                            speed: 4,
-                        },
-                        // 压缩 gif 的配置
-                        gifsicle: {
-                            interlaced: false,
-                        },
-                        // 开启 webp，会把 jpg 和 png 图片压缩为 webp 格式
-                        webp: {
-                            quality: 75,
-                        },
-                    },
-                },
-            ],
-        },
-    ];
-}
-```
+#### 详细介绍：
 
--   Tree Shaking
-    Tree Shaking 是一个术语，在计算机中表示消除死代码，依赖于 ES Module 的静态语法分析（不执行任何的代码，可以明确知道模块的依赖关系）
-    在 webpack 实现 Trss shaking 有两种不同的方案：
+-   https://juejin.cn/post/6914112105964634119
+-   https://zhuanlan.zhihu.com/p/38030418
 
-usedExports：通过标记某些函数是否被使用，之后通过 Terser 来进行优化的
-sideEffects：跳过整个模块/文件，直接查看该文件是否有副作用
-两种不同的配置方案， 有不同的效果
+## 8、async await 的原理是什么?
 
-#usedExports (配置方法也很简单，只需要将 usedExports 设为 true)
+#### 简答
 
-```js
-module.exports = {
-    ...
-    optimization:{
-        usedExports
-    }
-}
-```
+-   基本原理：async / await 本质上就是 generator 的语法糖，内置执行器，无需手动执行 next() 方法。
+-   Generator 函数：通过 yield 关键字，把函数的执行流挂起，通过 next()方法可以切换到下一个状态，为改变执行流程提供了可能，为异步编程提供解决方案。
+-   对比 Generator 与 async / await
+    -   Generator 返回的是生成器对象，需要手动调用 next()才能执行下一步。
+    -   async 函数返回值是 Promise 对象，自带执行器，不需要手动调用 next()就能自动执行。
 
-使用之后，没被用上的代码在 webpack 打包中会加入 unused harmony export mul 注释，用来告知 Terser 在优化时，可以删除掉这段代码。
+#### 详细介绍：
 
-#sideEffects（用于告知 webpack compiler 哪些模块时有副作用，配置方法是在 package.json 中设置 sideEffects 属性）
-如果 sideEffects 设置为 false，就是告知 webpack 可以安全的删除未用到的 exports
+-   [掘金-7 张图，20 分钟就能搞定的 async/await 原理](https://juejin.cn/post/7007031572238958629)
+-   [掘金-对 async/await 的理解，以及内部原理](https://juejin.cn/post/6967260930862219272)
+-   [掘金-async/await 的实现](https://juejin.cn/post/7142782211308142599)
 
-如果有些文件需要保留，可以设置为数组的形式
+## 9、虚拟列表怎么实现?（按需显示思路的一种实现）
 
-```js
-"sideEffecis":[
-    "./src/util/format.js",
-    "*.css" // 所有的css文件
-]
-```
+#### 简答
 
-#css tree shaking（css 进行 tree shaking 优化可以安装 PurgeCss 插件）
+-   定义：虚拟列表是一种根据滚动容器元素的可视区域来渲染长列表数据中某一个部分数据的技术。
+-   实现「虚拟列表」可以简单理解为就是在列表发生滚动时，改变「可视区域」内的渲染元素。大概的文字逻辑步骤如下：
+    -   根据单个元素高度计算出滚动容器的可滚动高度，并撑开滚动容器；
+    -   根据可视区域计算总挂载元素数量；
+    -   根据可视区域和总挂载元素数量计算头挂载元素（初始为 0）和尾挂载元素；
+    -   当发生滚动时，根据滚动差值和滚动方向，重新计算头挂载元素和尾挂载元素。
+-   代码实现：https://github.com/maicFir/lessonNote/blob/master/javascript/08-%E8%99%9A%E6%8B%9F%E5%88%97%E8%A1%A8/index.js
 
-```js
-const PurgeCssPlugin = require('purgecss-webpack-plugin')
-module.exports = {
-    ...
-    plugins:[
-        new PurgeCssPlugin({
-            path:glob.sync(`${path.resolve('./src')}/**/*`), {nodir:true}// src里面的所有文件
-            satelist:function(){
-                return {
-                    standard:["html"]
-                }
-            }
-        })
-    ]
-}
-```
+#### 详细介绍：
 
-paths：表示要检测哪些目录下的内容需要被分析，配合使用 glob
-默认情况下，Purgecss 会将我们的 html 标签的样式移除掉，如果我们希望保留，可以添加一个 safelist 的属性
+-   [GitHub-浅说虚拟列表的实现原理](https://github.com/dwqs/blog/issues/70)
+-   [掘金-浅谈虚拟列表实现与原理分析](https://juejin.cn/post/6877507011769008135)
+-   [掘金-剖析虚拟列表实现原理](https://juejin.cn/post/7095958383336882183)
+-   [掘金-如何实现一个高度自适应的虚拟列表](https://juejin.cn/post/6948011958075392036)
+-   [博客-剖析无限滚动虚拟列表的实现原理 ](https://lkangd.com/post/virtual-infinite-scroll/)
 
--   代码分离
-    将代码分离到不同的 bundle 中，之后我们可以按需加载，或者并行加载这些文件
+## 10、 Node 是怎么部署的? pm2 守护进程的原理?Node 开启子进程的方法有哪些?进程间如何通信?
 
-默认情况下，所有的 JavaScript 代码（业务代码、第三方依赖、暂时没有用到的模块）在首页全部都加载，就会影响首页的加载速度
+#### 简答
 
-代码分离可以分出出更小的 bundle，以及控制资源加载优先级，提供代码的加载性能
+-
 
-这里通过 splitChunksPlugin 来实现，该插件 webpack 已经默认安装和集成，只需要配置即可
+## 11、require 和 import 的区别
 
-默认配置中，chunks 仅仅针对于异步（async）请求，我们可以设置为 initial 或者 all
+#### 简答
 
-```js
-module.exports = {
-    ...
-    optimization:{
-        splitChunks:{
-            chunks:"all"
-        }
-    }
-}
-```
+-   用法：
 
-Chunks，对同步代码还是异步代码进行处理
-minSize： 拆分包的大小, 至少为 minSize，如何包的大小不超过 minSize，这个包不会拆分
-maxSize： 将大于 maxSize 的包，拆分为不小于 minSize 的包
-minChunks：被引入的次数，默认是 1
+    -   在 ES6 中，import 用于导入模块，export 导出接口
+    -   在 Node 中 require 用于引入模块，module.exports/exports 导出接口（exports 不可直接赋值）
 
--   内联 chunk
-    可以通过 InlineChunkHtmlPlugin 插件将一些 chunk 的模块内联到 html，如 runtime 的代码（对模块进行解析、加载、模块信息相关的代码），代码量并不大，但是必须加载的。
+-   遵循规范：
 
-```js
-const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-module.exports = {
-    ...
-    plugin:[
-        new InlineChunkHtmlPlugin(HtmlWebpackPlugin,[/runtime.+\.js/]
-}
-```
+    -   require 是[AMD 规范](https://github.com/amdjs/amdjs-api/wiki/require)引入的
+    -   import 是 ES6 的一个语法标准，若要兼容浏览器必须转为 ES5 语法
 
--   减少查找过程
-    对 webpack 的 resolve 参数进行合理配置，使用 resolve 字段告诉 webpack 怎么去搜索文件
+-   调用时间：
 
--   合理使用 resolve.extensions
-    在导入语句没带文件后缀时，webpack 会自动带上后缀后去尝试询问文件是否存在，查询的顺序是按照我们配置 的 resolve.extensions 顺序从前到后查找，webpack 默认支持的后缀是 js 与 json。
+    -   require 是运行时调用，理论上可以运用在代码的任何地方
+    -   import 是编译时调用，必须放在文件开头
+    -   ES6 中还新增了一个函数 `import(params)` 类似于 Node 的 `require`方法，区别在于前者是异步加载，后者是同步加载
 
-举个 ：如果我们配置 resolve.extensions= ['js', 'json']，那么 webpack 会先找 xxx.js
+-   本质：
 
-如果没有则再查找 xxx.json，所以我们应该把常用到的文件后缀写在前面，或者 我们导入模块时，尽量带上文件后缀名
+    -   **require 是赋值过程**。module.exports 后面的内容就是 require 的结果，如对象、数字、字符串、函数等，然后将 require 的结果赋值给某个变量。require 引入基础数据类型时，属于复制该变量。通过 require 引入复杂数据类型时，属于浅拷贝该对象
+    -   **import 是解构过程**。目前所有的引擎都没实现 import，node 也是使用 babel 转为 ES5 再执行。import 语法实际也是转码为 require 去执行的（证据：模块导出时使用 module.exports，在引入模块时使用 import 依然有效）
 
--   使用 resolve.alias 减少查找过程
-    alias 的意思为 别名，能把原导入路径映射成一个新的导入路径。
+-   模块化原理：
 
-比如我们项目中可能会有一些相对路径的写法，就可以使用 alias 配置来减少查找过程；
+    -   自执行函数也是前端模块化的实现方案之一
+    -   node 模块化顶层有一个自执行的函数， 函数中包含 `exports`, `require`, `module`, `__filename`, `__dirname`这些常用的全局变量
 
-还比如我们经常使用的 react 库，其实我们可以直接使用其 dist 目录下打包好的 react.min.js，这样就能跳过耗时的模块解析，具体示例配置如下：
+#### 详细介绍
 
-```js
-const commonConfig = {
-  // ...
-  resolve: {
-    // ...
-    alias: {
-      react: path.resolve(__dirname, './node_modules/react/dist/react.min.js'),
-      @alias: path.resolve(__dirname, '../src/alias'),
-    },
-  },
-  // ...
-}
-```
+-   [博客园--ES6 中的 export 和 import](https://www.cnblogs.com/wenxuehai/p/14246989.html)
+-   [陈三博客--区别 module.exports 与 exports](https://blog.zfanw.com/differences-between-exports-module-dot-exports/)
+-   [阮一峰--require 源码解读](https://www.ruanyifeng.com/blog/2015/05/require.html)
+-   [github--mini-require](https://github.com/YIngChenIt/mini-require)
+-   [博客-- 关于 ES6 中的 import 的原理和使用](https://ciaozz.github.io/2020/03/24/import/)
+-   [MDN--import](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/import)
+
+## 12、vite vs webpack 区别？
+
+#### 简答
+
+-   Vite 优势：
+
+    -   vite 服务器启动速度极快。vite 启动时不需要打包、分析模块依赖、编译，因此开发环境启动极快。当浏览器请求需要模块时，在进行编译，这种按需动态编译模式，极大缩短了编译时间。
+    -   vite 热更新(HMR)更快。当某个模块改变后，vite 让浏览器重新请求该模块，而 webpack 则将该模块的所有依赖重新编译。
+    -   vite 预构建依赖更快。vite 使用 esbuild(Go 编写)并行构建依赖，而 webpack 基于 nodejs，大概快 10-100 倍。
+    -   vite 开箱即用：Vite 内置大量默认处理，比如支持 jsx 和 tsx，样式预处理库支持 less、sass 和 CSS module，而 webpack 需要大量配置项。
+    -   vite 自带缓存机制：解析后的依赖请求会以 HTTP 头 `max-age=31536000,immutable` 强缓存，以提高开发时的页面重载性能，而 webpack5+之前是没有文件缓存的。
+
+-   vite 缺点：
+
+    -   生态不及 webpack，加载器、插件不够丰富（通过 Rollup 插件来拓展 Vite 的功能）
+    -   vite 打包到生产环境时，使用的传统的 rollup 打包，生产环境 esbuild 构建对于 css 和代码分割不够友好。
+    -   项目的开发浏览器要支持 ESmodule，而且不能识别 commonjs 语法。
+    -   生产环境集成 `Rollup`打包，与开发环境最终执行的代码不一致。
+    -   兼容性不好。可使用官方插件@vitejs/plugin-legacy，转义成传统版本和相对应的 polyfill
+
+-   webpack 优势：
+
+    -   支持的模块规范：ES Modules，CommonJS 和 AMD Modules，浏览器兼容性比较好。
+    -   vite 对 ssr 的支持还在试验阶段，webpack 比较成熟。如：主流的 ssr 框架 Next.js 采用的是 webpack 构建。
+
+#### 详细介绍
+
+[csdn-vite 和 webpack 的区别及优势](https://blog.csdn.net/xiasohuai/article/details/123017321)
+[张鑫旭-万岁，浏览器原生支持 ES6 export 和 import 模块啦](https://www.zhangxinxu.com/wordpress/2018/08/browser-native-es6-export-import-module/)
+
+## 13、vite 实现原理？
+
+#### 简答
+
+-   核心原理：拦截浏览器对 import 模块的请求，并返回处理后的结果。
+-   启动 KOA 服务：http 服务加载了一些插件对不同类型的文件做不同的逻辑处理。
+-   核心插件：模块路径重写（moduleRewritePlugin）、模块路径引入（moduleResolvePlugin）、静态文件处理（koa-static）、vue 文件处理（vueCompilePlugin）
+-   Vite 热更新: Vite 的是通过 `WebSocket` 来实现的热更新通信，建立浏览器和服务器的通信。Vite 的 WS 客户端监听各类消息，进行重新加载相关的链接。组件变更基本都是利用 `timestamp` 刷新缓存重新执行的方法来达到更新的目。
+
+#### 详细介绍
+
+[简书-vue3 和 vite 不得不说的事](https://www.jianshu.com/p/07960e4bbb01)
+[掘金-Vite 原理浅析](https://juejin.cn/post/6844904146915573773)
+
+## 14、对前端工程化的理解？
+
+#### 简答
+
+-   总结：前端工程化是使用软件工程的技术和方法来进行前端开发流程、技术、工具、经验等的规范化、标准化。其主要的目的是提高开发效率和降低成本（减少重复工作时间）
+-   前端工程化是为了让前端开发可以“自成体系”，主要从**模块化**、**组件化**、**规范化**、**自动化**四个方面思考。
+-   模块化：将大文件拆分成相互依赖的小文件，再进行同一的拼装和加载。
+    -   JS 模块化：import 引入规范化，webpack+babel 将所有模块打包成一个文件同步加载，也可以打包成多个 chunk 异步加载
+    -   CSS 模块化：SASS、LESS 等预处理器实现 CSS 的文件拆分，CSS Modules 来管理 css。原理是通过每个 class 名后带一个独一无二的 hash 值，这样就不存在命名冲突问题了。
+    -   资源模块化：Webpack 使所有的资源都可以模块化，
+-   组件化：组件化是一种分治思想，是一种按照模板(HTML)+样式(CSS)+逻辑(JS)三位一体的形式对面向对象的进一步抽象。除了封装组件本身，还要合理处理组件之间的关系。
+-   规范化：项目初期规范制定的好坏会直接影响到后期的开发质量。
+    -   目录结构的制定
+    -   编码规范
+    -   前后端接口规范
+    -   文档规范
+    -   组件管理
+    -   Git 分支管理
+    -   Commit 描述规范
+    -   定期 codeReview
+    -   视觉图标规范
+-   自动化：任何简单机械的重复劳动都应该让机器去完成。例如持续集成、自动化构建、自动化部署、自动化测试等等
+
+#### 详细介绍
+
+[简书-前端工程化的理解](https://www.jianshu.com/p/88ed70476adb)
+[博客-谈谈你对前端工程化的理解？](https://xjl271314.github.io/docs/open/module.html)
+[github-第 79 题：谈谈你对前端工程化的理解](https://github.com/noxussj/Interview-Questions/issues/79)
+
+## 15. 前端性能优化都做了哪些工作？
+
+#### 简答：
+
+-   **体验优化**
+    -   1，首屏渲染优化，请求少、加载体积小、善用缓存
+    -   2，动画优化，避免某些动画造成页面的卡顿
+    -   3，优化用户的操作感官，提升视觉反馈，比如 hover 小手，让用户一眼就知道是否可操作
+    -   4，长列表复用 dom，优化滚动效果及页面卡顿现象，减少页面一次性渲染的数量
+    -   5，骨架屏的使用
+    -   6，组件的预加载，懒加载
+-   **提升页面性能**
+    -   减少 http 请求 和 冗余数据
+    -   组件，路由懒加载
+    -   配置 nginx 优化
+    -   优化 webpack 打包机制
+    -   使用 CDN
+    -   预渲染
+    -   SSR
+    -   图片转 base64
+    -   后台分布式部署，负载均衡
+-   **首页加载优化**（减少白屏时间）
+    -   cdn 分发：通过在多台服务器部署相同的副本，当用户访问时，服务器根据用户跟哪台服务器地理距离小或者哪台服务器此时的压力小，来决定哪台服务器去响应这个请求。
+    -   后台在业务层的缓存：数据库查询缓存是可以设置缓存的，这个对于高频率的请求很有用。值得注意的是，接口也是可以设置缓存的，比如获取一定时间内不会变的资源，设置缓存会很有用。
+    -   静态文件缓存方案：这个最常看到。现在流行的方式是文件 hash + 强缓存 的一个方案。比如 hash + cache control：max-age=1 年。
+    -   前端的资源动态加载：
+        -   a. 路由动态加载，最常用的做法，以页面为单位，进行动态加载。
+        -   b. 组件动态加载（offScreen Component），对于不在当前视窗的组件，先不加载。
+        -   c. 图片懒加载(offScreen Image)，同上。值得庆幸的是，越来越多的浏览器支持原生的懒加载，通过给 img 标签加上 loading="lazy" 来开启懒加载模式。
+    -   利用好 async 和 defer 这两个属性：如果是独立功能的 js 文件，可以加入 async 属性。如果是优先级低且没有依赖的 js，我们可以加入 defer 属性。
+    -   渲染的优先级：浏览器有一套资源的加载优先级策略，也可以通过 js 来自己控制请求的顺序和渲染的顺序。一般我们不需要这么细粒度的控制，而且控制的代码也很不好写。
+    -   前端做一些接口缓存：前端也可以做接口缓存，缓存的位置有两个，一个是内存，即保存给变量，另一个是 localStorage。比如用户的签到日历（展示用户是否签到），我们可以缓存这样的接口到 localStorage ，有效期是当天。或者有个列表页，我们总是缓存上次的列表内容到本地，下次加载时，我们先从本地读取缓存，并同时发起请求到服务器获取最新列表。
+    -   页面使用骨架屏：意思是在首屏加载完成之前，通过渲染一些简单元素进行占位。骨架屏虽然不能提高首屏加载速度，但可以减少用户在首屏等待的急躁情绪。这点很有效，在很多成熟的网站都有大量应用。
+    -   使用 SSR 渲染：服务器性能一般都很好，那么可以先在服务器先把 vdom 计算完成后，再输出给前端，这样可以节约的时间为：计算量 / (服务器计算速度 - 客户端计算速度) 。第二个是服务器可以把首屏的 ajax 请求在服务端阶段就完成，这样可以省去和客户端通过 tcp 传输的时间。
+    -   引入 http2.0：http2.0 对比 http1.1，最主要的提升是传输性能，特别是在接口小而多的时候。
+    -   选择先进的图片格式：使用 JPEG 2000，JPEG XR，and WebP 的图片格式来代替现有的 jpeg 和 png ，当页面图片较多时，这点作用非常明显。把部分大容量的图片从 BaseLine JPEG 切换成 Progressive JPEG （理解这两者的差别）也能缩小体积。
+        利用好 http 压缩：使用 http 压缩的效果非常明显。
+
+#### 详细介绍
+
+[掘金-工作中如何进行前端性能优化(23 种优化+10 种定位方式)](https://juejin.cn/post/6904517485349830670)
+[掘金-你知道的前端性能优化手段有哪些)](https://juejin.cn/post/7109100914882904095)
+[博客-前端性能优化之旅](https://github.com/alienzhou/fe-performance-journey)
+[知乎-常见的前端性能优化手段都有哪些？都有多大收益？](https://www.zhihu.com/question/40505685)
+[博客-我们为什么要做前端性能优化？](https://cloud.tencent.com/developer/article/1953685)
+[CSDN-平时在项目开发中都做过哪些前端性能优化](https://blog.csdn.net/zimeng303/article/details/113853928)
+
+## 16. 前端设计模式？
+
+#### 简答：
+
+-   设计模式，相信知道的同学都会脱口而出，五大基本原则（SOLID）和 23 种设计模式。SOLID 所指的五大基本原则分别是：单一功能原则、开放封闭原则、里式替换原则、接口隔离原则和依赖反转原则。概括为六个字，即“高内聚，低耦合”。
+-   策略模式： 当各判断条件下的策略相互独立且可复用，策略内部逻辑复杂，策略需要灵活组合的时候，比较适用。如权限验证、表单验证
+-   发布-订阅模式：当各模块相互独立，存在一对多的依赖关系，依赖模块不稳定，依赖关系不稳定，各模块由不同的人员、团队开发。
+-   装饰器模式：为一个函数赋能，增强它的某种能力，他能动态的添加对象的行为。
+-   适配器模式：为了解决不兼容的问题，把一个类的接口转换成我们想要的接口。
+-   代理模式：为其它对象提供一种代理以控制这个对象的访问，具体执行的功能还是这个对象本身。
+-   责任链模式：避免请求发送者与接收者耦合在一起，让多个对象都有可能接收请求，将这些对象连接成一条链，并且沿着这条链传递请求，直到有对象处理它为止。（各环节可复用、有执行顺序、可重组）
+-   图片总结：
+    ![image](./image/23 种设计模式.png)
+
+#### 详细介绍
+
+-   [掘金-渣渣设计模式](https://juejin.cn/post/6844904138707337229)
+-   [infoq-微医](https://www.infoq.cn/article/mw4xigornmhttzylzpow)
+-   [segmentfault](https://segmentfault.com/a/1190000040987075)
+
+## 17、前端组件如何设计
+
+#### 详细介绍
+
+-   [掘金-前端组件设计之实践篇](https://juejin.cn/post/7098847243771314206)
+
+## 18、Web 前端常见的安全问题介绍及解决方案
+
+#### 详细介绍
+
+-   [博客-Web 前端常见的安全问题介绍及解决方案](https://quincychen.cn/frontend-security-1/)

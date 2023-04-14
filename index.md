@@ -5,9 +5,8 @@ titleTemplate: Vite & Vue Powered Static Site Generator
 
 hero:
     name: Hello World
-    text: Static Site of Blog
-    tagline: Suffering is The Most Powerful Teacher of Life
-
+    # text: Welcome Here
+    tagline: Self-discipline Brings Freedom
     image:
         src: /docs-logo.png
         alt: Vitest
@@ -20,7 +19,7 @@ hero:
           link: https://github.com/attraction11
 
 features:
-    - title: Vue
+    - title: React
       details: 讨饭的东西，得要
       icon: 🏠
     - title: VitePress

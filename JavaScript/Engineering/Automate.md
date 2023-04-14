@@ -1,3 +1,6 @@
+---
+outline: deep
+---
 # PNPM & Changesets
 
 本文章记录使用 `pnpm` 包管理的 `Workspace` 特性实现 `monorepo` 再配合 `Changesets` 进行**多包管理和版本发布** 的相关功能

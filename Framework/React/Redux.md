@@ -1,8 +1,9 @@
 ---
 outline: deep
 ---
+# Redux 介绍
 
-# Redux vs MobX vs Redux、
+## Redux vs MobX vs Recoil 对比
 
 - Redux集中管理一个大状态，优点是比较专一，缺点是对于某些场景，比如不需要大量共享状态的时候，就不是特别灵活。
 - MobX和Recoil是可以分散式管理状态，因此相对Redux来说，状态比较单一来源。MobX主要实现思路是拦截状态值的get与set函数，get时候的把状态值标记可观察变量，set的时候让组件更新。
