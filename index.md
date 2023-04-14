@@ -1,7 +1,7 @@
 ---
 layout: home
-title: VitePress
-titleTemplate: Vite & Vue Powered Static Site Generator
+title: Attraction11
+titleTemplate: Full stack Developer & Lifelong Learner
 
 hero:
     name: Hello World
@@ -13,7 +13,7 @@ hero:
     actions:
         - theme: brand
           text: 开始
-          link: /JavaScript/HTML&CSS/
+          link: /JavaScript/HTMLCSS/Index
         - theme: alt
           text: GitHub
           link: https://github.com/attraction11
@@ -32,7 +32,7 @@ features:
       details: 梦由自己来创造，路由自己来走好
       icon: ⏺️
     - title: 持续记录
-      details: 活到老，学到老，码到老
+      details: 活到老，学到老，欢迎提issue
       icon: 🚀
     - title: 积极向上
       details: 保持好奇心，持续探索
