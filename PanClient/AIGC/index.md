@@ -368,12 +368,15 @@ webui-user.bat
 
 好了，今天先聊到这里，下次见~
 
-## 实战篇
-1. AI绘图画出超真实细节感
+## 参考资料
+
+1. AI绘图画出超真实细节感 
+[用AI画画，画出你的人生](https://mp.weixin.qq.com/s?__biz=MzI2NTQ0MjY5Nw==&mid=2247484631&idx=1&sn=cc627810f6862baf99d0e8084050c3f9&chksm=ea9c0031ddeb89278f5623560761d3d585e96eb768a15e11ccc7c24de817865056b68fc9e93a&scene=21#wechat_redirect)
+
 https://zhuanlan.zhihu.com/p/610149293
 
 ## 问题解决
 1. loading stable diffusion model: outofmemoryerror
+
 https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/8336
 
-2. 

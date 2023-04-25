@@ -658,6 +658,16 @@ export const SideBarList: DefaultTheme.Sidebar = {
                 },
             ],
         },
+        {
+            text: 'AIGC',
+            collapsible: true,
+            items: [
+                {
+                    text: 'AIGC 入门',
+                    link: '/PanClient/AIGC/',
+                },
+            ],
+        },
     ],
     '/ProgramTopics': [
         {

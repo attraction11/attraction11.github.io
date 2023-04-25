@@ -1,1 +1,0 @@
-import{_ as e,c as t,o,b as a}from"./app.10f3f431.js";const u=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"JavaScript/JSCore/demo/demo.md"}'),r={name:"JavaScript/JSCore/demo/demo.md"},s=a("p",null,"unde",-1),c=[s];function n(d,_,p,i,m,l){return o(),t("div",null,c)}const h=e(r,[["render",n]]);export{u as __pageData,h as default};

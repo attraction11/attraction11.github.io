@@ -115,6 +115,10 @@ export const NavItemList: DefaultTheme.NavItem[] = [
                 text: 'Electron',
                 link: '/PanClient/Electron/',
             },
+            {
+                text: 'AIGC',
+                link: '/PanClient/AIGC/',
+            },
         ],
     },
     {
