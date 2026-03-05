@@ -749,7 +749,7 @@ export const SideBarList: DefaultTheme.Sidebar = {
     ],
     '/VibeCoding': [
         {
-            text: 'vibe coding系列',
+            text: 'VibeCoding',
             collapsible: true,
             items: [
                 {
