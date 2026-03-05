@@ -150,6 +150,15 @@ export const NavItemList: DefaultTheme.NavItem[] = [
             }, 
         ],
     },
+    {
+        text: 'VibeCoding',
+        items: [
+            {
+                text: 'vibe coding初体验',
+                link: '/VibeCoding/vibe-coding-first-experience',
+            },
+        ],
+    },
     // {
     //     text: '宝藏网站',
     //     link: '/Sites',
