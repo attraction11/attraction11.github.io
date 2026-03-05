@@ -747,4 +747,16 @@ export const SideBarList: DefaultTheme.Sidebar = {
             ],
         },
     ],
+    '/VibeCoding': [
+        {
+            text: 'vibe coding系列',
+            collapsible: true,
+            items: [
+                {
+                    text: 'vibe coding初体验',
+                    link: '/VibeCoding/vibe-coding-first-experience',
+                },
+            ],
+        },
+    ],
 };
