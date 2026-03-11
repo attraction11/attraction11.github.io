@@ -1,4 +1,4 @@
----
+﻿---
 title: "OpenClaw安全检查实战指南：从风险发现到自动化防护"
 date: 2026-03-11
 description: "通过一次完整的OpenClaw安全检查实战，记录从风险识别、问题修复到自动化监控的全过程，构建AI助手的安全防护体系。"
@@ -102,16 +102,16 @@ bash
 
 #### 🔧 Telegram权限精确配置 \#
 
- **配置文件修改** ：`C:\Users\jiank\.openclaw\openclaw.json`
+ **配置文件修改** ：`C:\\Users\\USERNAME\\.openclaw\openclaw.json`
 
 json
 [code]
     {
       "channels": {
         "telegram": {
-          "allowFrom": ["5924847695"],
+          "allowFrom": ["TELEGRAM_USER_ID"],
           "groupPolicy": "allowlist",
-          "groupAllowFrom": ["5924847695"]
+          "groupAllowFrom": ["TELEGRAM_USER_ID"]
         }
       }
     }
@@ -121,9 +121,9 @@ json
     {
       "channels": {
         "telegram": {
-          "allowFrom": ["5924847695"],
+          "allowFrom": ["TELEGRAM_USER_ID"],
           "groupPolicy": "allowlist",
-          "groupAllowFrom": ["5924847695"]
+          "groupAllowFrom": ["TELEGRAM_USER_ID"]
         }
       }
     }
@@ -132,7 +132,7 @@ json
 
 **配置说明** ：
 
-  * `5924847695`：Telegram用户唯一数字ID（从对话元数据获取）
+  * `TELEGRAM_USER_ID`：Telegram用户唯一数字ID（从对话元数据获取）
   * `allowFrom`：允许私聊的用户ID列表
   * `groupAllowFrom`：允许在群组中使用OpenClaw的用户ID列表
 

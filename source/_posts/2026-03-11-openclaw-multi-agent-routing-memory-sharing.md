@@ -1,4 +1,4 @@
----
+﻿---
 title: "OpenClaw多智能体路由与记忆共享：物理隔离，逻辑共享的实践"
 date: 2026-03-11
 description: "详细记录OpenClaw多智能体系统的架构设计、记忆共享机制、同步策略与冲突解决方案，实现物理隔离与逻辑共享的平衡"
@@ -59,7 +59,7 @@ tags:
 ### 2.1 物理隔离：独立工作空间
 
 ```
-C:\Users\jiank\.openclaw\
+C:\\Users\\USERNAME\\.openclaw\
 ├── workspace\          # 主Bot（尤里）工作空间
 ├── workspaces\
 │   ├── worker_agent_01\  # Work-Agent（尤尤）独立空间
@@ -107,21 +107,21 @@ C:\Users\jiank\.openclaw\
       "accounts": {
         "default": {  // 主Bot（尤里）
           "token": "xxx",
-          "allowFrom": ["5924847695"],
+          "allowFrom": ["TELEGRAM_USER_ID"],
           "groupPolicy": "allowlist",
-          "groupAllowFrom": ["5924847695"]
+          "groupAllowFrom": ["TELEGRAM_USER_ID"]
         },
         "worker": {   // Work-Agent（尤尤）
           "token": "yyy",
-          "allowFrom": ["5924847695"],
+          "allowFrom": ["TELEGRAM_USER_ID"],
           "groupPolicy": "allowlist",
-          "groupAllowFrom": ["5924847695"]
+          "groupAllowFrom": ["TELEGRAM_USER_ID"]
         },
         "study": {    // Study-Agent（尤米）
           "token": "zzz",
-          "allowFrom": ["5924847695"],
+          "allowFrom": ["TELEGRAM_USER_ID"],
           "groupPolicy": "allowlist",
-          "groupAllowFrom": ["5924847695"]
+          "groupAllowFrom": ["TELEGRAM_USER_ID"]
         }
       }
     }
@@ -147,7 +147,7 @@ C:\Users\jiank\.openclaw\
 ```
 
 **权限原则**：
-1. **用户中心**：所有Bot只响应特定用户（ID: 5924847695）
+1. **用户中心**：所有Bot只响应特定用户（ID: TELEGRAM_USER_ID）
 2. **群组控制**：仅在授权群组中响应，避免干扰
 3. **身份分离**：每个Bot使用独立Token，独立身份验证
 
@@ -252,12 +252,12 @@ Study-Agent读取 → 更新自身USER.md → 所有Agent了解用户背景
 #### 步骤1：智能体工作空间创建
 ```powershell
 # 创建智能体工作空间
-New-Item -ItemType Directory "C:\Users\jiank\.openclaw\workspaces\worker_agent_01"
-New-Item -ItemType Directory "C:\Users\jiank\.openclaw\workspaces\study_agent_01"
+New-Item -ItemType Directory "C:\\Users\\USERNAME\\.openclaw\workspaces\worker_agent_01"
+New-Item -ItemType Directory "C:\\Users\\USERNAME\\.openclaw\workspaces\study_agent_01"
 
 # 复制基础配置文件
-Copy-Item "C:\Users\jiank\.openclaw\workspace\*.md" "C:\Users\jiank\.openclaw\workspaces\worker_agent_01\"
-Copy-Item "C:\Users\jiank\.openclaw\workspace\*.md" "C:\Users\jiank\.openclaw\workspaces\study_agent_01\"
+Copy-Item "C:\\Users\\USERNAME\\.openclaw\workspace\*.md" "C:\\Users\\USERNAME\\.openclaw\workspaces\worker_agent_01\"
+Copy-Item "C:\\Users\\USERNAME\\.openclaw\workspace\*.md" "C:\\Users\\USERNAME\\.openclaw\workspaces\study_agent_01\"
 ```
 
 #### 步骤2：身份文件定制
@@ -276,9 +276,9 @@ Copy-Item "C:\Users\jiank\.openclaw\workspace\*.md" "C:\Users\jiank\.openclaw\wo
 #### 步骤4：共享记忆目录结构
 ```powershell
 # 创建共享记忆目录
-New-Item -ItemType Directory "C:\Users\jiank\.openclaw\workspace\memory\shared"
-New-Item -ItemType Directory "C:\Users\jiank\.openclaw\workspaces\worker_agent_01\memory\shared"
-New-Item -ItemType Directory "C:\Users\jiank\.openclaw\workspaces\study_agent_01\memory\shared"
+New-Item -ItemType Directory "C:\\Users\\USERNAME\\.openclaw\workspace\memory\shared"
+New-Item -ItemType Directory "C:\\Users\\USERNAME\\.openclaw\workspaces\worker_agent_01\memory\shared"
+New-Item -ItemType Directory "C:\\Users\\USERNAME\\.openclaw\workspaces\study_agent_01\memory\shared"
 
 # 初始化共享文件
 @"
@@ -287,7 +287,7 @@ New-Item -ItemType Directory "C:\Users\jiank\.openclaw\workspaces\study_agent_01
 - **姓名:** 良
 - **称呼:** 良
 - **时区:** Asia/Shanghai
-"@ | Out-File "C:\Users\jiank\.openclaw\workspace\memory\shared\user_profile.md" -Encoding UTF8
+"@ | Out-File "C:\\Users\\USERNAME\\.openclaw\workspace\memory\shared\user_profile.md" -Encoding UTF8
 ```
 
 #### 步骤5：同步脚本开发
@@ -299,7 +299,7 @@ New-Item -ItemType Directory "C:\Users\jiank\.openclaw\workspaces\study_agent_01
 #### 步骤6：自动化任务配置
 ```powershell
 # 创建Windows计划任务
-$action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-File C:\Users\jiank\.openclaw\scripts\sync_shared_memory.ps1"
+$action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-File C:\\Users\\USERNAME\\.openclaw\scripts\sync_shared_memory.ps1"
 $trigger = New-ScheduledTaskTrigger -Daily -At "23:00"
 Register-ScheduledTask -TaskName "OpenClaw Memory Sync" -Action $action -Trigger $trigger -Description "每日同步OpenClaw多智能体共享记忆"
 ```
@@ -512,10 +512,10 @@ OpenClaw多智能体实践为AI助手发展提供了新思路：
 param([string]$SourceAgent = "main")
 
 # 1. 收集源共享文件
-$sourceFiles = Get-ChildItem "C:\Users\jiank\.openclaw\workspace\memory\shared" -File
+$sourceFiles = Get-ChildItem "C:\\Users\\USERNAME\\.openclaw\workspace\memory\shared" -File
 
 # 2. 查找目标Agent
-$targetAgents = Get-ChildItem "C:\Users\jiank\.openclaw\workspaces" -Directory | Where Name -like "*_agent_*"
+$targetAgents = Get-ChildItem "C:\\Users\\USERNAME\\.openclaw\workspaces" -Directory | Where Name -like "*_agent_*"
 
 # 3. 同步每个文件
 foreach ($file in $sourceFiles) {
