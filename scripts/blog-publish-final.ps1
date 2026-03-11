@@ -1,9 +1,10 @@
 <#
 .SYNOPSIS
-自动发布博客文章到GitHub Pages
+自动发布博客文章到GitHub Pages - UTF-8兼容版本
 
 .DESCRIPTION
 创建新的博客文章，自动生成Frontmatter，提交到GitHub，并监控部署状态。
+专为Windows UTF-8 Beta环境优化，完全避免编码问题。
 
 .PARAMETER Title
 文章标题（必需）
@@ -23,13 +24,13 @@
 
 .EXAMPLE
 # 发布VibeCoding分类的文章
-.\blog-publish.ps1 -Title "OpenClaw安全检查实战指南" -Category VibeCoding
+.\blog-publish-final.ps1 -Title "OpenClaw安全检查实战指南" -Category VibeCoding
 
 # 使用简短语法
-.\blog-publish.ps1 "新的博客文章" -Category notes
+.\blog-publish-final.ps1 "新的博客文章" -Category notes
 
 # 带标签和描述
-.\blog-publish.ps1 -Title "AI助手技能配置" -Category VibeCoding -Description "详细配置OpenClaw技能" -Tags "OpenClaw,AI,Automation"
+.\blog-publish-final.ps1 -Title "AI助手技能配置" -Category VibeCoding -Description "详细配置OpenClaw技能" -Tags "OpenClaw,AI,Automation"
 #>
 
 [CmdletBinding()]
@@ -89,8 +90,8 @@ function Write-ErrorMsg {
 
 # 主程序开始
 try {
-    Write-Host "`n🎯 博客文章发布工具" -ForegroundColor Magenta
-    Write-Host "=" * 50
+    Write-Host "`n🎯 博客文章发布工具 (UTF-8兼容版)" -ForegroundColor Magenta
+    Write-Host "=" * 60
     
     # 显示参数信息
     Write-Info "标题: $Title"
@@ -124,10 +125,10 @@ try {
         Write-Success "目录创建成功"
     }
     
-    # 3. 生成Frontmatter
+    # 3. 生成Frontmatter - 使用字符串连接避免编码问题
     Write-Step "创建文章Frontmatter..."
     
-    # 使用字符串连接构建模板，避免Here-String编码问题
+    # 构建Frontmatter行
     $frontmatterLines = @()
     $frontmatterLines += "---"
     $frontmatterLines += "title: $Title"
@@ -137,11 +138,12 @@ try {
     $frontmatterLines += "description: $desc"
     $frontmatterLines += "category: $Category"
     
-    $tagStr = if ($Tags) { 
+    # 处理标签
+    if ($Tags) {
         $cleanTags = $Tags -split ',' | ForEach-Object { $_.Trim() }
-        "'$($cleanTags -join "', '")'"
-    } else { '' }
-    $frontmatterLines += "tags: [$tagStr]"
+        $tagStr = "'$($cleanTags -join "', '")'"
+        $frontmatterLines += "tags: [$tagStr]"
+    }
     
     $frontmatterLines += "---"
     $frontmatterLines += ""
@@ -170,9 +172,9 @@ try {
     
     $frontmatter = $frontmatterLines -join "`n"
     
-    # 4. 写入文件
+    # 4. 写入文件 - 强制UTF-8编码
     Write-Step "写入文件..."
-    $frontmatter | Out-File -FilePath $filePath -Encoding UTF8
+    [System.IO.File]::WriteAllText($filePath, $frontmatter, [System.Text.Encoding]::UTF8)
     Write-Success "文章文件创建成功: $filePath"
     
     # 5. 打开文件编辑（可选）
@@ -190,12 +192,15 @@ try {
     
     # 6. Git操作
     Write-Step "Git提交..."
+    
+    # 检查Git仓库状态
     $gitStatus = git status --porcelain 2>&1
     if ($LASTEXITCODE -ne 0) {
         throw "Git命令失败，请确保在Git仓库目录中"
     }
     
     # 添加文件
+    Write-Info "添加文件到Git暂存区..."
     git add "$Category/$fileName" 2>&1 | Out-Null
     if ($LASTEXITCODE -ne 0) {
         throw "Git添加文件失败"
@@ -204,14 +209,16 @@ try {
     
     # 提交
     $commitMessage = "feat: add $Category article - $Title"
+    Write-Info "提交更改: $commitMessage"
     git commit -m $commitMessage 2>&1 | Out-Null
     if ($LASTEXITCODE -ne 0) {
         throw "Git提交失败"
     }
-    Write-Success "提交成功: $commitMessage"
+    Write-Success "提交成功"
     
     # 7. 推送到GitHub
     Write-Step "推送到GitHub..."
+    Write-Info "正在推送到远程仓库..."
     git push origin main 2>&1 | Out-Null
     if ($LASTEXITCODE -ne 0) {
         throw "Git推送失败，请检查网络连接或权限"
@@ -220,34 +227,42 @@ try {
     
     # 8. 显示文章信息
     Write-Host "`n📊 文章发布信息" -ForegroundColor Magenta
-    Write-Host "-" * 40
+    Write-Host "-" * 50
     Write-Info "文章标题: $Title"
     Write-Info "文章分类: $Category"
     Write-Info "文件位置: $Category/$fileName"
     Write-Info "本地路径: $filePath"
-    Write-Info "提交哈希: $(git rev-parse --short HEAD)"
+    
+    # 获取提交哈希
+    $commitHash = git rev-parse --short HEAD 2>&1
+    if ($LASTEXITCODE -eq 0) {
+        Write-Info "提交哈希: $commitHash"
+    }
     
     # 9. GitHub Pages部署状态
     Write-Step "检查GitHub Pages部署状态..."
-    Start-Sleep -Seconds 3  # 给GitHub一点时间
+    Start-Sleep -Seconds 2  # 给GitHub一点时间
     
     $pagesUrl = "https://attraction11.github.io/$Category/$($fileName -replace '\.md$', '')"
     Write-Info "文章将在以下地址发布:"
     Write-Host "  $pagesUrl" -ForegroundColor $ColorCyan
     Write-Info "部署通常需要1-3分钟完成"
     
-    # 10. 监控选项
-    $monitor = Read-Host "`n是否监控部署状态？(y/N)"
-    if ($monitor -eq 'y' -or $monitor -eq 'Y') {
-        Write-Info "使用命令监控部署: gh builds"
-        Write-Info "或: gh run list --repo attraction11/attraction11.github.io --workflow 'Build and Deploy'"
-    }
+    # 10. 提供监控选项
+    Write-Host "`n📈 监控选项:" -ForegroundColor Magenta
+    Write-Info "1. 查看构建状态: gh builds"
+    Write-Info "2. 查看仓库信息: gh blog"
+    Write-Info "3. 查看最新提交: git log --oneline -3"
     
     Write-Host "`n🎉 博客文章发布流程完成！" -ForegroundColor Green
-    Write-Host "=" * 50
+    Write-Host "=" * 60
     
 } catch {
     Write-ErrorMsg "发布过程中出现错误: $($_.Exception.Message)"
     Write-Warning "请检查错误信息并重试"
+    Write-Info "常见问题:"
+    Write-Info "  1. 确保Git已配置用户名和邮箱"
+    Write-Info "  2. 确保有GitHub推送权限"
+    Write-Info "  3. 检查网络连接和代理设置"
     exit 1
 }
