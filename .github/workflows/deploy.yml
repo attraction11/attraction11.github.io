@@ -1,0 +1,100 @@
+name: Hexo Build and Deploy
+
+on:
+  push:
+    branches:
+      - hexo-src  # 监听 hexo-src 分支的推送
+    paths-ignore:  # 忽略某些文件的变化
+      - 'README.md'
+      - '.gitignore'
+      - '**/*.txt'
+
+  # 允许手动触发
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    # 1. 检出 hexo-src 分支的代码
+    - name: Checkout Hexo Source
+      uses: actions/checkout@v3
+      with:
+        ref: hexo-src
+        fetch-depth: 0  # 获取所有历史，用于 hexo 的 last_updated 功能
+    
+    # 2. 设置 Node.js 环境
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    # 3. 安装依赖（使用 legacy-peer-deps 避免主题兼容性问题）
+    - name: Install Dependencies
+      run: |
+        npm ci --legacy-peer-deps
+        # 安装主题依赖（如果存在）
+        if [ -f "themes/typography/package.json" ]; then
+          cd themes/typography
+          npm ci --legacy-peer-deps || npm install --legacy-peer-deps
+          cd ../..
+        fi
+    
+    # 4. 清理并生成静态文件
+    - name: Clean and Generate
+      run: |
+        npx hexo clean
+        npx hexo generate
+    
+    # 5. 部署到 main 分支
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        branch: main  # 部署到 main 分支
+        folder: public  # Hexo 生成的静态文件目录
+        clean: true  # 清理目标分支的旧文件
+        commit-message: "Deploy: ${{ github.event.head_commit.message || 'Auto deploy from hexo-src' }}"
+        target-folder: .  # 部署到根目录
+        
+    # 6. 部署后验证
+    - name: Verify Deployment
+      run: |
+        echo "✅ Hexo 博客已成功构建并部署到 main 分支"
+        echo "🌐 网站将在几分钟后通过以下地址访问："
+        echo "   https://attraction11.github.io/"
+        echo "   https://yyblog.top/ (如果配置了自定义域名)"
+        
+    # 7. 发送通知（可选）
+    - name: Deployment Notification
+      if: success()
+      run: |
+        echo "🚀 部署成功！"
+        echo "提交信息: ${{ github.event.head_commit.message }}"
+        echo "触发分支: ${{ github.ref }}"
+        echo "提交者: ${{ github.event.head_commit.author.name }}"
+        
+  # 可选：预览构建（在 PR 时运行）
+  preview:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        
+    - name: Install and Build
+      run: |
+        npm ci --legacy-peer-deps
+        npx hexo clean
+        npx hexo generate
+        
+    - name: Upload Artifact
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: public

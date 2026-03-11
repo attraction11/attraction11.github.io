@@ -1,0 +1,63 @@
+# Hexo Typography Theme Configuration
+# 参考 polebug.github.io 风格配置
+
+# 标题设置
+title_primary: "良的博客" # 主标题（大字）
+title_secondary: "Typography" # 副标题（小字）
+keywords: "前端开发,人工智能,编程,技术博客,学习笔记"
+
+# 社交媒体链接
+twitter: 
+rss: atom.xml
+weibo: 
+instagram: 
+github: attraction11
+
+# 评论系统 (暂时禁用)
+livere: 
+disqus: 
+dove: true # 禁用评论
+
+# 显示设置
+showPageCount: true # 显示分页指示器
+showCategories: true # 在文章标题后显示分类
+showTags: true # 在文章标题后显示标签
+
+# 配色方案
+themeStyle: light # light/dark
+
+# 文章摘要截取长度
+truncate_len: 160
+
+# 导航菜单 (根据 polebug.github.io 风格)
+menu:
+  首页: /
+  归档: /archives/
+  分类: /categories/
+  标签: /tags/
+  关于: /about/
+
+# 社交链接图标 (参考 polebug.github.io 底部)
+social:
+  GitHub: https://github.com/attraction11
+  Twitter: 
+  Email: mailto:your-email@example.com
+
+# 页脚信息
+footer:
+  since: 2023
+  powered_by: "Hexo & Typography"
+  beian: # 备案号，如有
+
+# 代码高亮设置
+prism:
+  theme: "default"
+  line_number: true
+
+# 文章图片设置
+post_asset_folder: true # 启用文章资源文件夹
+
+# 侧边栏设置 (如果有的话)
+sidebar:
+  position: right # left/right
+  display: post # always/hide/post
