@@ -157,6 +157,18 @@ export const NavItemList: DefaultTheme.NavItem[] = [
                 text: 'vibe coding初体验',
                 link: '/VibeCoding/vibe-coding-first-experience',
             },
+            {
+                text: 'GitHub CLI全攻略：从配置到自动化博客发布',
+                link: '/VibeCoding/github-cli-full-guide',
+            },
+            {
+                text: 'OpenClaw安全检查指南',
+                link: '/VibeCoding/openclaw-security-check-guide',
+            },
+            {
+                text: 'GitHub CLI编码修复总结',
+                link: '/VibeCoding/github-cli-encoding-fix-summary',
+            },
         ],
     },
     // {
