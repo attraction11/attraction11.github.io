@@ -10,6 +10,8 @@ tags:
   - VibeCoding
 ---
 
+![打地鼠游戏截图](/images/whack-game.png)
+
 ## 什么是vibe coding？ \#
 
 vibe coding是一种全新的开发模式： **用自然语言描述需求，AI助手理解并协调多个工具，自动完成从需求分析、代码生成到部署上线的全流程** 。
