@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <author>
+    <name>良</name>
+  </author>
+  <generator uri="https://hexo.io/">Hexo</generator>
+  <id>https://attraction11.github.io/</id>
+  <link href="https://attraction11.github.io/" rel="alternate"/>
+  <link href="https://attraction11.github.io/atom.xml" rel="self"/>
+  <rights>All rights reserved 2026, 良</rights>
+  <subtitle>技术探索与生活记录</subtitle>
+  <title>良的博客</title>
+  <updated>2026-03-13T10:11:40.470Z</updated>
+  <entry>
+    <author>
+      <name>良</name>
+    </author>
+    <category term="技术实践" scheme="https://attraction11.github.io/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E8%B7%B5/"/>
+    <category term="OpenClaw" scheme="https://attraction11.github.io/tags/OpenClaw/"/>
+    <category term="安全管理" scheme="https://attraction11.github.io/tags/%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86/"/>
+    <category term="密钥管理" scheme="https://attraction11.github.io/tags/%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86/"/>
+    <category term="Secrets" scheme="https://attraction11.github.io/tags/Secrets/"/>
+    <category term="安全加固" scheme="https://attraction11.github.io/tags/%E5%AE%89%E5%85%A8%E5%8A%A0%E5%9B%BA/"/>
+    <id>https://attraction11.github.io/2026/03/14/2026-03-14-openclaw-secrets-management-system/</id>
+    <link href="https://attraction11.github.io/2026/03/14/2026-03-14-openclaw-secrets-management-system/"/>
+    <published>2026-03-14T01:00:00.000Z</published>
+    <summary>深入解析OpenClaw内置Secrets管理系统，制定从27个明文密钥到企业级安全的迁移计划，实现API密钥的安全存储和管理。</summary>
+    <title>OpenClaw Secrets管理系统：从27个明文密钥到企业级安全</title>
+    <updated>2026-03-13T10:11:40.470Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>良</name>
+    </author>
+    <category term="技术实践" scheme="https://attraction11.github.io/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E8%B7%B5/"/>
+    <category term="OpenClaw" scheme="https://attraction11.github.io/tags/OpenClaw/"/>
+    <category term="系统优化" scheme="https://attraction11.github.io/tags/%E7%B3%BB%E7%BB%9F%E4%BC%98%E5%8C%96/"/>
+    <category term="AI助手" scheme="https://attraction11.github.io/tags/AI%E5%8A%A9%E6%89%8B/"/>
+    <category term="记忆管理" scheme="https://attraction11.github.io/tags/%E8%AE%B0%E5%BF%86%E7%AE%A1%E7%90%86/"/>
+    <category term="时间衰减" scheme="https://attraction11.github.io/tags/%E6%97%B6%E9%97%B4%E8%A1%B0%E5%87%8F/"/>
+    <id>https://attraction11.github.io/2026/03/13/2026-03-13-openclaw-temporal-decay-practice-guide/</id>
+    <link href="https://attraction11.github.io/2026/03/13/2026-03-13-openclaw-temporal-decay-practice-guide/"/>
+    <published>2026-03-13T08:30:00.000Z</published>
+    <summary>深入探讨OpenClaw时间衰减机制，解决长对话信息丢失问题，设计三层记忆管理架构，提升AI助手记忆效率。</summary>
+    <title>OpenClaw高级配置：时间衰减（Temporal Decay）实战指南</title>
+    <updated>2026-03-13T10:10:23.127Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>良</name>
+    </author>
+    <category term="VibeCoding" scheme="https://attraction11.github.io/categories/VibeCoding/"/>
+    <category term="AI Agent" scheme="https://attraction11.github.io/tags/AI-Agent/"/>
+    <category term="全栈开发" scheme="https://attraction11.github.io/tags/%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91/"/>
+    <category term="技术成长" scheme="https://attraction11.github.io/tags/%E6%8A%80%E6%9C%AF%E6%88%90%E9%95%BF/"/>
+    <category term="产品驱动学习" scheme="https://attraction11.github.io/tags/%E4%BA%A7%E5%93%81%E9%A9%B1%E5%8A%A8%E5%AD%A6%E4%B9%A0/"/>
+    <category term="学习框架" scheme="https://attraction11.github.io/tags/%E5%AD%A6%E4%B9%A0%E6%A1%86%E6%9E%B6/"/>
+    <category term="职业转型" scheme="https://attraction11.github.io/tags/%E8%81%8C%E4%B8%9A%E8%BD%AC%E5%9E%8B/"/>
+    <id>https://attraction11.github.io/2026/03/13/2026-03-13-product-driven-ai-agent-fullstack-learning-framework/</id>
+    <link href="https://attraction11.github.io/2026/03/13/2026-03-13-product-driven-ai-agent-fullstack-learning-framework/"/>
+    <published>2026-03-12T16:00:00.000Z</published>
+    <summary>基于产品驱动学习模式的全新AI Agent全栈工程师培养框架，通过构建可视化多Agent协作平台，在实战中掌握核心技术，3.5个月达到岗位要求的中级水平</summary>
+    <title>产品驱动的AI Agent全栈工程师学习框架：3.5个月达到中级水平</title>
+    <updated>2026-03-13T12:54:46.974Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>良</name>
+    </author>
+    <category term="VibeCoding" scheme="https://attraction11.github.io/categories/VibeCoding/"/>
+    <category term="AI编程" scheme="https://attraction11.github.io/tags/AI%E7%BC%96%E7%A8%8B/"/>
+    <category term="VibeCoding" scheme="https://attraction11.github.io/tags/VibeCoding/"/>
+    <category term="工作流优化" scheme="https://attraction11.github.io/tags/%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%BC%98%E5%8C%96/"/>
+    <category term="开发效率" scheme="https://attraction11.github.io/tags/%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87/"/>
+    <id>https://attraction11.github.io/2026/03/12/2026-03-12-how-to-redefine-programming-workflow-in-ai-era/</id>
+    <link href="https://attraction11.github.io/2026/03/12/2026-03-12-how-to-redefine-programming-workflow-in-ai-era/"/>
+    <published>2026-03-11T16:00:00.000Z</published>
+    <summary>基于Claude Code实战经验，提炼AI时代编程工作流重构的黄金法则与最佳实践。</summary>
+    <title>如何在AI时代重新定义编程工作流</title>
+    <updated>2026-03-13T08:34:32.739Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>良</name>
+    </author>
+    <category term="VibeCoding" scheme="https://attraction11.github.io/categories/VibeCoding/"/>
+    <category term="OpenClaw" scheme="https://attraction11.github.io/tags/OpenClaw/"/>
+    <category term="自动化" scheme="https://attraction11.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/"/>
+    <category term="多Agent系统" scheme="https://attraction11.github.io/tags/%E5%A4%9AAgent%E7%B3%BB%E7%BB%9F/"/>
+    <category term="系统架构" scheme="https://attraction11.github.io/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/"/>
+    <category term="AI协作" scheme="https://attraction11.github.io/tags/AI%E5%8D%8F%E4%BD%9C/"/>
+    <id>https://attraction11.github.io/2026/03/12/2026-03-12-openclaw-multi-agent-system-architecture-practice/</id>
+    <link href="https://attraction11.github.io/2026/03/12/2026-03-12-openclaw-multi-agent-system-architecture-practice/"/>
+    <published>2026-03-11T16:00:00.000Z</published>
+    <summary>深入解析基于OpenClaw的四Agent系统架构设计，涵盖尤里（元气协调者）、尤尤（高效执行者）、尤米（求知探索者）、生活助手（温暖贴心者）的角色定位、通信机制、记忆共享、冲突解决和自动化工作流实现。</summary>
+    <title>OpenClaw多Agent系统架构：尤里、尤尤、尤米、生活助手实战解析</title>
+    <updated>2026-03-13T08:34:32.740Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>良</name>
+    </author>
+    <category term="VibeCoding" scheme="https://attraction11.github.io/categories/VibeCoding/"/>
+    <category term="OpenClaw" scheme="https://attraction11.github.io/tags/OpenClaw/"/>
+    <category term="安全配置" scheme="https://attraction11.github.io/tags/%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE/"/>
+    <category term="系统优化" scheme="https://attraction11.github.io/tags/%E7%B3%BB%E7%BB%9F%E4%BC%98%E5%8C%96/"/>
+    <category term="AI助手" scheme="https://attraction11.github.io/tags/AI%E5%8A%A9%E6%89%8B/"/>
+    <category term="生产部署" scheme="https://attraction11.github.io/tags/%E7%94%9F%E4%BA%A7%E9%83%A8%E7%BD%B2/"/>
+    <id>https://attraction11.github.io/2026/03/12/2026-03-12-openclaw-security-configuration-10-key-issues/</id>
+    <link href="https://attraction11.github.io/2026/03/12/2026-03-12-openclaw-security-configuration-10-key-issues/"/>
+    <published>2026-03-11T16:00:00.000Z</published>
+    <summary>深度解析OpenClaw安装后常被忽视的10个关键安全问题，分享实战配置经验、系统优化方案和完整的安全加固流程。基于真实项目案例，覆盖工具权限、文件截断、API费用优化、记忆管理、备份策略等核心主题。</summary>
+    <title>OpenClaw安全配置实战：从安装到生产的10个关键问题及解决方案</title>
+    <updated>2026-03-13T08:34:32.740Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>良</name>
+    </author>
+    <category term="技术" scheme="https://attraction11.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="博客" scheme="https://attraction11.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%8D%9A%E5%AE%A2/"/>
+    <category term="Hexo" scheme="https://attraction11.github.io/tags/Hexo/"/>
+    <category term="Typography" scheme="https://attraction11.github.io/tags/Typography/"/>
+    <category term="GitHub Pages" scheme="https://attraction11.github.io/tags/GitHub-Pages/"/>
+    <category term="博客迁移" scheme="https://attraction11.github.io/tags/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB/"/>
+    <id>https://attraction11.github.io/2026/03/11/2026-03-11-hexo-typography-%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E6%B5%8B%E8%AF%95/</id>
+    <link href="https://attraction11.github.io/2026/03/11/2026-03-11-hexo-typography-%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E6%B5%8B%E8%AF%95/"/>
+    <published>2026-03-11T09:15:00.000Z</published>
+    <summary>
+      <![CDATA[<h2 id="🎯-迁移背景"><a href="#🎯-迁移背景" class="headerlink" title="🎯 迁移背景"></a>🎯 迁移背景</h2><p>今天，我决定将我的个人博客从 VitePress 迁移到 Hexo + Typography]]>
+    </summary>
+    <title>Hexo + Typography 博客迁移测试</title>
+    <updated>2026-03-13T08:33:33.481Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>良</name>
+    </author>
+    <category term="VibeCoding" scheme="https://attraction11.github.io/categories/VibeCoding/"/>
+    <category term="AI Agent" scheme="https://attraction11.github.io/tags/AI-Agent/"/>
+    <category term="全栈开发" scheme="https://attraction11.github.io/tags/%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91/"/>
+    <category term="职业规划" scheme="https://attraction11.github.io/tags/%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92/"/>
+    <category term="技术转型" scheme="https://attraction11.github.io/tags/%E6%8A%80%E6%9C%AF%E8%BD%AC%E5%9E%8B/"/>
+    <category term="学习路线" scheme="https://attraction11.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/"/>
+    <id>https://attraction11.github.io/2026/03/11/2026-03-11-2026-ai-agent-fullstack-career-analysis/</id>
+    <link href="https://attraction11.github.io/2026/03/11/2026-03-11-2026-ai-agent-fullstack-career-analysis/"/>
+    <published>2026-03-10T16:00:00.000Z</published>
+    <summary>基于目标岗位的深度分析，评估个人技术差距，制定2026年学习转型路线图，目标Q4后胜任12-24K AI Agent全栈工程师岗位</summary>
+    <title>2026年AI Agent全栈工程师岗位分析与个人差距评估</title>
+    <updated>2026-03-13T08:34:32.735Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>良</name>
+    </author>
+    <category term="VibeCoding" scheme="https://attraction11.github.io/categories/VibeCoding/"/>
+    <category term="AI Agent" scheme="https://attraction11.github.io/tags/AI-Agent/"/>
+    <category term="全栈开发" scheme="https://attraction11.github.io/tags/%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91/"/>
+    <category term="学习路线" scheme="https://attraction11.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/"/>
+    <category term="月度规划" scheme="https://attraction11.github.io/tags/%E6%9C%88%E5%BA%A6%E8%A7%84%E5%88%92/"/>
+    <category term="行动计划" scheme="https://attraction11.github.io/tags/%E8%A1%8C%E5%8A%A8%E8%AE%A1%E5%88%92/"/>
+    <category term="技术成长" scheme="https://attraction11.github.io/tags/%E6%8A%80%E6%9C%AF%E6%88%90%E9%95%BF/"/>
+    <id>https://attraction11.github.io/2026/03/11/2026-03-11-2026-fullstack-monthly-planning/</id>
+    <link href="https://attraction11.github.io/2026/03/11/2026-03-11-2026-fullstack-monthly-planning/"/>
+    <published>2026-03-10T16:00:00.000Z</published>
+    <summary>2026年12个月详细行动计划，包含每周具体任务、学习资源推荐、进度评估标准和产出指标</summary>
+    <title>2026年全栈成长开发规划—月维度</title>
+    <updated>2026-03-13T08:34:32.736Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>良</name>
+    </author>
+    <category term="VibeCoding" scheme="https://attraction11.github.io/categories/VibeCoding/"/>
+    <category term="AI Agent" scheme="https://attraction11.github.io/tags/AI-Agent/"/>
+    <category term="全栈开发" scheme="https://attraction11.github.io/tags/%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91/"/>
+    <category term="职业规划" scheme="https://attraction11.github.io/tags/%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92/"/>
+    <category term="学习路线" scheme="https://attraction11.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/"/>
+    <category term="技术成长" scheme="https://attraction11.github.io/tags/%E6%8A%80%E6%9C%AF%E6%88%90%E9%95%BF/"/>
+    <category term="季度规划" scheme="https://attraction11.github.io/tags/%E5%AD%A3%E5%BA%A6%E8%A7%84%E5%88%92/"/>
+    <id>https://attraction11.github.io/2026/03/11/2026-03-11-2026-fullstack-quarterly-planning/</id>
+    <link href="https://attraction11.github.io/2026/03/11/2026-03-11-2026-fullstack-quarterly-planning/"/>
+    <published>2026-03-10T16:00:00.000Z</published>
+    <summary>基于AI Agent全栈工程师目标的季度详细规划，包含技术重点、能力培养、岗位胜任力映射和进度评估标准</summary>
+    <title>2026年全栈成长开发规划—季维度</title>
+    <updated>2026-03-13T08:34:32.737Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>良</name>
+    </author>
+    <category term="VibeCoding" scheme="https://attraction11.github.io/categories/VibeCoding/"/>
+    <category term="GitHub" scheme="https://attraction11.github.io/tags/GitHub/"/>
+    <category term="CLI" scheme="https://attraction11.github.io/tags/CLI/"/>
+    <id>https://attraction11.github.io/2026/03/11/2026-03-11-GitHub-CLI%E7%BC%96%E7%A0%81%E4%BF%AE%E5%A4%8D%E6%80%BB%E7%BB%93Windows-UTF-8-Beta%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</id>
+    <link href="https://attraction11.github.io/2026/03/11/2026-03-11-GitHub-CLI%E7%BC%96%E7%A0%81%E4%BF%AE%E5%A4%8D%E6%80%BB%E7%BB%93Windows-UTF-8-Beta%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/"/>
+    <published>2026-03-10T16:00:00.000Z</published>
+    <summary>详细记录Windows UTF-8 Beta环境配置、GitHub CLI编码问题修复及自动化脚本开发过程</summary>
+    <title>GitHub CLI编码修复总结：Windows UTF-8 Beta配置指南</title>
+    <updated>2026-03-13T08:34:32.737Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>良</name>
+    </author>
+    <category term="VibeCoding" scheme="https://attraction11.github.io/categories/VibeCoding/"/>
+    <category term="GitHub" scheme="https://attraction11.github.io/tags/GitHub/"/>
+    <category term="CLI" scheme="https://attraction11.github.io/tags/CLI/"/>
+    <category term="OpenClaw" scheme="https://attraction11.github.io/tags/OpenClaw/"/>
+    <category term="安全" scheme="https://attraction11.github.io/tags/%E5%AE%89%E5%85%A8/"/>
+    <id>https://attraction11.github.io/2026/03/11/2026-03-11-github-cli-full-guide/</id>
+    <link href="https://attraction11.github.io/2026/03/11/2026-03-11-github-cli-full-guide/"/>
+    <published>2026-03-10T16:00:00.000Z</published>
+    <summary>详细记录GitHub CLI安装配置、OpenClaw github技能使用及自动化博客发布脚本的完整工作流</summary>
+    <title>GitHub CLI全攻略：从配置到自动化博客发布</title>
+    <updated>2026-03-13T08:34:32.738Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>良</name>
+    </author>
+    <category term="VibeCoding" scheme="https://attraction11.github.io/categories/VibeCoding/"/>
+    <category term="OpenClaw" scheme="https://attraction11.github.io/tags/OpenClaw/"/>
+    <category term="多智能体" scheme="https://attraction11.github.io/tags/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93/"/>
+    <category term="记忆共享" scheme="https://attraction11.github.io/tags/%E8%AE%B0%E5%BF%86%E5%85%B1%E4%BA%AB/"/>
+    <category term="路由" scheme="https://attraction11.github.io/tags/%E8%B7%AF%E7%94%B1/"/>
+    <category term="自动化" scheme="https://attraction11.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/"/>
+    <category term="智能助手" scheme="https://attraction11.github.io/tags/%E6%99%BA%E8%83%BD%E5%8A%A9%E6%89%8B/"/>
+    <id>https://attraction11.github.io/2026/03/11/2026-03-11-openclaw-multi-agent-routing-memory-sharing/</id>
+    <link href="https://attraction11.github.io/2026/03/11/2026-03-11-openclaw-multi-agent-routing-memory-sharing/"/>
+    <published>2026-03-10T16:00:00.000Z</published>
+    <summary>详细记录OpenClaw多智能体系统的架构设计、记忆共享机制、同步策略与冲突解决方案，实现物理隔离与逻辑共享的平衡</summary>
+    <title>OpenClaw多智能体路由与记忆共享：物理隔离，逻辑共享的实践</title>
+    <updated>2026-03-13T08:34:32.739Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>良</name>
+    </author>
+    <category term="VibeCoding" scheme="https://attraction11.github.io/categories/VibeCoding/"/>
+    <category term="GitHub" scheme="https://attraction11.github.io/tags/GitHub/"/>
+    <category term="OpenClaw" scheme="https://attraction11.github.io/tags/OpenClaw/"/>
+    <category term="安全" scheme="https://attraction11.github.io/tags/%E5%AE%89%E5%85%A8/"/>
+    <id>https://attraction11.github.io/2026/03/11/openclaw-security-check-guide/</id>
+    <link href="https://attraction11.github.io/2026/03/11/openclaw-security-check-guide/"/>
+    <published>2026-03-10T16:00:00.000Z</published>
+    <summary>通过一次完整的OpenClaw安全检查实战，记录从风险识别、问题修复到自动化监控的全过程，构建AI助手的安全防护体系。</summary>
+    <title>OpenClaw安全检查实战指南：从风险发现到自动化防护</title>
+    <updated>2026-03-13T08:34:32.741Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>良</name>
+    </author>
+    <category term="VibeCoding" scheme="https://attraction11.github.io/categories/VibeCoding/"/>
+    <category term="GitHub" scheme="https://attraction11.github.io/tags/GitHub/"/>
+    <category term="OpenClaw" scheme="https://attraction11.github.io/tags/OpenClaw/"/>
+    <category term="VibeCoding" scheme="https://attraction11.github.io/tags/VibeCoding/"/>
+    <id>https://attraction11.github.io/2026/03/11/vibe-coding-first-experience/</id>
+    <link href="https://attraction11.github.io/2026/03/11/vibe-coding-first-experience/"/>
+    <published>2026-03-10T16:00:00.000Z</published>
+    <summary>通过OpenClaw + OpenCode + GitHub + Pages工具链，25分钟内完成从需求到部署的全流程vibe coding项目实践。</summary>
+    <title>vibe coding初体验：从零到上线打地鼠游戏</title>
+    <updated>2026-03-13T08:34:32.741Z</updated>
+  </entry>
+</feed>

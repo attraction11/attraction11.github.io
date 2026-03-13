@@ -1,0 +1,246 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author"><title>OpenClaw Secrets管理系统：从27个明文密钥到企业级安全 · 良的博客</title><meta name="description" content="OpenClaw Secrets管理系统：从27个明文密钥到企业级安全安全警报：27个明文密钥的风险在最近的一次安全审计中，我的OpenClaw系统暴露了一个严重的安全问题：27个敏感密钥以明文形式存储在配置文件中。这包括：
+
+6个AI模型API密钥（DeepSeek、OfoxAI、ZAI等）
+4个"><meta name="og:description" content="OpenClaw Secrets管理系统：从27个明文密钥到企业级安全安全警报：27个明文密钥的风险在最近的一次安全审计中，我的OpenClaw系统暴露了一个严重的安全问题：27个敏感密钥以明文形式存储在配置文件中。这包括：
+
+6个AI模型API密钥（DeepSeek、OfoxAI、ZAI等）
+4个"><meta name="twitter:site" content="良的博客"><meta name="twitter:title" content="OpenClaw Secrets管理系统：从27个明文密钥到企业级安全"><meta name="twitter:card" content="summary"><meta name="keywords" content="[&quot;前端&quot;,&quot;人工智能&quot;,&quot;编程&quot;,&quot;技术博客&quot;]"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/bootstrap.min.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/style.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><div class="container" id="stage"><div class="row"><div class="col-sm-3 col-xs-12 side-container invisible" id="side-bar"><div class="vertical-text site-title"><h3 class="site-title-small" tabindex="-1"><a class="a-title" href="/">Typography</a></h3><h1 class="site-title-large" tabindex="-1"><a class="a-title" href="/">良的博客</a></h1><!--h6(onclick="triggerSiteNav()") Trigger--></div><br class="visible-lg visible-md visible-sm"><div class="site-title-links" id="site-nav"><ul><li><a href="/">Home</a></li><li><a href="/archives">Archive</a></li><li><a href="/categories">Categories</a></li><li><a href="/tags">Tags</a></li><li><a href="/about/index.html">关于我</a></li><li class="soc"><a href="https://github.com/attraction11" target="_blank" rel="noopener noreferrer" aria-label="Github"><i class="fa fa-github">&nbsp;</i></a><a href="https://attraction11.github.io/atom.xml" target="_blank" rel="noopener noreferrer" aria-label="RSS"><i class="fa fa-rss">&nbsp;</i></a></li></ul><div class="visible-lg visible-md visible-sm site-nav-footer"><br class="site-nav-footer-br"><footer><p>&copy;&nbsp;2026&nbsp;<a target="_blank" href="https://attraction11.github.io" rel="noopener noreferrer">良</a></p><p>Theme&nbsp;<a target="_blank" href="https://github.com/SumiMakito/hexo-theme-typography" rel="noopener noreferrer">Typography</a>&nbsp;by&nbsp;<a target="_blank" href="https://www.keep.moe" rel="noopener noreferrer">Makito</a></p><p>Proudly published with&nbsp;<a target="_blank" href="https://hexo.io" rel="noopener noreferrer">Hexo</a></p></footer></div></div></div><div class="col-sm-9 col-xs-12 main-container invisible" id="main-container"><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post-container"><p class="post-title"><a>OpenClaw Secrets管理系统：从27个明文密钥到企业级安全</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2026-03-14</span><span class="meta-item"><i class="fa fa-folder"></i><span>&nbsp;</span><a class="a-tag" href="/categories/技术实践/" title="技术实践">技术实践</a><span>&nbsp;</span></span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/OpenClaw/" title="OpenClaw">OpenClaw</a><span>&nbsp;</span><a class="a-tag" href="/tags/安全管理/" title="安全管理">安全管理</a><span>&nbsp;</span><a class="a-tag" href="/tags/密钥管理/" title="密钥管理">密钥管理</a><span>&nbsp;</span><a class="a-tag" href="/tags/Secrets/" title="Secrets">Secrets</a><span>&nbsp;</span><a class="a-tag" href="/tags/安全加固/" title="安全加固">安全加固</a><span>&nbsp;</span></span></p><p class="post-abstract"><h1 id="OpenClaw-Secrets管理系统：从27个明文密钥到企业级安全"><a href="#OpenClaw-Secrets管理系统：从27个明文密钥到企业级安全" class="headerlink" title="OpenClaw Secrets管理系统：从27个明文密钥到企业级安全"></a>OpenClaw Secrets管理系统：从27个明文密钥到企业级安全</h1><h2 id="安全警报：27个明文密钥的风险"><a href="#安全警报：27个明文密钥的风险" class="headerlink" title="安全警报：27个明文密钥的风险"></a>安全警报：27个明文密钥的风险</h2><p>在最近的一次安全审计中，我的OpenClaw系统暴露了一个严重的安全问题：<strong>27个敏感密钥以明文形式存储在配置文件中</strong>。这包括：</p>
+<ul>
+<li>6个AI模型API密钥（DeepSeek、OfoxAI、ZAI等）</li>
+<li>4个Telegram Bot Token</li>
+<li>1个网关认证Token</li>
+<li>16个其他配置文件和Agent中的密钥</li>
+</ul>
+<p>这些明文存储的密钥就像是把家门钥匙放在门口的地毯下——看似方便，实则危险。</p>
+<h2 id="OpenClaw的内置解决方案：Secrets管理系统"><a href="#OpenClaw的内置解决方案：Secrets管理系统" class="headerlink" title="OpenClaw的内置解决方案：Secrets管理系统"></a>OpenClaw的内置解决方案：Secrets管理系统</h2><p>幸运的是，OpenClaw提供了成熟的内置Secrets管理系统，无需依赖第三方工具。这个系统支持三种Secret源：</p>
+<h3 id="1-环境变量（env）-最简单"><a href="#1-环境变量（env）-最简单" class="headerlink" title="1. 环境变量（env） - 最简单"></a>1. 环境变量（env） - 最简单</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;apiKey&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;env&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;provider&quot;</span><span class="punctuation">:</span> <span class="string">&quot;default&quot;</span><span class="punctuation">,</span> </span><br><span class="line">    <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;OPENCLAW_DEEPSEEK_API_KEY&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-本地加密文件（file）-中等安全"><a href="#2-本地加密文件（file）-中等安全" class="headerlink" title="2. 本地加密文件（file） - 中等安全"></a>2. 本地加密文件（file） - 中等安全</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;secrets&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;providers&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;filemain&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;file&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;path&quot;</span><span class="punctuation">:</span> <span class="string">&quot;~/.openclaw/secrets.json&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;mode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;json&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-外部密钥管理服务（exec）-最高安全"><a href="#3-外部密钥管理服务（exec）-最高安全" class="headerlink" title="3. 外部密钥管理服务（exec） - 最高安全"></a>3. 外部密钥管理服务（exec） - 最高安全</h3><p>支持1Password、HashiCorp Vault、sops等专业工具。</p>
+<h2 id="完整的迁移计划"><a href="#完整的迁移计划" class="headerlink" title="完整的迁移计划"></a>完整的迁移计划</h2><h3 id="阶段一：安全审计和准备（第1天）"><a href="#阶段一：安全审计和准备（第1天）" class="headerlink" title="阶段一：安全审计和准备（第1天）"></a>阶段一：安全审计和准备（第1天）</h3><h4 id="1-1-运行安全审计"><a href="#1-1-运行安全审计" class="headerlink" title="1.1 运行安全审计"></a>1.1 运行安全审计</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openclaw secrets audit</span><br></pre></td></tr></table></figure>
+<p><strong>发现</strong>：27个明文密钥，包括高风险API密钥和Bot Token。</p>
+<h4 id="1-2-完整备份"><a href="#1-2-完整备份" class="headerlink" title="1.2 完整备份"></a>1.2 完整备份</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 备份主配置文件</span></span><br><span class="line"><span class="built_in">Copy-Item</span> <span class="string">&quot;C:\Users\jiank\.openclaw\openclaw.json&quot;</span> <span class="string">&quot;C:\Users\jiank\.openclaw\openclaw.json.backup.<span class="variable">$</span>(Get-Date -Format &#x27;yyyyMMdd-HHmmss&#x27;)&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 备份Agent配置</span></span><br><span class="line"><span class="built_in">Copy-Item</span> <span class="string">&quot;C:\Users\jiank\.openclaw\agents&quot;</span> <span class="string">&quot;C:\Users\jiank\.openclaw\agents.backup.<span class="variable">$</span>(Get-Date -Format &#x27;yyyyMMdd-HHmmss&#x27;)&quot;</span> <span class="literal">-Recurse</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-3-创建环境变量模板"><a href="#1-3-创建环境变量模板" class="headerlink" title="1.3 创建环境变量模板"></a>1.3 创建环境变量模板</h4><p>基于<code>.env.template</code>创建实际的<code>.env</code>文件，包含所有27个密钥的环境变量名。</p>
+<h3 id="阶段二：交互式配置（第2天）"><a href="#阶段二：交互式配置（第2天）" class="headerlink" title="阶段二：交互式配置（第2天）"></a>阶段二：交互式配置（第2天）</h3><h4 id="2-1-运行配置向导"><a href="#2-1-运行配置向导" class="headerlink" title="2.1 运行配置向导"></a>2.1 运行配置向导</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openclaw secrets configure</span><br></pre></td></tr></table></figure>
+<p>这个交互式工具会：</p>
+<ol>
+<li>引导配置secrets.providers</li>
+<li>识别所有可迁移的密钥字段</li>
+<li>创建SecretRef映射</li>
+<li>运行预flight验证</li>
+</ol>
+<h4 id="2-2-分批次迁移策略"><a href="#2-2-分批次迁移策略" class="headerlink" title="2.2 分批次迁移策略"></a>2.2 分批次迁移策略</h4><p><strong>批次一：模型API密钥</strong>（最高风险）</p>
+<ol>
+<li>DeepSeek API密钥</li>
+<li>OfoxAI API密钥  </li>
+<li>ZAI API密钥</li>
+</ol>
+<p><strong>批次二：Telegram Bot Tokens</strong></p>
+<ol>
+<li>主Bot Token（尤里）</li>
+<li>Work-Agent Bot Token（尤尤）</li>
+<li>Study-Agent Bot Token（尤米）</li>
+<li>Life-Agent Bot Token</li>
+</ol>
+<p><strong>批次三：网关和其他密钥</strong></p>
+<ol>
+<li>网关认证Token</li>
+<li>其他模型提供商密钥</li>
+</ol>
+<h3 id="阶段三：测试验证（第3天）"><a href="#阶段三：测试验证（第3天）" class="headerlink" title="阶段三：测试验证（第3天）"></a>阶段三：测试验证（第3天）</h3><h4 id="3-1-单元测试"><a href="#3-1-单元测试" class="headerlink" title="3.1 单元测试"></a>3.1 单元测试</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 测试单个环境变量</span></span><br><span class="line"><span class="variable">$env</span>:OPENCLAW_DEEPSEEK_API_KEY = <span class="string">&quot;test-value&quot;</span></span><br><span class="line">openclaw secrets configure --dry-run</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-集成测试"><a href="#3-2-集成测试" class="headerlink" title="3.2 集成测试"></a>3.2 集成测试</h4><p>验证所有功能正常工作：</p>
+<ul>
+<li>AI模型调用</li>
+<li>Telegram消息收发</li>
+<li>网关认证</li>
+<li>各Agent功能</li>
+</ul>
+<h4 id="3-3-性能测试"><a href="#3-3-性能测试" class="headerlink" title="3.3 性能测试"></a>3.3 性能测试</h4><p>检查迁移后的系统性能：</p>
+<ul>
+<li>密钥解析延迟</li>
+<li>系统启动时间</li>
+<li>内存使用情况</li>
+</ul>
+<h3 id="阶段四：生产部署（第4天）"><a href="#阶段四：生产部署（第4天）" class="headerlink" title="阶段四：生产部署（第4天）"></a>阶段四：生产部署（第4天）</h3><h4 id="4-1-生产环境配置"><a href="#4-1-生产环境配置" class="headerlink" title="4.1 生产环境配置"></a>4.1 生产环境配置</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置生产环境变量</span></span><br><span class="line"><span class="variable">$env:OPENCLAW_DEEPSEEK_API_KEY</span> = <span class="string">&quot;生产环境密钥&quot;</span></span><br><span class="line"><span class="variable">$env:OPENCLAW_OFOXAI_API_KEY</span> = <span class="string">&quot;生产环境密钥&quot;</span></span><br><span class="line"><span class="comment"># ... 其他密钥</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-2-监控和告警"><a href="#4-2-监控和告警" class="headerlink" title="4.2 监控和告警"></a>4.2 监控和告警</h4><p>配置监控项：</p>
+<ul>
+<li>Secrets解析成功率</li>
+<li>密钥使用频率</li>
+<li>异常访问模式</li>
+</ul>
+<h4 id="4-3-文档更新"><a href="#4-3-文档更新" class="headerlink" title="4.3 文档更新"></a>4.3 文档更新</h4><p>更新所有相关文档：</p>
+<ul>
+<li>部署指南</li>
+<li>故障排除手册</li>
+<li>安全策略文档</li>
+</ul>
+<h2 id="详细迁移步骤"><a href="#详细迁移步骤" class="headerlink" title="详细迁移步骤"></a>详细迁移步骤</h2><h3 id="步骤1：环境变量方案实施"><a href="#步骤1：环境变量方案实施" class="headerlink" title="步骤1：环境变量方案实施"></a>步骤1：环境变量方案实施</h3><h4 id="1-1-创建-env文件"><a href="#1-1-创建-env文件" class="headerlink" title="1.1 创建.env文件"></a>1.1 创建.env文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># OpenClaw Secrets环境变量</span></span><br><span class="line">OPENCLAW_DEEPSEEK_API_KEY=sk-your-actual-key-here</span><br><span class="line">OPENCLAW_OFOXAI_API_KEY=sk-of-your-actual-key-here</span><br><span class="line">OPENCLAW_TELEGRAM_DEFAULT_TOKEN=7004161018:your-actual-token</span><br><span class="line">OPENCLAW_TELEGRAM_WORKER_TOKEN=8481417404:your-actual-token</span><br><span class="line">OPENCLAW_TELEGRAM_STUDY_TOKEN=8234742879:your-actual-token</span><br><span class="line">OPENCLAW_GATEWAY_TOKEN=your-gateway-token</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-2-修改openclaw-json"><a href="#1-2-修改openclaw-json" class="headerlink" title="1.2 修改openclaw.json"></a>1.2 修改openclaw.json</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;models&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;providers&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;deepseek-v3&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;apiKey&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;env&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;provider&quot;</span><span class="punctuation">:</span> <span class="string">&quot;default&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;OPENCLAW_DEEPSEEK_API_KEY&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;channels&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;telegram&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;accounts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;default&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;botToken&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;env&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;provider&quot;</span><span class="punctuation">:</span> <span class="string">&quot;default&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;OPENCLAW_TELEGRAM_DEFAULT_TOKEN&quot;</span></span><br><span class="line">          <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="1-3-验证配置"><a href="#1-3-验证配置" class="headerlink" title="1.3 验证配置"></a>1.3 验证配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 验证Secrets配置</span></span><br><span class="line">openclaw secrets audit --check</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试系统功能</span></span><br><span class="line">openclaw status --all</span><br></pre></td></tr></table></figure>
+
+<h3 id="步骤2：本地加密文件方案升级"><a href="#步骤2：本地加密文件方案升级" class="headerlink" title="步骤2：本地加密文件方案升级"></a>步骤2：本地加密文件方案升级</h3><h4 id="2-1-创建加密的secrets-json"><a href="#2-1-创建加密的secrets-json" class="headerlink" title="2.1 创建加密的secrets.json"></a>2.1 创建加密的secrets.json</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;providers&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;deepseek-v3&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;apiKey&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sk-your-encrypted-key-here&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;telegram&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;default&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;botToken&quot;</span><span class="punctuation">:</span> <span class="string">&quot;7004161018:your-encrypted-token&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-配置file-provider"><a href="#2-2-配置file-provider" class="headerlink" title="2.2 配置file provider"></a>2.2 配置file provider</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;secrets&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;providers&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;filemain&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;file&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;path&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\Users\\jiank\\.openclaw\\secrets.json&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;mode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;json&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;allowInsecurePath&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-3-更新SecretRef"><a href="#2-3-更新SecretRef" class="headerlink" title="2.3 更新SecretRef"></a>2.3 更新SecretRef</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;apiKey&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;file&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;provider&quot;</span><span class="punctuation">:</span> <span class="string">&quot;filemain&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/providers/deepseek-v3/apiKey&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="步骤3：专业密钥管理服务集成"><a href="#步骤3：专业密钥管理服务集成" class="headerlink" title="步骤3：专业密钥管理服务集成"></a>步骤3：专业密钥管理服务集成</h3><h4 id="3-1-1Password-CLI集成"><a href="#3-1-1Password-CLI集成" class="headerlink" title="3.1 1Password CLI集成"></a>3.1 1Password CLI集成</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;secrets&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;providers&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;onepassword&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;exec&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\Program Files\\1Password\\op.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;read&quot;</span><span class="punctuation">,</span> <span class="string">&quot;op://Personal/OpenClaw/DeepSeek API Key&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;jsonOnly&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-HashiCorp-Vault集成"><a href="#3-2-HashiCorp-Vault集成" class="headerlink" title="3.2 HashiCorp Vault集成"></a>3.2 HashiCorp Vault集成</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;secrets&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;providers&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;vault&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;exec&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\vault\\vault.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;kv&quot;</span><span class="punctuation">,</span> <span class="string">&quot;get&quot;</span><span class="punctuation">,</span> <span class="string">&quot;-field=value&quot;</span><span class="punctuation">,</span> <span class="string">&quot;secret/openclaw/deepseek&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;passEnv&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;VAULT_ADDR&quot;</span><span class="punctuation">,</span> <span class="string">&quot;VAULT_TOKEN&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;jsonOnly&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="安全特性深度解析"><a href="#安全特性深度解析" class="headerlink" title="安全特性深度解析"></a>安全特性深度解析</h2><h3 id="1-原子交换机制"><a href="#1-原子交换机制" class="headerlink" title="1. 原子交换机制"></a>1. 原子交换机制</h3><ul>
+<li><strong>原理</strong>：新配置完全验证成功后才生效</li>
+<li><strong>优势</strong>：避免配置错误导致服务中断</li>
+<li><strong>实现</strong>：<code>secrets reload</code>命令</li>
+</ul>
+<h3 id="2-启动时快速失败"><a href="#2-启动时快速失败" class="headerlink" title="2. 启动时快速失败"></a>2. 启动时快速失败</h3><ul>
+<li><strong>原理</strong>：启动时验证所有必需Secrets</li>
+<li><strong>优势</strong>：及早发现问题，避免运行时错误</li>
+<li><strong>配置</strong>：<code>required: true</code>标志</li>
+</ul>
+<h3 id="3-最后已知良好状态保持"><a href="#3-最后已知良好状态保持" class="headerlink" title="3. 最后已知良好状态保持"></a>3. 最后已知良好状态保持</h3><ul>
+<li><strong>原理</strong>：重载失败时保持之前有效状态</li>
+<li><strong>优势</strong>：服务连续性保障</li>
+<li><strong>场景</strong>：密钥轮换、配置更新</li>
+</ul>
+<h3 id="4-一键清理明文密钥"><a href="#4-一键清理明文密钥" class="headerlink" title="4. 一键清理明文密钥"></a>4. 一键清理明文密钥</h3><ul>
+<li><strong>工具</strong>：<code>openclaw secrets configure --apply</code></li>
+<li><strong>功能</strong>：自动清理迁移后的明文密钥</li>
+<li><strong>安全</strong>：防止密钥残留</li>
+</ul>
+<h2 id="多Agent系统的特殊考虑"><a href="#多Agent系统的特殊考虑" class="headerlink" title="多Agent系统的特殊考虑"></a>多Agent系统的特殊考虑</h2><h3 id="各Agent的差异化配置"><a href="#各Agent的差异化配置" class="headerlink" title="各Agent的差异化配置"></a>各Agent的差异化配置</h3><h4 id="主Bot（尤里）-最高安全等级"><a href="#主Bot（尤里）-最高安全等级" class="headerlink" title="主Bot（尤里）- 最高安全等级"></a>主Bot（尤里）- 最高安全等级</h4><ul>
+<li><strong>方案</strong>：1Password CLI集成</li>
+<li><strong>理由</strong>：处理最敏感的操作和配置</li>
+<li><strong>密钥数量</strong>：8个核心密钥</li>
+</ul>
+<h4 id="Work-Agent（尤尤）-中等安全等级"><a href="#Work-Agent（尤尤）-中等安全等级" class="headerlink" title="Work-Agent（尤尤）- 中等安全等级"></a>Work-Agent（尤尤）- 中等安全等级</h4><ul>
+<li><strong>方案</strong>：本地加密文件</li>
+<li><strong>理由</strong>：工作相关密钥，中等敏感度</li>
+<li><strong>密钥数量</strong>：6个工作密钥</li>
+</ul>
+<h4 id="Study-Agent（尤米）-基础安全等级"><a href="#Study-Agent（尤米）-基础安全等级" class="headerlink" title="Study-Agent（尤米）- 基础安全等级"></a>Study-Agent（尤米）- 基础安全等级</h4><ul>
+<li><strong>方案</strong>：环境变量</li>
+<li><strong>理由</strong>：学习相关，相对低风险</li>
+<li><strong>密钥数量</strong>：4个学习密钥</li>
+</ul>
+<h4 id="Life-Agent-灵活安全等级"><a href="#Life-Agent-灵活安全等级" class="headerlink" title="Life-Agent - 灵活安全等级"></a>Life-Agent - 灵活安全等级</h4><ul>
+<li><strong>方案</strong>：混合方案</li>
+<li><strong>理由</strong>：根据任务类型动态选择</li>
+<li><strong>密钥数量</strong>：可变</li>
+</ul>
+<h3 id="跨Agent密钥共享策略"><a href="#跨Agent密钥共享策略" class="headerlink" title="跨Agent密钥共享策略"></a>跨Agent密钥共享策略</h3><h4 id="共享密钥管理"><a href="#共享密钥管理" class="headerlink" title="共享密钥管理"></a>共享密钥管理</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;secrets&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;providers&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;shared&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;file&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;path&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\Users\\jiank\\.openclaw\\secrets-shared.json&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;mode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;json&quot;</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="独立密钥管理"><a href="#独立密钥管理" class="headerlink" title="独立密钥管理"></a>独立密钥管理</h4><p>每个Agent维护自己的独立密钥文件，避免单点故障。</p>
+<h2 id="风险管理和回滚计划"><a href="#风险管理和回滚计划" class="headerlink" title="风险管理和回滚计划"></a>风险管理和回滚计划</h2><h3 id="风险评估"><a href="#风险评估" class="headerlink" title="风险评估"></a>风险评估</h3><h4 id="高风险"><a href="#高风险" class="headerlink" title="高风险"></a>高风险</h4><ol>
+<li><strong>配置丢失</strong>：迁移过程中误删关键配置</li>
+<li><strong>服务中断</strong>：错误的SecretRef导致服务不可用</li>
+<li><strong>密钥泄露</strong>：不当的存储方式泄露密钥</li>
+</ol>
+<h4 id="中风险"><a href="#中风险" class="headerlink" title="中风险"></a>中风险</h4><ol>
+<li><strong>性能影响</strong>：密钥解析增加系统延迟</li>
+<li><strong>复杂性增加</strong>：维护复杂度提升</li>
+<li><strong>兼容性问题</strong>：与现有工具不兼容</li>
+</ol>
+<h4 id="低风险"><a href="#低风险" class="headerlink" title="低风险"></a>低风险</h4><ol>
+<li><strong>学习成本</strong>：需要学习新工具</li>
+<li><strong>迁移时间</strong>：完整的迁移需要时间</li>
+</ol>
+<h3 id="回滚计划"><a href="#回滚计划" class="headerlink" title="回滚计划"></a>回滚计划</h3><h4 id="5分钟快速回滚"><a href="#5分钟快速回滚" class="headerlink" title="5分钟快速回滚"></a>5分钟快速回滚</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 恢复备份配置</span></span><br><span class="line"><span class="built_in">Copy-Item</span> <span class="string">&quot;C:\Users\jiank\.openclaw\openclaw.json.backup.*&quot;</span> <span class="string">&quot;C:\Users\jiank\.openclaw\openclaw.json&quot;</span> <span class="literal">-Force</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启服务</span></span><br><span class="line">openclaw gateway restart</span><br></pre></td></tr></table></figure>
+
+<h4 id="30分钟完整回滚"><a href="#30分钟完整回滚" class="headerlink" title="30分钟完整回滚"></a>30分钟完整回滚</h4><ol>
+<li>清除所有环境变量</li>
+<li>恢复所有备份文件</li>
+<li>验证服务完全恢复</li>
+<li>更新故障记录</li>
+</ol>
+<h2 id="监控和告警配置"><a href="#监控和告警配置" class="headerlink" title="监控和告警配置"></a>监控和告警配置</h2><h3 id="关键监控指标"><a href="#关键监控指标" class="headerlink" title="关键监控指标"></a>关键监控指标</h3><h4 id="1-Secrets健康状态"><a href="#1-Secrets健康状态" class="headerlink" title="1. Secrets健康状态"></a>1. Secrets健康状态</h4><ul>
+<li>解析成功率（目标：99.99%）</li>
+<li>解析延迟（目标：&lt;100ms）</li>
+<li>缓存命中率（目标：&gt;95%）</li>
+</ul>
+<h4 id="2-安全监控"><a href="#2-安全监控" class="headerlink" title="2. 安全监控"></a>2. 安全监控</h4><ul>
+<li>异常访问模式检测</li>
+<li>密钥使用频率监控</li>
+<li>权限变更追踪</li>
+</ul>
+<h4 id="3-性能监控"><a href="#3-性能监控" class="headerlink" title="3. 性能监控"></a>3. 性能监控</h4><ul>
+<li>系统启动时间变化</li>
+<li>内存使用情况</li>
+<li>CPU使用率</li>
+</ul>
+<h3 id="告警规则配置"><a href="#告警规则配置" class="headerlink" title="告警规则配置"></a>告警规则配置</h3><h4 id="紧急告警（P0）"><a href="#紧急告警（P0）" class="headerlink" title="紧急告警（P0）"></a>紧急告警（P0）</h4><ul>
+<li>Secrets解析完全失败</li>
+<li>服务因密钥问题中断</li>
+<li>检测到密钥泄露迹象</li>
+</ul>
+<h4 id="重要告警（P1）"><a href="#重要告警（P1）" class="headerlink" title="重要告警（P1）"></a>重要告警（P1）</h4><ul>
+<li>密钥解析延迟超过阈值</li>
+<li>缓存命中率下降</li>
+<li>异常访问模式</li>
+</ul>
+<h4 id="警告告警（P2）"><a href="#警告告警（P2）" class="headerlink" title="警告告警（P2）"></a>警告告警（P2）</h4><ul>
+<li>密钥即将过期提醒</li>
+<li>配置备份失败</li>
+<li>监控数据缺失</li>
+</ul>
+<h2 id="最佳实践总结"><a href="#最佳实践总结" class="headerlink" title="最佳实践总结"></a>最佳实践总结</h2><h3 id="1-渐进式迁移"><a href="#1-渐进式迁移" class="headerlink" title="1. 渐进式迁移"></a>1. 渐进式迁移</h3><ul>
+<li>从最简单的环境变量开始</li>
+<li>分批次迁移，每批验证</li>
+<li>逐步提升安全等级</li>
+</ul>
+<h3 id="2-完整备份策略"><a href="#2-完整备份策略" class="headerlink" title="2. 完整备份策略"></a>2. 完整备份策略</h3><ul>
+<li>迁移前完整备份</li>
+<li>版本化备份管理</li>
+<li>定期测试恢复流程</li>
+</ul>
+<h3 id="3-监控驱动优化"><a href="#3-监控驱动优化" class="headerlink" title="3. 监控驱动优化"></a>3. 监控驱动优化</h3><ul>
+<li>基于监控数据调整配置</li>
+<li>定期安全审计</li>
+<li>持续优化策略</li>
+</ul>
+<h3 id="4-文档化一切"><a href="#4-文档化一切" class="headerlink" title="4. 文档化一切"></a>4. 文档化一切</h3><ul>
+<li>记录所有配置变更</li>
+<li>维护故障排除指南</li>
+<li>更新安全策略文档</li>
+</ul>
+<h2 id="未来演进方向"><a href="#未来演进方向" class="headerlink" title="未来演进方向"></a>未来演进方向</h2><h3 id="短期优化（1-3个月）"><a href="#短期优化（1-3个月）" class="headerlink" title="短期优化（1-3个月）"></a>短期优化（1-3个月）</h3><ol>
+<li><strong>自动化测试</strong>：建立完整的Secrets测试套件</li>
+<li><strong>监控增强</strong>：实现实时监控和告警</li>
+<li><strong>文档完善</strong>：创建完整的操作手册</li>
+</ol>
+<h3 id="中期演进（3-12个月）"><a href="#中期演进（3-12个月）" class="headerlink" title="中期演进（3-12个月）"></a>中期演进（3-12个月）</h3><ol>
+<li><strong>多环境支持</strong>：开发&#x2F;测试&#x2F;生产环境分离</li>
+<li><strong>密钥轮换自动化</strong>：定期自动轮换密钥</li>
+<li><strong>集成更多服务</strong>：支持更多密钥管理工具</li>
+</ol>
+<h3 id="长期规划（1年以上）"><a href="#长期规划（1年以上）" class="headerlink" title="长期规划（1年以上）"></a>长期规划（1年以上）</h3><ol>
+<li><strong>零信任架构</strong>：基于身份的细粒度访问控制</li>
+<li><strong>AI驱动安全</strong>：机器学习异常检测</li>
+<li><strong>跨平台统一管理</strong>：多系统密钥统一管理</li>
+</ol>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>OpenClaw Secrets管理系统提供了一个从简单到企业级的完整密钥管理解决方案。通过从27个明文密钥的安全迁移，我们不仅解决了当前的安全风险，更为未来的系统扩展奠定了坚实的基础。</p>
+<p><strong>关键收获</strong>：</p>
+<ol>
+<li><strong>安全不是可选项</strong>：明文存储密钥是严重的安全隐患</li>
+<li><strong>工具有内置方案</strong>：OpenClaw提供了完整的Secrets管理工具链</li>
+<li><strong>渐进式迁移可行</strong>：从简单到复杂的分阶段迁移策略有效</li>
+<li><strong>监控至关重要</strong>：没有监控的安全改进是盲目的</li>
+</ol>
+<p><strong>行动号召</strong>：</p>
+<ol>
+<li>立即运行<code>openclaw secrets audit</code>评估风险</li>
+<li>制定适合自己需求的迁移计划</li>
+<li>从最简单的环境变量方案开始</li>
+<li>建立持续的安全监控和改进机制</li>
+</ol>
+<p>在数字化时代，密钥安全是系统安全的基石。通过合理利用OpenClaw Secrets管理系统，我们可以构建既安全又高效的AI助手生态。</p>
+<hr>
+<p><em>本文基于实际OpenClaw部署经验撰写，所有配置都经过测试验证。</em><br><em>作者：良（前端开发工程师，9年经验）</em><br><em>技术栈：OpenClaw 2026.3.8, 多Agent系统, 企业级安全实践</em></p>
+</p></div><div class="share"><span>Share</span>&nbsp;<span class="soc"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></span><span class="soc"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></span><span class="soc"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/home?status=https://attraction11.github.io/2026/03/14/2026-03-14-openclaw-secrets-management-system/%20良的博客%20OpenClaw Secrets管理系统：从27个明文密钥到企业级安全"></a></span></div><div class="pagination"><p class="clearfix"><span>&nbsp;</span><span class="next pagbuttons"><a role="navigation" href="/2026/03/13/2026-03-13-openclaw-temporal-decay-practice-guide/" title="OpenClaw高级配置：时间衰减（Temporal Decay）实战指南">Next post: OpenClaw高级配置：时间衰减（Temporal Decay）实战指南&nbsp;<i class="fa fa-angle-double-right"></i></a></span></p></div><div class="foreground background-text" style="color: #fff; padding: 10px 25px; width: 100%"><div style="vertical-align: middle;display: table-cell!important;"><div class="visible-lg visible-sm visible-md" style="vertical-align: middle;text-align:center;margin-right:15px"><img src="/images/pigeon.svg" width="150px" style="padding: 15px; vertical-align: middle;"><p style="font-size: 55%;vertical-align: middle;text-align:center;margin: 0">咕咕咕, 就快送到了</p></div></div><div style="padding: 15px 0;vertical-align: middle;display: table-cell;"><p style="font-size: 115%">哎呀，似乎评论系统在您的地区都无法正常工作。</p><p style="margin:0;">不过不要担心，来看看我们为您准备的备用方案 ——<br>        1. 将您的评论用信封装好<br>        2. 使用信鸽函至&nbsp;github.io<br>        3. 我们在收到您的评论后将立即审核并更新至网站<br><i><small>评论一经采用，信函恕不退还，信鸽也不退还，请知悉。</small></i></p></div></div></div></div></div><div class="visible-xs site-bottom-footer"><footer><p>&copy;&nbsp;2026&nbsp;<a target="_blank" href="https://attraction11.github.io" rel="noopener noreferrer">良</a></p><p>Theme&nbsp;<a target="_blank" href="https://github.com/SumiMakito/hexo-theme-typography" rel="noopener noreferrer">Typography</a>&nbsp;by&nbsp;<a target="_blank" href="https://www.keep.moe" rel="noopener noreferrer">Makito</a></p><p>Proudly published with&nbsp;<a target="_blank" href="https://hexo.io" rel="noopener noreferrer">Hexo</a></p></footer></div></div></div></div><script src="/js/jquery-3.1.0.min.js"></script><script src="/js/bootstrap.min.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/google-analytics.js"></script><script src="/js/typography.js"></script></body></html>

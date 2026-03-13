@@ -1,0 +1,440 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author"><title>GitHub CLI全攻略：从配置到自动化博客发布 · 良的博客</title><meta name="description" content="引言 #在AI助手时代，高效的开发工具链是提升生产力的关键。今天我将分享 GitHub CLI（gh）的完整配置流程 ，以及如何将其与OpenClaw的github技能、自动化博客发布脚本结合，构建一套 从写作到部署的完整工作流 。
+一、GitHub CLI安装与配置 #1.1 Windows环境安"><meta name="og:description" content="引言 #在AI助手时代，高效的开发工具链是提升生产力的关键。今天我将分享 GitHub CLI（gh）的完整配置流程 ，以及如何将其与OpenClaw的github技能、自动化博客发布脚本结合，构建一套 从写作到部署的完整工作流 。
+一、GitHub CLI安装与配置 #1.1 Windows环境安"><meta name="twitter:site" content="良的博客"><meta name="twitter:title" content="GitHub CLI全攻略：从配置到自动化博客发布"><meta name="twitter:card" content="summary"><meta name="keywords" content="[&quot;前端&quot;,&quot;人工智能&quot;,&quot;编程&quot;,&quot;技术博客&quot;]"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/bootstrap.min.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/style.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><div class="container" id="stage"><div class="row"><div class="col-sm-3 col-xs-12 side-container invisible" id="side-bar"><div class="vertical-text site-title"><h3 class="site-title-small" tabindex="-1"><a class="a-title" href="/">Typography</a></h3><h1 class="site-title-large" tabindex="-1"><a class="a-title" href="/">良的博客</a></h1><!--h6(onclick="triggerSiteNav()") Trigger--></div><br class="visible-lg visible-md visible-sm"><div class="site-title-links" id="site-nav"><ul><li><a href="/">Home</a></li><li><a href="/archives">Archive</a></li><li><a href="/categories">Categories</a></li><li><a href="/tags">Tags</a></li><li><a href="/about/index.html">关于我</a></li><li class="soc"><a href="https://github.com/attraction11" target="_blank" rel="noopener noreferrer" aria-label="Github"><i class="fa fa-github">&nbsp;</i></a><a href="https://attraction11.github.io/atom.xml" target="_blank" rel="noopener noreferrer" aria-label="RSS"><i class="fa fa-rss">&nbsp;</i></a></li></ul><div class="visible-lg visible-md visible-sm site-nav-footer"><br class="site-nav-footer-br"><footer><p>&copy;&nbsp;2026&nbsp;<a target="_blank" href="https://attraction11.github.io" rel="noopener noreferrer">良</a></p><p>Theme&nbsp;<a target="_blank" href="https://github.com/SumiMakito/hexo-theme-typography" rel="noopener noreferrer">Typography</a>&nbsp;by&nbsp;<a target="_blank" href="https://www.keep.moe" rel="noopener noreferrer">Makito</a></p><p>Proudly published with&nbsp;<a target="_blank" href="https://hexo.io" rel="noopener noreferrer">Hexo</a></p></footer></div></div></div><div class="col-sm-9 col-xs-12 main-container invisible" id="main-container"><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post-container"><p class="post-title"><a>GitHub CLI全攻略：从配置到自动化博客发布</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2026-03-11</span><span class="meta-item"><i class="fa fa-folder"></i><span>&nbsp;</span><a class="a-tag" href="/categories/VibeCoding/" title="VibeCoding">VibeCoding</a><span>&nbsp;</span></span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/GitHub/" title="GitHub">GitHub</a><span>&nbsp;</span><a class="a-tag" href="/tags/CLI/" title="CLI">CLI</a><span>&nbsp;</span><a class="a-tag" href="/tags/OpenClaw/" title="OpenClaw">OpenClaw</a><span>&nbsp;</span><a class="a-tag" href="/tags/安全/" title="安全">安全</a><span>&nbsp;</span></span></p><p class="post-abstract"><h2 id="引言"><a href="#引言" class="headerlink" title="引言 #"></a>引言 #</h2><p>在AI助手时代，高效的开发工具链是提升生产力的关键。今天我将分享 <strong>GitHub CLI（gh）的完整配置流程</strong> ，以及如何将其与OpenClaw的github技能、自动化博客发布脚本结合，构建一套 <strong>从写作到部署的完整工作流</strong> 。</p>
+<h2 id="一、GitHub-CLI安装与配置"><a href="#一、GitHub-CLI安装与配置" class="headerlink" title="一、GitHub CLI安装与配置 #"></a>一、GitHub CLI安装与配置 #</h2><h3 id="1-1-Windows环境安装"><a href="#1-1-Windows环境安装" class="headerlink" title="1.1 Windows环境安装 #"></a>1.1 Windows环境安装 #</h3><p>对于Windows用户，最便捷的安装方式是通过<code>winget</code>：</p>
+<p>powershell<br>[code]<br>    # 使用winget静默安装<br>    winget install –id GitHub.cli –silent –accept-package-agreements –accept-source-agreements</p>
+<pre><code># 验证安装
+&amp; &quot;C:\Program Files\GitHub CLI\gh.exe&quot; --version
+# 输出: gh version 2.87.3 (2026-02-23)
+</code></pre>
+<p>[&#x2F;code]<br>[code]<br>    # 使用winget静默安装<br>    winget install –id GitHub.cli –silent –accept-package-agreements –accept-source-agreements</p>
+<pre><code># 验证安装
+&amp; &quot;C:\Program Files\GitHub CLI\gh.exe&quot; --version
+# 输出: gh version 2.87.3 (2026-02-23)
+</code></pre>
+<p>[&#x2F;code]</p>
+<h3 id="1-2-PATH环境变量问题"><a href="#1-2-PATH环境变量问题" class="headerlink" title="1.2 PATH环境变量问题 #"></a>1.2 PATH环境变量问题 #</h3><p>安装完成后，常见的问题是 <strong>PATH环境变量未更新</strong> ，导致<code>gh</code>命令不可用：</p>
+<p> <strong>症状</strong> ：</p>
+<p>powershell<br>[code]<br>    gh –version<br>    # 错误：找不到命令</p>
+<pre><code># 但完整路径可用
+&amp; &quot;C:\Program Files\GitHub CLI\gh.exe&quot; --version
+# 正常输出版本信息
+</code></pre>
+<p>[&#x2F;code]<br>[code]<br>    gh –version<br>    # 错误：找不到命令</p>
+<pre><code># 但完整路径可用
+&amp; &quot;C:\Program Files\GitHub CLI\gh.exe&quot; --version
+# 正常输出版本信息
+</code></pre>
+<p>[&#x2F;code]</p>
+<p><strong>解决方案</strong> ：</p>
+<p>powershell<br>[code]<br>    # 临时添加PATH（当前会话）<br>    $env:Path &#x3D; “C:\Program Files\GitHub CLI;$env:Path”</p>
+<pre><code># 永久添加PATH（系统设置）
+# 1. 右键&quot;开始菜单&quot; → &quot;系统&quot; → &quot;高级系统设置&quot;
+# 2. 点击&quot;环境变量&quot; → &quot;系统变量&quot;中找到&quot;Path&quot;
+# 3. 添加：C:\Program Files\GitHub CLI
+</code></pre>
+<p>[&#x2F;code]<br>[code]<br>    # 临时添加PATH（当前会话）<br>    $env:Path &#x3D; “C:\Program Files\GitHub CLI;$env:Path”</p>
+<pre><code># 永久添加PATH（系统设置）
+# 1. 右键&quot;开始菜单&quot; → &quot;系统&quot; → &quot;高级系统设置&quot;
+# 2. 点击&quot;环境变量&quot; → &quot;系统变量&quot;中找到&quot;Path&quot;
+# 3. 添加：C:\Program Files\GitHub CLI
+</code></pre>
+<p>[&#x2F;code]</p>
+<h2 id="二、GitHub认证配置"><a href="#二、GitHub认证配置" class="headerlink" title="二、GitHub认证配置 #"></a>二、GitHub认证配置 #</h2><h3 id="2-1-认证方式对比"><a href="#2-1-认证方式对比" class="headerlink" title="2.1 认证方式对比 #"></a>2.1 认证方式对比 #</h3><table>
+<thead>
+<tr>
+<th>方式</th>
+<th>优点</th>
+<th>缺点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>浏览器OAuth</td>
+<td>自动权限管理，更安全</td>
+<td>需要浏览器交互，代理配置复杂</td>
+<td>个人使用，网络环境好</td>
+</tr>
+<tr>
+<td>Token登录</td>
+<td>稳定可靠，不受网络限制</td>
+<td>需要手动管理Token权限</td>
+<td>自动化脚本，网络限制环境</td>
+</tr>
+</tbody></table>
+<h3 id="2-2-Token权限要求"><a href="#2-2-Token权限要求" class="headerlink" title="2.2 Token权限要求 #"></a>2.2 Token权限要求 #</h3><p>GitHub CLI至少需要以下权限：</p>
+<ul>
+<li><code>repo</code> - 仓库读写权限</li>
+<li><code>read:org</code> - 组织读取权限</li>
+<li><code>workflow</code> - GitHub Actions访问权限</li>
+<li>（可选）<code>gist</code> - Gist功能权限</li>
+</ul>
+<h3 id="2-3-实际认证过程"><a href="#2-3-实际认证过程" class="headerlink" title="2.3 实际认证过程 #"></a>2.3 实际认证过程 #</h3><p> <strong>Token登录示例</strong> ：</p>
+<p>powershell<br>[code]<br>    # 创建新Token（访问 <a target="_blank" rel="noopener" href="https://github.com/settings/tokens%EF%BC%89">https://github.com/settings/tokens）</a><br>    # 选择权限：repo, read:org, workflow</p>
+<pre><code># 使用Token登录
+echo &quot;你的Token内容&quot; | gh auth login --with-token
+
+# 验证登录状态
+gh auth status
+</code></pre>
+<p>[&#x2F;code]<br>[code]<br>    # 创建新Token（访问 <a target="_blank" rel="noopener" href="https://github.com/settings/tokens%EF%BC%89">https://github.com/settings/tokens）</a><br>    # 选择权限：repo, read:org, workflow</p>
+<pre><code># 使用Token登录
+echo &quot;你的Token内容&quot; | gh auth login --with-token
+
+# 验证登录状态
+gh auth status
+</code></pre>
+<p>[&#x2F;code]</p>
+<p><strong>浏览器登录示例</strong> ：</p>
+<p>powershell<br>[code]<br>    # 启动浏览器登录<br>    gh auth login -w</p>
+<pre><code># 如果遇到网络问题，设置代理
+$env:HTTPS_PROXY = &quot;http://127.0.0.1:7890&quot;
+$env:HTTP_PROXY = &quot;http://127.0.0.1:7890&quot;
+gh auth login -w
+</code></pre>
+<p>[&#x2F;code]<br>[code]<br>    # 启动浏览器登录<br>    gh auth login -w</p>
+<pre><code># 如果遇到网络问题，设置代理
+$env:HTTPS_PROXY = &quot;http://127.0.0.1:7890&quot;
+$env:HTTP_PROXY = &quot;http://127.0.0.1:7890&quot;
+gh auth login -w
+</code></pre>
+<p>[&#x2F;code]</p>
+<h2 id="三、OpenClaw-github技能配置"><a href="#三、OpenClaw-github技能配置" class="headerlink" title="三、OpenClaw github技能配置 #"></a>三、OpenClaw github技能配置 #</h2><h3 id="3-1-github技能概述"><a href="#3-1-github技能概述" class="headerlink" title="3.1 github技能概述 #"></a>3.1 github技能概述 #</h3><p>OpenClaw的github技能基于GitHub CLI，提供以下功能：</p>
+<ul>
+<li>仓库状态监控</li>
+<li>Issues&#x2F;PR管理</li>
+<li>GitHub Pages构建跟踪</li>
+<li>提交历史查询</li>
+<li>Gist代码片段分享</li>
+</ul>
+<h3 id="3-2-常用命令别名配置"><a href="#3-2-常用命令别名配置" class="headerlink" title="3.2 常用命令别名配置 #"></a>3.2 常用命令别名配置 #</h3><p>为了提升效率，建议配置以下别名：</p>
+<p>bash<br>[code]<br>    # 查看博客仓库信息<br>    gh alias set blog “repo view attraction11&#x2F;attraction11.github.io”</p>
+<pre><code># 查看Issue列表
+gh alias set issues &quot;issue list --repo attraction11/attraction11.github.io&quot;
+
+# 查看构建状态
+gh alias set builds &quot;run list --repo attraction11/attraction11.github.io --workflow &#39;Build and Deploy&#39; --limit 5&quot;
+</code></pre>
+<p>[&#x2F;code]<br>[code]<br>    # 查看博客仓库信息<br>    gh alias set blog “repo view attraction11&#x2F;attraction11.github.io”</p>
+<pre><code># 查看Issue列表
+gh alias set issues &quot;issue list --repo attraction11/attraction11.github.io&quot;
+
+# 查看构建状态
+gh alias set builds &quot;run list --repo attraction11/attraction11.github.io --workflow &#39;Build and Deploy&#39; --limit 5&quot;
+</code></pre>
+<p>[&#x2F;code]</p>
+<p><strong>使用效果</strong> ：</p>
+<p>bash<br>[code]<br>    gh blog     # 查看仓库概览<br>    gh issues   # 查看Issue列表<br>    gh builds   # 查看最近5次构建</p>
+<p>[&#x2F;code]<br>[code]<br>    gh blog     # 查看仓库概览<br>    gh issues   # 查看Issue列表<br>    gh builds   # 查看最近5次构建</p>
+<p>[&#x2F;code]</p>
+<h2 id="四、自动化博客发布脚本"><a href="#四、自动化博客发布脚本" class="headerlink" title="四、自动化博客发布脚本 #"></a>四、自动化博客发布脚本 #</h2><h3 id="4-1-脚本功能设计"><a href="#4-1-脚本功能设计" class="headerlink" title="4.1 脚本功能设计 #"></a>4.1 脚本功能设计 #</h3><p>我创建了一个完整的博客发布自动化脚本 <code>blog-publish.ps1</code>，位于：<br>[code]<br>    D:\attraction11\attraction11.github.io\scripts\blog-publish.ps1</p>
+<p>[&#x2F;code]<br>[code]<br>    D:\attraction11\attraction11.github.io\scripts\blog-publish.ps1</p>
+<p>[&#x2F;code]</p>
+<p><strong>核心功能</strong> ：</p>
+<ol>
+<li>📝 <strong>智能文件生成</strong> ：自动创建Frontmatter、生成slug文件名</li>
+<li>🔄 <strong>Git集成</strong> ：自动执行<code>git add</code>、<code>git commit</code>、<code>git push</code></li>
+<li>🌐 <strong>部署监控</strong> ：提供GitHub Pages链接，支持部署状态查询</li>
+<li>🎨 <strong>分类管理</strong> ：支持VibeCoding、notes、Framework等多种分类</li>
+</ol>
+<h3 id="4-2-脚本参数详解"><a href="#4-2-脚本参数详解" class="headerlink" title="4.2 脚本参数详解 #"></a>4.2 脚本参数详解 #</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-Title</code></td>
+<td>文章标题（必需）</td>
+<td><code>&quot;GitHub CLI全攻略&quot;</code></td>
+</tr>
+<tr>
+<td><code>-Category</code></td>
+<td>文章分类（默认：VibeCoding）</td>
+<td><code>VibeCoding</code>、<code>notes</code></td>
+</tr>
+<tr>
+<td><code>-Description</code></td>
+<td>文章描述（可选）</td>
+<td><code>&quot;详细配置指南&quot;</code></td>
+</tr>
+<tr>
+<td><code>-Tags</code></td>
+<td>标签，逗号分隔（可选）</td>
+<td><code>&quot;GitHub,自动化,博客&quot;</code></td>
+</tr>
+<tr>
+<td><code>-Draft</code></td>
+<td>草稿模式（仅创建文件，不推送）</td>
+<td><code>-Draft</code></td>
+</tr>
+</tbody></table>
+<h3 id="4-3-使用示例"><a href="#4-3-使用示例" class="headerlink" title="4.3 使用示例 #"></a>4.3 使用示例 #</h3><p> <strong>基础使用</strong> ：</p>
+<p>powershell<br>[code]<br>    # 切换到博客目录<br>    cd “D:\attraction11\attraction11.github.io”</p>
+<pre><code># 发布VibeCoding文章
+.\scripts\blog-publish.ps1 -Title &quot;OpenClaw技能深度解析&quot; -Category VibeCoding
+
+# 发布笔记文章
+.\scripts\blog-publish.ps1 -Title &quot;Python爬虫学习笔记&quot; -Category notes -Tags &quot;Python,爬虫&quot;
+
+# 草稿模式（仅创建文件）
+.\scripts\blog-publish.ps1 -Title &quot;待完善文章&quot; -Draft
+</code></pre>
+<p>[&#x2F;code]<br>[code]<br>    # 切换到博客目录<br>    cd “D:\attraction11\attraction11.github.io”</p>
+<pre><code># 发布VibeCoding文章
+.\scripts\blog-publish.ps1 -Title &quot;OpenClaw技能深度解析&quot; -Category VibeCoding
+
+# 发布笔记文章
+.\scripts\blog-publish.ps1 -Title &quot;Python爬虫学习笔记&quot; -Category notes -Tags &quot;Python,爬虫&quot;
+
+# 草稿模式（仅创建文件）
+.\scripts\blog-publish.ps1 -Title &quot;待完善文章&quot; -Draft
+</code></pre>
+<p>[&#x2F;code]</p>
+<p><strong>完整工作流演示</strong> ：<br>[code]<br>    🎯 博客文章发布工具<br>    &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>    ℹ 标题: GitHub CLI全攻略<br>    ℹ 分类: VibeCoding</p>
+<pre><code>▶ 生成文件名...
+ℹ 文件名: 2026-03-11-github-cli-full-guide.md
+ℹ 完整路径: ...\VibeCoding\2026-03-11-github-cli-full-guide.md
+
+▶ 创建文章Frontmatter...
+▶ 写入文件...
+✓ 文章文件创建成功
+
+▶ Git提交...
+✓ 文件已添加到Git暂存区
+✓ 提交成功: feat: add VibeCoding article - GitHub CLI全攻略
+
+▶ 推送到GitHub...
+✓ 推送成功！
+
+📊 文章发布信息
+----------------------------------------
+ℹ 文章标题: GitHub CLI全攻略
+ℹ 文章分类: VibeCoding
+ℹ 文件位置: VibeCoding/2026-03-11-github-cli-full-guide.md
+ℹ 在线地址: https://attraction11.github.io/VibeCoding/github-cli-full-guide/
+
+🎉 博客文章发布流程完成！
+==================================================
+</code></pre>
+<p>[&#x2F;code]<br>[code]<br>    🎯 博客文章发布工具<br>    &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>    ℹ 标题: GitHub CLI全攻略<br>    ℹ 分类: VibeCoding</p>
+<pre><code>▶ 生成文件名...
+ℹ 文件名: 2026-03-11-github-cli-full-guide.md
+ℹ 完整路径: ...\VibeCoding\2026-03-11-github-cli-full-guide.md
+
+▶ 创建文章Frontmatter...
+▶ 写入文件...
+✓ 文章文件创建成功
+
+▶ Git提交...
+✓ 文件已添加到Git暂存区
+✓ 提交成功: feat: add VibeCoding article - GitHub CLI全攻略
+
+▶ 推送到GitHub...
+✓ 推送成功！
+
+📊 文章发布信息
+----------------------------------------
+ℹ 文章标题: GitHub CLI全攻略
+ℹ 文章分类: VibeCoding
+ℹ 文件位置: VibeCoding/2026-03-11-github-cli-full-guide.md
+ℹ 在线地址: https://attraction11.github.io/VibeCoding/github-cli-full-guide/
+
+🎉 博客文章发布流程完成！
+==================================================
+</code></pre>
+<p>[&#x2F;code]</p>
+<h2 id="五、实际应用场景"><a href="#五、实际应用场景" class="headerlink" title="五、实际应用场景 #"></a>五、实际应用场景 #</h2><h3 id="5-1-日常博客管理"><a href="#5-1-日常博客管理" class="headerlink" title="5.1 日常博客管理 #"></a>5.1 日常博客管理 #</h3><p> <strong>晨间检查</strong> ：</p>
+<p>bash<br>[code]<br>    gh blog     # 查看仓库状态<br>    gh builds   # 检查最新构建<br>    gh issues   # 查看待处理Issue</p>
+<p>[&#x2F;code]<br>[code]<br>    gh blog     # 查看仓库状态<br>    gh builds   # 检查最新构建<br>    gh issues   # 查看待处理Issue</p>
+<p>[&#x2F;code]</p>
+<p><strong>文章发布监控</strong> ：</p>
+<p>bash<br>[code]<br>    # 查看具体构建日志<br>    gh run view &lt;构建ID&gt; –log</p>
+<pre><code># 重新运行失败构建
+gh run rerun &lt;构建ID&gt; --failed
+</code></pre>
+<p>[&#x2F;code]<br>[code]<br>    # 查看具体构建日志<br>    gh run view &lt;构建ID&gt; –log</p>
+<pre><code># 重新运行失败构建
+gh run rerun &lt;构建ID&gt; --failed
+</code></pre>
+<p>[&#x2F;code]</p>
+<h3 id="5-2-协作与反馈收集"><a href="#5-2-协作与反馈收集" class="headerlink" title="5.2 协作与反馈收集 #"></a>5.2 协作与反馈收集 #</h3><p> <strong>创建改进建议</strong> ：</p>
+<p>bash<br>[code]<br>    # 创建博客改进Issue<br>    gh issue create –title “优化文章排版” –body “建议添加代码高亮…”</p>
+<pre><code># 查看Issue状态
+gh issue list --state open
+
+# 关闭已解决的Issue
+gh issue close 42
+</code></pre>
+<p>[&#x2F;code]<br>[code]<br>    # 创建博客改进Issue<br>    gh issue create –title “优化文章排版” –body “建议添加代码高亮…”</p>
+<pre><code># 查看Issue状态
+gh issue list --state open
+
+# 关闭已解决的Issue
+gh issue close 42
+</code></pre>
+<p>[&#x2F;code]</p>
+<h3 id="5-3-数据分析与回顾"><a href="#5-3-数据分析与回顾" class="headerlink" title="5.3 数据分析与回顾 #"></a>5.3 数据分析与回顾 #</h3><p> <strong>提交统计</strong> ：</p>
+<p>bash<br>[code]<br>    # 查看最近提交<br>    gh api repos&#x2F;attraction11&#x2F;attraction11.github.io&#x2F;commits –jq ‘.[:5] | .[] | “(.sha[:7]): (.commit.message)”‘</p>
+<pre><code># 查看贡献者
+gh api repos/attraction11/attraction11.github.io/contributors --jq &#39;.[] | &quot;\(.login): \(.contributions)次提交&quot;&#39;
+</code></pre>
+<p>[&#x2F;code]<br>[code]<br>    # 查看最近提交<br>    gh api repos&#x2F;attraction11&#x2F;attraction11.github.io&#x2F;commits –jq ‘.[:5] | .[] | “(.sha[:7]): (.commit.message)”‘</p>
+<pre><code># 查看贡献者
+gh api repos/attraction11/attraction11.github.io/contributors --jq &#39;.[] | &quot;\(.login): \(.contributions)次提交&quot;&#39;
+</code></pre>
+<p>[&#x2F;code]</p>
+<h2 id="六、故障排除与优化"><a href="#六、故障排除与优化" class="headerlink" title="六、故障排除与优化 #"></a>六、故障排除与优化 #</h2><h3 id="6-1-常见问题"><a href="#6-1-常见问题" class="headerlink" title="6.1 常见问题 #"></a>6.1 常见问题 #</h3><p> <strong>问题1：GitHub CLI代理配置</strong></p>
+<p>powershell<br>[code]<br>    # 设置代理环境变量<br>    $env:HTTPS_PROXY &#x3D; “<a target="_blank" rel="noopener" href="http://127.0.0.1:7890/">http://127.0.0.1:7890</a>“<br>    $env:HTTP_PROXY &#x3D; “<a target="_blank" rel="noopener" href="http://127.0.0.1:7890/">http://127.0.0.1:7890</a>“</p>
+<pre><code># 然后执行gh命令
+gh auth login -w
+</code></pre>
+<p>[&#x2F;code]<br>[code]<br>    # 设置代理环境变量<br>    $env:HTTPS_PROXY &#x3D; “<a target="_blank" rel="noopener" href="http://127.0.0.1:7890/">http://127.0.0.1:7890</a>“<br>    $env:HTTP_PROXY &#x3D; “<a target="_blank" rel="noopener" href="http://127.0.0.1:7890/">http://127.0.0.1:7890</a>“</p>
+<pre><code># 然后执行gh命令
+gh auth login -w
+</code></pre>
+<p>[&#x2F;code]</p>
+<p><strong>问题2：Token权限不足</strong><br>[code]<br>     错误: missing required scope ‘read:org’<br>    解决: 重新创建Token，确保包含repo, read:org, workflow权限</p>
+<p>[&#x2F;code]<br>[code]<br>    错误: missing required scope ‘read:org’<br>    解决: 重新创建Token，确保包含repo, read:org, workflow权限</p>
+<p>[&#x2F;code]</p>
+<p><strong>问题3：脚本执行权限</strong></p>
+<p>powershell<br>[code]<br>    # PowerShell执行策略限制<br>    Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass</p>
+<pre><code># 或直接运行
+powershell -ExecutionPolicy Bypass -File .\scripts\blog-publish.ps1 -Title &quot;测试文章&quot;
+</code></pre>
+<p>[&#x2F;code]<br>[code]<br>    # PowerShell执行策略限制<br>    Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass</p>
+<pre><code># 或直接运行
+powershell -ExecutionPolicy Bypass -File .\scripts\blog-publish.ps1 -Title &quot;测试文章&quot;
+</code></pre>
+<p>[&#x2F;code]</p>
+<h3 id="6-2-性能优化"><a href="#6-2-性能优化" class="headerlink" title="6.2 性能优化 #"></a>6.2 性能优化 #</h3><p> <strong>Git代理配置</strong> ：</p>
+<p>bash<br>[code]<br>    # 加速Git操作<br>    git config –global http.proxy <a target="_blank" rel="noopener" href="http://127.0.0.1:7890/">http://127.0.0.1:7890</a><br>    git config –global https.proxy <a target="_blank" rel="noopener" href="http://127.0.0.1:7890/">http://127.0.0.1:7890</a></p>
+<pre><code># 增大postBuffer
+git config --global http.postBuffer 524288000
+</code></pre>
+<p>[&#x2F;code]<br>[code]<br>    # 加速Git操作<br>    git config –global http.proxy <a target="_blank" rel="noopener" href="http://127.0.0.1:7890/">http://127.0.0.1:7890</a><br>    git config –global https.proxy <a target="_blank" rel="noopener" href="http://127.0.0.1:7890/">http://127.0.0.1:7890</a></p>
+<pre><code># 增大postBuffer
+git config --global http.postBuffer 524288000
+</code></pre>
+<p>[&#x2F;code]</p>
+<h2 id="七、工作流集成"><a href="#七、工作流集成" class="headerlink" title="七、工作流集成 #"></a>七、工作流集成 #</h2><h3 id="7-1-与OpenClaw技能协同"><a href="#7-1-与OpenClaw技能协同" class="headerlink" title="7.1 与OpenClaw技能协同 #"></a>7.1 与OpenClaw技能协同 #</h3><p> <strong>github + coding-agent组合</strong> ：<br>[code]<br>    coding-agent创建新功能 → github创建PR → 自动CI测试 → 合并部署</p>
+<p>[&#x2F;code]<br>[code]<br>    coding-agent创建新功能 → github创建PR → 自动CI测试 → 合并部署</p>
+<p>[&#x2F;code]</p>
+<p><strong>github + healthcheck组合</strong> ：<br>[code]<br>    healthcheck安全检查 → github创建安全Issue → 跟踪修复进度 → 关闭Issue</p>
+<p>[&#x2F;code]<br>[code]<br>    healthcheck安全检查 → github创建安全Issue → 跟踪修复进度 → 关闭Issue</p>
+<p>[&#x2F;code]</p>
+<h3 id="7-2-自动化脚本扩展"><a href="#7-2-自动化脚本扩展" class="headerlink" title="7.2 自动化脚本扩展 #"></a>7.2 自动化脚本扩展 #</h3><p> <strong>定时发布脚本</strong> ：</p>
+<p>powershell<br>[code]<br>    # scheduled-publish.ps1<br>    param($ScheduleDate)</p>
+<pre><code># 根据日期自动生成主题
+$title = &quot;每周技术总结 - $ScheduleDate&quot;
+.\scripts\blog-publish.ps1 -Title $title -Category notes -Tags &quot;周报,总结&quot;
+</code></pre>
+<p>[&#x2F;code]<br>[code]<br>    # scheduled-publish.ps1<br>    param($ScheduleDate)</p>
+<pre><code># 根据日期自动生成主题
+$title = &quot;每周技术总结 - $ScheduleDate&quot;
+.\scripts\blog-publish.ps1 -Title $title -Category notes -Tags &quot;周报,总结&quot;
+</code></pre>
+<p>[&#x2F;code]</p>
+<p><strong>批量文章处理</strong> ：</p>
+<p>powershell<br>[code]<br>    # batch-publish.ps1<br>    $articles &#x3D; @(<br>        @{Title&#x3D;”GitHub CLI技巧”; Category&#x3D;”VibeCoding”},<br>        @{Title&#x3D;”OpenClaw配置”; Category&#x3D;”VibeCoding”},<br>        @{Title&#x3D;”学习笔记”; Category&#x3D;”notes”}<br>    )</p>
+<pre><code>foreach ($article in $articles) {
+    .\scripts\blog-publish.ps1 @article
+}
+</code></pre>
+<p>[&#x2F;code]<br>[code]<br>    # batch-publish.ps1<br>    $articles &#x3D; @(<br>        @{Title&#x3D;”GitHub CLI技巧”; Category&#x3D;”VibeCoding”},<br>        @{Title&#x3D;”OpenClaw配置”; Category&#x3D;”VibeCoding”},<br>        @{Title&#x3D;”学习笔记”; Category&#x3D;”notes”}<br>    )</p>
+<pre><code>foreach ($article in $articles) {
+    .\scripts\blog-publish.ps1 @article
+}
+</code></pre>
+<p>[&#x2F;code]</p>
+<h2 id="八、总结与展望"><a href="#八、总结与展望" class="headerlink" title="八、总结与展望 #"></a>八、总结与展望 #</h2><h3 id="8-1-技术收获"><a href="#8-1-技术收获" class="headerlink" title="8.1 技术收获 #"></a>8.1 技术收获 #</h3><p>通过这次完整的配置过程，我获得了以下技术洞察：</p>
+<ol>
+<li><strong>工具链的重要性</strong> ：GitHub CLI不仅仅是一个命令行工具，更是 <strong>开发生态系统的入口</strong></li>
+<li><strong>自动化价值</strong> ：脚本化的工作流将发布时间从10分钟缩短到30秒</li>
+<li><strong>集成思维</strong> ：不同工具（OpenClaw、GitHub CLI、PowerShell）的有机组合创造 <strong>1+1 &gt;2</strong>的效果</li>
+</ol>
+<h3 id="8-2-效率提升数据"><a href="#8-2-效率提升数据" class="headerlink" title="8.2 效率提升数据 #"></a>8.2 效率提升数据 #</h3><table>
+<thead>
+<tr>
+<th>任务</th>
+<th>手动操作时间</th>
+<th>自动化后时间</th>
+<th>效率提升</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>创建新文章</td>
+<td>3-5分钟</td>
+<td>10秒</td>
+<td>18-30倍</td>
+</tr>
+<tr>
+<td>发布到GitHub</td>
+<td>1-2分钟</td>
+<td>5秒</td>
+<td>12-24倍</td>
+</tr>
+<tr>
+<td>监控部署状态</td>
+<td>2-3分钟</td>
+<td>2秒</td>
+<td>60-90倍</td>
+</tr>
+<tr>
+<td>完整发布流程</td>
+<td>6-10分钟</td>
+<td>30秒</td>
+<td>12-20倍</td>
+</tr>
+</tbody></table>
+<h3 id="8-3-未来规划"><a href="#8-3-未来规划" class="headerlink" title="8.3 未来规划 #"></a>8.3 未来规划 #</h3><p>基于当前的工作流，我计划：</p>
+<ol>
+<li><strong>扩展脚本功能</strong> ：</li>
+</ol>
+<pre><code>* 添加图片上传自动化
+* 集成SEO优化建议
+* 添加文章质量检查
+</code></pre>
+<ol start="2">
+<li><strong>增强监控能力</strong> ：</li>
+</ol>
+<pre><code>* 实时部署状态推送
+* 文章访问统计集成
+* 读者反馈收集
+</code></pre>
+<ol start="3">
+<li><strong>社区贡献</strong> ：</li>
+</ol>
+<pre><code>* 将脚本开源到GitHub
+* 撰写详细的使用文档
+* 收集用户反馈迭代改进
+</code></pre>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语 #"></a>结语 #</h2><p>GitHub CLI的完整配置和自动化博客发布系统的建立，不仅提升了我的工作效率，更重要的是 <strong>改变了工作方式</strong> 。从手动操作到自动化脚本，从分散工具到集成工作流，这个过程体现了 <strong>技术工具的演进路径</strong> 。</p>
+<p> <strong>关键启示</strong> ：</p>
+<ul>
+<li>✅ <strong>工具应该服务流程，而不是流程适应工具</strong></li>
+<li>✅ <strong>自动化不是目标，而是释放创造力的手段</strong></li>
+<li>✅ <strong>好的工作流是隐形的，让你专注于真正重要的事情</strong></li>
+</ul>
+<p>正如编程大师Donald Knuth所说：</p>
+<blockquote>
+<p>“Premature optimization is the root of all evil.”<br> 但在这里，我们做的不是”过早优化”，而是 <strong>建立正确的基础设施</strong> 。</p>
+</blockquote>
+<p>现在，当我想写一篇博客时，只需要：</p>
+<p>powershell<br>[code]<br>    .\scripts\blog-publish.ps1 -Title “新的想法” -Category VibeCoding</p>
+<p>[&#x2F;code]<br>[code]<br>    .\scripts\blog-publish.ps1 -Title “新的想法” -Category VibeCoding</p>
+<p>[&#x2F;code]</p>
+<p>然后专注于内容创作，剩下的交给自动化系统。这就是 <strong>技术应该带来的自由</strong> 。</p>
+<hr>
+<p> <strong>相关资源</strong> ：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://cli.github.com/">GitHub CLI官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.openclaw.ai/skills/github">OpenClaw github技能文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/attraction11/attraction11.github.io/tree/main/scripts">博客发布脚本GitHub仓库</a></li>
+<li><a href="https://attraction11.github.io/VibeCoding/github-cli-full-guide/">本文在线版本</a></li>
+</ul>
+<p> <em>“ Tools amplify talent.” - 好的工具让天赋绽放。</em></p>
+</p></div><div class="share"><span>Share</span>&nbsp;<span class="soc"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></span><span class="soc"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></span><span class="soc"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/home?status=https://attraction11.github.io/2026/03/11/2026-03-11-github-cli-full-guide/%20良的博客%20GitHub CLI全攻略：从配置到自动化博客发布"></a></span></div><div class="pagination"><p class="clearfix"><span class="pre pagbuttons"><a role="navigation" href="/2026/03/11/2026-03-11-GitHub-CLI%E7%BC%96%E7%A0%81%E4%BF%AE%E5%A4%8D%E6%80%BB%E7%BB%93Windows-UTF-8-Beta%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/" title="GitHub CLI编码修复总结：Windows UTF-8 Beta配置指南"><i class="fa fa-angle-double-left"></i>&nbsp;Previous post: GitHub CLI编码修复总结：Windows UTF-8 Beta配置指南</a></span><span>&nbsp;</span><span class="next pagbuttons"><a role="navigation" href="/2026/03/11/2026-03-11-openclaw-multi-agent-routing-memory-sharing/" title="OpenClaw多智能体路由与记忆共享：物理隔离，逻辑共享的实践">Next post: OpenClaw多智能体路由与记忆共享：物理隔离，逻辑共享的实践&nbsp;<i class="fa fa-angle-double-right"></i></a></span></p></div><div class="foreground background-text" style="color: #fff; padding: 10px 25px; width: 100%"><div style="vertical-align: middle;display: table-cell!important;"><div class="visible-lg visible-sm visible-md" style="vertical-align: middle;text-align:center;margin-right:15px"><img src="/images/pigeon.svg" width="150px" style="padding: 15px; vertical-align: middle;"><p style="font-size: 55%;vertical-align: middle;text-align:center;margin: 0">咕咕咕, 就快送到了</p></div></div><div style="padding: 15px 0;vertical-align: middle;display: table-cell;"><p style="font-size: 115%">哎呀，似乎评论系统在您的地区都无法正常工作。</p><p style="margin:0;">不过不要担心，来看看我们为您准备的备用方案 ——<br>        1. 将您的评论用信封装好<br>        2. 使用信鸽函至&nbsp;github.io<br>        3. 我们在收到您的评论后将立即审核并更新至网站<br><i><small>评论一经采用，信函恕不退还，信鸽也不退还，请知悉。</small></i></p></div></div></div></div></div><div class="visible-xs site-bottom-footer"><footer><p>&copy;&nbsp;2026&nbsp;<a target="_blank" href="https://attraction11.github.io" rel="noopener noreferrer">良</a></p><p>Theme&nbsp;<a target="_blank" href="https://github.com/SumiMakito/hexo-theme-typography" rel="noopener noreferrer">Typography</a>&nbsp;by&nbsp;<a target="_blank" href="https://www.keep.moe" rel="noopener noreferrer">Makito</a></p><p>Proudly published with&nbsp;<a target="_blank" href="https://hexo.io" rel="noopener noreferrer">Hexo</a></p></footer></div></div></div></div><script src="/js/jquery-3.1.0.min.js"></script><script src="/js/bootstrap.min.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/google-analytics.js"></script><script src="/js/typography.js"></script></body></html>
