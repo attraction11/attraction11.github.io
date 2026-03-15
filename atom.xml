@@ -10,7 +10,23 @@
   <rights>All rights reserved 2026, 良</rights>
   <subtitle>技术探索与生活记录</subtitle>
   <title>良的博客</title>
-  <updated>2026-03-14T10:22:03.133Z</updated>
+  <updated>2026-03-15T13:07:37.986Z</updated>
+  <entry>
+    <author>
+      <name>良</name>
+    </author>
+    <category term="VibeCoding" scheme="https://attraction11.github.io/categories/VibeCoding/"/>
+    <category term="周报" scheme="https://attraction11.github.io/tags/%E5%91%A8%E6%8A%A5/"/>
+    <category term="工作日志" scheme="https://attraction11.github.io/tags/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%97/"/>
+    <category term="效率分析" scheme="https://attraction11.github.io/tags/%E6%95%88%E7%8E%87%E5%88%86%E6%9E%90/"/>
+    <category term="技术学习" scheme="https://attraction11.github.io/tags/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://attraction11.github.io/2026/03/15/2026-03-15-weekly-report/</id>
+    <link href="https://attraction11.github.io/2026/03/15/2026-03-15-weekly-report/"/>
+    <published>2026-03-14T16:00:00.000Z</published>
+    <summary>本周工作成果、技术学习收获、问题解决与下周计划</summary>
+    <title>2026年3月第2周工作周报</title>
+    <updated>2026-03-15T13:07:37.986Z</updated>
+  </entry>
   <entry>
     <author>
       <name>良</name>
@@ -26,7 +42,7 @@
     <published>2026-03-14T01:00:00.000Z</published>
     <summary>深入解析OpenClaw内置Secrets管理系统，制定从27个明文密钥到企业级安全的迁移计划，实现API密钥的安全存储和管理。</summary>
     <title>OpenClaw Secrets管理系统：从27个明文密钥到企业级安全</title>
-    <updated>2026-03-14T10:22:03.133Z</updated>
+    <updated>2026-03-15T13:07:37.985Z</updated>
   </entry>
   <entry>
     <author>
@@ -43,7 +59,7 @@
     <published>2026-03-13T18:00:00.000Z</published>
     <summary>详细讲解如何将OpenClaw三层记忆架构迁移到子Agent的完整流程，包含差异化配置、同步脚本、验证方法和最佳实践，基于真实四Agent系统迁移经验。</summary>
     <title>OpenClaw三层记忆架构迁移到子Agent完整流程指南</title>
-    <updated>2026-03-14T10:22:03.134Z</updated>
+    <updated>2026-03-15T13:07:37.985Z</updated>
   </entry>
   <entry>
     <author>
@@ -60,7 +76,7 @@
     <published>2026-03-13T17:00:00.000Z</published>
     <summary>详细记录OpenClaw从2026.3.8升级到2026.3.12过程中遇到的各种报错、原因分析和解决方案，提供完整的升级排错指南。</summary>
     <title>OpenClaw升级踩坑实录：从2026.3.8到2026.3.12的完整排错指南</title>
-    <updated>2026-03-14T10:22:03.136Z</updated>
+    <updated>2026-03-15T13:07:37.985Z</updated>
   </entry>
   <entry>
     <author>
@@ -77,51 +93,7 @@
     <published>2026-03-13T16:45:00.000Z</published>
     <summary>深入解析OpenClaw三层记忆架构的设计原理、配置实现和最佳实践，对比官方推荐方案，提供完整的记忆管理系统建设指南。</summary>
     <title>OpenClaw三层记忆架构实战指南：从配置到最佳实践</title>
-    <updated>2026-03-14T10:22:03.134Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>良</name>
-    </author>
-    <category term="AI Agent" scheme="https://attraction11.github.io/categories/AI-Agent/"/>
-    <category term="产品设计" scheme="https://attraction11.github.io/categories/AI-Agent/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/"/>
-    <category term="全栈开发" scheme="https://attraction11.github.io/categories/AI-Agent/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91/"/>
-    <category term="技术成长" scheme="https://attraction11.github.io/categories/AI-Agent/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91/%E6%8A%80%E6%9C%AF%E6%88%90%E9%95%BF/"/>
-    <category term="AI Agent平台" scheme="https://attraction11.github.io/tags/AI-Agent%E5%B9%B3%E5%8F%B0/"/>
-    <category term="产品逻辑" scheme="https://attraction11.github.io/tags/%E4%BA%A7%E5%93%81%E9%80%BB%E8%BE%91/"/>
-    <category term="MVP设计" scheme="https://attraction11.github.io/tags/MVP%E8%AE%BE%E8%AE%A1/"/>
-    <category term="迭代开发" scheme="https://attraction11.github.io/tags/%E8%BF%AD%E4%BB%A3%E5%BC%80%E5%8F%91/"/>
-    <category term="全栈学习" scheme="https://attraction11.github.io/tags/%E5%85%A8%E6%A0%88%E5%AD%A6%E4%B9%A0/"/>
-    <category term="技术架构" scheme="https://attraction11.github.io/tags/%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/"/>
-    <category term="学习路线图" scheme="https://attraction11.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%E5%9B%BE/"/>
-    <id>https://attraction11.github.io/2026/03/14/2026-03-14-ai-agent-platform-product-logic-and-development-roadmap/</id>
-    <link href="https://attraction11.github.io/2026/03/14/2026-03-14-ai-agent-platform-product-logic-and-development-roadmap/"/>
-    <published>2026-03-13T16:00:00.000Z</published>
-    <summary>AI Agent可视化协作平台的完整产品逻辑分析，涵盖产品战略、技术架构、MVP定义、迭代规划和学习价值映射，为AI全栈工程师培养提供严谨的产品驱动学习框架</summary>
-    <title>AI Agent平台产品逻辑与开发路线图：从MVP到生产级的全栈学习路径</title>
-    <updated>2026-03-14T10:05:50.712Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>良</name>
-    </author>
-    <category term="技术" scheme="https://attraction11.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    <category term="技术实践" scheme="https://attraction11.github.io/categories/%E6%8A%80%E6%9C%AF/%E6%8A%80%E6%9C%AF%E5%AE%9E%E8%B7%B5/"/>
-    <category term="开发环境" scheme="https://attraction11.github.io/categories/%E6%8A%80%E6%9C%AF/%E6%8A%80%E6%9C%AF%E5%AE%9E%E8%B7%B5/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"/>
-    <category term="Windows 11" scheme="https://attraction11.github.io/tags/Windows-11/"/>
-    <category term="WSL2" scheme="https://attraction11.github.io/tags/WSL2/"/>
-    <category term="Docker" scheme="https://attraction11.github.io/tags/Docker/"/>
-    <category term="开发环境" scheme="https://attraction11.github.io/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"/>
-    <category term="系统配置" scheme="https://attraction11.github.io/tags/%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/"/>
-    <category term="代理配置" scheme="https://attraction11.github.io/tags/%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/"/>
-    <id>https://attraction11.github.io/2026/03/14/2026-03-14-windows-11-wsl2-upgrade-troubleshooting-guide/</id>
-    <link href="https://attraction11.github.io/2026/03/14/2026-03-14-windows-11-wsl2-upgrade-troubleshooting-guide/"/>
-    <published>2026-03-13T16:00:00.000Z</published>
-    <summary>
-      <![CDATA[<h2 id="🎯-背景说明"><a href="#🎯-背景说明" class="headerlink" title="🎯 背景说明"></a>🎯 背景说明</h2><p>在Windows 11上使用WSL2（Windows Subsystem for Linux]]>
-    </summary>
-    <title>Windows 11 升级WSL2踩坑实录：从安装到Docker集成完整指南</title>
-    <updated>2026-03-14T15:07:38.219Z</updated>
+    <updated>2026-03-15T13:07:37.985Z</updated>
   </entry>
   <entry>
     <author>
@@ -138,7 +110,7 @@
     <published>2026-03-13T14:30:00.000Z</published>
     <summary>深入分析OpenClaw从2026.3.8升级到2026.3.12的完整方案，包括版本对比、风险评估、升级流程和回滚计划，为多Agent系统提供安全升级指南。</summary>
     <title>OpenClaw 2026.3.8 到 2026.3.12 升级全面分析报告</title>
-    <updated>2026-03-14T10:22:03.135Z</updated>
+    <updated>2026-03-15T13:07:37.985Z</updated>
   </entry>
   <entry>
     <author>
@@ -146,34 +118,16 @@
     </author>
     <category term="技术实践" scheme="https://attraction11.github.io/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E8%B7%B5/"/>
     <category term="OpenClaw" scheme="https://attraction11.github.io/tags/OpenClaw/"/>
+    <category term="系统优化" scheme="https://attraction11.github.io/tags/%E7%B3%BB%E7%BB%9F%E4%BC%98%E5%8C%96/"/>
     <category term="AI助手" scheme="https://attraction11.github.io/tags/AI%E5%8A%A9%E6%89%8B/"/>
     <category term="记忆管理" scheme="https://attraction11.github.io/tags/%E8%AE%B0%E5%BF%86%E7%AE%A1%E7%90%86/"/>
     <category term="时间衰减" scheme="https://attraction11.github.io/tags/%E6%97%B6%E9%97%B4%E8%A1%B0%E5%87%8F/"/>
-    <category term="系统优化" scheme="https://attraction11.github.io/tags/%E7%B3%BB%E7%BB%9F%E4%BC%98%E5%8C%96/"/>
     <id>https://attraction11.github.io/2026/03/13/2026-03-13-openclaw-temporal-decay-practice-guide/</id>
     <link href="https://attraction11.github.io/2026/03/13/2026-03-13-openclaw-temporal-decay-practice-guide/"/>
     <published>2026-03-13T08:30:00.000Z</published>
     <summary>深入探讨OpenClaw时间衰减机制，解决长对话信息丢失问题，设计三层记忆管理架构，提升AI助手记忆效率。</summary>
     <title>OpenClaw高级配置：时间衰减（Temporal Decay）实战指南</title>
-    <updated>2026-03-14T10:22:03.132Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>良</name>
-    </author>
-    <category term="VibeCoding" scheme="https://attraction11.github.io/categories/VibeCoding/"/>
-    <category term="AI Agent" scheme="https://attraction11.github.io/tags/AI-Agent/"/>
-    <category term="全栈开发" scheme="https://attraction11.github.io/tags/%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91/"/>
-    <category term="技术成长" scheme="https://attraction11.github.io/tags/%E6%8A%80%E6%9C%AF%E6%88%90%E9%95%BF/"/>
-    <category term="产品驱动学习" scheme="https://attraction11.github.io/tags/%E4%BA%A7%E5%93%81%E9%A9%B1%E5%8A%A8%E5%AD%A6%E4%B9%A0/"/>
-    <category term="学习框架" scheme="https://attraction11.github.io/tags/%E5%AD%A6%E4%B9%A0%E6%A1%86%E6%9E%B6/"/>
-    <category term="职业转型" scheme="https://attraction11.github.io/tags/%E8%81%8C%E4%B8%9A%E8%BD%AC%E5%9E%8B/"/>
-    <id>https://attraction11.github.io/2026/03/13/2026-03-13-product-driven-ai-agent-fullstack-learning-framework/</id>
-    <link href="https://attraction11.github.io/2026/03/13/2026-03-13-product-driven-ai-agent-fullstack-learning-framework/"/>
-    <published>2026-03-12T16:00:00.000Z</published>
-    <summary>基于产品驱动学习模式的全新AI Agent全栈工程师培养框架，通过构建可视化多Agent协作平台，在实战中掌握核心技术，3.5个月达到岗位要求的中级水平</summary>
-    <title>产品驱动的AI Agent全栈工程师学习框架：3.5个月达到中级水平</title>
-    <updated>2026-03-13T12:54:46.974Z</updated>
+    <updated>2026-03-15T13:07:37.985Z</updated>
   </entry>
   <entry>
     <author>
@@ -189,7 +143,7 @@
     <published>2026-03-11T16:00:00.000Z</published>
     <summary>基于Claude Code实战经验，提炼AI时代编程工作流重构的黄金法则与最佳实践。</summary>
     <title>如何在AI时代重新定义编程工作流</title>
-    <updated>2026-03-14T10:22:03.128Z</updated>
+    <updated>2026-03-15T13:07:37.985Z</updated>
   </entry>
   <entry>
     <author>
@@ -206,7 +160,7 @@
     <published>2026-03-11T16:00:00.000Z</published>
     <summary>深入解析基于OpenClaw的四Agent系统架构设计，涵盖尤里（元气协调者）、尤尤（高效执行者）、尤米（求知探索者）、生活助手（温暖贴心者）的角色定位、通信机制、记忆共享、冲突解决和自动化工作流实现。</summary>
     <title>OpenClaw多Agent系统架构：尤里、尤尤、尤米、生活助手实战解析</title>
-    <updated>2026-03-14T10:22:03.130Z</updated>
+    <updated>2026-03-15T13:07:37.985Z</updated>
   </entry>
   <entry>
     <author>
@@ -214,16 +168,16 @@
     </author>
     <category term="VibeCoding" scheme="https://attraction11.github.io/categories/VibeCoding/"/>
     <category term="OpenClaw" scheme="https://attraction11.github.io/tags/OpenClaw/"/>
-    <category term="AI助手" scheme="https://attraction11.github.io/tags/AI%E5%8A%A9%E6%89%8B/"/>
-    <category term="系统优化" scheme="https://attraction11.github.io/tags/%E7%B3%BB%E7%BB%9F%E4%BC%98%E5%8C%96/"/>
     <category term="安全配置" scheme="https://attraction11.github.io/tags/%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE/"/>
+    <category term="系统优化" scheme="https://attraction11.github.io/tags/%E7%B3%BB%E7%BB%9F%E4%BC%98%E5%8C%96/"/>
+    <category term="AI助手" scheme="https://attraction11.github.io/tags/AI%E5%8A%A9%E6%89%8B/"/>
     <category term="生产部署" scheme="https://attraction11.github.io/tags/%E7%94%9F%E4%BA%A7%E9%83%A8%E7%BD%B2/"/>
     <id>https://attraction11.github.io/2026/03/12/2026-03-12-openclaw-security-configuration-10-key-issues/</id>
     <link href="https://attraction11.github.io/2026/03/12/2026-03-12-openclaw-security-configuration-10-key-issues/"/>
     <published>2026-03-11T16:00:00.000Z</published>
     <summary>深度解析OpenClaw安装后常被忽视的10个关键安全问题，分享实战配置经验、系统优化方案和完整的安全加固流程。基于真实项目案例，覆盖工具权限、文件截断、API费用优化、记忆管理、备份策略等核心主题。</summary>
     <title>OpenClaw安全配置实战：从安装到生产的10个关键问题及解决方案</title>
-    <updated>2026-03-14T10:22:03.131Z</updated>
+    <updated>2026-03-15T13:07:37.985Z</updated>
   </entry>
   <entry>
     <author>
@@ -242,7 +196,7 @@
       <![CDATA[<h2 id="🎯-迁移背景"><a href="#🎯-迁移背景" class="headerlink" title="🎯 迁移背景"></a>🎯 迁移背景</h2><p>今天，我决定将我的个人博客从 VitePress 迁移到 Hexo + Typography]]>
     </summary>
     <title>Hexo + Typography 博客迁移测试</title>
-    <updated>2026-03-14T10:22:03.126Z</updated>
+    <updated>2026-03-15T13:07:37.985Z</updated>
   </entry>
   <entry>
     <author>
@@ -259,7 +213,7 @@
     <published>2026-03-10T16:00:00.000Z</published>
     <summary>基于目标岗位的深度分析，评估个人技术差距，制定2026年学习转型路线图，目标Q4后胜任12-24K AI Agent全栈工程师岗位</summary>
     <title>2026年AI Agent全栈工程师岗位分析与个人差距评估</title>
-    <updated>2026-03-14T10:22:03.122Z</updated>
+    <updated>2026-03-15T13:07:37.985Z</updated>
   </entry>
   <entry>
     <author>
@@ -277,21 +231,7 @@
     <published>2026-03-10T16:00:00.000Z</published>
     <summary>2026年12个月详细行动计划，包含每周具体任务、学习资源推荐、进度评估标准和产出指标</summary>
     <title>2026年全栈成长开发规划—月维度</title>
-    <updated>2026-03-14T10:22:03.122Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>良</name>
-    </author>
-    <category term="VibeCoding" scheme="https://attraction11.github.io/categories/VibeCoding/"/>
-    <category term="GitHub" scheme="https://attraction11.github.io/tags/GitHub/"/>
-    <category term="CLI" scheme="https://attraction11.github.io/tags/CLI/"/>
-    <id>https://attraction11.github.io/2026/03/11/2026-03-11-GitHub-CLI%E7%BC%96%E7%A0%81%E4%BF%AE%E5%A4%8D%E6%80%BB%E7%BB%93Windows-UTF-8-Beta%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</id>
-    <link href="https://attraction11.github.io/2026/03/11/2026-03-11-GitHub-CLI%E7%BC%96%E7%A0%81%E4%BF%AE%E5%A4%8D%E6%80%BB%E7%BB%93Windows-UTF-8-Beta%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/"/>
-    <published>2026-03-10T16:00:00.000Z</published>
-    <summary>详细记录Windows UTF-8 Beta环境配置、GitHub CLI编码问题修复及自动化脚本开发过程</summary>
-    <title>GitHub CLI编码修复总结：Windows UTF-8 Beta配置指南</title>
-    <updated>2026-03-14T10:22:03.124Z</updated>
+    <updated>2026-03-15T13:07:37.985Z</updated>
   </entry>
   <entry>
     <author>
@@ -309,7 +249,21 @@
     <published>2026-03-10T16:00:00.000Z</published>
     <summary>基于AI Agent全栈工程师目标的季度详细规划，包含技术重点、能力培养、岗位胜任力映射和进度评估标准</summary>
     <title>2026年全栈成长开发规划—季维度</title>
-    <updated>2026-03-14T10:22:03.123Z</updated>
+    <updated>2026-03-15T13:07:37.985Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>良</name>
+    </author>
+    <category term="VibeCoding" scheme="https://attraction11.github.io/categories/VibeCoding/"/>
+    <category term="GitHub" scheme="https://attraction11.github.io/tags/GitHub/"/>
+    <category term="CLI" scheme="https://attraction11.github.io/tags/CLI/"/>
+    <id>https://attraction11.github.io/2026/03/11/2026-03-11-GitHub-CLI%E7%BC%96%E7%A0%81%E4%BF%AE%E5%A4%8D%E6%80%BB%E7%BB%93Windows-UTF-8-Beta%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</id>
+    <link href="https://attraction11.github.io/2026/03/11/2026-03-11-GitHub-CLI%E7%BC%96%E7%A0%81%E4%BF%AE%E5%A4%8D%E6%80%BB%E7%BB%93Windows-UTF-8-Beta%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/"/>
+    <published>2026-03-10T16:00:00.000Z</published>
+    <summary>详细记录Windows UTF-8 Beta环境配置、GitHub CLI编码问题修复及自动化脚本开发过程</summary>
+    <title>GitHub CLI编码修复总结：Windows UTF-8 Beta配置指南</title>
+    <updated>2026-03-15T13:07:37.985Z</updated>
   </entry>
   <entry>
     <author>
@@ -325,7 +279,7 @@
     <published>2026-03-10T16:00:00.000Z</published>
     <summary>详细记录GitHub CLI安装配置、OpenClaw github技能使用及自动化博客发布脚本的完整工作流</summary>
     <title>GitHub CLI全攻略：从配置到自动化博客发布</title>
-    <updated>2026-03-14T10:22:03.125Z</updated>
+    <updated>2026-03-15T13:07:37.985Z</updated>
   </entry>
   <entry>
     <author>
@@ -343,7 +297,7 @@
     <published>2026-03-10T16:00:00.000Z</published>
     <summary>详细记录OpenClaw多智能体系统的架构设计、记忆共享机制、同步策略与冲突解决方案，实现物理隔离与逻辑共享的平衡</summary>
     <title>OpenClaw多智能体路由与记忆共享：物理隔离，逻辑共享的实践</title>
-    <updated>2026-03-14T10:22:03.127Z</updated>
+    <updated>2026-03-15T13:07:37.985Z</updated>
   </entry>
   <entry>
     <author>
@@ -358,6 +312,21 @@
     <published>2026-03-10T16:00:00.000Z</published>
     <summary>通过一次完整的OpenClaw安全检查实战，记录从风险识别、问题修复到自动化监控的全过程，构建AI助手的安全防护体系。</summary>
     <title>OpenClaw安全检查实战指南：从风险发现到自动化防护</title>
-    <updated>2026-03-14T10:22:03.137Z</updated>
+    <updated>2026-03-15T13:07:37.986Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>良</name>
+    </author>
+    <category term="VibeCoding" scheme="https://attraction11.github.io/categories/VibeCoding/"/>
+    <category term="GitHub" scheme="https://attraction11.github.io/tags/GitHub/"/>
+    <category term="OpenClaw" scheme="https://attraction11.github.io/tags/OpenClaw/"/>
+    <category term="VibeCoding" scheme="https://attraction11.github.io/tags/VibeCoding/"/>
+    <id>https://attraction11.github.io/2026/03/11/vibe-coding-first-experience/</id>
+    <link href="https://attraction11.github.io/2026/03/11/vibe-coding-first-experience/"/>
+    <published>2026-03-10T16:00:00.000Z</published>
+    <summary>通过OpenClaw + OpenCode + GitHub + Pages工具链，25分钟内完成从需求到部署的全流程vibe coding项目实践。</summary>
+    <title>vibe coding初体验：从零到上线打地鼠游戏</title>
+    <updated>2026-03-15T13:07:37.986Z</updated>
   </entry>
 </feed>
