@@ -1,0 +1,966 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author"><title>OpenClaw 2026.3.12 斜杠命令完全指南：从基础到高级 · 良的博客</title><meta name="description" content="本文将详细介绍OpenClaw 2026.3.12版本的所有斜杠命令（Slash Commands），按功能分类，每个命令都配有实际使用示例和注意事项。斜杠命令是OpenClaw在聊天界面中提供的快捷操作方式，通过输入/开头即可调用各种功能。
+
+📚 基础帮助命令/help功能：显示所有可用斜杠命令"><meta name="og:description" content="本文将详细介绍OpenClaw 2026.3.12版本的所有斜杠命令（Slash Commands），按功能分类，每个命令都配有实际使用示例和注意事项。斜杠命令是OpenClaw在聊天界面中提供的快捷操作方式，通过输入/开头即可调用各种功能。
+
+📚 基础帮助命令/help功能：显示所有可用斜杠命令"><meta name="twitter:site" content="良的博客"><meta name="twitter:title" content="OpenClaw 2026.3.12 斜杠命令完全指南：从基础到高级"><meta name="twitter:card" content="summary"><meta name="keywords" content="[&quot;前端&quot;,&quot;人工智能&quot;,&quot;编程&quot;,&quot;技术博客&quot;]"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/bootstrap.min.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/style.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><div class="container" id="stage"><div class="row"><div class="col-sm-3 col-xs-12 side-container invisible" id="side-bar"><div class="vertical-text site-title"><h3 class="site-title-small" tabindex="-1"><a class="a-title" href="/">Typography</a></h3><h1 class="site-title-large" tabindex="-1"><a class="a-title" href="/">良的博客</a></h1><!--h6(onclick="triggerSiteNav()") Trigger--></div><br class="visible-lg visible-md visible-sm"><div class="site-title-links" id="site-nav"><ul><li><a href="/">Home</a></li><li><a href="/archives">Archive</a></li><li><a href="/categories">Categories</a></li><li><a href="/tags">Tags</a></li><li><a href="/about/index.html">关于我</a></li><li class="soc"><a href="https://github.com/attraction11" target="_blank" rel="noopener noreferrer" aria-label="Github"><i class="fa fa-github">&nbsp;</i></a><a href="https://attraction11.github.io/atom.xml" target="_blank" rel="noopener noreferrer" aria-label="RSS"><i class="fa fa-rss">&nbsp;</i></a></li></ul><div class="visible-lg visible-md visible-sm site-nav-footer"><br class="site-nav-footer-br"><footer><p>&copy;&nbsp;2026&nbsp;<a target="_blank" href="https://attraction11.github.io" rel="noopener noreferrer">良</a></p><p>Theme&nbsp;<a target="_blank" href="https://github.com/SumiMakito/hexo-theme-typography" rel="noopener noreferrer">Typography</a>&nbsp;by&nbsp;<a target="_blank" href="https://www.keep.moe" rel="noopener noreferrer">Makito</a></p><p>Proudly published with&nbsp;<a target="_blank" href="https://hexo.io" rel="noopener noreferrer">Hexo</a></p></footer></div></div></div><div class="col-sm-9 col-xs-12 main-container invisible" id="main-container"><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post-container"><p class="post-title"><a>OpenClaw 2026.3.12 斜杠命令完全指南：从基础到高级</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2026-03-17</span><span class="meta-item"><i class="fa fa-folder"></i><span>&nbsp;</span><a class="a-tag" href="/categories/VibeCoding/" title="VibeCoding">VibeCoding</a><span>&nbsp;</span></span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/AI-Agent/" title="AI Agent">AI Agent</a><span>&nbsp;</span><a class="a-tag" href="/tags/OpenClaw/" title="OpenClaw">OpenClaw</a><span>&nbsp;</span><a class="a-tag" href="/tags/多智能体/" title="多智能体">多智能体</a><span>&nbsp;</span><a class="a-tag" href="/tags/系统架构/" title="系统架构">系统架构</a><span>&nbsp;</span><a class="a-tag" href="/tags/安全配置/" title="安全配置">安全配置</a><span>&nbsp;</span><a class="a-tag" href="/tags/记忆管理/" title="记忆管理">记忆管理</a><span>&nbsp;</span><a class="a-tag" href="/tags/密钥管理/" title="密钥管理">密钥管理</a><span>&nbsp;</span></span></p><p class="post-abstract"><p>本文将详细介绍OpenClaw 2026.3.12版本的所有斜杠命令（Slash Commands），按功能分类，每个命令都配有实际使用示例和注意事项。斜杠命令是OpenClaw在聊天界面中提供的快捷操作方式，通过输入<code>/</code>开头即可调用各种功能。</p>
+<hr>
+<h2 id="📚-基础帮助命令"><a href="#📚-基础帮助命令" class="headerlink" title="📚 基础帮助命令"></a>📚 基础帮助命令</h2><h3 id="help"><a href="#help" class="headerlink" title="/help"></a><code>/help</code></h3><p><strong>功能</strong>：显示所有可用斜杠命令的列表和简要说明</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/help</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">可用命令：</span><br><span class="line">/commands - 列出所有斜杠命令</span><br><span class="line">/new - 开始新会话</span><br><span class="line">/status - 显示系统状态</span><br><span class="line">... (更多命令)</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意事项</strong>：</p>
+<ul>
+<li>这是最基础的帮助命令，适合新手快速了解可用功能</li>
+<li>输出会根据当前会话的权限和配置有所不同</li>
+<li>某些需要特定权限的命令可能不会显示在普通用户的帮助列表中</li>
+</ul>
+<h3 id="commands"><a href="#commands" class="headerlink" title="/commands"></a><code>/commands</code></h3><p><strong>功能</strong>：列出所有可用的斜杠命令，相当于完整的命令大全</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/commands</span><br></pre></td></tr></table></figure>
+
+<p><strong>与<code>/help</code>的区别</strong>：</p>
+<ul>
+<li><code>/help</code>：显示简要说明和常用命令</li>
+<li><code>/commands</code>：显示完整的命令列表，包括所有系统命令和插件命令</li>
+</ul>
+<p><strong>实际应用</strong>：</p>
+<ul>
+<li>当不确定某个功能是否有对应的斜杠命令时</li>
+<li>探索系统全部功能时</li>
+<li>调试时检查命令是否可用</li>
+</ul>
+<hr>
+<h2 id="🧠-会话与上下文管理"><a href="#🧠-会话与上下文管理" class="headerlink" title="🧠 会话与上下文管理"></a>🧠 会话与上下文管理</h2><h3 id="new"><a href="#new" class="headerlink" title="/new"></a><code>/new</code></h3><p><strong>功能</strong>：开始一个全新的对话，完全清除当前聊天历史</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/new</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用场景</strong>：</p>
+<ol>
+<li><strong>切换话题</strong>：当前话题已完成，需要开始全新的对话</li>
+<li><strong>上下文清理</strong>：对话历史过长，需要清理上下文窗口</li>
+<li><strong>隐私保护</strong>：确保前一个会话的信息不会泄露到新会话</li>
+</ol>
+<p><strong>注意事项</strong>：</p>
+<ul>
+<li>该操作不可逆，之前的对话历史无法恢复</li>
+<li>会保留基本的系统配置和技能记忆</li>
+<li>建议在重要对话前先使用<code>/export_session</code>备份</li>
+</ul>
+<h3 id="revert-或-reset"><a href="#revert-或-reset" class="headerlink" title="/revert 或 /reset"></a><code>/revert</code> 或 <code>/reset</code></h3><p><strong>功能</strong>：重置当前会话，清空上下文重新开始</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/revert</span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/reset</span><br></pre></td></tr></table></figure>
+
+<p><strong>与<code>/new</code>的区别</strong>：</p>
+<ul>
+<li><code>/new</code>：完全重新开始，创建全新的会话</li>
+<li><code>/revert</code>或<code>/reset</code>：在当前会话中清空历史，但保持会话ID</li>
+</ul>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>当前对话偏离主题，需要重新开始</li>
+<li>测试不同输入对同一问题的回答</li>
+<li>清除敏感信息后继续对话</li>
+</ul>
+<h3 id="compact"><a href="#compact" class="headerlink" title="/compact"></a><code>/compact</code></h3><p><strong>功能</strong>：压缩当前会话内容，将早期对话总结成摘要，释放上下文空间</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/compact</span><br></pre></td></tr></table></figure>
+
+<p><strong>工作原理</strong>：</p>
+<ol>
+<li>分析当前会话历史</li>
+<li>将早期对话内容提炼为简洁摘要</li>
+<li>用摘要替换原始长对话</li>
+<li>释放上下文窗口空间给新对话</li>
+</ol>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>长时间对话导致上下文窗口接近满时</li>
+<li>需要保留早期对话要点但不需完整历史时</li>
+<li>优化性能，减少token消耗</li>
+</ul>
+<p><strong>注意事项</strong>：</p>
+<ul>
+<li>压缩过程是智能的，会保留关键信息和决策点</li>
+<li>压缩后无法恢复原始完整对话</li>
+<li>建议在重要节点先导出会话备份</li>
+</ul>
+<h3 id="export-session"><a href="#export-session" class="headerlink" title="/export_session"></a><code>/export_session</code></h3><p><strong>功能</strong>：导出当前会话的数据，用于备份或迁移</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/export_session</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出格式</strong>：</p>
+<ul>
+<li>JSON格式，包含完整会话历史</li>
+<li>包含时间戳、参与者、消息内容</li>
+<li>可选包含附件和工具调用记录</li>
+</ul>
+<p><strong>使用场景</strong>：</p>
+<ol>
+<li><strong>备份重要对话</strong>：项目讨论、决策记录等</li>
+<li><strong>迁移会话</strong>：在不同设备或实例间转移对话</li>
+<li><strong>分析对话</strong>：用于训练数据或行为分析</li>
+<li><strong>合规要求</strong>：某些场景需要保留沟通记录</li>
+</ol>
+<p><strong>文件保存</strong>：<br>导出的文件通常保存为：</p>
+<ul>
+<li><code>session_export_&lt;timestamp&gt;.json</code></li>
+<li>可选择保存路径或直接复制到剪贴板</li>
+</ul>
+<h3 id="context"><a href="#context" class="headerlink" title="/context"></a><code>/context</code></h3><p><strong>功能</strong>：解释当前命令的上下文是如何绑定的（调试用）</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/context</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出内容</strong>：</p>
+<ul>
+<li>当前会话ID和创建时间</li>
+<li>绑定的频道信息（Telegram、Discord等）</li>
+<li>上下文窗口使用情况</li>
+<li>当前生效的配置和技能</li>
+</ul>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>调试上下文绑定问题</li>
+<li>理解当前会话的状态</li>
+<li>排查为什么某些功能不可用</li>
+<li>开发者调试多频道集成</li>
+</ul>
+<hr>
+<h2 id="🤖-智能体与子智能体管理"><a href="#🤖-智能体与子智能体管理" class="headerlink" title="🤖 智能体与子智能体管理"></a>🤖 智能体与子智能体管理</h2><h3 id="agents"><a href="#agents" class="headerlink" title="/agents"></a><code>/agents</code></h3><p><strong>功能</strong>：列出当前会话绑定的所有智能体</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/agents</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">当前会话绑定的智能体：</span><br><span class="line">1. 主智能体 (尤里) - 状态：活跃</span><br><span class="line">2. Work-Agent - 状态：空闲</span><br><span class="line">3. Study-Agent - 状态：运行中</span><br></pre></td></tr></table></figure>
+
+<p><strong>显示信息</strong>：</p>
+<ul>
+<li>智能体名称和ID</li>
+<li>当前状态（活跃、空闲、运行中、错误等）</li>
+<li>资源使用情况</li>
+<li>最后活动时间</li>
+</ul>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>查看多智能体系统状态</li>
+<li>确认Work-Agent或Study-Agent是否正常运行</li>
+<li>调试智能体协作问题</li>
+</ul>
+<h3 id="subagents"><a href="#subagents" class="headerlink" title="/subagents"></a><code>/subagents</code></h3><p><strong>功能</strong>：管理子智能体：查看、终止、启动或记录子任务</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/subagents</span><br></pre></td></tr></table></figure>
+<p>查看所有子智能体</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/subagents kill &lt;agent_id&gt;</span><br></pre></td></tr></table></figure>
+<p>终止特定子智能体</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/subagents list --recent 10</span><br></pre></td></tr></table></figure>
+<p>查看最近10个子智能体任务</p>
+<p><strong>子命令</strong>：</p>
+<ul>
+<li><code>list</code>：列出所有子智能体</li>
+<li><code>kill</code>：终止子智能体</li>
+<li><code>steer</code>：调整子智能体任务方向</li>
+<li><code>logs</code>：查看子智能体日志</li>
+</ul>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>监控后台运行的子任务</li>
+<li>终止卡住或出错的子智能体</li>
+<li>查看子任务的执行日志</li>
+<li>调整正在运行的子任务方向</li>
+</ul>
+<h3 id="kill"><a href="#kill" class="headerlink" title="/kill"></a><code>/kill</code></h3><p><strong>功能</strong>：强制停止一个正在运行的子智能体（或全部子智能体）</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/kill agent_123456</span><br></pre></td></tr></table></figure>
+<p>停止特定子智能体</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/kill all</span><br></pre></td></tr></table></figure>
+<p>停止所有子智能体</p>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>子智能体卡在无限循环中</li>
+<li>子任务执行出错需要立即停止</li>
+<li>需要释放系统资源时</li>
+<li>测试环境下清理所有子进程</li>
+</ul>
+<p><strong>注意事项</strong>：</p>
+<ul>
+<li>强制停止可能导致任务未完成</li>
+<li>某些智能体可能无法立即停止，需要等待安全退出</li>
+<li>建议先尝试<code>/steer</code>调整方向，再考虑强制停止</li>
+</ul>
+<h3 id="steer"><a href="#steer" class="headerlink" title="/steer"></a><code>/steer</code></h3><p><strong>功能</strong>：给正在运行的子智能体发送新的指引，调整它的任务方向</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/steer agent_123456 &quot;请优先完成数据分析部分，界面优化可以稍后&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>工作原理</strong>：</p>
+<ol>
+<li>查找指定的子智能体</li>
+<li>将新的指引信息插入到它的上下文中</li>
+<li>智能体会根据新指引调整执行方向</li>
+</ol>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>任务优先级发生变化时</li>
+<li>发现更好的执行策略时</li>
+<li>需要调整任务范围或目标时</li>
+<li>纠正偏离方向的子任务</li>
+</ul>
+<p><strong>优势</strong>：</p>
+<ul>
+<li>避免强制停止后重新开始</li>
+<li>保留已有工作成果</li>
+<li>更平滑的任务调整</li>
+</ul>
+<h3 id=""><a href="#" class="headerlink" title="&lt;任务描述&gt;"></a><code>&lt;任务描述&gt;</code></h3><p><strong>功能</strong>：在当前会话中执行一个独立任务，不影响主对话上下文</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">请分析这个CSV文件并生成报告，完成后通知我</span><br></pre></td></tr></table></figure>
+
+<p><strong>说明</strong>：<br>这不是一个斜杠命令，而是一种任务委托方式。当你直接描述一个任务时，OpenClaw会：</p>
+<ol>
+<li>创建一个临时的任务上下文</li>
+<li>执行指定任务</li>
+<li>完成后在主对话中报告结果</li>
+<li>清理临时上下文</li>
+</ol>
+<p><strong>特点</strong>：</p>
+<ul>
+<li>任务执行不影响主对话历史</li>
+<li>适合一次性分析或处理任务</li>
+<li>完成后自动清理，节省上下文空间</li>
+</ul>
+<h3 id="coding-agent"><a href="#coding-agent" class="headerlink" title="/coding_agent"></a><code>/coding_agent</code></h3><p><strong>功能</strong>：把编程任务委托给专门的代码智能体</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/coding_agent 请用Python写一个数据清洗脚本</span><br></pre></td></tr></table></figure>
+
+<p><strong>支持的语言和框架</strong>：</p>
+<ul>
+<li>Python、JavaScript、TypeScript、Go、Rust等</li>
+<li>React、Vue、Next.js等前端框架</li>
+<li>Node.js、Express等后端框架</li>
+<li>数据库查询和操作</li>
+</ul>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>复杂的代码编写任务</li>
+<li>代码审查和优化</li>
+<li>调试和错误修复</li>
+<li>技术栈迁移和升级</li>
+</ul>
+<p><strong>优势</strong>：</p>
+<ul>
+<li>专门的代码智能体有更好的代码理解和生成能力</li>
+<li>支持更多编程语言和框架</li>
+<li>可以处理复杂的代码结构</li>
+</ul>
+<hr>
+<h2 id="⚙️-对话模式与设置"><a href="#⚙️-对话模式与设置" class="headerlink" title="⚙️ 对话模式与设置"></a>⚙️ 对话模式与设置</h2><h3 id="queue-mode"><a href="#queue-mode" class="headerlink" title="/queue_mode"></a><code>/queue_mode</code></h3><p><strong>功能</strong>：调整消息处理队列模式</p>
+<p><strong>可选模式</strong>：</p>
+<ul>
+<li><code>immediate</code>：立即转向，实时处理消息</li>
+<li><code>sequential</code>：顺序处理，一个任务完成后才开始下一个</li>
+<li><code>batch</code>：收集后批量回复，积累多个消息后一起处理</li>
+</ul>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/queue_mode immediate</span><br></pre></td></tr></table></figure>
+<p>切换到实时处理模式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/queue_mode batch</span><br></pre></td></tr></table></figure>
+<p>切换到批量处理模式</p>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li><strong>实时模式</strong>：需要快速响应的对话</li>
+<li><strong>顺序模式</strong>：需要确保任务完整性的工作流程</li>
+<li><strong>批量模式</strong>：收集反馈或数据后统一处理</li>
+</ul>
+<h3 id="thinking"><a href="#thinking" class="headerlink" title="/thinking"></a><code>/thinking</code></h3><p><strong>功能</strong>：设置思考级别，控制智能体展示思考过程</p>
+<p><strong>级别选项</strong>：</p>
+<ul>
+<li><code>off</code>：不显示思考过程（默认）</li>
+<li><code>low</code>：显示简要思考过程</li>
+<li><code>high</code>：显示详细思考过程</li>
+<li><code>stream</code>：流式显示思考过程</li>
+</ul>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/thinking high</span><br></pre></td></tr></table></figure>
+<p>显示详细思考过程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/thinking off</span><br></pre></td></tr></table></figure>
+<p>关闭思考过程显示</p>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li><strong>调试和学习</strong>：查看AI的推理过程</li>
+<li><strong>复杂问题</strong>：需要了解AI如何分析复杂问题</li>
+<li><strong>性能优化</strong>：关闭思考过程以加快响应速度</li>
+<li><strong>教学演示</strong>：向他人展示AI的思考方式</li>
+</ul>
+<h3 id="verbose"><a href="#verbose" class="headerlink" title="/verbose"></a><code>/verbose</code></h3><p><strong>功能</strong>：切换详细输出模式，显示更多内部信息</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/verbose on</span><br></pre></td></tr></table></figure>
+<p>开启详细模式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/verbose off</span><br></pre></td></tr></table></figure>
+<p>关闭详细模式</p>
+<p><strong>显示内容</strong>（详细模式下）：</p>
+<ul>
+<li>工具调用详情</li>
+<li>上下文管理信息</li>
+<li>权限检查过程</li>
+<li>系统状态更新</li>
+</ul>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>调试工具调用问题</li>
+<li>理解系统如何响应命令</li>
+<li>开发者排查问题</li>
+<li>学习OpenClaw内部工作机制</li>
+</ul>
+<h3 id="fast"><a href="#fast" class="headerlink" title="/fast"></a><code>/fast</code></h3><p><strong>功能</strong>：切换快速模式，让回复更简洁、速度更快</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/fast on</span><br></pre></td></tr></table></figure>
+<p>开启快速模式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/fast off</span><br></pre></td></tr></table></figure>
+<p>关闭快速模式</p>
+<p><strong>快速模式特点</strong>：</p>
+<ul>
+<li>使用更简洁的语言</li>
+<li>减少解释性内容</li>
+<li>优先使用短句和列表</li>
+<li>跳过非必要的礼貌用语</li>
+</ul>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>需要快速获取信息时</li>
+<li>已经熟悉OpenClaw的操作时</li>
+<li>处理大量简单查询时</li>
+<li>性能敏感的环境</li>
+</ul>
+<h3 id="reasoning"><a href="#reasoning" class="headerlink" title="/reasoning"></a><code>/reasoning</code></h3><p><strong>功能</strong>：控制是否显示模型的推理过程</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/reasoning on</span><br></pre></td></tr></table></figure>
+<p>显示推理过程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/reasoning off</span><br></pre></td></tr></table></figure>
+<p>不显示推理过程</p>
+<p><strong>与<code>/thinking</code>的区别</strong>：</p>
+<ul>
+<li><code>/thinking</code>：控制思考过程的显示级别</li>
+<li><code>/reasoning</code>：控制推理过程的显示（针对支持推理的模型）</li>
+</ul>
+<p><strong>支持推理的模型</strong>：</p>
+<ul>
+<li>DeepSeek-V3 Reasoning</li>
+<li>Claude-3 Opus (推理模式)</li>
+<li>GPT-4 Reasoning</li>
+</ul>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>需要模型展示复杂推理步骤时</li>
+<li>验证模型推理正确性时</li>
+<li>学习模型如何解决复杂问题时</li>
+</ul>
+<h3 id="elevated"><a href="#elevated" class="headerlink" title="/elevated"></a><code>/elevated</code></h3><p><strong>功能</strong>：切换高级权限模式，允许执行敏感操作</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/elevated on</span><br></pre></td></tr></table></figure>
+<p>开启高级权限模式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/elevated off</span><br></pre></td></tr></table></figure>
+<p>关闭高级权限模式</p>
+<p><strong>高级权限操作</strong>：</p>
+<ul>
+<li>系统文件访问</li>
+<li>网络配置修改</li>
+<li>服务启停</li>
+<li>敏感数据操作</li>
+</ul>
+<p><strong>安全措施</strong>：</p>
+<ul>
+<li>需要用户明确授权</li>
+<li>操作前会显示警告</li>
+<li>重要操作需要<code>/approve</code>批准</li>
+<li>操作记录会被详细记录</li>
+</ul>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>系统维护和配置</li>
+<li>故障排查和修复</li>
+<li>安全审计和加固</li>
+<li>高级自动化任务</li>
+</ul>
+<h3 id="session"><a href="#session" class="headerlink" title="/session"></a><code>/session</code></h3><p><strong>功能</strong>：管理当前会话的各类设置</p>
+<p><strong>子命令</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/session timeout 3600</span><br></pre></td></tr></table></figure>
+<p>设置会话超时时间为3600秒（1小时）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/session mode interactive</span><br></pre></td></tr></table></figure>
+<p>设置会话模式为交互式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/session list</span><br></pre></td></tr></table></figure>
+<p>列出当前所有会话设置</p>
+<p><strong>可配置项</strong>：</p>
+<ul>
+<li><code>timeout</code>：会话超时时间（秒）</li>
+<li><code>mode</code>：会话模式（interactive, batch, script等）</li>
+<li><code>model</code>：当前会话使用的模型</li>
+<li><code>temperature</code>：模型温度参数</li>
+<li><code>max_tokens</code>：最大输出token数</li>
+</ul>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>定制化会话行为</li>
+<li>优化性能参数</li>
+<li>调试特定配置</li>
+<li>临时调整模型参数</li>
+</ul>
+<h3 id="send"><a href="#send" class="headerlink" title="/send"></a><code>/send</code></h3><p><strong>功能</strong>：设置消息发送策略</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/send auto on</span><br></pre></td></tr></table></figure>
+<p>允许自动发送消息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/send confirm on</span><br></pre></td></tr></table></figure>
+<p>重要消息需要确认后发送</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/send delay 5</span><br></pre></td></tr></table></figure>
+<p>设置5秒发送延迟</p>
+<p><strong>发送策略</strong>：</p>
+<ul>
+<li><code>auto</code>：是否允许自动发送</li>
+<li><code>confirm</code>：是否需要用户确认</li>
+<li><code>delay</code>：发送延迟时间（秒）</li>
+<li><code>retry</code>：失败重试次数</li>
+</ul>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>控制消息发送频率</li>
+<li>防止消息轰炸</li>
+<li>重要操作前的确认</li>
+<li>网络不稳定时的重试策略</li>
+</ul>
+<hr>
+<h2 id="📡-渠道与通信"><a href="#📡-渠道与通信" class="headerlink" title="📡 渠道与通信"></a>📡 渠道与通信</h2><h3 id="dock-telegram"><a href="#dock-telegram" class="headerlink" title="/dock_telegram"></a><code>/dock_telegram</code></h3><p><strong>功能</strong>：切换到 Telegram 渠道进行回复</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dock_telegram</span><br></pre></td></tr></table></figure>
+
+<p><strong>效果</strong>：</p>
+<ul>
+<li>后续回复会发送到Telegram</li>
+<li>可以同时保持多个渠道连接</li>
+<li>快速在渠道间切换</li>
+</ul>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>临时需要Telegram渠道回复</li>
+<li>多渠道协同工作</li>
+<li>测试渠道连接状态</li>
+</ul>
+<h3 id="dock-discord"><a href="#dock-discord" class="headerlink" title="/dock_discord"></a><code>/dock_discord</code></h3><p><strong>功能</strong>：切换到 Discord 渠道</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dock_discord</span><br></pre></td></tr></table></figure>
+
+<p><strong>Discord特定功能</strong>：</p>
+<ul>
+<li>频道和线程管理</li>
+<li>消息反应和交互组件</li>
+<li>用户角色和权限集成</li>
+<li>丰富的格式化选项</li>
+</ul>
+<h3 id="dock-slack"><a href="#dock-slack" class="headerlink" title="/dock_slack"></a><code>/dock_slack</code></h3><p><strong>功能</strong>：切换到 Slack 渠道</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dock_slack</span><br></pre></td></tr></table></figure>
+
+<p><strong>Slack集成特点</strong>：</p>
+<ul>
+<li>工作区集成</li>
+<li>频道和私信支持</li>
+<li>富文本格式化</li>
+<li>文件和附件共享</li>
+</ul>
+<h3 id="focus"><a href="#focus" class="headerlink" title="/focus"></a><code>/focus</code></h3><p><strong>功能</strong>：在 Discord 等平台，让当前线程成为焦点，优先处理</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/focus</span><br></pre></td></tr></table></figure>
+
+<p><strong>效果</strong>：</p>
+<ul>
+<li>当前线程获得更高的优先级</li>
+<li>相关通知和提醒会更明显</li>
+<li>在多线程环境中突出重要对话</li>
+</ul>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>重要项目讨论需要优先处理时</li>
+<li>紧急问题需要立即关注时</li>
+<li>在多线程环境中管理注意力</li>
+</ul>
+<h3 id="unfocus"><a href="#unfocus" class="headerlink" title="/unfocus"></a><code>/unfocus</code></h3><p><strong>功能</strong>：移除当前线程的焦点状态</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/unfocus</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用时机</strong>：</p>
+<ul>
+<li>焦点任务已完成时</li>
+<li>需要平衡各线程处理时</li>
+<li>避免单一线程占用过多资源时</li>
+</ul>
+<h3 id="pair"><a href="#pair" class="headerlink" title="/pair"></a><code>/pair</code></h3><p><strong>功能</strong>：生成配对码，用于将设备或账号与机器人绑定</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/pair</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">配对码：X7G9-K2H8-L3M4-N5P6</span><br><span class="line">有效期：10分钟</span><br><span class="line">请在新设备上输入此配对码完成绑定</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>新设备首次连接</li>
+<li>多设备同步配置</li>
+<li>临时访问权限授予</li>
+<li>团队协作邀请</li>
+</ul>
+<p><strong>安全特性</strong>：</p>
+<ul>
+<li>配对码有有效期限</li>
+<li>一次使用后立即失效</li>
+<li>生成记录会被保存</li>
+<li>可设置最大配对次数</li>
+</ul>
+<hr>
+<h2 id="🔧-工具与技能"><a href="#🔧-工具与技能" class="headerlink" title="🔧 工具与技能"></a>🔧 工具与技能</h2><h3 id="skill"><a href="#skill" class="headerlink" title="/skill"></a><code>/skill</code></h3><p><strong>功能</strong>：直接运行一个已安装的技能</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/skill hexo-blog-publisher</span><br></pre></td></tr></table></figure>
+
+<p><strong>可用技能查看</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/skill list</span><br></pre></td></tr></table></figure>
+<p>列出所有已安装技能</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/skill info weather</span><br></pre></td></tr></table></figure>
+<p>查看weather技能的详细信息</p>
+<p><strong>技能执行</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/skill weather --location &quot;北京&quot;</span><br></pre></td></tr></table></figure>
+<p>带参数执行技能</p>
+<p><strong>内置技能示例</strong>：</p>
+<ul>
+<li><code>weather</code>：天气查询</li>
+<li><code>github</code>：GitHub操作</li>
+<li><code>healthcheck</code>：安全检查</li>
+<li><code>coding-agent</code>：代码助手</li>
+</ul>
+<h3 id="skill-creator"><a href="#skill-creator" class="headerlink" title="/skill_creator"></a><code>/skill_creator</code></h3><p><strong>功能</strong>：创建、编辑或改进技能（适合开发者）</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/skill_creator create --name &quot;my-skill&quot;</span><br></pre></td></tr></table></figure>
+<p>创建新技能</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/skill_creator edit --skill &quot;existing-skill&quot;</span><br></pre></td></tr></table></figure>
+<p>编辑现有技能</p>
+<p><strong>功能特点</strong>：</p>
+<ul>
+<li>交互式技能创建向导</li>
+<li>技能模板和示例</li>
+<li>自动生成SKILL.md文件</li>
+<li>测试和验证功能</li>
+</ul>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>创建自定义工作流程</li>
+<li>扩展OpenClaw功能</li>
+<li>共享可复用的自动化脚本</li>
+<li>团队标准化工具开发</li>
+</ul>
+<h3 id="agent-browser"><a href="#agent-browser" class="headerlink" title="/agent_browser"></a><code>/agent_browser</code></h3><p><strong>功能</strong>：启动浏览器自动化，让智能体控制网页</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/agent_browser open https://example.com</span><br></pre></td></tr></table></figure>
+
+<p><strong>常见操作</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/agent_browser click &quot;#submit-button&quot;</span><br></pre></td></tr></table></figure>
+<p>点击页面元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/agent_browser fill &quot;#search-input&quot; &quot;OpenClaw&quot;</span><br></pre></td></tr></table></figure>
+<p>填写表单</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/agent_browser screenshot page.png</span><br></pre></td></tr></table></figure>
+<p>截图保存</p>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>网页数据抓取</li>
+<li>表单自动填写</li>
+<li>网站测试和监控</li>
+<li>重复性网页操作自动化</li>
+</ul>
+<h3 id="weather"><a href="#weather" class="headerlink" title="/weather"></a><code>/weather</code></h3><p><strong>功能</strong>：查询当前天气信息</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/weather 北京</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/weather --location &quot;上海&quot; --days 3</span><br></pre></td></tr></table></figure>
+<p>查询上海未来3天天气</p>
+<p><strong>支持参数</strong>：</p>
+<ul>
+<li><code>--location</code>：地点（城市名或坐标）</li>
+<li><code>--days</code>：预报天数（1-7）</li>
+<li><code>--units</code>：单位制（metric或imperial）</li>
+<li><code>--detailed</code>：详细预报信息</li>
+</ul>
+<p><strong>数据来源</strong>：</p>
+<ul>
+<li>wttr.in（默认）</li>
+<li>Open-Meteo</li>
+<li>其他天气API</li>
+</ul>
+<h3 id="openai-image-gen"><a href="#openai-image-gen" class="headerlink" title="/openai_image_gen"></a><code>/openai_image_gen</code></h3><p><strong>功能</strong>：批量生成图片（需要 OpenAI 图像生成能力）</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/openai_image_gen &quot;一只在太空站里的猫&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>高级用法</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/openai_image_gen --prompt &quot;未来城市&quot; --count 4 --size &quot;1024x1024&quot;</span><br></pre></td></tr></table></figure>
+<p>生成4张1024x1024的未来城市图片</p>
+<p><strong>参数说明</strong>：</p>
+<ul>
+<li><code>--prompt</code>：图片描述</li>
+<li><code>--count</code>：生成数量（1-10）</li>
+<li><code>--size</code>：图片尺寸</li>
+<li><code>--style</code>：生成风格</li>
+<li><code>--quality</code>：图片质量</li>
+</ul>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>文章配图生成</li>
+<li>设计灵感获取</li>
+<li>营销素材创建</li>
+<li>概念可视化</li>
+</ul>
+<h3 id="openai-whisper-api"><a href="#openai-whisper-api" class="headerlink" title="/openai_whisper_api"></a><code>/openai_whisper_api</code></h3><p><strong>功能</strong>：将音频转成文字（使用 Whisper 模型）</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/openai_whisper_api audio.mp3</span><br></pre></td></tr></table></figure>
+
+<p><strong>支持格式</strong>：</p>
+<ul>
+<li>MP3、WAV、M4A、OGG等常见音频格式</li>
+<li>视频文件中的音频轨道</li>
+<li>实时音频流（需要配置）</li>
+</ul>
+<p><strong>输出选项</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/openai_whisper_api --file audio.mp3 --format json</span><br></pre></td></tr></table></figure>
+<p>输出JSON格式，包含时间戳</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/openai_whisper_api --file audio.mp3 --language zh</span><br></pre></td></tr></table></figure>
+<p>指定中文转录</p>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>会议录音转文字</li>
+<li>播客内容转录</li>
+<li>视频字幕生成</li>
+<li>语音笔记整理</li>
+</ul>
+<h3 id="tts"><a href="#tts" class="headerlink" title="/tts"></a><code>/tts</code></h3><p><strong>功能</strong>：控制文本转语音功能</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/tts &quot;你好，我是OpenClaw助手&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>语音选项</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/tts --text &quot;欢迎使用&quot; --voice &quot;nova&quot; --speed 1.2</span><br></pre></td></tr></table></figure>
+<p>使用Nova语音，1.2倍速</p>
+<p><strong>支持特性</strong>：</p>
+<ul>
+<li>多种语音选择</li>
+<li>语速和音调调整</li>
+<li>多语言支持</li>
+<li>音频格式选择（MP3、WAV等）</li>
+</ul>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>有声内容制作</li>
+<li>语音提醒和通知</li>
+<li>无障碍访问支持</li>
+<li>多媒体内容创作</li>
+</ul>
+<h3 id="voice"><a href="#voice" class="headerlink" title="/voice"></a><code>/voice</code></h3><p><strong>功能</strong>：列出或设置 ElevenLabs 语音通道</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/voice list</span><br></pre></td></tr></table></figure>
+<p>列出所有可用语音</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/voice set --name &quot;Rachel&quot; --style &quot;cheerful&quot;</span><br></pre></td></tr></table></figure>
+<p>设置使用Rachel语音， cheerful风格</p>
+<p><strong>ElevenLabs特性</strong>：</p>
+<ul>
+<li>高质量的神经语音合成</li>
+<li>情感和风格控制</li>
+<li>声音克隆功能</li>
+<li>实时语音流</li>
+</ul>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>高质量语音内容制作</li>
+<li>品牌语音一致性</li>
+<li>个性化语音助手</li>
+<li>播客和音频内容</li>
+</ul>
+<hr>
+<h2 id="🔐-安全与权限"><a href="#🔐-安全与权限" class="headerlink" title="🔐 安全与权限"></a>🔐 安全与权限</h2><h3 id="approve"><a href="#approve" class="headerlink" title="/approve"></a><code>/approve</code></h3><p><strong>功能</strong>：批准或拒绝某个执行请求（例如高危操作）</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/approve allow-once</span><br></pre></td></tr></table></figure>
+<p>允许当前操作一次</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/approve allow-always</span><br></pre></td></tr></table></figure>
+<p>始终允许此类操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/approve deny</span><br></pre></td></tr></table></figure>
+<p>拒绝当前操作</p>
+<p><strong>触发条件</strong>：</p>
+<ul>
+<li>文件系统敏感操作</li>
+<li>网络配置修改</li>
+<li>服务启停命令</li>
+<li>权限提升请求</li>
+</ul>
+<p><strong>安全机制</strong>：</p>
+<ol>
+<li>检测到敏感操作时自动暂停</li>
+<li>显示详细的操作说明和风险提示</li>
+<li>等待用户明确的批准或拒绝</li>
+<li>记录所有批准决策到安全日志</li>
+</ol>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>系统维护操作前确认</li>
+<li>高风险自动化任务执行</li>
+<li>权限边界测试</li>
+<li>安全审计跟踪</li>
+</ul>
+<h3 id="healthcheck"><a href="#healthcheck" class="headerlink" title="/healthcheck"></a><code>/healthcheck</code></h3><p><strong>功能</strong>：检查主机安全加固情况</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/healthcheck</span><br></pre></td></tr></table></figure>
+
+<p><strong>检查项目</strong>：</p>
+<ul>
+<li>系统更新状态</li>
+<li>防火墙配置</li>
+<li>SSH安全设置</li>
+<li>用户权限管理</li>
+<li>服务暴露情况</li>
+<li>密码策略</li>
+</ul>
+<p><strong>输出格式</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">✅ 防火墙已启用</span><br><span class="line">⚠️  SSH使用密码登录，建议改用密钥</span><br><span class="line">❌  系统135天未更新，存在安全风险</span><br></pre></td></tr></table></figure>
+
+<p><strong>修复建议</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/healthcheck --fix</span><br></pre></td></tr></table></figure>
+<p>自动修复发现的安全问题</p>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>新服务器安全配置</li>
+<li>定期安全审计</li>
+<li>合规性检查</li>
+<li>安全事件响应</li>
+</ul>
+<h3 id="phone"><a href="#phone" class="headerlink" title="/phone"></a><code>/phone</code></h3><p><strong>功能</strong>：开启或关闭高风险的电话功能（如自动拨打电话）</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/phone on</span><br></pre></td></tr></table></figure>
+<p>开启电话功能</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/phone off</span><br></pre></td></tr></table></figure>
+<p>关闭电话功能</p>
+<p><strong>电话功能包括</strong>：</p>
+<ul>
+<li>自动拨号和通话</li>
+<li>语音信箱管理</li>
+<li>通话录音和转写</li>
+<li>电话会议管理</li>
+</ul>
+<p><strong>安全限制</strong>：</p>
+<ul>
+<li>需要额外的硬件支持</li>
+<li>严格的使用权限控制</li>
+<li>通话记录和监控</li>
+<li>法律法规合规性检查</li>
+</ul>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>客服自动化</li>
+<li>预约提醒电话</li>
+<li>紧急通知系统</li>
+<li>电话调查和访谈</li>
+</ul>
+<hr>
+<h2 id="📊-状态与信息"><a href="#📊-状态与信息" class="headerlink" title="📊 状态与信息"></a>📊 状态与信息</h2><h3 id="status"><a href="#status" class="headerlink" title="/status"></a><code>/status</code></h3><p><strong>功能</strong>：显示当前系统状态、运行任务、资源使用等</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/status</span><br></pre></td></tr></table></figure>
+
+<p><strong>显示信息</strong>：</p>
+<ul>
+<li>系统运行时间</li>
+<li>内存和CPU使用率</li>
+<li>活动会话数量</li>
+<li>运行中的智能体</li>
+<li>最近错误日志</li>
+<li>模型使用统计</li>
+</ul>
+<p><strong>详细模式</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/status --deep</span><br></pre></td></tr></table></figure>
+<p>深度状态检查，包括网络连接和服务健康</p>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>系统监控和维护</li>
+<li>性能问题排查</li>
+<li>资源使用优化</li>
+<li>服务健康检查</li>
+</ul>
+<h3 id="usage"><a href="#usage" class="headerlink" title="/usage"></a><code>/usage</code></h3><p><strong>功能</strong>：查看本次对话的令牌消耗或费用摘要</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usage</span><br></pre></td></tr></table></figure>
+
+<p><strong>显示信息</strong>：</p>
+<ul>
+<li>输入token数量</li>
+<li>输出token数量</li>
+<li>总token消耗</li>
+<li>估算费用（如果使用付费模型）</li>
+<li>各模型的token分布</li>
+</ul>
+<p><strong>详细报告</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usage --detailed</span><br></pre></td></tr></table></figure>
+<p>显示每个消息的token消耗</p>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>成本控制和优化</li>
+<li>对话效率分析</li>
+<li>模型选择参考</li>
+<li>预算规划和管理</li>
+</ul>
+<h3 id="whoami"><a href="#whoami" class="headerlink" title="/whoami"></a><code>/whoami</code></h3><p><strong>功能</strong>：显示你在当前渠道中的发送者ID</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/whoami</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">渠道：Telegram</span><br><span class="line">发送者ID：5924847695</span><br><span class="line">用户名：XYray12</span><br><span class="line">权限级别：管理员</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>调试频道集成问题</li>
+<li>验证身份和权限</li>
+<li>多账号管理</li>
+<li>权限问题排查</li>
+</ul>
+<h3 id="model"><a href="#model" class="headerlink" title="/model"></a><code>/model</code></h3><p><strong>功能</strong>：显示或切换当前使用的模型</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/model</span><br></pre></td></tr></table></figure>
+<p>显示当前模型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/model deepseek-chat</span><br></pre></td></tr></table></figure>
+<p>切换到deepseek-chat模型</p>
+<p><strong>可用模型查看</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/models</span><br></pre></td></tr></table></figure>
+<p>列出所有可用模型</p>
+<p><strong>模型切换效果</strong>：</p>
+<ul>
+<li>立即生效，影响后续所有回复</li>
+<li>不同模型有不同的能力和特点</li>
+<li>切换可能需要重新加载上下文</li>
+</ul>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>根据任务需求选择合适的模型</li>
+<li>测试不同模型的表现</li>
+<li>故障转移（主模型不可用时）</li>
+<li>成本优化（切换到更经济的模型）</li>
+</ul>
+<h3 id="models"><a href="#models" class="headerlink" title="/models"></a><code>/models</code></h3><p><strong>功能</strong>：列出所有可用的模型提供商和模型包</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/models</span><br></pre></td></tr></table></figure>
+
+<p><strong>显示内容</strong>：</p>
+<ul>
+<li>模型名称和提供商</li>
+<li>能力和特点描述</li>
+<li>当前状态（可用、不可用、限流等）</li>
+<li>费用信息（如果适用）</li>
+<li>性能指标</li>
+</ul>
+<p><strong>筛选和排序</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/models --provider openai</span><br></pre></td></tr></table></figure>
+<p>只显示OpenAI的模型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/models --sort cost</span><br></pre></td></tr></table></figure>
+<p>按成本排序</p>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>模型选择和比较</li>
+<li>成本优化规划</li>
+<li>故障转移准备</li>
+<li>新模型评估</li>
+</ul>
+<hr>
+<h2 id="🛑-控制与停止"><a href="#🛑-控制与停止" class="headerlink" title="🛑 控制与停止"></a>🛑 控制与停止</h2><h3 id="stop"><a href="#stop" class="headerlink" title="/stop"></a><code>/stop</code></h3><p><strong>功能</strong>：停止当前正在进行的生成或任务</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/stop</span><br></pre></td></tr></table></figure>
+
+<p><strong>可停止的操作</strong>：</p>
+<ul>
+<li>长时间运行的模型生成</li>
+<li>文件处理任务</li>
+<li>网络请求</li>
+<li>子智能体执行</li>
+</ul>
+<p><strong>工作方式</strong>：</p>
+<ol>
+<li>向当前任务发送停止信号</li>
+<li>等待任务安全停止（如果可能）</li>
+<li>清理相关资源</li>
+<li>报告停止结果</li>
+</ol>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>生成结果不满意，需要重新生成时</li>
+<li>任务执行时间过长时</li>
+<li>发现任务方向错误时</li>
+<li>需要立即释放资源时</li>
+</ul>
+<h3 id="restart"><a href="#restart" class="headerlink" title="/restart"></a><code>/restart</code></h3><p><strong>功能</strong>：重启 OpenClaw 服务（需要相应权限）</p>
+<p><strong>使用示例</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/restart</span><br></pre></td></tr></table></figure>
+
+<p><strong>重启过程</strong>：</p>
+<ol>
+<li>保存当前所有会话状态</li>
+<li>优雅停止所有服务</li>
+<li>重新加载配置和插件</li>
+<li>恢复会话状态</li>
+<li>报告重启完成</li>
+</ol>
+<p><strong>使用场景</strong>：</p>
+<ul>
+<li>配置变更后生效</li>
+<li>插件安装或更新后</li>
+<li>解决服务卡住或异常</li>
+<li>定期维护重启</li>
+</ul>
+<p><strong>权限要求</strong>：</p>
+<ul>
+<li>需要<code>/elevated</code>权限或管理员角色</li>
+<li>重要环境可能需要额外的确认</li>
+<li>重启会影响所有在线用户</li>
+</ul>
+<hr>
+<h2 id="💡-最佳实践与使用技巧"><a href="#💡-最佳实践与使用技巧" class="headerlink" title="💡 最佳实践与使用技巧"></a>💡 最佳实践与使用技巧</h2><h3 id="1-命令组合使用"><a href="#1-命令组合使用" class="headerlink" title="1. 命令组合使用"></a>1. 命令组合使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/thinking high</span><br><span class="line">/subagents list</span><br></pre></td></tr></table></figure>
+<p>先开启详细思考模式，再查看子智能体状态，可以更清楚地了解系统运行情况。</p>
+<h3 id="2-会话管理策略"><a href="#2-会话管理策略" class="headerlink" title="2. 会话管理策略"></a>2. 会话管理策略</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/new</span><br><span class="line">/session timeout 7200</span><br><span class="line">/session mode interactive</span><br></pre></td></tr></table></figure>
+<p>开始新会话，设置2小时超时，配置为交互模式，适合长时间项目讨论。</p>
+<h3 id="3-权限安全流程"><a href="#3-权限安全流程" class="headerlink" title="3. 权限安全流程"></a>3. 权限安全流程</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/elevated on</span><br><span class="line"># 执行敏感操作...</span><br><span class="line">/approve allow-once</span><br><span class="line">/elevated off</span><br></pre></td></tr></table></figure>
+<p>临时开启高级权限，执行操作后立即关闭，最小化安全风险。</p>
+<h3 id="4-性能优化组合"><a href="#4-性能优化组合" class="headerlink" title="4. 性能优化组合"></a>4. 性能优化组合</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/fast on</span><br><span class="line">/thinking off</span><br><span class="line">/queue_mode immediate</span><br></pre></td></tr></table></figure>
+<p>快速模式+无思考显示+实时队列，适合需要快速响应的场景。</p>
+<h3 id="5-多智能体协作"><a href="#5-多智能体协作" class="headerlink" title="5. 多智能体协作"></a>5. 多智能体协作</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/agents</span><br><span class="line">/coding_agent 请写一个数据处理脚本</span><br><span class="line">/subagents monitor</span><br></pre></td></tr></table></figure>
+<p>查看智能体状态 → 委托编程任务 → 监控子任务执行。</p>
+<h3 id="6-成本控制策略"><a href="#6-成本控制策略" class="headerlink" title="6. 成本控制策略"></a>6. 成本控制策略</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/usage</span><br><span class="line">/model deepseek-chat  # 切换到更经济的模型</span><br><span class="line">/fast on  # 减少token消耗</span><br></pre></td></tr></table></figure>
+<p>定期检查使用情况，根据需求选择合适的模型和模式。</p>
+<h2 id="🚀-高级技巧"><a href="#🚀-高级技巧" class="headerlink" title="🚀 高级技巧"></a>🚀 高级技巧</h2><h3 id="1-批量操作模式"><a href="#1-批量操作模式" class="headerlink" title="1. 批量操作模式"></a>1. 批量操作模式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/queue_mode batch</span><br><span class="line"># 发送多个查询...</span><br><span class="line">/unfocus</span><br></pre></td></tr></table></figure>
+<p>适合收集反馈或数据分析场景。</p>
+<h3 id="2-自动化工作流"><a href="#2-自动化工作流" class="headerlink" title="2. 自动化工作流"></a>2. 自动化工作流</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/skill hexo-blog-publisher</span><br><span class="line">/agent_browser 自动化网页操作</span><br><span class="line">/subagents 监控后台任务</span><br></pre></td></tr></table></figure>
+<p>组合技能、浏览器自动化和子智能体监控，构建完整自动化流程。</p>
+<h3 id="3-调试和排查"><a href="#3-调试和排查" class="headerlink" title="3. 调试和排查"></a>3. 调试和排查</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/verbose on</span><br><span class="line">/thinking high</span><br><span class="line">/context</span><br></pre></td></tr></table></figure>
+<p>开启详细输出和思考模式，查看上下文信息，全面调试问题。</p>
+<h3 id="4-安全审计"><a href="#4-安全审计" class="headerlink" title="4. 安全审计"></a>4. 安全审计</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/healthcheck --fix</span><br><span class="line">/approve 审查敏感操作</span><br><span class="line">/elevated on 执行修复</span><br></pre></td></tr></table></figure>
+<p>定期安全检查，批准敏感操作，执行必要的安全加固。</p>
+<hr>
+<h2 id="📝-版本说明与兼容性"><a href="#📝-版本说明与兼容性" class="headerlink" title="📝 版本说明与兼容性"></a>📝 版本说明与兼容性</h2><p><strong>本文基于 OpenClaw 2026.3.12 版本编写</strong></p>
+<h3 id="版本特性："><a href="#版本特性：" class="headerlink" title="版本特性："></a>版本特性：</h3><ul>
+<li>✅ 完整的斜杠命令支持</li>
+<li>✅ 多智能体系统集成</li>
+<li>✅ 高级权限管理</li>
+<li>✅ 跨平台渠道支持</li>
+<li>✅ 丰富的技能生态系统</li>
+</ul>
+<h3 id="命令可用性："><a href="#命令可用性：" class="headerlink" title="命令可用性："></a>命令可用性：</h3><ul>
+<li>大部分命令在所有渠道通用</li>
+<li>某些渠道特定命令（如<code>/dock_telegram</code>）需要相应渠道配置</li>
+<li>权限相关命令需要相应的权限级别</li>
+<li>技能命令需要对应技能已安装并启用</li>
+</ul>
+<h3 id="向后兼容性："><a href="#向后兼容性：" class="headerlink" title="向后兼容性："></a>向后兼容性：</h3><ul>
+<li>主要命令保持向后兼容</li>
+<li>新增命令会在版本更新中说明</li>
+<li>弃用命令会提供迁移指南</li>
+<li>建议定期更新到最新版本以获得最佳体验</li>
+</ul>
+<hr>
+<p><strong>总结</strong>：OpenClaw的斜杠命令系统提供了强大而灵活的控制能力，从基础的会话管理到高级的多智能体协作，从简单的信息查询到复杂的自动化工作流，都能通过这些命令轻松实现。掌握这些命令，你将能充分发挥OpenClaw作为个人AI助手的全部潜力！</p>
+<p><em>本文将持续更新，跟随OpenClaw版本演进。欢迎在GitHub仓库提交问题或建议。</em></p>
+</p></div><div class="share"><span>Share</span>&nbsp;<span class="soc"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></span><span class="soc"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></span><span class="soc"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/home?status=https://attraction11.github.io/2026/03/17/2026-03-17-openclaw-article/%20良的博客%20OpenClaw 2026.3.12 斜杠命令完全指南：从基础到高级"></a></span></div><div class="pagination"><p class="clearfix"><span>&nbsp;</span><span class="next pagbuttons"><a role="navigation" href="/2026/03/17/2026-03-17-openclaw-secrets-management-system/" title="OpenClaw Secrets管理系统：从27个明文密钥到企业级安全">Next post: OpenClaw Secrets管理系统：从27个明文密钥到企业级安全&nbsp;<i class="fa fa-angle-double-right"></i></a></span></p></div><div class="foreground background-text" style="color: #fff; padding: 10px 25px; width: 100%"><div style="vertical-align: middle;display: table-cell!important;"><div class="visible-lg visible-sm visible-md" style="vertical-align: middle;text-align:center;margin-right:15px"><img src="/images/pigeon.svg" width="150px" style="padding: 15px; vertical-align: middle;"><p style="font-size: 55%;vertical-align: middle;text-align:center;margin: 0">咕咕咕, 就快送到了</p></div></div><div style="padding: 15px 0;vertical-align: middle;display: table-cell;"><p style="font-size: 115%">哎呀，似乎评论系统在您的地区都无法正常工作。</p><p style="margin:0;">不过不要担心，来看看我们为您准备的备用方案 ——<br>        1. 将您的评论用信封装好<br>        2. 使用信鸽函至&nbsp;github.io<br>        3. 我们在收到您的评论后将立即审核并更新至网站<br><i><small>评论一经采用，信函恕不退还，信鸽也不退还，请知悉。</small></i></p></div></div></div></div></div><div class="visible-xs site-bottom-footer"><footer><p>&copy;&nbsp;2026&nbsp;<a target="_blank" href="https://attraction11.github.io" rel="noopener noreferrer">良</a></p><p>Theme&nbsp;<a target="_blank" href="https://github.com/SumiMakito/hexo-theme-typography" rel="noopener noreferrer">Typography</a>&nbsp;by&nbsp;<a target="_blank" href="https://www.keep.moe" rel="noopener noreferrer">Makito</a></p><p>Proudly published with&nbsp;<a target="_blank" href="https://hexo.io" rel="noopener noreferrer">Hexo</a></p></footer></div></div></div></div><script src="/js/jquery-3.1.0.min.js"></script><script src="/js/bootstrap.min.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/google-analytics.js"></script><script src="/js/typography.js"></script></body></html>
